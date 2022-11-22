@@ -2,10 +2,6 @@ import { useAuth } from '@/contexts/AuthGuard';
 
 import { Avatar, Grid, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-import { Chart as ChartJS } from 'chart.js/auto';
-
-import { CategoryScale } from 'chart.js';
-ChartJS.register(CategoryScale);
 
 function PageHeader() {
   const { user: userData } = useAuth();
