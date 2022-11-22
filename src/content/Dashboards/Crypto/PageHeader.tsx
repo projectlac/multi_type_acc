@@ -1,6 +1,11 @@
 import { useAuth } from '@/contexts/AuthGuard';
-import { Typography, Avatar, Grid } from '@mui/material';
+
+import { Avatar, Grid, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
+import { Chart as ChartJS } from 'chart.js/auto';
+
+import { CategoryScale } from 'chart.js';
+ChartJS.register(CategoryScale);
 
 function PageHeader() {
   const { user: userData } = useAuth();
@@ -10,28 +15,31 @@ function PageHeader() {
   const theme = useTheme();
 
   return (
-    <Grid container alignItems="center">
-      <Grid item>
-        <Avatar
-          sx={{
-            mr: 2,
-            width: theme.spacing(8),
-            height: theme.spacing(8)
-          }}
-          variant="rounded"
-          alt={userData && userData?.username}
-          src={user.avatar}
-        />
+    <>
+      {' '}
+      <Grid container alignItems="center">
+        <Grid item>
+          <Avatar
+            sx={{
+              mr: 2,
+              width: theme.spacing(8),
+              height: theme.spacing(8)
+            }}
+            variant="rounded"
+            alt={userData && userData?.username}
+            src={user.avatar}
+          />
+        </Grid>
+        <Grid item>
+          <Typography variant="h3" component="h3" gutterBottom>
+            Welcome, {userData && userData?.username}!
+          </Typography>
+          <Typography variant="subtitle2">
+            Today is a good day to start trading crypto assets!
+          </Typography>
+        </Grid>
       </Grid>
-      <Grid item>
-        <Typography variant="h3" component="h3" gutterBottom>
-          Welcome, {userData && userData?.username}!
-        </Typography>
-        <Typography variant="subtitle2">
-          Today is a good day to start trading crypto assets!
-        </Typography>
-      </Grid>
-    </Grid>
+    </>
   );
 }
 
