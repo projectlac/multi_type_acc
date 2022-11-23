@@ -6,7 +6,6 @@ import {
   Box,
   Button,
   Divider,
-  Hidden,
   List,
   ListItem,
   ListItemText,
@@ -16,10 +15,10 @@ import {
 import NextLink from 'next/link';
 
 import { useAuth } from '@/contexts/AuthGuard';
+import formatMoney from '@/utility/formatMoney';
 import ExpandMoreTwoToneIcon from '@mui/icons-material/ExpandMoreTwoTone';
 import LockOpenTwoToneIcon from '@mui/icons-material/LockOpenTwoTone';
 import { styled } from '@mui/material/styles';
-import formatMoney from '@/utility/formatMoney';
 
 const UserBoxButton = styled(Button)(
   ({ theme }) => `
@@ -80,7 +79,7 @@ function HeaderUserbox() {
     <>
       <UserBoxButton color="secondary" ref={ref} onClick={handleOpen}>
         <Avatar variant="rounded" alt={user.name} src={user.avatar} />
-        <Hidden mdDown>
+        <Box sx={{ display: { xs: 'none', md: 'block' } }}>
           <UserBoxText>
             <UserBoxLabel
               variant="body1"
@@ -94,10 +93,10 @@ function HeaderUserbox() {
               {userData.role || user.jobtitle}
             </UserBoxDescription>
           </UserBoxText>
-        </Hidden>
-        <Hidden smDown>
+        </Box>
+        <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
           <ExpandMoreTwoToneIcon sx={{ ml: 1 }} />
-        </Hidden>
+        </Box>
       </UserBoxButton>
       <Popover
         anchorEl={ref.current}

@@ -1,5 +1,5 @@
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
-import { Box, Hidden, styled } from '@mui/material';
+import { Box, styled } from '@mui/material';
 import React from 'react';
 const FilterBox = styled(Box)({
   width: '90px',
@@ -52,7 +52,7 @@ interface IFilter {
 export default function FilterAccount({ open, children, toggleOpen }: IFilter) {
   return (
     <Box>
-      <Hidden mdUp>
+      <Box sx={{ display: { xs: 'block', md: 'none' } }}>
         <FilterCollection className={open ? 'active' : ''}>
           <FilterBox onClick={toggleOpen}>
             <FilterAltIcon />
@@ -61,8 +61,8 @@ export default function FilterAccount({ open, children, toggleOpen }: IFilter) {
           {children}
         </FilterCollection>
         <FilterOverlay onClick={toggleOpen} className={open ? 'active' : ''} />
-      </Hidden>
-      <Hidden mdDown>{children}</Hidden>
+      </Box>
+      <Box sx={{ display: { xs: 'none', md: 'block' } }}>{children}</Box>
     </Box>
   );
 }

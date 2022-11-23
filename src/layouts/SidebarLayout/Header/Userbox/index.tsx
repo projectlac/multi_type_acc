@@ -7,7 +7,6 @@ import {
   Box,
   Button,
   Divider,
-  Hidden,
   lighten,
   List,
   ListItem,
@@ -16,12 +15,12 @@ import {
   Typography
 } from '@mui/material';
 
+import { useAuth } from '@/contexts/AuthGuard';
+import formatMoney from '@/utility/formatMoney';
 import AccountTreeTwoToneIcon from '@mui/icons-material/AccountTreeTwoTone';
 import ExpandMoreTwoToneIcon from '@mui/icons-material/ExpandMoreTwoTone';
 import LockOpenTwoToneIcon from '@mui/icons-material/LockOpenTwoTone';
 import { styled } from '@mui/material/styles';
-import { useAuth } from '@/contexts/AuthGuard';
-import formatMoney from '@/utility/formatMoney';
 
 const UserBoxButton = styled(Button)(
   ({ theme }) => `
@@ -81,7 +80,7 @@ function HeaderUserbox() {
     <>
       <UserBoxButton color="secondary" ref={ref} onClick={handleOpen}>
         <Avatar variant="rounded" alt={user.name} src={user.avatar} />
-        <Hidden mdDown>
+        <Box sx={{ display: { xs: 'none', md: 'block' } }}>
           <UserBoxText>
             <UserBoxLabel variant="body1">
               {userData?.username || user.name}
@@ -90,10 +89,10 @@ function HeaderUserbox() {
               {userData?.role || user.jobtitle}
             </UserBoxDescription>
           </UserBoxText>
-        </Hidden>
-        <Hidden smDown>
+        </Box>
+        <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
           <ExpandMoreTwoToneIcon sx={{ ml: 1 }} />
-        </Hidden>
+        </Box>
       </UserBoxButton>
       <Popover
         anchorEl={ref.current}
