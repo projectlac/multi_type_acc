@@ -3,7 +3,6 @@ import youLogo from '@/assets/images/channels4_profile.jpg';
 
 import { Box, Button, Grid, Link, Typography } from '@mui/material';
 
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
 export default function ReputationItem() {
   return (
     <Box>
