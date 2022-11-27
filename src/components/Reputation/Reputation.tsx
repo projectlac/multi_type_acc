@@ -1,11 +1,43 @@
 import youLogo1 from '@/assets/images/channels4_profile (1).jpg';
 import youLogo from '@/assets/images/channels4_profile.jpg';
 
-import { Box, Button, Grid, Link, Typography } from '@mui/material';
+import { Box, Button, Divider, Grid, Link, Typography } from '@mui/material';
 
 export default function ReputationItem() {
   return (
     <Box>
+      <Box
+        sx={{
+          background: '#fff',
+          padding: '15px',
+          mb: 3,
+          borderRadius: '10px'
+        }}
+      >
+        <Typography
+          sx={{
+            fontWeight: 'bold',
+            textAlign: 'center',
+            '& span': {
+              color: '#d33',
+              fontSize: '17px'
+            }
+          }}
+        >
+          <span>Lưu ý :</span> <br /> Các Youtuber và Tiktok chỉ đang hợp tác
+          quảng cáo cùng shop. <br /> Mọi vấn đề về account và Shop các bạn ib
+          cho trong qua{' '}
+          <Link href="https://m.me/152659528261467">Fanpage </Link>
+          để Shop xử lý cho các bạn.
+        </Typography>
+        <Divider sx={{ my: 1 }} />
+        <Typography sx={{ fontWeight: 'bold', textAlign: 'center' }}>
+          TỐT NHẤT CÁC BẠN VÀO KÊNH YOUTUBE CỦA CÁC YOUTUBER XEM VIDEO MỚI NHẤT
+          CÓ ĐƯỜNG LINK Ở MÔ TẢ ĐỂ TRÁNH KẺ XẤU GIẢ MẠO SHOP
+          <br />
+          CẢM ƠN CÁC BẠN!!!
+        </Typography>
+      </Box>
       <Grid container columnSpacing={3} rowSpacing={3}>
         <Grid item md={6} xs={12}>
           <Box
