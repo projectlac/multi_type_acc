@@ -79,7 +79,7 @@ export default function ReputationItem() {
                   @TuanMax <br /> 64,9 N người đăng ký
                 </Box>
                 <Box>
-                  <Link href="https://www.youtube.com/@F2PImpactOfficial">
+                  <Link href="https://www.youtube.com/@TuanMax">
                     <Button color="error" variant="contained">
                       Subscribe now
                     </Button>
