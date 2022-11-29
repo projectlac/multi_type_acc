@@ -17,8 +17,9 @@ interface IProps {
     ar: string,
     code: string
   ) => void;
+  toggleOpen: () => void;
 }
-function FilterRandom({ handleData }: IProps) {
+function FilterRandom({ handleData, toggleOpen }: IProps) {
   const [currency, setCurrency] = useState('');
   const [sort, setSort] = useState('false');
   const [ar, setAr] = useState('');
@@ -41,6 +42,7 @@ function FilterRandom({ handleData }: IProps) {
   const search = () => {
     var isTrueSet = sort === 'true';
     handleData(currency, isTrueSet, ar, code);
+    toggleOpen();
   };
   return (
     <Card

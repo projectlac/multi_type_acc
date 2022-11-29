@@ -81,7 +81,7 @@ function AccountReroll() {
           <Grid container columnSpacing={2}>
             <Grid item xs={12} md={3}>
               <FilterAccount open={open} toggleOpen={toggleOpen}>
-                <FilterRandom handleData={handleData} />
+                <FilterRandom handleData={handleData} toggleOpen={toggleOpen} />
               </FilterAccount>
             </Grid>
             <Grid item xs={12} md={9}>

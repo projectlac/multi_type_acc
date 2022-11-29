@@ -92,7 +92,10 @@ function AccountVip() {
           <Grid container columnSpacing={2}>
             <Grid item xs={12} md={3}>
               <FilterAccount open={open} toggleOpen={toggleOpen}>
-                <FilterVip handleFilter={handleFilter} />
+                <FilterVip
+                  handleFilter={handleFilter}
+                  toggleOpen={toggleOpen}
+                />
               </FilterAccount>
             </Grid>
 

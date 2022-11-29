@@ -18,8 +18,9 @@ interface IFilm {
 }
 interface IProps {
   handleFilter: (data: any) => void;
+  toggleOpen: () => void;
 }
-function FilterVip({ handleFilter }: IProps) {
+function FilterVip({ handleFilter, toggleOpen }: IProps) {
   const [sort, setSort] = useState('false');
   const [ar, setAr] = useState('');
   const [code, setCode] = useState('');
@@ -100,6 +101,7 @@ function FilterVip({ handleFilter }: IProps) {
       keyword: code
     };
     handleFilter(data);
+    toggleOpen();
   };
   return (
     <Card
