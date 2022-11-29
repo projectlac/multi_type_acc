@@ -314,10 +314,10 @@ function DetailAccout() {
 
           <div>
             <Box
-              style={{
+              sx={{
                 background: `url(${data?.images})   center center /contain no-repeat`,
-                width: '1052px',
-                height: '720px',
+                width: { xs: '100%', md: '1052px' },
+                height: { xs: '250px', md: '720px' },
                 margin: ' 0 auto'
               }}
             ></Box>
