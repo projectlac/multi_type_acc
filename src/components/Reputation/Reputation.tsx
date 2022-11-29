@@ -1,7 +1,8 @@
 import youLogo1 from '@/assets/images/channels4_profile (1).jpg';
 import youLogo from '@/assets/images/channels4_profile.jpg';
 
-import { Box, Button, Divider, Grid, Link, Typography } from '@mui/material';
+import { Box, Button, Divider, Grid, Typography } from '@mui/material';
+import Link from 'next/link';
 
 export default function ReputationItem() {
   return (
@@ -27,7 +28,9 @@ export default function ReputationItem() {
           <span>Lưu ý :</span> <br /> Các Youtuber và Tiktok chỉ đang hợp tác
           quảng cáo cùng shop. <br /> Mọi vấn đề về account và Shop các bạn ib
           cho trong qua{' '}
-          <Link href="https://m.me/152659528261467">Fanpage </Link>
+          <Link href="https://m.me/152659528261467" target={'__blank'}>
+            Fanpage
+          </Link>{' '}
           để Shop xử lý cho các bạn.
         </Typography>
         <Divider sx={{ my: 1 }} />
@@ -111,7 +114,10 @@ export default function ReputationItem() {
                   @TuanMax <br /> 64,9 N người đăng ký
                 </Box>
                 <Box>
-                  <Link href="https://www.youtube.com/@TuanMax">
+                  <Link
+                    href="https://www.youtube.com/@TuanMax"
+                    target={'__blank'}
+                  >
                     <Button color="error" variant="contained">
                       Subscribe now
                     </Button>
@@ -144,7 +150,7 @@ export default function ReputationItem() {
               <iframe
                 width="560"
                 height="315"
-                src="https://www.youtube.com/embed/RbpBEUCIKpg"
+                src="https://www.youtube.com/embed/1w9wiNJW46U"
                 title="YouTube video player"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -193,7 +199,10 @@ export default function ReputationItem() {
                   @F2PImpactOfficial <br /> 35,3 N người đăng ký
                 </Box>
                 <Box>
-                  <Link href="https://www.youtube.com/@F2PImpactOfficial">
+                  <Link
+                    href="https://www.youtube.com/@F2PImpactOfficial"
+                    target={'__blank'}
+                  >
                     <Button color="error" variant="contained">
                       Subscribe now
                     </Button>
