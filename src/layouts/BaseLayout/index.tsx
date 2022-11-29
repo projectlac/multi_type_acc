@@ -3,7 +3,7 @@ import Footer from '@/components/Footer';
 import { useAuth } from '@/contexts/AuthGuard';
 import CloseIcon from '@mui/icons-material/Close';
 import MenuIcon from '@mui/icons-material/Menu';
-import { Box, Container, Hidden, styled } from '@mui/material';
+import { Box, Container, styled } from '@mui/material';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 import { FC, ReactNode, useState } from 'react';
@@ -32,6 +32,7 @@ const FullBG = styled(Box)({
   backgroundAttachment: 'fixed'
 });
 const MobileMenu = styled(Box)({
+  zIndex: '9999',
   position: 'fixed',
   width: '100vw',
   height: '100vh',
@@ -95,7 +96,7 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children }) => {
               }
             }}
           >
-            <Hidden mdDown>
+            <Box sx={{ display: { xs: 'none', md: 'block' } }}>
               <ul style={{ padding: 0 }}>
                 <li style={{ marginLeft: 0 }}>
                   <Link href={'/'}>GenshinViet.com</Link>
@@ -109,9 +110,12 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children }) => {
                 <li>
                   <Link href={'/topup-genshin'}>Nạp game</Link>
                 </li>
+                <li>
+                  <Link href={'reputation'}>Check uy tín</Link>
+                </li>
               </ul>
-            </Hidden>
-            <Hidden mdUp>
+            </Box>
+            <Box sx={{ display: { xs: 'block', md: 'none' } }}>
               <MenuIcon
                 sx={{
                   color: '#fff'
@@ -136,9 +140,12 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children }) => {
                   <li>
                     <Link href={'/topup-genshin'}>Nạp game</Link>
                   </li>
+                  <li>
+                    <Link href={'reputation'}>Check uy tín</Link>
+                  </li>
                 </ul>
               </MobileMenu>
-            </Hidden>
+            </Box>
             <Box>
               {isAuthenticated ? (
                 <HeaderUserbox />

@@ -3,7 +3,7 @@ import TopUp from '@/components/TopUp/TopUp';
 import TopUpMobile from '@/components/TopUp/TopUpMobile';
 import { ProtectGuess } from '@/contexts/ProtectGuess';
 import BaseLayout from '@/layouts/BaseLayout';
-import { Container, Hidden } from '@mui/material';
+import { Box, Container } from '@mui/material';
 import Head from 'next/head';
 
 export default function VerticalTabs() {
@@ -14,12 +14,12 @@ export default function VerticalTabs() {
         <OgTag title="Nạp web coin " />
       </Head>
       <Container maxWidth="lg" sx={{ mt: 20, mb: 10 }}>
-        <Hidden mdDown>
+        <Box sx={{ display: { xs: 'none', md: 'block' } }}>
           <TopUp />
-        </Hidden>
-        <Hidden mdUp>
+        </Box>
+        <Box sx={{ display: { xs: 'block', md: 'none' } }}>
           <TopUpMobile />
-        </Hidden>
+        </Box>
       </Container>
     </ProtectGuess>
   );

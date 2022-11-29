@@ -3,7 +3,6 @@ import {
   Button,
   Container,
   Grid,
-  Hidden,
   styled,
   Typography
 } from '@mui/material';
@@ -93,7 +92,7 @@ function Status500() {
               </Box>
             </Container>
           </Grid>
-          <Hidden mdDown>
+          <Box sx={{ display: { xs: 'none', md: 'block' } }}>
             <GridWrapper
               xs={12}
               md={6}
@@ -104,7 +103,7 @@ function Status500() {
             >
               <Container maxWidth="sm"></Container>
             </GridWrapper>
-          </Hidden>
+          </Box>
         </Grid>
       </MainContent>
     </>

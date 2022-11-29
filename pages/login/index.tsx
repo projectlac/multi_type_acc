@@ -6,7 +6,6 @@ import {
   Card,
   Container,
   Grid,
-  Hidden,
   styled,
   Typography
 } from '@mui/material';
@@ -87,7 +86,7 @@ function Overview() {
         <Box py={3}>
           <Card>
             <Grid container sx={{ position: 'relative' }}>
-              <Grid md={6} item>
+              <Grid md={6} xs={12} item>
                 {!loginMode && (
                   <Box sx={{ p: { md: 10, xs: 2 } }}>
                     <FormatForm formik={formikRegis}>
@@ -143,7 +142,7 @@ function Overview() {
                   </Box>
                 )}
               </Grid>
-              <Grid md={6} item>
+              <Grid md={6} xs={12} item>
                 {loginMode && (
                   <Box sx={{ p: { md: 10, xs: 2 } }}>
                     <FormatForm formik={formik}>
@@ -200,9 +199,10 @@ function Overview() {
                   </Box>
                 )}
               </Grid>
-              <Hidden mdDown>
+              <Box sx={{ display: { xs: 'none', md: 'block' } }}>
                 <Grid
                   md={6}
+                  xs={12}
                   item
                   className={`dinamic-login ${loginMode ? '' : 'active-login'}`}
                 >
@@ -215,7 +215,7 @@ function Overview() {
                     }}
                   ></Box>
                 </Grid>
-              </Hidden>
+              </Box>
             </Grid>
           </Card>
         </Box>
