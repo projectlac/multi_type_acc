@@ -2,8 +2,6 @@ import youLogo1 from '@/assets/images/channels4_profile (1).jpg';
 import youLogo from '@/assets/images/channels4_profile.jpg';
 
 import { Box, Button, Divider, Grid, Typography } from '@mui/material';
-import Link from 'next/link';
-
 export default function ReputationItem() {
   return (
     <Box>
