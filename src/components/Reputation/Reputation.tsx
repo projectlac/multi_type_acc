@@ -28,9 +28,9 @@ export default function ReputationItem() {
           <span>Lưu ý :</span> <br /> Các Youtuber và Tiktok chỉ đang hợp tác
           quảng cáo cùng shop. <br /> Mọi vấn đề về account và Shop các bạn ib
           cho trong qua{' '}
-          <Link href="https://m.me/152659528261467" target={'__blank'}>
+          <a href="https://m.me/152659528261467" target={'__blank'}>
             Fanpage
-          </Link>{' '}
+          </a>{' '}
           để Shop xử lý cho các bạn.
         </Typography>
         <Divider sx={{ my: 1 }} />
@@ -114,14 +114,11 @@ export default function ReputationItem() {
                   @TuanMax <br /> 64,9 N người đăng ký
                 </Box>
                 <Box>
-                  <Link
-                    href="https://www.youtube.com/@TuanMax"
-                    target={'__blank'}
-                  >
+                  <a href="https://www.youtube.com/@TuanMax" target="__blank">
                     <Button color="error" variant="contained">
                       Subscribe now
                     </Button>
-                  </Link>
+                  </a>
                 </Box>
               </Box>
             </Box>
@@ -199,14 +196,14 @@ export default function ReputationItem() {
                   @F2PImpactOfficial <br /> 35,3 N người đăng ký
                 </Box>
                 <Box>
-                  <Link
+                  <a
                     href="https://www.youtube.com/@F2PImpactOfficial"
-                    target={'__blank'}
+                    target="__blank"
                   >
                     <Button color="error" variant="contained">
                       Subscribe now
                     </Button>
-                  </Link>
+                  </a>
                 </Box>
               </Box>
             </Box>
