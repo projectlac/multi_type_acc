@@ -21,7 +21,9 @@ function Footer() {
         textAlign={{ xs: 'center', md: 'left' }}
         justifyContent="center"
       >
-        <TitleSpecial mt={2}>GenshinViet.com</TitleSpecial>
+        <Typography component="h1">
+          <TitleSpecial mt={2}>GenshinViet.com</TitleSpecial>
+        </Typography>
       </Box>
       <Container>
         <Grid container columnSpacing={1.5}>

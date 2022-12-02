@@ -121,7 +121,7 @@ function Items({
             sx={{
               cursor: 'pointer'
             }}
-            component={'h1'}
+            component={'h2'}
           >
             {title}
           </Typography>

@@ -83,7 +83,7 @@ function ProductCollectionItem({
           color={'primary'}
           textTransform="uppercase"
           sx={{ cursor: 'pointer' }}
-          component={'h1'}
+          component={'h2'}
           onClick={() => {
             localStorage.removeItem('filter');
             router.push(url);

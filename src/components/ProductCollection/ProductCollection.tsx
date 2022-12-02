@@ -122,7 +122,7 @@ function ProductCollection() {
               fontSize={25}
               color={'primary'}
               textTransform="uppercase"
-              component={'h1'}
+              component={'h2'}
             >
               Nạp Game
             </Typography>

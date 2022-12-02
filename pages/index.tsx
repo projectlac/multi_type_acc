@@ -59,7 +59,7 @@ function Overview() {
     <OverviewWrapper>
       <Head>
         <title>
-          GenshinViet.com - Website bán acc Genshin uy tín, hàng đầu Việt Nam
+          GenshinViet - Shop bán acc Genshin uy tín, hàng đầu Việt Nam
         </title>
         <OgTag title="GenshinViet.com - Website bán acc Genshin uy tín, hàng đầu Việt Nam" />
       </Head>
