@@ -83,6 +83,7 @@ function ProductCollectionItem({
           color={'primary'}
           textTransform="uppercase"
           sx={{ cursor: 'pointer' }}
+          component={'h1'}
           onClick={() => {
             localStorage.removeItem('filter');
             router.push(url);
@@ -93,7 +94,7 @@ function ProductCollectionItem({
         <Divider sx={{ my: 1 }} />
         <Grid container columnSpacing={1.5}>
           <Grid item md={6} xs={6}>
-            <Typography fontSize={15} fontWeight="600">
+            <Typography fontSize={15} fontWeight="600" component={'h5'}>
               Số tài khoản <br />{' '}
               <span
                 style={{ fontSize: '17px', fontWeight: 'bold', color: '#d33' }}
@@ -107,7 +108,12 @@ function ProductCollectionItem({
             </Typography>
           </Grid>
           <Grid item md={6} xs={6}>
-            <Typography fontSize={15} fontWeight="600" textAlign="right">
+            <Typography
+              fontSize={15}
+              fontWeight="600"
+              textAlign="right"
+              component={'h5'}
+            >
               Đã bán <br />
               <span
                 style={{ fontSize: '17px', fontWeight: 'bold', color: '#d33' }}

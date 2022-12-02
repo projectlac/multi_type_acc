@@ -122,13 +122,14 @@ function ProductCollection() {
               fontSize={25}
               color={'primary'}
               textTransform="uppercase"
+              component={'h1'}
             >
               Nạp Game
             </Typography>
             <Divider sx={{ my: 1 }} />
             <Grid container columnSpacing={1.5}>
               <Grid item md={6} xs={6}>
-                <Typography fontSize={15} fontWeight="600">
+                <Typography fontSize={15} fontWeight="600" component={'h5'}>
                   Yêu cầu <br />{' '}
                   <span
                     style={{
@@ -142,7 +143,12 @@ function ProductCollection() {
                 </Typography>
               </Grid>
               <Grid item md={6} xs={6}>
-                <Typography fontSize={15} fontWeight="600" textAlign="right">
+                <Typography
+                  fontSize={15}
+                  fontWeight="600"
+                  textAlign="right"
+                  component={'h5'}
+                >
                   Thành công <br />
                   <span
                     style={{

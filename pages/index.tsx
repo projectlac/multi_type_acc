@@ -97,6 +97,7 @@ function Overview() {
                   color: '#856f56',
                   textTransform: 'uppercase'
                 }}
+                component="h2"
               >
                 Top Nạp
               </Typography>

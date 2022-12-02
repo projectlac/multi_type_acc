@@ -121,6 +121,7 @@ function Items({
             sx={{
               cursor: 'pointer'
             }}
+            component={'h1'}
           >
             {title}
           </Typography>
@@ -135,6 +136,7 @@ function Items({
                 mb: 1,
                 color: '#333'
               }}
+              component={'h6'}
             >
               Nhân vật: {heroes.length}
             </Typography>
@@ -172,6 +174,7 @@ function Items({
                 mb: 1,
                 color: '#333'
               }}
+              component={'h6'}
             >
               Vũ khí: {weapons.length}
             </Typography>
@@ -202,7 +205,7 @@ function Items({
         <Divider sx={{ my: 1, mt: 'auto' }} />
         <Grid container columnSpacing={1.5}>
           <Grid item xs={6}>
-            <Typography fontSize={15} fontWeight="600">
+            <Typography fontSize={15} fontWeight="600" component={'h5'}>
               AR <br />{' '}
               <span
                 style={{ fontSize: '17px', fontWeight: 'bold', color: '#d33' }}
@@ -212,7 +215,12 @@ function Items({
             </Typography>
           </Grid>
           <Grid item xs={6}>
-            <Typography fontSize={15} fontWeight="600" textAlign="right">
+            <Typography
+              fontSize={15}
+              fontWeight="600"
+              textAlign="right"
+              component={'h5'}
+            >
               Server <br />
               <span
                 style={{
@@ -230,7 +238,7 @@ function Items({
         <Divider sx={{ my: 1 }} />
         <Grid container columnSpacing={1.5}>
           <Grid item xs={6}>
-            <Typography fontSize={15} fontWeight="600">
+            <Typography fontSize={15} fontWeight="600" component={'h5'}>
               Mã account <br />{' '}
               <span
                 style={{ fontSize: '17px', fontWeight: 'bold', color: '#d33' }}
@@ -240,7 +248,12 @@ function Items({
             </Typography>
           </Grid>
           <Grid item xs={6}>
-            <Typography fontSize={15} fontWeight="600" textAlign="right">
+            <Typography
+              fontSize={15}
+              fontWeight="600"
+              textAlign="right"
+              component={'h5'}
+            >
               Giá bán <br />
               <span
                 style={{ fontSize: '17px', fontWeight: 'bold', color: '#d33' }}

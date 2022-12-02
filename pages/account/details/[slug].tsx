@@ -12,6 +12,7 @@ import {
   Typography
 } from '@mui/material';
 import { buyAccount, getAccountBySlug } from 'api/apiAccount/account';
+import Head from 'next/head';
 
 import { useRouter } from 'next/router';
 import { ReactElement, useEffect, useRef, useState } from 'react';
@@ -29,14 +30,22 @@ interface IDetail {
   images: string;
   desc: string;
 }
-function DetailAccout() {
+function DetailAccout({ post }) {
   const { handleSetMessage } = useAuth();
   const [openDialog, setOpenDialog] = useState<boolean>(false);
-  const [loading, setLoading] = useState<boolean>(true);
   const customeSlider = useRef<any>();
   const router = useRouter();
   const { slug } = router.query;
-  const [data, setData] = useState<IDetail>();
+
+  const data: IDetail = {
+    ar_level: post.ar_level,
+    server: post.server.desc,
+    hero: post.heroes,
+    price: post.price,
+    images: post.avatar,
+    desc: post.description,
+    weapons: post.weapons
+  };
   const [pending, setPending] = useState(false);
   const handleOpenDialog = () => {
     setOpenDialog(true);
@@ -66,24 +75,6 @@ function DetailAccout() {
     }
   };
 
-  useEffect(() => {
-    if (slug) {
-      getAccountBySlug(slug as string).then((res) => {
-        let temp: IDetail = {
-          ar_level: res.data.ar_level,
-          server: res.data.server.desc,
-          hero: res.data.heroes,
-          price: res.data.price,
-          images: res.data.avatar,
-          desc: res.data.description,
-          weapons: res.data.weapons
-        };
-
-        setData(temp);
-        setLoading(false);
-      });
-    }
-  }, [slug]);
   const settings = {
     dots: false,
     infinite: true,
@@ -92,34 +83,41 @@ function DetailAccout() {
     slidesToScroll: 1
   };
   return (
-    <Container maxWidth="lg" sx={{ mt: 15 }}>
-      <Box py={3}>
-        <Slider ref={customeSlider} {...settings}>
-          <Box
-            sx={{
-              height: { md: 690, xs: '100%' },
-              display: 'flex !important',
-              alignItems: 'center'
-            }}
-          >
+    <>
+      <Head>
+        <title>{post.name}</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={post?.name || 'GenshinViet.com'} />
+        <meta
+          property="og:description"
+          content={`Thông tin account ${post.name}`}
+        />
+        <meta property="og:image" content={post.avatar} />
+        <meta property="og:image:alt" content={post.name} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+      </Head>
+      <Container maxWidth="lg" sx={{ mt: 15 }}>
+        <Box py={3}>
+          <Slider ref={customeSlider} {...settings}>
             <Box
               sx={{
-                width: { md: 700, xs: 'auto' },
-                background: 'rgb(16 9 9 / 59%)',
-                margin: '0 auto',
-                padding: '25px',
-                borderRadius: '10px'
+                height: { md: 690, xs: '100%' },
+                display: 'flex !important',
+                alignItems: 'center'
               }}
             >
-              {loading ? (
-                <Box
-                  display={'flex'}
-                  alignItems="center"
-                  justifyContent={'center'}
-                >
-                  <CircularProgress color="info" />
-                </Box>
-              ) : (
+              <Box
+                sx={{
+                  width: { md: 700, xs: 'auto' },
+                  background: 'rgb(16 9 9 / 59%)',
+                  margin: '0 auto',
+                  padding: '25px',
+                  borderRadius: '10px'
+                }}
+              >
                 <Grid container columnSpacing={1.5} rowSpacing={2}>
                   <Grid item md={4} xs={4}>
                     <Box
@@ -308,23 +306,23 @@ function DetailAccout() {
                     </Button>
                   </Grid>
                 </Grid>
-              )}
+              </Box>
             </Box>
-          </Box>
 
-          <div>
-            <Box
-              sx={{
-                background: `url(${data?.images})   center center /contain no-repeat`,
-                width: { xs: '100%', md: '1052px' },
-                height: { xs: '250px', md: '720px' },
-                margin: ' 0 auto'
-              }}
-            ></Box>
-          </div>
-        </Slider>
-      </Box>
-    </Container>
+            <div>
+              <Box
+                sx={{
+                  background: `url(${data?.images})   center center /contain no-repeat`,
+                  width: { xs: '100%', md: '1052px' },
+                  height: { xs: '250px', md: '720px' },
+                  margin: ' 0 auto'
+                }}
+              ></Box>
+            </div>
+          </Slider>
+        </Box>
+      </Container>
+    </>
   );
 }
 
@@ -332,3 +330,12 @@ export default DetailAccout;
 DetailAccout.getLayout = function getLayout(page: ReactElement) {
   return <BaseLayout>{page}</BaseLayout>;
 };
+
+export async function getServerSideProps(context) {
+  const { slug } = context.query;
+
+  const res = await getAccountBySlug(slug as string);
+  const post = await res.data;
+
+  return { props: { post } };
+}
