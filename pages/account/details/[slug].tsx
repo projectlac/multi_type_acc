@@ -5,7 +5,6 @@ import formatMoney from '@/utility/formatMoney';
 import {
   Box,
   Button,
-  CircularProgress,
   Container,
   Divider,
   Grid,
@@ -15,7 +14,7 @@ import { buyAccount, getAccountBySlug } from 'api/apiAccount/account';
 import Head from 'next/head';
 
 import { useRouter } from 'next/router';
-import { ReactElement, useEffect, useRef, useState } from 'react';
+import { ReactElement, useRef, useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
@@ -25,7 +24,6 @@ interface IDetail {
   server: string;
   hero: any;
   weapons: any;
-
   price: string;
   images: string;
   desc: string;

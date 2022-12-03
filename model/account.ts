@@ -14,6 +14,7 @@ export interface IAccountVipAdmin {
   slug: string;
   updated_at?: string;
   type?: string;
+  sold_at?: string;
 }
 export interface IAccountShop {
   name: string;

@@ -281,20 +281,14 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({
                           gutterBottom
                           noWrap
                         >
-                          {format(
-                            new Date(cryptoOrder?.updated_at),
-                            'dd/MM/yyyy'
-                          )}
+                          {format(new Date(cryptoOrder?.sold_at), 'dd/MM/yyyy')}
                         </Typography>
                         <Typography
                           variant="body2"
                           color="text.secondary"
                           noWrap
                         >
-                          {format(
-                            new Date(cryptoOrder?.updated_at),
-                            ' HH:mm:ss'
-                          )}
+                          {format(new Date(cryptoOrder?.sold_at), ' HH:mm:ss')}
                         </Typography>
                       </>
                     )}

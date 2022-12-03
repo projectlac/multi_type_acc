@@ -10,7 +10,7 @@ function RecentOrders() {
 
   const [data, setData] = useState<IAccountVipAdmin[]>([]);
   useEffect(() => {
-    getAccountNomalFromDashboard(999).then((res) => setData(res.data.data));
+    getAccountNomalFromDashboard(9999).then((res) => setData(res.data.data));
   }, [update]);
 
   return (
