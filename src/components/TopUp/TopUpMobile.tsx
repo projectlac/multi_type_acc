@@ -413,13 +413,13 @@ export default function TopUpMobile() {
                     }}
                   >
                     <Typography fontSize={17} mr={1}>
-                      0372790362
+                      0904448980
                     </Typography>{' '}
                     <Tooltip title={copyText} arrow placement="right">
                       <IconButton
                         aria-label="copy"
                         onClick={() => {
-                          copySomething('0372790362');
+                          copySomething('0904448980');
                         }}
                       >
                         <ContentCopyIcon
