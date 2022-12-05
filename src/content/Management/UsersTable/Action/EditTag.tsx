@@ -137,7 +137,7 @@ function EditTag({ title, role, id, bonus, type }: IEdit) {
                 setValue(newValue);
                 setAccType(newValue);
               }}
-              options={['VIP', 'REROLL', 'RANDOM']}
+              options={['VIP', 'REROLL', 'RANDOM', 'NEW']}
               renderInput={(params) => (
                 <MuiTextField
                   {...params}
