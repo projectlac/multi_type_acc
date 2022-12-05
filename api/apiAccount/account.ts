@@ -13,6 +13,7 @@ const checkCallPriceSort = (key, param) => {
 export const createAccountVip = (data: FormData) => {
   return apiFormData.post('/account/create-account-vip', data);
 };
+
 export const getAccountVipFromDashboard = (param: IAccountVip) => {
   return apiFormData.get(
     `/account/get-accounts-by-admin?type=VIP&limit=${param.limit}&offset=${
@@ -76,6 +77,7 @@ export const queryRerollAccount = (param: IQueryRandomAcc) => {
     )}${checkCall('ar', param.ar)}${checkCall('rangeMoney', param.rangeMoney)}`
   );
 };
+
 export const queryAccountVip = (param: IQueryVipAcc) => {
   return apiFormData.get(
     `/account/get-accounts?type=VIP&limit=${param.limit}&offset=${
@@ -107,4 +109,38 @@ export const getDepositHome = () => {
 
 export const queryAllAccountForSiteMap = () => {
   return apiFormData.get(`/account/get-accounts?limit=9999&offset=0`);
+};
+// update 5/12
+
+export const getAccountNewFromDashboard = (param: IAccountVip) => {
+  return apiFormData.get(
+    `/account/get-accounts-by-admin?type=NEW&limit=${param.limit}&offset=${
+      param.offset
+    }&priceSort=${param.priceSort}${checkCall('hero', param.hero)}${checkCall(
+      'server',
+      param.server
+    )}${checkCall('weapon', param.weapon)}${checkCall(
+      'keyword',
+      param.keyword
+    )}${checkCall('is_sold', param.is_sold)}${checkCall(
+      'sold_date',
+      param.sold_date
+    )}`
+  );
+};
+export const queryAccountNew = (param: IQueryVipAcc) => {
+  return apiFormData.get(
+    `/account/get-accounts?type=NEW&limit=${param.limit}&offset=${
+      param.offset
+    }${checkCallPriceSort('priceSort', param.priceSort)}${checkCall(
+      'code',
+      param.keyword
+    )}${checkCall('ar', param.ar)}${checkCall(
+      'server',
+      param.server
+    )}${checkCall('hero', param.hero)}${checkCall(
+      'weapon',
+      param.weapon
+    )}${checkCall('rangeMoney', param.rangeMoney)}`
+  );
 };

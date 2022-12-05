@@ -276,6 +276,21 @@ function SidebarMenu() {
                 </NextLink>
               </ListItem>
               <ListItem component="div">
+                <NextLink href="/management/new-account" passHref>
+                  <Button
+                    className={
+                      currentRoute === '/management/new-account' ? 'active' : ''
+                    }
+                    disableRipple
+                    component="a"
+                    onClick={closeSidebar}
+                    startIcon={<TableChartTwoToneIcon />}
+                  >
+                    Tài khoản khởi đầu
+                  </Button>
+                </NextLink>
+              </ListItem>
+              <ListItem component="div">
                 <NextLink href="/management/nomal-account" passHref>
                   <Button
                     className={

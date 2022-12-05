@@ -18,6 +18,8 @@ function ProductCollection() {
   const [dataAccVip, setDataAccVip] = useState<IAll>();
   const [dataAccRandom, setDataAccRandom] = useState<IAll>();
   const [dataAccReroll, setDataAccReroll] = useState<IAll>();
+  const [dataAccNew, setDataAccNew] = useState<IAll>();
+
   const [dataDeposit, setDataDeposit] = useState<any>({
     pending: 0,
     success: 0
@@ -35,6 +37,7 @@ function ProductCollection() {
         if (d.type === 'VIP') setDataAccVip(gianDoi(d, 142));
         if (d.type === 'REROLL') setDataAccReroll(gianDoi(d, 64));
         if (d.type === 'RANDOM') setDataAccRandom(gianDoi(d, 103));
+        if (d.type === 'NEW') setDataAccNew(gianDoi(d, 93));
       });
     });
     getDepositHome().then((res) => {
@@ -49,6 +52,14 @@ function ProductCollection() {
           url="/account/vip"
           image={bgVip}
           data={dataAccVip}
+        />
+      </Grid>
+      <Grid item md={3} sm={6} xs={12}>
+        <ProductCollectionItem
+          title="Acc Khởi Đầu"
+          url="/account/new"
+          image={bgVip}
+          data={dataAccNew}
         />
       </Grid>
       <Grid item md={3} sm={6} xs={12}>
