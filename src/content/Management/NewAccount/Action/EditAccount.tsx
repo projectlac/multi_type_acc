@@ -11,8 +11,8 @@ import UploadTwoToneIcon from '@mui/icons-material/UploadTwoTone';
 import { Box, Button, Grid, useTheme } from '@mui/material';
 import { styled } from '@mui/styles';
 import {
-  editAccountVip,
-  getAccountBySlugToManager
+  getAccountBySlugToManager,
+  updateAccountNomal
 } from 'api/apiAccount/account';
 import { getHero, getWeapon } from 'api/apiTag/tagApi';
 import Image from 'next/image';
@@ -155,9 +155,9 @@ function EditAccout({ title, slug }: IEdit) {
     formData.append('hero', hero.map((d) => d.desc).toString());
 
     file && formData.append('avatar', file);
-
+    debugger;
     try {
-      await editAccountVip(slug, formData).then(() => {
+      await updateAccountNomal(slug, formData).then(() => {
         handleSetMessage({
           type: 'success',
           message: 'Sửa tài khoản thành công'

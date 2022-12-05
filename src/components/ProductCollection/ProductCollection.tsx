@@ -37,7 +37,7 @@ function ProductCollection() {
         if (d.type === 'VIP') setDataAccVip(gianDoi(d, 142));
         if (d.type === 'REROLL') setDataAccReroll(gianDoi(d, 64));
         if (d.type === 'RANDOM') setDataAccRandom(gianDoi(d, 103));
-        if (d.type === 'NEW') setDataAccNew(gianDoi(d, 93));
+        if (d.type === 'NEW') setDataAccNew(gianDoi(d, 1346));
       });
     });
     getDepositHome().then((res) => {
