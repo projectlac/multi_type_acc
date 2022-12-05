@@ -13,6 +13,7 @@ import {
   Card,
   Container,
   Grid,
+  MenuItem,
   TextField,
   Typography
 } from '@mui/material';
@@ -27,8 +28,9 @@ import {
 } from 'chart.js';
 import { useEffect, useState } from 'react';
 import { format } from 'date-fns';
-import { getRemainingMoney } from 'api/apiDashboard/userApi';
+import { getMoneyTable, getRemainingMoney } from 'api/apiDashboard/userApi';
 import { useAuth } from '@/contexts/AuthGuard';
+import formatMoney from '@/utility/formatMoney';
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -54,15 +56,35 @@ function DashboardCrypto() {
   });
   const date = new Date();
   const date1 = format(
-    new Date(date.getTime() - 7 * 24 * 60 * 60 * 1000),
-    'MM/dd/yyyy'
+    new Date(date.setMonth(date.getMonth() - 12)),
+    'yyyy/MM/dd'
   );
 
   const [start, setStart] = useState<string | null>(date1);
   const [end, setEnd] = useState<string | null>(
-    format(new Date(), 'MM/dd/yyyy')
+    format(new Date(), 'yyyy/MM/dd')
   );
-  const dataTotal: IData[] = [
+  const [currency, setCurrency] = useState('Mua nick');
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setCurrency(event.target.value);
+  };
+  const currencies = [
+    {
+      value: 'Mua nick',
+      label: 'Mua nick'
+    },
+    {
+      value: 'Nạp tiền tài khoản',
+      label: 'Nạp tiền tài khoản'
+    },
+    {
+      value: 'Nạp tiền vào game',
+      label: 'Nạp tiền vào game'
+    }
+  ];
+
+  const [dataTotal, setDataTotal] = useState<IData[]>([
     {
       label: '10/7/2022',
       data: { money: 150000 }
@@ -87,7 +109,7 @@ function DashboardCrypto() {
       label: '15/7/2022',
       data: { money: 150000 }
     }
-  ];
+  ]);
 
   const options = {
     responsive: true,
@@ -102,12 +124,22 @@ function DashboardCrypto() {
           'dd/MM/yyyy'
         )} tới ngày ${format(new Date(end), 'dd/MM/yyyy')}`
       }
+    },
+    scales: {
+      y: {
+        ticks: {
+          // Include a dollar sign in the ticks
+          callback: function (value: string) {
+            return `${formatMoney(value)} VNĐ`;
+          }
+        }
+      }
     }
   };
   const labels = dataTotal.map((d) => d.label);
   const datasets = [
     {
-      label: 'Số tiền bán được (fake data)',
+      label: 'Số tiền bán được',
       data: dataTotal.map((d) => d.data.money),
       backgroundColor: 'rgba(17, 241, 44, 0.5)'
     }
@@ -119,7 +151,15 @@ function DashboardCrypto() {
 
   useEffect(() => {
     getRemainingMoney().then((res) => setDataRemain(res.data));
-  }, [update]);
+    getMoneyTable(start, end, currency).then((res) => {
+      const data = res.data;
+      const temp: IData[] = data.map((d: any) => ({
+        label: `${d.month}/${d.year}`,
+        data: { money: d.total }
+      }));
+      setDataTotal(temp);
+    });
+  }, [update, start, end, currency]);
   return (
     <>
       <Head>
@@ -153,31 +193,57 @@ function DashboardCrypto() {
                   justifyContent: 'space-between'
                 }}
               >
-                <LocalizationProvider
-                  dateAdapter={AdapterDateFns}
-                  localeText={{ start: 'Check-in', end: 'Check-out' }}
+                <Box
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+
+                    justifyContent: 'space-between'
+                  }}
                 >
-                  <DatePicker
-                    label="Ngày bắt đầu"
-                    value={start}
-                    inputFormat="dd/MM/yyyy"
-                    onChange={(newValue) => {
-                      setStart(format(new Date(newValue), 'MM/dd/yyyy'));
-                    }}
-                    renderInput={(params) => <TextField {...params} />}
-                  />
-                  Tới
-                  <DatePicker
-                    label="Ngày kết thúc"
-                    value={end}
-                    inputFormat="dd/MM/yyyy"
-                    onChange={(newValue) => {
-                      setEnd(format(new Date(newValue), 'MM/dd/yyyy'));
-                    }}
-                    renderInput={(params) => <TextField {...params} />}
-                  />
-                </LocalizationProvider>
+                  <LocalizationProvider
+                    dateAdapter={AdapterDateFns}
+                    localeText={{ start: 'Check-in', end: 'Check-out' }}
+                  >
+                    <DatePicker
+                      label="Ngày bắt đầu"
+                      value={start}
+                      inputFormat="dd/MM/yyyy"
+                      onChange={(newValue) => {
+                        setStart(format(new Date(newValue), 'yyyy/MM/dd'));
+                      }}
+                      renderInput={(params) => <TextField {...params} />}
+                    />
+                    <Box mx={1}>Tới</Box>
+                    <DatePicker
+                      label="Ngày kết thúc"
+                      value={end}
+                      inputFormat="dd/MM/yyyy"
+                      onChange={(newValue) => {
+                        setEnd(format(new Date(newValue), 'yyyy/MM/dd'));
+                      }}
+                      renderInput={(params) => <TextField {...params} />}
+                    />
+                  </LocalizationProvider>
+                </Box>
+                <Box ml={2}>
+                  <TextField
+                    id="outlined-select-currency"
+                    select
+                    label="Phân loại"
+                    value={currency}
+                    fullWidth
+                    onChange={handleChange}
+                  >
+                    {currencies.map((option) => (
+                      <MenuItem key={option.value} value={option.value}>
+                        {option.label}
+                      </MenuItem>
+                    ))}
+                  </TextField>
+                </Box>
               </Box>
+
               <Bar options={options} data={data} />
             </Card>
           </Grid>
@@ -188,8 +254,15 @@ function DashboardCrypto() {
                 mb: 3
               }}
             >
-              <Typography>Tổng tiền còn lại</Typography>
-              <Typography>Tổng tiền còn lại</Typography>
+              <Typography>Tổng tiền account chưa bán</Typography>
+              <Typography
+                sx={{
+                  fontSize: '25px',
+                  fontWeight: 'bold'
+                }}
+              >
+                {formatMoney(dataRemain.account_remaining)} VNĐ
+              </Typography>
             </Card>
             <Card
               sx={{
@@ -197,15 +270,31 @@ function DashboardCrypto() {
                 mb: 3
               }}
             >
-              2
-            </Card>
+              <Typography>Tổng tiền account đã bán</Typography>
+              <Typography
+                sx={{
+                  fontSize: '25px',
+                  fontWeight: 'bold'
+                }}
+              >
+                {formatMoney(dataRemain.account_sold)} VNĐ
+              </Typography>
+            </Card>{' '}
             <Card
               sx={{
                 padding: '15px',
                 mb: 3
               }}
             >
-              3
+              <Typography>Tổng tiền giao dịch</Typography>
+              <Typography
+                sx={{
+                  fontSize: '25px',
+                  fontWeight: 'bold'
+                }}
+              >
+                {formatMoney(dataRemain.transaction_sold)} VNĐ
+              </Typography>
             </Card>
           </Grid>
         </Grid>

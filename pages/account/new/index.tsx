@@ -41,7 +41,7 @@ function AccountVip() {
   const handleFilter = (data) => {
     setFilter(data);
     localStorage.setItem('filter', JSON.stringify(data));
-    router.push(`/account/vip`);
+    router.push(`/account/new`);
   };
 
   useEffect(() => {
@@ -67,7 +67,7 @@ function AccountVip() {
   };
   const handlePage = (event: React.ChangeEvent<unknown>, value: number) => {
     console.log(event.type);
-    router.push(`/account/vip?page=${value}`);
+    router.push(`/account/new?page=${value}`);
   };
 
   const executeScroll = () => {
