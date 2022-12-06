@@ -2,6 +2,8 @@ import random from '@/assets/images/mainCategory/310172264_428812392669349_48960
 import napgame from '@/assets/images/mainCategory/310320905_485170040201744_4282135316084233675_n.jpg';
 import rrr from '@/assets/images/mainCategory/310545249_770219224063920_253246776766894058_n.jpg';
 import bgVip from '@/assets/images/mainCategory/310860207_1164961827704035_4343141035597341049_n.jpg';
+import news from '@/assets/images/mainCategory/9bf1a5932675ff2ba664.jpg';
+
 import { Box, Button, Card, Divider, Grid, Typography } from '@mui/material';
 import ProductCollectionItem from './ProductCollectionItem';
 
@@ -58,7 +60,7 @@ function ProductCollection() {
         <ProductCollectionItem
           title="Acc Khởi Đầu"
           url="/account/new"
-          image={bgVip}
+          image={news}
           data={dataAccNew}
         />
       </Grid>
