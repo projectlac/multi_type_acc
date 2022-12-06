@@ -518,8 +518,19 @@ function TopUp() {
             <b>Lưu ý!!!</b> Hệ thống cộng tiền tự động, nên vui lòng chuyển đúng
             nội dung ở trên
           </Typography>
+
           <Typography>
-            Nếu chuyển sai, vui lòng liên hệ <b>ADMIN</b> hoặc số điện thoại{' '}
+            <b>Mẹo:</b>
+          </Typography>
+          <Typography ml={3}>
+            - Không nên lấy mã mới trong khi đang thực hiện giao dịch trước đó.
+          </Typography>
+          <Typography ml={3}>
+            - Vui lòng không spam lấy mã trước khi nạp. Điều này có thể khiến
+            bạn nạp không thành công
+          </Typography>
+          <Typography ml={3}>
+            - Nếu chuyển sai, vui lòng liên hệ <b>ADMIN</b> hoặc số điện thoại{' '}
             <b>0904448980 (8h-24h)</b> để được hỗ trợ.
           </Typography>
         </Box>

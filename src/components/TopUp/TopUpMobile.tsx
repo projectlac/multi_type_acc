@@ -488,7 +488,17 @@ export default function TopUpMobile() {
             nội dung ở trên
           </Typography>
           <Typography>
-            Nếu chuyển sai, vui lòng liên hệ{' '}
+            <b>Mẹo:</b>
+          </Typography>
+          <Typography ml={3}>
+            - Không nên lấy mã mới trong khi đang thực hiện giao dịch trước đó.
+          </Typography>
+          <Typography ml={3}>
+            - Vui lòng không spam lấy mã trước khi nạp. Điều này có thể khiến
+            bạn nạp không thành công
+          </Typography>
+          <Typography ml={3}>
+            - Nếu chuyển sai, vui lòng liên hệ{' '}
             <a href="https://www.facebook.com/GenshinViet">
               <b style={{ color: '#FF1943' }}>ADMIN</b>{' '}
             </a>
