@@ -154,10 +154,10 @@ function DashboardCrypto() {
     getRemainingMoney().then((res) => setDataRemain(res.data));
     const date = new Date();
     const date1 = format(
-      new Date(date.getTime() - 1 * 24 * 60 * 60 * 1000),
+      new Date(date.getTime() + 1 * 24 * 60 * 60 * 1000),
       'yyyy/MM/dd'
     );
-    getMoneyTable(date1, format(new Date(), 'yyyy/MM/dd'), 'Mua nick').then(
+    getMoneyTable(format(new Date(), 'yyyy/MM/dd'), date1, 'Mua nick').then(
       (res) => {
         setMoneyToday(res.data[0].total);
       }
