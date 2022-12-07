@@ -31,6 +31,7 @@ import { format } from 'date-fns';
 import { getMoneyTable, getRemainingMoney } from 'api/apiDashboard/userApi';
 import { useAuth } from '@/contexts/AuthGuard';
 import formatMoney from '@/utility/formatMoney';
+
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -54,6 +55,7 @@ function DashboardCrypto() {
     account_sold: '0',
     transaction_sold: '0'
   });
+  const [moneyToday, setMoneyToday] = useState('0');
   const date = new Date();
   const date1 = format(
     new Date(date.setMonth(date.getMonth() - 12)),
@@ -148,9 +150,20 @@ function DashboardCrypto() {
     labels,
     datasets
   };
-
   useEffect(() => {
     getRemainingMoney().then((res) => setDataRemain(res.data));
+    const date = new Date();
+    const date1 = format(
+      new Date(date.getTime() - 1 * 24 * 60 * 60 * 1000),
+      'yyyy/MM/dd'
+    );
+    getMoneyTable(date1, format(new Date(), 'yyyy/MM/dd'), 'Mua nick').then(
+      (res) => {
+        setMoneyToday(res.data[0].total);
+      }
+    );
+  }, [update]);
+  useEffect(() => {
     getMoneyTable(start, end, currency).then((res) => {
       const data = res.data;
       const temp: IData[] = data.map((d: any) => ({
@@ -248,6 +261,22 @@ function DashboardCrypto() {
             </Card>
           </Grid>
           <Grid item md={3}>
+            <Card
+              sx={{
+                padding: '15px',
+                mb: 3
+              }}
+            >
+              <Typography>Tổng tiền hôm nay</Typography>
+              <Typography
+                sx={{
+                  fontSize: '25px',
+                  fontWeight: 'bold'
+                }}
+              >
+                {formatMoney(moneyToday)} VNĐ
+              </Typography>
+            </Card>
             <Card
               sx={{
                 padding: '15px',
