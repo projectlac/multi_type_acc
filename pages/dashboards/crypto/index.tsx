@@ -164,7 +164,12 @@ function DashboardCrypto() {
     );
   }, [update]);
   useEffect(() => {
-    getMoneyTable(start, end, currency).then((res) => {
+    const date = new Date(end);
+    const date1 = format(
+      new Date(date.getTime() + 1 * 24 * 60 * 60 * 1000),
+      'yyyy/MM/dd'
+    );
+    getMoneyTable(start, date1, currency).then((res) => {
       const data = res.data;
       const temp: IData[] = data.map((d: any) => ({
         label: `${d.month}/${d.year}`,
