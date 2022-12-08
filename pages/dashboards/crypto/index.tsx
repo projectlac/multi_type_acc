@@ -178,6 +178,11 @@ function DashboardCrypto() {
       setDataTotal(temp);
     });
   }, [update, start, end, currency]);
+
+  const onKeyDown = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <>
       <Head>
@@ -230,7 +235,9 @@ function DashboardCrypto() {
                       onChange={(newValue) => {
                         setStart(format(new Date(newValue), 'yyyy/MM/dd'));
                       }}
-                      renderInput={(params) => <TextField {...params} />}
+                      renderInput={(params) => (
+                        <TextField onKeyDown={onKeyDown} {...params} />
+                      )}
                     />
                     <Box mx={1}>Tới</Box>
                     <DatePicker
@@ -240,7 +247,9 @@ function DashboardCrypto() {
                       onChange={(newValue) => {
                         setEnd(format(new Date(newValue), 'yyyy/MM/dd'));
                       }}
-                      renderInput={(params) => <TextField {...params} />}
+                      renderInput={(params) => (
+                        <TextField onKeyDown={onKeyDown} {...params} />
+                      )}
                     />
                   </LocalizationProvider>
                 </Box>
