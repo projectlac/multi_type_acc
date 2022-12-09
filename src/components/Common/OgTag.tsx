@@ -21,7 +21,6 @@ function OgTag({ title, description }: IOG) {
       <meta
         name="description"
         key="desc"
-        property="og:description"
         content={
           description
             ? description
