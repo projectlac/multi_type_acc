@@ -24,6 +24,8 @@ export default class MyDocument extends Document {
             }
           />
           <meta
+            name="description"
+            key="desc"
             property="og:description"
             content={
               'Shop Genshin Impact - GenshinViet - Mua Bán - Giá Rẻ - Uy Tín - Chất Lượng'

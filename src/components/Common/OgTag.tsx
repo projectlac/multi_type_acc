@@ -15,7 +15,17 @@ function OgTag({ title, description }: IOG) {
         content={
           description
             ? description
-            : 'GenshinViet.com - Website bán acc Genshin uy tín, hàng đầu Việt Nam'
+            : 'Shop Genshin Impact - GenshinViet - Mua Bán - Giá Rẻ - Uy Tín - Chất Lượng'
+        }
+      />
+      <meta
+        name="description"
+        key="desc"
+        property="og:description"
+        content={
+          description
+            ? description
+            : 'Shop Genshin Impact - GenshinViet - Mua Bán - Giá Rẻ - Uy Tín - Chất Lượng'
         }
       />
 
@@ -29,7 +39,7 @@ function OgTag({ title, description }: IOG) {
       <meta property="og:image:height" content="300" />
       <meta
         property="og:image:alt"
-        content="GenshinViet.com - Website bán acc Genshin uy tín, hàng đầu Việt Nam"
+        content="Shop Genshin Impact - GenshinViet - Mua Bán - Giá Rẻ - Uy Tín - Chất Lượng"
       />
     </>
   );
