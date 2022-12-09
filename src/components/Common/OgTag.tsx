@@ -3,15 +3,20 @@ import img from 'src/assets/images/310223374_1734544413588410_474522997517485338
 import imgFavicon from '/public/static/favicon_io/favicon.ico';
 interface IOG {
   title: string;
+  description?: string;
 }
-function OgTag({ title }: IOG) {
+function OgTag({ title, description }: IOG) {
   return (
     <>
       <link rel="shortcut icon" href={imgFavicon} />
       <meta property="og:title" content={title} />
       <meta
         property="og:description"
-        content="GenshinViet.com - Website bán acc Genshin uy tín, hàng đầu Việt Nam"
+        content={
+          description
+            ? description
+            : 'GenshinViet.com - Website bán acc Genshin uy tín, hàng đầu Việt Nam'
+        }
       />
 
       <meta property="og:locale" content="vi_GB" />

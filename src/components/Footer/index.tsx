@@ -118,6 +118,28 @@ function Footer() {
               '& p a': { fontWeight: '600', color: '#fff' }
             }}
           >
+            <Typography
+              component={'p'}
+              className=" small"
+              sx={{ marginBottom: 0, fontStyle: 'italic', fontSize: '13px' }}
+            >
+              GenshinViet, ShopGenshinViet, genshinViet.com, Mua bán tài khoản
+              Genshin, Acc Genshin Vip, Shop Genshin Viet, ShopGenshin Viet,
+              Shop Acc Genshin
+            </Typography>
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            sx={{
+              '& p': {
+                textAlign: 'center',
+                borderTop: '1px solid #fff',
+                paddingTop: '15px'
+              },
+              '& p a': { fontWeight: '600', color: '#fff' }
+            }}
+          >
             <p className="mt-3 small">
               Copyright by © <Link href={'/'}>GenshinViet.com </Link>2022
             </p>

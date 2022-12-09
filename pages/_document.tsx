@@ -3,6 +3,7 @@ import Document, { Html, Head, Main, NextScript } from 'next/document';
 import createEmotionServer from '@emotion/server/create-instance';
 import createEmotionCache from 'src/createEmotionCache';
 import img from '../public/static/favicon_io/favicon.ico';
+import OgTag from '@/components/Common/OgTag';
 export default class MyDocument extends Document {
   render() {
     return (
@@ -16,6 +17,10 @@ export default class MyDocument extends Document {
             rel="stylesheet"
           />
           <link rel="canonical" href="https://genshinviet.com/" />
+          <OgTag
+            title="GenshinViet.com - Shop Genshin giá rẻ, uy tín, chất lượng "
+            description="Shop Genshin Impact - GenshinViet - Mua Bán - Giá Rẻ - Uy Tín - Chất Lượng"
+          />
         </Head>
         <body>
           <Main />
