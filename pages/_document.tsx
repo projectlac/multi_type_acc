@@ -1,9 +1,8 @@
-import * as React from 'react';
-import Document, { Html, Head, Main, NextScript } from 'next/document';
 import createEmotionServer from '@emotion/server/create-instance';
+import Document, { Head, Html, Main, NextScript } from 'next/document';
+import * as React from 'react';
 import createEmotionCache from 'src/createEmotionCache';
 import img from '../public/static/favicon_io/favicon.ico';
-import OgTag from '@/components/Common/OgTag';
 export default class MyDocument extends Document {
   render() {
     return (
@@ -17,9 +16,31 @@ export default class MyDocument extends Document {
             rel="stylesheet"
           />
           <link rel="canonical" href="https://genshinviet.com/" />
-          <OgTag
-            title="GenshinViet.com - Shop Genshin giá rẻ, uy tín, chất lượng "
-            description="Shop Genshin Impact - GenshinViet - Mua Bán - Giá Rẻ - Uy Tín - Chất Lượng"
+
+          <meta
+            property="og:title"
+            content={
+              'GenshinViet.com - Shop Genshin giá rẻ, uy tín, chất lượng '
+            }
+          />
+          <meta
+            property="og:description"
+            content={
+              'Shop Genshin Impact - GenshinViet - Mua Bán - Giá Rẻ - Uy Tín - Chất Lượng'
+            }
+          />
+
+          <meta property="og:locale" content="vi_GB" />
+          <meta property="og:locale:alternate" content="vi-VN" />
+
+          <meta property="og:image" content={img} />
+          <meta property="og:image:secure_url" content={img} />
+          <meta property="og:image:type" content="image/jpeg" />
+          <meta property="og:image:width" content="400" />
+          <meta property="og:image:height" content="300" />
+          <meta
+            property="og:image:alt"
+            content="GenshinViet.com - Website bán acc Genshin uy tín, hàng đầu Việt Nam"
           />
         </Head>
         <body>
