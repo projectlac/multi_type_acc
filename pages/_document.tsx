@@ -16,34 +16,6 @@ export default class MyDocument extends Document {
             rel="stylesheet"
           />
           <link rel="canonical" href="https://genshinviet.com/" />
-
-          <meta
-            property="og:title"
-            content={
-              'GenshinViet.com - Shop Genshin giá rẻ, uy tín, chất lượng '
-            }
-          />
-          <meta
-            name="description"
-            key="desc"
-            property="og:description"
-            content={
-              'Shop Genshin Impact - GenshinViet - Mua Bán - Giá Rẻ - Uy Tín - Chất Lượng'
-            }
-          />
-
-          <meta property="og:locale" content="vi_GB" />
-          <meta property="og:locale:alternate" content="vi-VN" />
-
-          <meta property="og:image" content={img} />
-          <meta property="og:image:secure_url" content={img} />
-          <meta property="og:image:type" content="image/jpeg" />
-          <meta property="og:image:width" content="400" />
-          <meta property="og:image:height" content="300" />
-          <meta
-            property="og:image:alt"
-            content="GenshinViet.com - Website bán acc Genshin uy tín, hàng đầu Việt Nam"
-          />
         </Head>
         <body>
           <Main />
