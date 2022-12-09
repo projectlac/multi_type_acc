@@ -3,15 +3,29 @@ import img from 'src/assets/images/310223374_1734544413588410_474522997517485338
 import imgFavicon from '/public/static/favicon_io/favicon.ico';
 interface IOG {
   title: string;
+  description?: string;
 }
-function OgTag({ title }: IOG) {
+function OgTag({ title, description }: IOG) {
   return (
     <>
       <link rel="shortcut icon" href={imgFavicon} />
       <meta property="og:title" content={title} />
       <meta
         property="og:description"
-        content="GenshinViet.com - Website bán acc Genshin uy tín, hàng đầu Việt Nam"
+        content={
+          description
+            ? description
+            : 'Shop Genshin Impact - GenshinViet - Mua Bán - Giá Rẻ - Uy Tín - Chất Lượng'
+        }
+      />
+      <meta
+        name="description"
+        key="desc"
+        content={
+          description
+            ? description
+            : 'Shop Genshin Impact - GenshinViet - Mua Bán - Giá Rẻ - Uy Tín - Chất Lượng'
+        }
       />
 
       <meta property="og:locale" content="vi_GB" />
@@ -24,7 +38,7 @@ function OgTag({ title }: IOG) {
       <meta property="og:image:height" content="300" />
       <meta
         property="og:image:alt"
-        content="GenshinViet.com - Website bán acc Genshin uy tín, hàng đầu Việt Nam"
+        content="Shop Genshin Impact - GenshinViet - Mua Bán - Giá Rẻ - Uy Tín - Chất Lượng"
       />
     </>
   );
