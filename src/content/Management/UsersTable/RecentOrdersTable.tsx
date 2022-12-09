@@ -107,8 +107,10 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ cryptoOrders }) => {
     setLimit(parseInt(event.target.value));
   };
   const filterBySearch = (cryptoOrders: IUser[]) => {
-    return cryptoOrders.filter((d) =>
-      d.username.toLowerCase().includes(search.toLowerCase())
+    return cryptoOrders.filter(
+      (d) =>
+        d.username.toLowerCase().includes(search.toLowerCase()) ||
+        d.email.toLowerCase().includes(search.toLowerCase())
     );
   };
 
