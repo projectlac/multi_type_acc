@@ -99,7 +99,9 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children }) => {
             <Box sx={{ display: { xs: 'none', md: 'block' } }}>
               <ul style={{ padding: 0 }}>
                 <li style={{ marginLeft: 0 }}>
-                  <Link href={'/'}>GenshinViet.com</Link>
+                  <Link href={'https://m.me/103780805920496'}>
+                    <a target="_blank">Fanpage hỗ trợ khách hàng</a>
+                  </Link>
                 </li>
                 <li>
                   <Link href={'/'}>Trang chủ</Link>
@@ -143,6 +145,11 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children }) => {
                   <li>
                     <Link href={'reputation'}>Check uy tín</Link>
                   </li>
+                  <li>
+                    <Link href={'https://m.me/103780805920496'}>
+                      <a target="_blank">Fanpage hỗ trợ khách hàng</a>
+                    </Link>
+                  </li>
                 </ul>
               </MobileMenu>
             </Box>
@@ -158,7 +165,7 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children }) => {
               )}
             </Box>
           </MenuWrapper>
-          <MessengerChat pageId="152659528261467" language="vi_VN" />
+          <MessengerChat pageId="100088608761650" language="vi_VN" />
         </Container>
       </Header>
       <FullBG>
