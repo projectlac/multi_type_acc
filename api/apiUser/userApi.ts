@@ -28,6 +28,11 @@ export const topUpWithCard = (
   });
 };
 
+export const checkToken = (token: string) => {
+  return api.get(`/action-cronjob/check-captcha/${token}`);
+};
+
+
 export const getNotification = (limit:number,offset: number) => {
   return api.get(`/history/bonus?limit=${limit}&offset=${offset}`);
 };

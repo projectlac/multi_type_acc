@@ -1,11 +1,18 @@
 import { useAuth } from '@/contexts/AuthGuard';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
-import { Card, Divider, Grid, IconButton, Tooltip } from '@mui/material';
+import {
+  Button,
+  Card,
+  Divider,
+  Grid,
+  IconButton,
+  Tooltip
+} from '@mui/material';
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import Typography from '@mui/material/Typography';
-import { getCode, topUpWithCard } from 'api/apiUser/userApi';
+import { checkToken, getCode, topUpWithCard } from 'api/apiUser/userApi';
 import * as React from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import * as yup from 'yup';
@@ -70,7 +77,11 @@ function TopUp() {
   const [code, setCode] = React.useState<string>('');
   const [value, setValue] = React.useState(0);
   const [copyText, setCopyTexy] = React.useState(CopyTextDefaut.COPY);
+  const [checkCaptcha, setCheckCaptcha] = React.useState<boolean>(false);
 
+  const refreshCapcha = () => {
+    setCheckCaptcha(false);
+  };
   const copySomething = (content: string) => {
     navigator.clipboard.writeText(content);
     setCopyTexy(CopyTextDefaut.COPIED);
@@ -117,6 +128,7 @@ function TopUp() {
         message: error.response.data.message
       });
     }
+    refreshCapcha();
   };
 
   const onSubmitMomo = async () => {
@@ -134,9 +146,14 @@ function TopUp() {
         message: error.response.data.message
       });
     }
+    refreshCapcha();
   };
   const onChange = (value: any) => {
-    // checkCaptcha(value).then((res) => console.log(res));
+    checkToken(value)
+      .then((res) => setCheckCaptcha(res.data.success))
+      .catch(() => {
+        setCheckCaptcha(false);
+      });
   };
   const formik = useCustomForm(validationSchema, initForm, onSubmit);
 
@@ -184,8 +201,16 @@ function TopUp() {
             }
           }}
         >
-          <Tab label="Nạp thẻ cào tự động" {...a11yProps(0)} />
-          <Tab label="Nạp thẻ qua ATM/MOMO" {...a11yProps(1)} />
+          <Tab
+            label="Nạp thẻ cào tự động"
+            {...a11yProps(0)}
+            onClick={refreshCapcha}
+          />
+          <Tab
+            label="Nạp thẻ qua ATM/MOMO"
+            {...a11yProps(1)}
+            onClick={refreshCapcha}
+          />
         </Tabs>
       </Box>
       <Divider orientation="vertical"></Divider>
@@ -311,15 +336,24 @@ function TopUp() {
                       />
                     </Grid>
                     <Grid item xs={12}>
-                      <Typography>
-                        <b>
-                          Hệ thống nạp tự động đang bảo trì <br /> vui lòng liên
-                          hệ với Admin nạp tiền vào tài khoản
-                        </b>
-                      </Typography>
-                      {/* <Button fullWidth variant="contained" type="submit">
+                      <ReCAPTCHA
+                        sitekey="6LdGLHkjAAAAAJysfam5Ylmnjmq37torTEoPqsrD"
+                        onChange={onChange}
+                      />
+                      <Button
+                        sx={{
+                          '&.Mui-disabled': {
+                            background: '#ddd'
+                          },
+                          mt: 1
+                        }}
+                        disabled={!checkCaptcha}
+                        fullWidth
+                        variant="contained"
+                        type="submit"
+                      >
                         {formik.isSubmitting ? 'Loading' : 'Nạp'}
-                      </Button> */}
+                      </Button>
                     </Grid>
                   </Grid>
                 </FormatForm>
@@ -491,29 +525,41 @@ function TopUp() {
               width={500}
               margin="0 auto"
               justifyContent={'center'}
+              rowSpacing={3}
             >
-              <Typography>
-                <b>
-                  Hệ thống nạp tự động đang bảo trì <br /> vui lòng liên hệ với
-                  Admin nạp tiền vào tài khoản
-                </b>
-              </Typography>
-
               <ReCAPTCHA
                 sitekey="6LdGLHkjAAAAAJysfam5Ylmnjmq37torTEoPqsrD"
                 onChange={onChange}
               />
 
-              {/* <Grid item md={6}>
-                <Button variant="contained" onClick={onSubmitMomo}>
+              <Grid item md={6}>
+                <Button
+                  variant="contained"
+                  disabled={!checkCaptcha}
+                  sx={{
+                    '&.Mui-disabled': {
+                      background: '#ddd'
+                    }
+                  }}
+                  onClick={onSubmitMomo}
+                >
                   Lấy mã MOMO
                 </Button>
               </Grid>
               <Grid item md={6}>
-                <Button variant="contained" onClick={onSubmitBank}>
+                <Button
+                  variant="contained"
+                  disabled={!checkCaptcha}
+                  sx={{
+                    '&.Mui-disabled': {
+                      background: '#ddd'
+                    }
+                  }}
+                  onClick={onSubmitBank}
+                >
                   Lấy mã VCB
                 </Button>
-              </Grid> */}
+              </Grid>
             </Grid>
           </Box>
           <Typography
