@@ -284,10 +284,16 @@ export default function TopUpMobile() {
                         type="text"
                       />
                     </Grid>
-                    <Grid item xs={12}>
-                      <Button fullWidth variant="contained" type="submit">
+                    <Grid item xs={12} justifyContent="center">
+                      <Typography>
+                        <b>
+                          Hệ thống nạp tự động đang bảo trì <br /> vui lòng liên
+                          hệ với Admin nạp tiền vào tài khoản
+                        </b>
+                      </Typography>
+                      {/* <Button fullWidth variant="contained" type="submit">
                         Nạp
-                      </Button>
+                      </Button> */}
                     </Grid>
                   </Grid>
                 </FormatForm>
@@ -458,8 +464,14 @@ export default function TopUpMobile() {
             >
               {code}
             </Box>
-            <Grid container margin="0 auto">
-              <Grid item xs={6}>
+            <Grid container margin="0 auto" justifyContent="center">
+              <Typography>
+                <b>
+                  Hệ thống nạp tự động đang bảo trì <br /> vui lòng liên hệ với
+                  Admin nạp tiền vào tài khoản
+                </b>
+              </Typography>
+              {/* <Grid item xs={6}>
                 <Button
                   variant="contained"
                   sx={{ fontSize: '12px' }}
@@ -476,7 +488,7 @@ export default function TopUpMobile() {
                 >
                   Lấy mã VCB
                 </Button>
-              </Grid>
+              </Grid> */}
             </Grid>
           </Box>
           <Typography color="error" fontSize={15} fontWeight={600} mt={3}>

@@ -316,9 +316,15 @@ function TopUp() {
                       />
                     </Grid>
                     <Grid item xs={12}>
-                      <Button fullWidth variant="contained" type="submit">
+                      <Typography>
+                        <b>
+                          Hệ thống nạp tự động đang bảo trì <br /> vui lòng liên
+                          hệ với Admin nạp tiền vào tài khoản
+                        </b>
+                      </Typography>
+                      {/* <Button fullWidth variant="contained" type="submit">
                         {formik.isSubmitting ? 'Loading' : 'Nạp'}
-                      </Button>
+                      </Button> */}
                     </Grid>
                   </Grid>
                 </FormatForm>
@@ -485,8 +491,19 @@ function TopUp() {
             >
               {code}
             </Box>
-            <Grid container width={500} margin="0 auto">
-              <Grid item md={6}>
+            <Grid
+              container
+              width={500}
+              margin="0 auto"
+              justifyContent={'center'}
+            >
+              <Typography>
+                <b>
+                  Hệ thống nạp tự động đang bảo trì <br /> vui lòng liên hệ với
+                  Admin nạp tiền vào tài khoản
+                </b>
+              </Typography>
+              {/* <Grid item md={6}>
                 <Button variant="contained" onClick={onSubmitMomo}>
                   Lấy mã MOMO
                 </Button>
@@ -495,7 +512,7 @@ function TopUp() {
                 <Button variant="contained" onClick={onSubmitBank}>
                   Lấy mã VCB
                 </Button>
-              </Grid>
+              </Grid> */}
             </Grid>
           </Box>
           <Typography
