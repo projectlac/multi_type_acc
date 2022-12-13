@@ -1,25 +1,18 @@
 import { useAuth } from '@/contexts/AuthGuard';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
-import {
-  Button,
-  Card,
-  Divider,
-  Grid,
-  IconButton,
-  Tooltip
-} from '@mui/material';
+import { Card, Divider, Grid, IconButton, Tooltip } from '@mui/material';
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import Typography from '@mui/material/Typography';
 import { getCode, topUpWithCard } from 'api/apiUser/userApi';
-import * as yup from 'yup';
 import * as React from 'react';
+import ReCAPTCHA from 'react-google-recaptcha';
+import * as yup from 'yup';
 import useCustomForm from '../Common/Form/Form';
 import FormatForm from '../Common/Form/FormatForm';
 import Selection from '../Common/Form/Selection';
 import TextField from '../Common/Form/TextField';
-
 const validationSchema = yup.object({
   homeNetwork: yup.string().required('Trường này là bắt buộc'),
   cost: yup.string().required('Trường này là bắt buộc'),
@@ -142,7 +135,9 @@ function TopUp() {
       });
     }
   };
-
+  const onChange = (value: any) => {
+    // checkCaptcha(value).then((res) => console.log(res));
+  };
   const formik = useCustomForm(validationSchema, initForm, onSubmit);
 
   return (
@@ -503,6 +498,12 @@ function TopUp() {
                   Admin nạp tiền vào tài khoản
                 </b>
               </Typography>
+
+              <ReCAPTCHA
+                sitekey="6LdGLHkjAAAAAJysfam5Ylmnjmq37torTEoPqsrD"
+                onChange={onChange}
+              />
+
               {/* <Grid item md={6}>
                 <Button variant="contained" onClick={onSubmitMomo}>
                   Lấy mã MOMO
