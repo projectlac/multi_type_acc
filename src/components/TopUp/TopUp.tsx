@@ -340,20 +340,22 @@ function TopUp() {
                         sitekey="6LdGLHkjAAAAAJysfam5Ylmnjmq37torTEoPqsrD"
                         onChange={onChange}
                       />
-                      <Button
-                        sx={{
-                          '&.Mui-disabled': {
-                            background: '#ddd'
-                          },
-                          mt: 1
-                        }}
-                        disabled={!checkCaptcha}
-                        fullWidth
-                        variant="contained"
-                        type="submit"
-                      >
-                        {formik.isSubmitting ? 'Loading' : 'Nạp'}
-                      </Button>
+                      {checkCaptcha && (
+                        <Button
+                          sx={{
+                            '&.Mui-disabled': {
+                              background: '#ddd'
+                            },
+                            mt: 1
+                          }}
+                          disabled={!checkCaptcha}
+                          fullWidth
+                          variant="contained"
+                          type="submit"
+                        >
+                          {formik.isSubmitting ? 'Loading' : 'Nạp'}
+                        </Button>
+                      )}
                     </Grid>
                   </Grid>
                 </FormatForm>
@@ -532,34 +534,39 @@ function TopUp() {
                 onChange={onChange}
               />
 
-              <Grid item md={6}>
-                <Button
-                  variant="contained"
-                  disabled={!checkCaptcha}
-                  sx={{
-                    '&.Mui-disabled': {
-                      background: '#ddd'
-                    }
-                  }}
-                  onClick={onSubmitMomo}
-                >
-                  Lấy mã MOMO
-                </Button>
-              </Grid>
-              <Grid item md={6}>
-                <Button
-                  variant="contained"
-                  disabled={!checkCaptcha}
-                  sx={{
-                    '&.Mui-disabled': {
-                      background: '#ddd'
-                    }
-                  }}
-                  onClick={onSubmitBank}
-                >
-                  Lấy mã VCB
-                </Button>
-              </Grid>
+              {checkCaptcha && (
+                <>
+                  {' '}
+                  <Grid item md={6}>
+                    <Button
+                      variant="contained"
+                      disabled={!checkCaptcha}
+                      sx={{
+                        '&.Mui-disabled': {
+                          background: '#ddd'
+                        }
+                      }}
+                      onClick={onSubmitMomo}
+                    >
+                      Lấy mã MOMO
+                    </Button>
+                  </Grid>
+                  <Grid item md={6}>
+                    <Button
+                      variant="contained"
+                      disabled={!checkCaptcha}
+                      sx={{
+                        '&.Mui-disabled': {
+                          background: '#ddd'
+                        }
+                      }}
+                      onClick={onSubmitBank}
+                    >
+                      Lấy mã VCB
+                    </Button>
+                  </Grid>
+                </>
+              )}
             </Grid>
           </Box>
           <Typography
