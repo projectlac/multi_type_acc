@@ -340,11 +340,11 @@ function TopUp() {
                         sitekey="6LdGLHkjAAAAAJysfam5Ylmnjmq37torTEoPqsrD"
                         onChange={onChange}
                       />
-                      <Typography textAlign={'center'}>
+                      {/* <Typography textAlign={'center'}>
                         Hệ thống nạp thẻ cào đang bảo trì, <br /> vui lòng liên
                         hệ admin để nạp thẻ
-                      </Typography>
-                      {/* {checkCaptcha && (
+                      </Typography> */}
+                      {checkCaptcha && (
                         <Button
                           sx={{
                             '&.Mui-disabled': {
@@ -359,7 +359,7 @@ function TopUp() {
                         >
                           {formik.isSubmitting ? 'Loading' : 'Nạp'}
                         </Button>
-                      )} */}
+                      )}
                     </Grid>
                   </Grid>
                 </FormatForm>

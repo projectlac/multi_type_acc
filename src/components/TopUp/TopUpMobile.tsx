@@ -311,11 +311,11 @@ export default function TopUpMobile() {
                         sitekey="6LdGLHkjAAAAAJysfam5Ylmnjmq37torTEoPqsrD"
                         onChange={onChange}
                       />
-                      <Typography textAlign={'center'}>
+                      {/* <Typography textAlign={'center'}>
                         Hệ thống nạp thẻ cào đang bảo trì, <br /> vui lòng liên
                         hệ admin để nạp thẻ
-                      </Typography>
-                      {/* {checkCaptcha && (
+                      </Typography> */}
+                      {checkCaptcha && (
                         <Button
                           fullWidth
                           sx={{
@@ -330,7 +330,7 @@ export default function TopUpMobile() {
                         >
                           Nạp
                         </Button>
-                      )} */}
+                      )}
                     </Grid>
                   </Grid>
                 </FormatForm>
