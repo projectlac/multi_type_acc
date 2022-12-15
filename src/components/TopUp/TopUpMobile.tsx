@@ -20,6 +20,7 @@ import FormatForm from '../Common/Form/FormatForm';
 import Selection from '../Common/Form/Selection';
 import TextField from '../Common/Form/TextField';
 import ReCAPTCHA from 'react-google-recaptcha';
+import { getIP } from 'api/reCaptcha/getIp';
 interface TabPanelProps {
   children?: React.ReactNode;
   index: number;
@@ -78,10 +79,24 @@ export default function TopUpMobile() {
 
   const [copyText, setCopyTexy] = React.useState(CopyTextDefaut.COPY);
   const [checkCaptcha, setCheckCaptcha] = React.useState<boolean>(false);
-
+  const [ipClient, getIpClient] = React.useState('');
   const refreshCapcha = () => {
     setCheckCaptcha(false);
   };
+
+  React.useEffect(() => {
+    getIP().then((res) => {
+      let data = res.data
+        .trim()
+        .split('\n')
+        .reduce(function (obj, pair) {
+          pair = pair.split('=');
+          return (obj[pair[0]] = pair[1]), obj;
+        }, {});
+      getIpClient(data.ip);
+    });
+  }, []);
+
   const copySomething = (content: string) => {
     navigator.clipboard.writeText(content);
     setCopyTexy(CopyTextDefaut.COPIED);
@@ -95,7 +110,7 @@ export default function TopUpMobile() {
   };
   const onSubmitBank = async () => {
     try {
-      await getCode('VCB').then((res) => {
+      await getCode('VCB', ipClient).then((res) => {
         setCode(res.data);
         handleSetMessage({
           type: 'success',
@@ -113,7 +128,7 @@ export default function TopUpMobile() {
 
   const onSubmitMomo = async () => {
     try {
-      await getCode('MOMO').then((res) => {
+      await getCode('MOMO', ipClient).then((res) => {
         setCode(res.data);
         handleSetMessage({
           type: 'success',
@@ -138,17 +153,19 @@ export default function TopUpMobile() {
   const onSubmit = async (values, { resetForm }) => {
     const { homeNetwork, cost, seri, code } = values;
     try {
-      await topUpWithCard(homeNetwork, +cost, seri, code).then((res) => {
-        if (res.data) {
-          handleSetMessage({ type: 'error', message: res.data.message });
-        } else {
-          handleSetMessage({
-            type: 'success',
-            message: 'Thẻ đang được xử lý, vui lòng đợi'
-          });
-          resetForm();
+      await topUpWithCard(homeNetwork, +cost, seri, code, ipClient).then(
+        (res) => {
+          if (res.data) {
+            handleSetMessage({ type: 'error', message: res.data.message });
+          } else {
+            handleSetMessage({
+              type: 'success',
+              message: 'Thẻ đang được xử lý, vui lòng đợi'
+            });
+            resetForm();
+          }
         }
-      });
+      );
     } catch (error) {
       handleSetMessage({ type: 'error', message: error.response.data.message });
     }

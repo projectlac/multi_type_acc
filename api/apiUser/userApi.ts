@@ -9,22 +9,25 @@ export const getListUser = (limit?: number) => {
   return api.get(`/user-manager?${checkCall('limit', limit)}`);
 };
 
-export const getCode = (bank: string) => {
-  return api.post(`/action-cronjob`, { bank: bank });
+export const getCode = (bank: string, ip:string) => {
+
+  return api.post(`/action-cronjob`, { bank: bank, ip });
 };
 
 export const topUpWithCard = (
   telco: string,
   amount: number,
   serial: string,
-  code: string
+  code: string,
+  ip:string
 ) => {
   return api.post(`/action-cronjob/top-up`, {
     telco,
     amount,
     serial,
     code,
-    is_fast: 1
+    is_fast: 1,
+    ip
   });
 };
 

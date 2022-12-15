@@ -13,6 +13,7 @@ import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import Typography from '@mui/material/Typography';
 import { checkToken, getCode, topUpWithCard } from 'api/apiUser/userApi';
+import { getIP } from 'api/reCaptcha/getIp';
 import * as React from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import * as yup from 'yup';
@@ -78,7 +79,7 @@ function TopUp() {
   const [value, setValue] = React.useState(0);
   const [copyText, setCopyTexy] = React.useState(CopyTextDefaut.COPY);
   const [checkCaptcha, setCheckCaptcha] = React.useState<boolean>(false);
-
+  const [ipClient, getIpClient] = React.useState('');
   const refreshCapcha = () => {
     setCheckCaptcha(false);
   };
@@ -94,20 +95,34 @@ function TopUp() {
     setValue(newValue);
   };
 
+  React.useEffect(() => {
+    getIP().then((res) => {
+      let data = res.data
+        .trim()
+        .split('\n')
+        .reduce(function (obj, pair) {
+          pair = pair.split('=');
+          return (obj[pair[0]] = pair[1]), obj;
+        }, {});
+      getIpClient(data.ip);
+    });
+  }, []);
   const onSubmit = async (values, { resetForm }) => {
     const { homeNetwork, cost, seri, code } = values;
     try {
-      await topUpWithCard(homeNetwork, +cost, seri, code).then((res) => {
-        if (res.data) {
-          handleSetMessage({ type: 'error', message: res.data.message });
-        } else {
-          handleSetMessage({
-            type: 'success',
-            message: 'Thẻ đang được xử lý, vui lòng đợi'
-          });
-          resetForm();
+      await topUpWithCard(homeNetwork, +cost, seri, code, ipClient).then(
+        (res) => {
+          if (res.data) {
+            handleSetMessage({ type: 'error', message: res.data.message });
+          } else {
+            handleSetMessage({
+              type: 'success',
+              message: 'Thẻ đang được xử lý, vui lòng đợi'
+            });
+            resetForm();
+          }
         }
-      });
+      );
     } catch (error) {
       handleSetMessage({ type: 'error', message: error.response.data.message });
     }
@@ -115,7 +130,7 @@ function TopUp() {
 
   const onSubmitBank = async () => {
     try {
-      await getCode('VCB').then((res) => {
+      await getCode('VCB', ipClient).then((res) => {
         setCode(res.data);
         handleSetMessage({
           type: 'success',
@@ -133,7 +148,7 @@ function TopUp() {
 
   const onSubmitMomo = async () => {
     try {
-      await getCode('MOMO').then((res) => {
+      await getCode('MOMO', ipClient).then((res) => {
         setCode(res.data);
         handleSetMessage({
           type: 'success',
