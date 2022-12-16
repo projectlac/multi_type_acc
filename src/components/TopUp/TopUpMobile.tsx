@@ -20,6 +20,7 @@ import FormatForm from '../Common/Form/FormatForm';
 import Selection from '../Common/Form/Selection';
 import TextField from '../Common/Form/TextField';
 import ReCAPTCHA from 'react-google-recaptcha';
+import { getIP } from 'api/reCaptcha/getIp';
 interface TabPanelProps {
   children?: React.ReactNode;
   index: number;
@@ -77,11 +78,12 @@ export default function TopUpMobile() {
   const [code, setCode] = React.useState<string>('');
 
   const [copyText, setCopyTexy] = React.useState(CopyTextDefaut.COPY);
-  const [checkCaptcha, setCheckCaptcha] = React.useState<boolean>(false);
 
+  const [token, getToken] = React.useState('');
   const refreshCapcha = () => {
-    setCheckCaptcha(false);
+    getToken('');
   };
+
   const copySomething = (content: string) => {
     navigator.clipboard.writeText(content);
     setCopyTexy(CopyTextDefaut.COPIED);
@@ -95,7 +97,7 @@ export default function TopUpMobile() {
   };
   const onSubmitBank = async () => {
     try {
-      await getCode('VCB').then((res) => {
+      await getCode('VCB', token).then((res) => {
         setCode(res.data);
         handleSetMessage({
           type: 'success',
@@ -113,7 +115,7 @@ export default function TopUpMobile() {
 
   const onSubmitMomo = async () => {
     try {
-      await getCode('MOMO').then((res) => {
+      await getCode('MOMO', token).then((res) => {
         setCode(res.data);
         handleSetMessage({
           type: 'success',
@@ -129,16 +131,12 @@ export default function TopUpMobile() {
     refreshCapcha();
   };
   const onChange = (value: any) => {
-    checkToken(value)
-      .then((res) => setCheckCaptcha(res.data.success))
-      .catch(() => {
-        setCheckCaptcha(false);
-      });
+    getToken(value);
   };
   const onSubmit = async (values, { resetForm }) => {
     const { homeNetwork, cost, seri, code } = values;
     try {
-      await topUpWithCard(homeNetwork, +cost, seri, code).then((res) => {
+      await topUpWithCard(homeNetwork, +cost, seri, code, token).then((res) => {
         if (res.data) {
           handleSetMessage({ type: 'error', message: res.data.message });
         } else {
@@ -315,7 +313,7 @@ export default function TopUpMobile() {
                         Hệ thống nạp thẻ cào đang bảo trì, <br /> vui lòng liên
                         hệ admin để nạp thẻ
                       </Typography> */}
-                      {checkCaptcha && (
+                      {token && (
                         <Button
                           fullWidth
                           sx={{
@@ -325,7 +323,7 @@ export default function TopUpMobile() {
                             mt: 1
                           }}
                           variant="contained"
-                          disabled={!checkCaptcha}
+                          disabled={!!!token}
                           type="submit"
                         >
                           Nạp
@@ -511,12 +509,12 @@ export default function TopUpMobile() {
                 sitekey="6LdGLHkjAAAAAJysfam5Ylmnjmq37torTEoPqsrD"
                 onChange={onChange}
               />
-              {checkCaptcha && (
+              {token && (
                 <>
                   <Grid item xs={6}>
                     <Button
                       variant="contained"
-                      disabled={!checkCaptcha}
+                      disabled={!!!token}
                       sx={{
                         fontSize: '12px',
                         '&.Mui-disabled': {
@@ -532,7 +530,7 @@ export default function TopUpMobile() {
                   <Grid item xs={6}>
                     <Button
                       variant="contained"
-                      disabled={!checkCaptcha}
+                      disabled={!!!token}
                       sx={{
                         fontSize: '12px',
                         '&.Mui-disabled': {

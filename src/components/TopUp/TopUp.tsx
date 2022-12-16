@@ -12,7 +12,7 @@ import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import Typography from '@mui/material/Typography';
-import { checkToken, getCode, topUpWithCard } from 'api/apiUser/userApi';
+import { getCode, topUpWithCard } from 'api/apiUser/userApi';
 import * as React from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import * as yup from 'yup';
@@ -77,10 +77,10 @@ function TopUp() {
   const [code, setCode] = React.useState<string>('');
   const [value, setValue] = React.useState(0);
   const [copyText, setCopyTexy] = React.useState(CopyTextDefaut.COPY);
-  const [checkCaptcha, setCheckCaptcha] = React.useState<boolean>(false);
 
+  const [token, getToken] = React.useState('');
   const refreshCapcha = () => {
-    setCheckCaptcha(false);
+    getToken('');
   };
   const copySomething = (content: string) => {
     navigator.clipboard.writeText(content);
@@ -97,7 +97,7 @@ function TopUp() {
   const onSubmit = async (values, { resetForm }) => {
     const { homeNetwork, cost, seri, code } = values;
     try {
-      await topUpWithCard(homeNetwork, +cost, seri, code).then((res) => {
+      await topUpWithCard(homeNetwork, +cost, seri, code, token).then((res) => {
         if (res.data) {
           handleSetMessage({ type: 'error', message: res.data.message });
         } else {
@@ -115,7 +115,7 @@ function TopUp() {
 
   const onSubmitBank = async () => {
     try {
-      await getCode('VCB').then((res) => {
+      await getCode('VCB', token).then((res) => {
         setCode(res.data);
         handleSetMessage({
           type: 'success',
@@ -133,7 +133,7 @@ function TopUp() {
 
   const onSubmitMomo = async () => {
     try {
-      await getCode('MOMO').then((res) => {
+      await getCode('MOMO', token).then((res) => {
         setCode(res.data);
         handleSetMessage({
           type: 'success',
@@ -149,11 +149,7 @@ function TopUp() {
     refreshCapcha();
   };
   const onChange = (value: any) => {
-    checkToken(value)
-      .then((res) => setCheckCaptcha(res.data.success))
-      .catch(() => {
-        setCheckCaptcha(false);
-      });
+    getToken(value);
   };
   const formik = useCustomForm(validationSchema, initForm, onSubmit);
 
@@ -344,7 +340,7 @@ function TopUp() {
                         Hệ thống nạp thẻ cào đang bảo trì, <br /> vui lòng liên
                         hệ admin để nạp thẻ
                       </Typography> */}
-                      {checkCaptcha && (
+                      {token && (
                         <Button
                           sx={{
                             '&.Mui-disabled': {
@@ -352,7 +348,7 @@ function TopUp() {
                             },
                             mt: 1
                           }}
-                          disabled={!checkCaptcha}
+                          disabled={!token}
                           fullWidth
                           variant="contained"
                           type="submit"
@@ -538,13 +534,13 @@ function TopUp() {
                 onChange={onChange}
               />
 
-              {checkCaptcha && (
+              {token && (
                 <>
                   {' '}
                   <Grid item md={6}>
                     <Button
                       variant="contained"
-                      disabled={!checkCaptcha}
+                      disabled={!!!token}
                       sx={{
                         '&.Mui-disabled': {
                           background: '#ddd'
@@ -558,7 +554,7 @@ function TopUp() {
                   <Grid item md={6}>
                     <Button
                       variant="contained"
-                      disabled={!checkCaptcha}
+                      disabled={!!!token}
                       sx={{
                         '&.Mui-disabled': {
                           background: '#ddd'
