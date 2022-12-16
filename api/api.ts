@@ -1,7 +1,7 @@
 import Axios from 'axios';
 
 const api = Axios.create({
-  baseURL: 'https://muabanaccgenshin.online/',
+  baseURL: 'http://localhost:4200/',
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json'
