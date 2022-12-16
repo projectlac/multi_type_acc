@@ -78,10 +78,10 @@ export default function TopUpMobile() {
   const [code, setCode] = React.useState<string>('');
 
   const [copyText, setCopyTexy] = React.useState(CopyTextDefaut.COPY);
-  const [checkCaptcha, setCheckCaptcha] = React.useState<boolean>(false);
+
   const [token, getToken] = React.useState('');
   const refreshCapcha = () => {
-    setCheckCaptcha(false);
+    getToken('');
   };
 
   const copySomething = (content: string) => {
@@ -313,7 +313,7 @@ export default function TopUpMobile() {
                         Hệ thống nạp thẻ cào đang bảo trì, <br /> vui lòng liên
                         hệ admin để nạp thẻ
                       </Typography> */}
-                      {checkCaptcha && (
+                      {token && (
                         <Button
                           fullWidth
                           sx={{
@@ -323,7 +323,7 @@ export default function TopUpMobile() {
                             mt: 1
                           }}
                           variant="contained"
-                          disabled={!checkCaptcha}
+                          disabled={!!!token}
                           type="submit"
                         >
                           Nạp
@@ -509,12 +509,12 @@ export default function TopUpMobile() {
                 sitekey="6LdGLHkjAAAAAJysfam5Ylmnjmq37torTEoPqsrD"
                 onChange={onChange}
               />
-              {checkCaptcha && (
+              {token && (
                 <>
                   <Grid item xs={6}>
                     <Button
                       variant="contained"
-                      disabled={!checkCaptcha}
+                      disabled={!!!token}
                       sx={{
                         fontSize: '12px',
                         '&.Mui-disabled': {
@@ -530,7 +530,7 @@ export default function TopUpMobile() {
                   <Grid item xs={6}>
                     <Button
                       variant="contained"
-                      disabled={!checkCaptcha}
+                      disabled={!!!token}
                       sx={{
                         fontSize: '12px',
                         '&.Mui-disabled': {

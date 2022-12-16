@@ -77,10 +77,10 @@ function TopUp() {
   const [code, setCode] = React.useState<string>('');
   const [value, setValue] = React.useState(0);
   const [copyText, setCopyTexy] = React.useState(CopyTextDefaut.COPY);
-  const [checkCaptcha, setCheckCaptcha] = React.useState<boolean>(false);
+
   const [token, getToken] = React.useState('');
   const refreshCapcha = () => {
-    setCheckCaptcha(false);
+    getToken('');
   };
   const copySomething = (content: string) => {
     navigator.clipboard.writeText(content);
@@ -340,7 +340,7 @@ function TopUp() {
                         Hệ thống nạp thẻ cào đang bảo trì, <br /> vui lòng liên
                         hệ admin để nạp thẻ
                       </Typography> */}
-                      {checkCaptcha && (
+                      {token && (
                         <Button
                           sx={{
                             '&.Mui-disabled': {
@@ -348,7 +348,7 @@ function TopUp() {
                             },
                             mt: 1
                           }}
-                          disabled={!checkCaptcha}
+                          disabled={!token}
                           fullWidth
                           variant="contained"
                           type="submit"
@@ -534,13 +534,13 @@ function TopUp() {
                 onChange={onChange}
               />
 
-              {checkCaptcha && (
+              {token && (
                 <>
                   {' '}
                   <Grid item md={6}>
                     <Button
                       variant="contained"
-                      disabled={!checkCaptcha}
+                      disabled={!!!token}
                       sx={{
                         '&.Mui-disabled': {
                           background: '#ddd'
@@ -554,7 +554,7 @@ function TopUp() {
                   <Grid item md={6}>
                     <Button
                       variant="contained"
-                      disabled={!checkCaptcha}
+                      disabled={!!!token}
                       sx={{
                         '&.Mui-disabled': {
                           background: '#ddd'
