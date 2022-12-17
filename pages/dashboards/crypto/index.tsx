@@ -159,7 +159,7 @@ function DashboardCrypto() {
     );
     getMoneyTable(format(new Date(), 'yyyy/MM/dd'), date1, 'Mua nick').then(
       (res) => {
-        setMoneyToday(res.data[0].total);
+        setMoneyToday(res.data[0]?.total);
       }
     );
   }, [update]);
