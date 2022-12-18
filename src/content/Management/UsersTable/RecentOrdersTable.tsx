@@ -43,6 +43,10 @@ const getStatusLabel = (cryptoOrderStatus: IRole): JSX.Element => {
       text: 'Admin',
       color: 'error'
     },
+    ADMIN_PRODUCT: {
+      text: 'Admin Product',
+      color: 'error'
+    },
     USER: {
       text: 'User',
       color: 'success'
@@ -52,6 +56,8 @@ const getStatusLabel = (cryptoOrderStatus: IRole): JSX.Element => {
       color: 'warning'
     }
   };
+
+  console.log(map[cryptoOrderStatus]);
 
   const { text, color }: any = map[cryptoOrderStatus];
 
