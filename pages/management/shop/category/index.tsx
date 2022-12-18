@@ -1,5 +1,7 @@
 import PageTitleWrapper from '@/components/PageTitleWrapper';
-import PageHeader from '@/content/Management/UsersTable/PageHeader';
+import PageHeader from '@/content/Management/Category/PageHeader';
+import RecentOrders from '@/content/Management/Category/RecentOrders';
+
 import SidebarLayout from '@/layouts/SidebarLayout';
 import { Container, Grid } from '@mui/material';
 import Head from 'next/head';
@@ -10,7 +12,7 @@ function UserManagement() {
   return (
     <>
       <Head>
-        <title>Danh sách user</title>
+        <title>Danh mục sản phẩm</title>
       </Head>
       <PageTitleWrapper>
         <PageHeader />
@@ -24,7 +26,7 @@ function UserManagement() {
           spacing={3}
         >
           <Grid item xs={12}>
-            {/* <RecentOrders /> */}
+            <RecentOrders />
           </Grid>
         </Grid>
       </Container>

@@ -1,16 +1,16 @@
 import PageTitleWrapper from '@/components/PageTitleWrapper';
-import PageHeader from '@/content/Management/UsersTable/PageHeader';
+import PageHeader from '@/content/Management/Product/PageHeader';
+
+import RecentOrders from '@/content/Management/Product/RecentOrders';
 import SidebarLayout from '@/layouts/SidebarLayout';
 import { Container, Grid } from '@mui/material';
 import Head from 'next/head';
 
-// import RecentOrders from '@/content/Management/UsersTable/RecentOrders';
-
-function UserManagement() {
+function ApplicationsTransactions() {
   return (
     <>
       <Head>
-        <title>Danh sách user</title>
+        <title>Danh sách sản phẩm</title>
       </Head>
       <PageTitleWrapper>
         <PageHeader />
@@ -24,7 +24,7 @@ function UserManagement() {
           spacing={3}
         >
           <Grid item xs={12}>
-            {/* <RecentOrders /> */}
+            <RecentOrders />
           </Grid>
         </Grid>
       </Container>
@@ -32,6 +32,8 @@ function UserManagement() {
   );
 }
 
-UserManagement.getLayout = (page) => <SidebarLayout>{page}</SidebarLayout>;
+ApplicationsTransactions.getLayout = (page) => (
+  <SidebarLayout>{page}</SidebarLayout>
+);
 
-export default UserManagement;
+export default ApplicationsTransactions;
