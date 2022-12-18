@@ -57,8 +57,6 @@ const getStatusLabel = (cryptoOrderStatus: IRole): JSX.Element => {
     }
   };
 
-  console.log(map[cryptoOrderStatus]);
-
   const { text, color }: any = map[cryptoOrderStatus];
 
   return <Label color={color}>{text}</Label>;

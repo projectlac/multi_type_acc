@@ -329,51 +329,53 @@ function SidebarMenu() {
             </List>
           </SubMenuWrapper>
         </List>
-        {/* <List
+        <List
           component="div"
           subheader={
             <ListSubheader component="div" disableSticky>
-              Accounts
+              Shop
             </ListSubheader>
           }
         >
           <SubMenuWrapper>
             <List component="div">
               <ListItem component="div">
-                <NextLink href="/management/profile" passHref>
+                <NextLink href="/management/shop/category" passHref>
                   <Button
                     className={
-                      currentRoute === '/management/profile' ? 'active' : ''
-                    }
-                    disableRipple
-                    component="a"
-                    onClick={closeSidebar}
-                    startIcon={<AccountCircleTwoToneIcon />}
-                  >
-                    User Profile
-                  </Button>
-                </NextLink>
-              </ListItem>
-              <ListItem component="div">
-                <NextLink href="/management/profile/settings" passHref>
-                  <Button
-                    className={
-                      currentRoute === '/management/profile/settings'
+                      currentRoute === '/management/shop/category'
                         ? 'active'
                         : ''
                     }
                     disableRipple
                     component="a"
                     onClick={closeSidebar}
-                    startIcon={<DisplaySettingsTwoToneIcon />}
+                    startIcon={<BrightnessLowTwoToneIcon />}
                   >
-                    Account Settings
+                    Danh mục sản phẩm
+                  </Button>
+                </NextLink>
+              </ListItem>
+              <ListItem component="div">
+                <NextLink href="/management/shop/product" passHref>
+                  <Button
+                    className={
+                      currentRoute === '/management/shop/product'
+                        ? 'active'
+                        : ''
+                    }
+                    disableRipple
+                    component="a"
+                    onClick={closeSidebar}
+                    startIcon={<BrightnessLowTwoToneIcon />}
+                  >
+                    Danh sách sản phẩm
                   </Button>
                 </NextLink>
               </ListItem>
             </List>
           </SubMenuWrapper>
-        </List> */}
+        </List>
 
         {user && user?.role === 'ADMIN' && (
           <>
