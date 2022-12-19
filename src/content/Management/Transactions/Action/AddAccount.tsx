@@ -262,7 +262,7 @@ function AddAccount({ title }: IEdit) {
             <Grid item md={4} xs={12}>
               <TextField
                 formik={formik}
-                label="Giá"
+                label="Giá "
                 variant="outlined"
                 fullWidth
                 name="price"
