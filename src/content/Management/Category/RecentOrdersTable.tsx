@@ -1,5 +1,4 @@
 import Label from '@/components/Label';
-import formatMoney from '@/utility/formatMoney';
 import {
   Box,
   Card,
@@ -22,74 +21,62 @@ import {
   Typography,
   useTheme
 } from '@mui/material';
-import { IRole, IUser } from 'model/user';
+import { format } from 'date-fns';
+import { Category } from 'model/product';
+
 import PropTypes from 'prop-types';
 import { ChangeEvent, FC, useState } from 'react';
-import ChangeCoin from './Action/ChangeCoin';
-import EditTag from './Action/EditTag';
-
+import DeleteAccount from './Action/DeleteAccount';
+import EditAccount from './Action/EditAccount';
 interface RecentOrdersTableProps {
   className?: string;
-  cryptoOrders: IUser[];
+  cryptoOrders: Category[];
+
+  changePage: (page: number) => void;
+  changeLimit: (limit: number) => void;
+  handleSearch: (keyword: string) => void;
+  handleStatus: (status: boolean | null) => void;
+  handleOrder: (status: 'true' | 'false' | null) => void;
 }
 
 interface Filters {
-  role?: 'ADMIN' | 'MOD' | 'USER';
+  status?: 'true' | 'false';
 }
 
-const getStatusLabel = (cryptoOrderStatus: IRole): JSX.Element => {
+const getStatusLabel = (cryptoOrderStatus: boolean): JSX.Element => {
   const map = {
-    ADMIN: {
-      text: 'Admin',
+    false: {
+      text: 'Chưa bán',
       color: 'error'
     },
-    ADMIN_PRODUCT: {
-      text: 'Admin Product',
-      color: 'error'
-    },
-    USER: {
-      text: 'User',
+    true: {
+      text: 'Đã bán',
       color: 'success'
-    },
-    MOD: {
-      text: 'CTV',
-      color: 'warning'
     }
   };
 
-  const { text, color }: any = map[cryptoOrderStatus];
+  const { text, color }: any = map[cryptoOrderStatus.toString()];
 
   return <Label color={color}>{text}</Label>;
 };
 
-const applyFilters = (cryptoOrders: IUser[], filters: Filters): IUser[] => {
-  return cryptoOrders.filter((cryptoOrder) => {
-    let matches = true;
+const RecentOrdersTable: FC<RecentOrdersTableProps> = ({
+  cryptoOrders,
+  changePage,
 
-    if (filters.role && cryptoOrder.role !== filters.role) {
-      matches = false;
-    }
-
-    return matches;
-  });
-};
-
-const applyPagination = (
-  cryptoOrders: IUser[],
-  page: number,
-  limit: number
-): IUser[] => {
-  return cryptoOrders.slice(page * limit, page * limit + limit);
-};
-
-const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ cryptoOrders }) => {
+  handleSearch,
+  handleStatus,
+  changeLimit,
+  handleOrder
+}) => {
   const [page, setPage] = useState<number>(0);
+  const [search, setSearch] = useState<string>('');
+
   const [limit, setLimit] = useState<number>(10);
   const [filters, setFilters] = useState<Filters>({
-    role: null
+    status: null
   });
 
-  const [search, setSearch] = useState<string>('');
   const handleStatusChange = (e: ChangeEvent<HTMLInputElement>): void => {
     let value = null;
 
@@ -97,34 +84,29 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ cryptoOrders }) => {
       value = e.target.value;
     }
 
+    handleStatus(value);
+    handleOrder(null);
     setFilters((prevFilters) => ({
       ...prevFilters,
-      role: value
+      status: value
     }));
   };
 
   const handlePageChange = (_event: any, newPage: number): void => {
     setPage(newPage);
+    changePage(newPage * limit);
   };
 
   const handleLimitChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setLimit(parseInt(event.target.value));
+    changeLimit(parseInt(event.target.value));
   };
-  const filterBySearch = (cryptoOrders: IUser[]) => {
-    return cryptoOrders.filter(
-      (d) => d.username.includes(search) || d.email.includes(search)
-    );
-  };
-
-  const filteredCryptoOrders = applyFilters(cryptoOrders, filters);
-  const filteredCode = filterBySearch(filteredCryptoOrders);
-
-  const paginatedCryptoOrders = applyPagination(filteredCode, page, limit);
 
   const theme = useTheme();
 
   const handleChangeSearch = (e: ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
+    handleSearch(e.target.value);
   };
 
   return (
@@ -137,7 +119,7 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ cryptoOrders }) => {
         <TextField
           variant="outlined"
           fullWidth
-          label="Search by code"
+          label="Search bằng code hoặc username"
           value={search}
           onChange={handleChangeSearch}
         ></TextField>
@@ -148,15 +130,14 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ cryptoOrders }) => {
             <FormControl fullWidth variant="outlined">
               <InputLabel>Status</InputLabel>
               <Select
-                value={filters.role || 'all'}
+                value={filters.status || 'all'}
                 onChange={handleStatusChange}
                 label="Status"
                 autoWidth
               >
-                <MenuItem value="all">All</MenuItem>
-                <MenuItem value="ADMIN">ADMIN</MenuItem>
-                <MenuItem value="MOD">CTV</MenuItem>
-                <MenuItem value="USER">USER</MenuItem>
+                <MenuItem value="all">Tất cả</MenuItem>
+                <MenuItem value="true">Đã bán</MenuItem>
+                <MenuItem value="false">Chưa bán</MenuItem>
               </Select>
             </FormControl>
           </Box>
@@ -169,17 +150,15 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ cryptoOrders }) => {
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>Account ID</TableCell>
-              <TableCell>Username</TableCell>
-              <TableCell>Email</TableCell>
-
-              <TableCell align="right">Web Coin</TableCell>
-              <TableCell align="right">Role</TableCell>
+              <TableCell>Tên danh mục</TableCell>
+              {/* <TableCell>Số sản phẩm</TableCell> */}
+              <TableCell align="right">Thời gian tạo</TableCell>
               <TableCell align="right">Actions</TableCell>
             </TableRow>
           </TableHead>
-          <TableBody>
-            {paginatedCryptoOrders.map((cryptoOrder) => {
+
+          <TableBody sx={{ position: 'relative' }}>
+            {cryptoOrders.map((cryptoOrder) => {
               return (
                 <TableRow hover key={cryptoOrder.id}>
                   <TableCell>
@@ -190,10 +169,10 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ cryptoOrders }) => {
                       gutterBottom
                       noWrap
                     >
-                      {cryptoOrder.id}
+                      {cryptoOrder.name}
                     </Typography>
                   </TableCell>
-                  <TableCell>
+                  {/* <TableCell>
                     <Typography
                       variant="body1"
                       fontWeight="bold"
@@ -201,20 +180,9 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ cryptoOrders }) => {
                       gutterBottom
                       noWrap
                     >
-                      {cryptoOrder.username}
+                      {cryptoOrder.total_product}
                     </Typography>
-                  </TableCell>
-                  <TableCell>
-                    <Typography
-                      variant="body1"
-                      fontWeight="bold"
-                      color="text.primary"
-                      gutterBottom
-                      noWrap
-                    >
-                      {cryptoOrder.email}
-                    </Typography>
-                  </TableCell>
+                  </TableCell> */}
 
                   <TableCell align="right">
                     <Typography
@@ -224,46 +192,47 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ cryptoOrders }) => {
                       gutterBottom
                       noWrap
                     >
-                      {formatMoney(cryptoOrder.money)}
+                      {format(new Date(cryptoOrder.created_at), 'dd/MM/yyyy')}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary" noWrap>
+                      {format(new Date(cryptoOrder.updated_at), ' HH:mm:ss')}
                     </Typography>
                   </TableCell>
-                  <TableCell align="right">
-                    {getStatusLabel(cryptoOrder.role)}
-                  </TableCell>
-                  <TableCell align="right">
-                    {cryptoOrder.role !== 'ADMIN' && (
-                      <Tooltip title="Đổi role" arrow>
-                        <IconButton
-                          sx={{
-                            '&:hover': {
-                              background: theme.colors.primary.lighter
-                            },
-                            color: theme.palette.primary.main
-                          }}
-                          color="inherit"
-                          size="small"
-                        >
-                          <EditTag
-                            title="Sửa role"
-                            role={cryptoOrder.role}
-                            id={cryptoOrder.id}
-                            type={cryptoOrder.account_type}
-                            bonus={cryptoOrder.bonus}
-                          />
-                        </IconButton>
-                      </Tooltip>
-                    )}
 
-                    <Tooltip title="Sửa tiền" arrow>
+                  <TableCell align="right">
+                    <Tooltip title="Edit Order" arrow>
                       <IconButton
                         sx={{
-                          '&:hover': { background: theme.colors.error.lighter },
+                          '&:hover': {
+                            background: theme.colors.primary.lighter
+                          },
+                          color: theme.palette.primary.main
+                        }}
+                        color="inherit"
+                        size="small"
+                      >
+                        <EditAccount
+                          title="Sửa tài khoản"
+                          slug={cryptoOrder.slug}
+                        />
+                      </IconButton>
+                    </Tooltip>
+
+                    <Tooltip title="Delete Order" arrow>
+                      <IconButton
+                        sx={{
+                          '&:hover': {
+                            background: theme.colors.error.lighter
+                          },
                           color: theme.palette.error.main
                         }}
                         color="inherit"
                         size="small"
                       >
-                        <ChangeCoin title="Sửa tiền" id={cryptoOrder.id} />
+                        <DeleteAccount
+                          title="Xóa tài khoản"
+                          slug={cryptoOrder.slug}
+                        />
                       </IconButton>
                     </Tooltip>
                   </TableCell>
@@ -276,7 +245,7 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ cryptoOrders }) => {
       <Box p={2}>
         <TablePagination
           component="div"
-          count={filteredCryptoOrders.length}
+          count={cryptoOrders.length}
           onPageChange={handlePageChange}
           onRowsPerPageChange={handleLimitChange}
           page={page}

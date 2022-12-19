@@ -113,7 +113,7 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children }) => {
                   <Link href={'/topup-genshin'}>Nạp game</Link>
                 </li>
                 <li>
-                  <Link href={'reputation'}>Check uy tín</Link>
+                  <Link href={'/reputation'}>Check uy tín</Link>
                 </li>
               </ul>
             </Box>
@@ -143,7 +143,7 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children }) => {
                     <Link href={'/topup-genshin'}>Nạp game</Link>
                   </li>
                   <li>
-                    <Link href={'reputation'}>Check uy tín</Link>
+                    <Link href={'/reputation'}>Check uy tín</Link>
                   </li>
                   <li>
                     <Link href={'https://m.me/103780805920496'}>
