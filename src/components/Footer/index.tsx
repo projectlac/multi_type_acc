@@ -95,14 +95,14 @@ function Footer() {
             </Typography>
             <p className="footer-p">
               Hotline:{' '}
-              <Link href={'tel:0904448980'}>
-                <b>0904448980</b>
+              <Link href={'tel:0372790362'}>
+                <b>0372790362</b>
               </Link>
             </p>{' '}
             <p className="footer-p">
               Zalo:{' '}
-              <Link href={'https://zalo.me/0904448980'}>
-                <b>0904448980</b>
+              <Link href={'https://zalo.me/0372790362'}>
+                <b>0372790362</b>
               </Link>
             </p>
           </Grid>
