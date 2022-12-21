@@ -30,6 +30,7 @@ function DetailProduct({ post }) {
   const [nav2, setNav2] = useState();
   const [openDialog, setOpenDialog] = useState<boolean>(false);
   const [pending, setPending] = useState(false);
+  const [quanlity, setQuanlity] = useState<number>(1);
   const [data, setData] = useState({
     amount: 0,
     avatar: '',
@@ -42,6 +43,13 @@ function DetailProduct({ post }) {
     slug: '',
     listImage: []
   });
+
+  const increment = () => {
+    setQuanlity((prev) => prev + 1);
+  };
+  const decrement = () => {
+    setQuanlity((prev) => (prev === 1 ? prev : prev - 1));
+  };
   useEffect(() => {
     const { images, avatar } = post;
     let raw = JSON.parse(images);
@@ -211,6 +219,69 @@ function DetailProduct({ post }) {
               >
                 Giá: {formatMoney(data.price)} VNĐ
               </Typography>
+              <Box
+                className="quantity-input"
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  boxShadow:
+                    '0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)',
+                  borderRadius: '3px',
+                  '&:focus': {
+                    background: 'red'
+                  },
+                  '&__modifier, &__screen': {
+                    userSelect: 'none',
+                    outline: 'none'
+                  },
+                  '&__modifier': {
+                    padding: '.7rem',
+                    width: '3rem',
+                    fontSize: '1.5rem',
+                    background: '#f3f3f3',
+                    color: '#888',
+                    border: ' 0 solid #dbdbdb',
+                    textAlign: 'center',
+                    textShadow: '0 1px 0 rgba(#fff, .6)',
+                    cursor: 'pointer',
+                    '&--left': {
+                      borderRadius: '3px 0 0 3px'
+                    },
+
+                    '&--right': {
+                      borderRadius: '0 3px 3px 0'
+                    }
+                  },
+                  '&__screen': {
+                    padding: '.7rem',
+                    fontSize: '1.5rem',
+                    border: '0',
+                    borderTop: ' 0 solid #dbdbdb',
+                    borderBottom: ' 0 solid #dbdbdb',
+                    textAlign: 'center'
+                  }
+                }}
+              >
+                <button
+                  className="quantity-input__modifier quantity-input__modifier--left"
+                  onClick={decrement}
+                >
+                  &mdash;
+                </button>
+                <input
+                  className="quantity-input__screen"
+                  type="text"
+                  value={quanlity}
+                  readOnly
+                />
+                <button
+                  className="quantity-input__modifier quantity-input__modifier--right"
+                  onClick={increment}
+                >
+                  &#xff0b;
+                </button>
+              </Box>
               <Box
                 sx={{
                   display: 'flex'
