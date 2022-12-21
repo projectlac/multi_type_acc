@@ -1,8 +1,6 @@
-import FilterAccount from '@/components/Common/Filter/FilterAccount';
 import OgTag from '@/components/Common/OgTag';
 import PaginationPage from '@/components/Common/PaginationPage';
 import TitleSpecial from '@/components/Common/TitleSpecial';
-import FilterVip from '@/components/Shop/Filters/FilterVip';
 import ItemsShop from '@/components/Shop/Items/ItemsShop';
 import BaseLayout from '@/layouts/BaseLayout';
 import { Box, Container, Grid } from '@mui/material';
@@ -12,6 +10,8 @@ import { IProduct } from 'model/product';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { ReactElement, useEffect, useState } from 'react';
+import ye from '../../src/assets/images/Character_Yelan_Portrait.webp';
+import shen from '../../src/assets/images/shenhe.png';
 
 interface IVipAccFilter {
   priceSort: boolean | '';
@@ -87,18 +87,36 @@ function Shop() {
       </Head>
 
       <Container maxWidth="lg" sx={{ mt: 15 }}>
-        <TitleSpecial>Account Vip</TitleSpecial>
+        <TitleSpecial>Shop phụ kiện</TitleSpecial>
+        <Box
+          sx={{
+            background: `url(${ye})`,
+            width: '430px',
+            height: '540px',
+            position: 'fixed',
+            zIndex: '3',
+            backgroundRepeat: 'no-repeat',
+            right: '0',
+            bottom: '0',
+            display: { md: 'block', xs: 'none' }
+          }}
+        ></Box>
+        <Box
+          sx={{
+            background: `url(${shen})`,
+            width: '356px',
+            height: '515px',
+            position: 'fixed',
+            zIndex: '3',
+            backgroundPosition: 'contain',
+            backgroundRepeat: 'no-repeat',
+            left: '0',
+            bottom: '0',
+            display: { md: 'block', xs: 'none' }
+          }}
+        ></Box>
         <Box py={3}>
           <Grid container columnSpacing={2}>
-            {/* <Grid item xs={12} md={3}>
-              <FilterAccount open={open} toggleOpen={toggleOpen}>
-                <FilterVip
-                  handleFilter={handleFilter}
-                  toggleOpen={toggleOpen}
-                />
-              </FilterAccount>
-            </Grid> */}
-
             <Grid item xs={12} md={12} id="scrollTo">
               <Grid container columnSpacing={1.7} rowSpacing={2}>
                 {data.map((d, i) => {

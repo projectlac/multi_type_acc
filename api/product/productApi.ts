@@ -27,3 +27,8 @@ export const getProductSale  = (limit:number, offset:number) => {
 export const getProductHot  = (limit:number, offset:number) => {
     return api.get(`/Product?limit=${limit}&offset=${offset}`);
 };
+export const buyProduct  = ( receiver:string, delivery_address:string, phone:string, description:string, details:any) => {
+    return api.post(`/order/create`,{receiver, delivery_address, phone, description, details})
+
+
+}

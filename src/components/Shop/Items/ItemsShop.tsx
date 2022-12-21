@@ -1,8 +1,9 @@
 import bg from '@/assets/images/da-ban.png';
 import formatMoney from '@/utility/formatMoney';
 import { Box, Card, Divider, Grid, Typography } from '@mui/material';
-import { ITag } from 'model/item';
 import Link from 'next/link';
+import MagicBox from './MagicBox';
+import frame from '../../../assets/images/def0lr4-7907e9a5-3893-470b-bce4-8cc684340980.png';
 interface IProps {
   title: string;
   url: string;
@@ -14,8 +15,9 @@ function ItemsShop({ title, url, avatar, price, amount }: IProps) {
   return (
     <Card
       sx={{
-        // background: '#fff',
+        background: '#fbfbfb',
         width: '100%',
+        height: '400px',
         // background: `url(${bg})`,
         backgroundSize: 'cover',
         boxShadow: 'none',
@@ -27,17 +29,24 @@ function ItemsShop({ title, url, avatar, price, amount }: IProps) {
         borderRadius: '5px',
         transition: 'all 0.5s',
         '&:hover': {
-          transform: amount === 0 ? 'none' : 'scale(1.05)',
+          // transform: amount === 0 ? 'none' : 'scale(1.05)',
           '& .eff:before': {
             WebkitAnimation: 'shine .75s',
             animation: 'shine .75s'
           }
         },
-        position: 'relative',
-        background:
-          'linear-gradient(90deg, rgba(228,214,200,1) 0%, rgba(239,231,225,1) 50%, rgba(228,214,200,1) 100%)'
+        position: 'relative'
+        // background:
+        //   'linear-gradient(90deg, rgba(228,214,200,1) 0%, rgba(239,231,225,1) 50%, rgba(228,214,200,1) 100%)'
       }}
     >
+      <Box
+        sx={{
+          position: 'absolute',
+          backgroundImage: `url(${frame})`,
+          backgroundSize: 'contain'
+        }}
+      ></Box>
       {amount === 0 && (
         <Box
           sx={{
@@ -63,11 +72,12 @@ function ItemsShop({ title, url, avatar, price, amount }: IProps) {
             backgroundColor: '#fff',
             borderRadius: '5px',
             position: 'relative',
-            overflow: 'hidden',
+            // overflow: 'hidden',
             cursor: 'pointer',
             backgroundSize: 'contain',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
+            border: '1px solid #ddd',
             '&:before': {
               position: 'absolute',
               top: '0',
@@ -113,6 +123,7 @@ function ItemsShop({ title, url, avatar, price, amount }: IProps) {
             {title}
           </Typography>
         </Link>{' '}
+        <MagicBox linkTiktok="" slug={url} />
         <Divider sx={{ my: 1, mt: 'auto' }} />
         <Grid container columnSpacing={1.5}>
           <Grid item xs={6}>
@@ -141,8 +152,8 @@ function ItemsShop({ title, url, avatar, price, amount }: IProps) {
             </Typography>
           </Grid>
         </Grid>
-        <Divider sx={{ mt: 1, mb: 1.5 }} />
-        <Box
+        {/* <Divider sx={{ mt: 1, mb: 1.5 }} /> */}
+        {/* <Box
           textAlign={'center'}
           sx={{
             color: 'secondary',
@@ -170,7 +181,7 @@ function ItemsShop({ title, url, avatar, price, amount }: IProps) {
           }}
         >
           Xem thêm
-        </Box>
+        </Box> */}
       </Box>
     </Card>
   );
