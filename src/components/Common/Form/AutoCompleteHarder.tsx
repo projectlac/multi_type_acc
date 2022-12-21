@@ -29,6 +29,7 @@ function AutoCompleteHarder({
 
   useEffect(() => {
     setInputValueHero(defaultValue);
+    console.log(defaultValue);
   }, [data, trigger]);
   return (
     <Autocomplete
@@ -43,7 +44,9 @@ function AutoCompleteHarder({
         // let temp = newValue.map((d) => d.desc);
         handleSelected(newValue);
       }}
-      isOptionEqualToValue={(option, value) => option.desc === value.desc}
+      isOptionEqualToValue={(option, value) => {
+        return option.desc === value.desc;
+      }}
       getOptionLabel={(option: IData) => option.desc}
       renderInput={(params) => (
         <TextField

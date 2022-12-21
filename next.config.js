@@ -11,7 +11,7 @@ const redirects = {
     ];
   },
   images: {
-    domains: ['res.cloudinary.com', 'drive.google.com'],
+    domains: ['res.cloudinary.com', 'drive.google.com', 'imagedelivery.net'],
     disableStaticImages: true,
     unoptimized: true
   },

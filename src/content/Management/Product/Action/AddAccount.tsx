@@ -11,10 +11,11 @@ import * as yup from 'yup';
 import TinyEditor from '@/components/Common/Editor/TinyEditor';
 import AutoCompleteHarder from '@/components/Common/Form/AutoCompleteHarder';
 import Basic from '@/components/Dropzone/StyledDropzone';
-// import { useAuth } from '@/contexts/AuthGuard';
+import { useAuth } from '@/contexts/AuthGuard';
 import { getCategory } from 'api/category/categoryApi';
 // import { addProduct } from 'api/product/productApi';
 import { Atribute } from 'model/product';
+import { addProduct } from 'api/product/productApi';
 // import axios from 'axios';
 // import { uploadImage } from 'api/apiUploadImage/apiCloudflare';
 interface IEdit {
@@ -23,15 +24,16 @@ interface IEdit {
 
 const validationSchema = yup.object({
   name: yup.string().required('Trường này là bắt buộc'),
-
   description: yup.string().required('Trường này là thuộc tính bắt buộc'),
   file: yup.mixed().required('File is required'),
   amount: yup.number().required('Trường này là thuộc tính bắt buộc'),
+  price: yup.number().required('Trường này là thuộc tính bắt buộc'),
+
   category: yup.array().min(1)
 });
 const initForm = {
   name: '',
-
+  price: 0,
   description: '',
   file: null,
   amount: 0,
@@ -39,7 +41,7 @@ const initForm = {
 };
 
 function AddAccount({ title }: IEdit) {
-  // const { handleSetMessage, updateSuccess } = useAuth();
+  const { handleSetMessage, updateSuccess } = useAuth();
   const [category, setCategory] = useState([]);
   const [openDialog, setOpenDialog] = useState<boolean>(false);
   const [preview, setPreview] = useState<string[]>([]);
@@ -80,60 +82,43 @@ function AddAccount({ title }: IEdit) {
   }, [openDialog]);
 
   const onSubmit = async (values, { resetForm }) => {
-    // const { name, description, amount, file, category } = values;
-    // const formData = new FormData();
-    // formData.append('files', file[0]);
-    // // uploadImage(formData).then((res) => console.log(res));
-    // fetch(
-    //   'https://api.cloudflare.com/client/v4/accounts/a992b8e95ea1f85b0d9662181972b82c/images/v1',
-    //   {
-    //     method: 'POST', // or 'PUT'
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //       Authorization: 'Bearer NmSZK5-VYFxtyRL-ebyi67zUcwEJZrndCFIKfNbV'
-    //     },
-    //     body: formData
-    //   }
-    // ).then((response) => response.json());
-    // formData.append('name', name);
-    // formData.append('description', description);
-    // formData.append('amount', amount);
-    // formData.append(
-    //   'category',
-    //   category.map((d) => d.slug)
-    // );
-    // axios
-    //   .all([
-    //     Array.from(file).forEach((file: File) => {
-    //       const formData = new FormData();
-    //       formData.append('files', file);
-    //       uploadImage(formData);
-    //     })
-    //   ])
-    //   .then((responses) => {
-    //     console.log(responses);
-    //   });
-    // Array.from(detail).forEach((d: any) => {
-    //   formData.append(`detail[price]`, d && d.price);
-    // });
-    // file && formData.append('avatar', file);
-    // try {
-    //   await addProduct(formData).then(() => {
-    //     handleSetMessage({
-    //       type: 'success',
-    //       message: `Tạo sản phẩm thành công`
-    //     });
-    //     handleCloseDialog();
-    //     resetForm();
-    //     setPreview([]);
-    //     updateSuccess();
-    //   });
-    // } catch (error) {
-    //   handleSetMessage({
-    //     type: 'error',
-    //     message: 'Có lỗi xảy ra, vui lòng kiểm tra lại thông tin nhập'
-    //   });
-    // }
+    const { name, description, price, amount, file, category } = values;
+    const formData = new FormData();
+
+    formData.append('name', name);
+    formData.append('price', price);
+
+    formData.append('description', description);
+    formData.append('amount', amount);
+    formData.append(
+      'categorySlug',
+      category.map((d) => d.slug)
+    );
+
+    file && formData.append('avatar', file[0]);
+    if (file.length > 1) {
+      for (let index = 1; index <= file.length - 1; index++) {
+        formData.append('images', file[index]);
+      }
+    }
+
+    try {
+      await addProduct(formData).then(() => {
+        handleSetMessage({
+          type: 'success',
+          message: `Tạo sản phẩm thành công`
+        });
+        handleCloseDialog();
+        resetForm();
+        setPreview([]);
+        updateSuccess();
+      });
+    } catch (error) {
+      handleSetMessage({
+        type: 'error',
+        message: error.response.data.message
+      });
+    }
   };
   const changeContent = (data: string) => {
     formik.handleChange({
@@ -170,6 +155,33 @@ function AddAccount({ title }: IEdit) {
                 name="name"
                 type="text"
               />
+            </Grid>
+
+            <Grid item md={12} xs={12}>
+              <Grid container columnSpacing={2}>
+                <Grid item md={6}>
+                  <TextField
+                    formik={formik}
+                    label="Giá"
+                    placeholder=""
+                    variant="outlined"
+                    fullWidth
+                    name="price"
+                    type="number"
+                  />
+                </Grid>
+                <Grid item md={6}>
+                  <TextField
+                    formik={formik}
+                    label="Số lượng"
+                    placeholder=""
+                    variant="outlined"
+                    fullWidth
+                    name="amount"
+                    type="number"
+                  />
+                </Grid>
+              </Grid>
             </Grid>
 
             <Grid item md={12} xs={12}>

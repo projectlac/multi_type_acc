@@ -97,7 +97,7 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ cryptoOrders }) => {
           <TableBody>
             {paginatedCryptoOrders.map((cryptoOrder) => {
               return (
-                <TableRow hover key={cryptoOrder._id}>
+                <TableRow hover key={cryptoOrder.id}>
                   <TableCell>
                     <Typography
                       variant="body1"
@@ -110,19 +110,15 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ cryptoOrders }) => {
                     </Typography>
                   </TableCell>
                   <TableCell>
-                    {cryptoOrder.detail.length > 0 &&
-                      cryptoOrder.detail.map((d, i) => (
-                        <Typography
-                          key={i}
-                          variant="body1"
-                          fontWeight="bold"
-                          color="text.primary"
-                          gutterBottom
-                          noWrap
-                        >
-                          Size: {d.size} - Giá: {d.price}
-                        </Typography>
-                      ))}
+                    <Typography
+                      variant="body1"
+                      fontWeight="bold"
+                      color="text.primary"
+                      gutterBottom
+                      noWrap
+                    >
+                      Số lượng: {cryptoOrder.amount} - Giá: {cryptoOrder.price}
+                    </Typography>
                   </TableCell>
                   {/* <TableCell>
                     <Typography
@@ -166,10 +162,10 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ cryptoOrders }) => {
                       gutterBottom
                       noWrap
                     >
-                      {format(new Date(cryptoOrder.createdAt), 'dd/MM/yyyy')}
+                      {format(new Date(cryptoOrder.created_at), 'dd/MM/yyyy')}
                     </Typography>
                     <Typography variant="body2" color="text.secondary" noWrap>
-                      {format(new Date(cryptoOrder.createdAt), ' HH:mm:ss')}
+                      {format(new Date(cryptoOrder.created_at), ' HH:mm:ss')}
                     </Typography>
                   </TableCell>
 
