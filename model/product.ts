@@ -13,6 +13,7 @@ export interface IProduct {
   updated_at: string;
   categories: Category[];
   slug: string;
+  avatar?: string;
 }
 export interface ImageProduct {
   createdAt: string;
