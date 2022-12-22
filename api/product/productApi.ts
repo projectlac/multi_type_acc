@@ -32,3 +32,7 @@ export const buyProduct  = ( receiver:string, delivery_address:string, phone:str
 
 
 }
+
+export const queryAllProductForSiteMap = () => {
+    return api.get(`/Product?limit=9999&offset=0`);
+  };

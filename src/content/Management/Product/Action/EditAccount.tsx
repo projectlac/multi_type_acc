@@ -21,6 +21,7 @@ interface IEdit {
 
 const validationSchema = yup.object({
   name: yup.string().required('Trường này là bắt buộc'),
+  link: yup.string().required('Trường này là bắt buộc'),
 
   description: yup.string().required('Trường này là thuộc tính bắt buộc'),
   file: yup.mixed().notRequired(),
@@ -43,6 +44,7 @@ function EditAccount({ title, slug }: IEdit) {
     price: '',
     description: '',
     file: null,
+    link: '',
     amount: 0,
     category: []
   });
@@ -87,7 +89,8 @@ function EditAccount({ title, slug }: IEdit) {
             price: data.price,
             file: null,
             amount: data.amount,
-            category: [{ desc: data.category.name, slug: data.category.slug }]
+            category: [{ desc: data.category.name, slug: data.category.slug }],
+            link: data.link
           };
           let avatar = [data.avatar];
           let image = JSON.parse(data.images);
@@ -103,12 +106,12 @@ function EditAccount({ title, slug }: IEdit) {
   }, [openDialog]);
 
   const onSubmit = async (values, { resetForm }) => {
-    const { name, description, price, amount, file, category } = values;
+    const { name, description, price, link, amount, file, category } = values;
 
     const formData = new FormData();
     formData.append('name', name);
     formData.append('price', price);
-
+    formData.append('link', link);
     formData.append('description', description);
     formData.append('amount', amount);
     formData.append(
@@ -195,6 +198,17 @@ function EditAccount({ title, slug }: IEdit) {
                   />
                 </Grid>
               </Grid>
+            </Grid>
+            <Grid item md={12} xs={12}>
+              <TextField
+                formik={formik}
+                label="Link Tiktok"
+                placeholder=""
+                variant="outlined"
+                fullWidth
+                name="link"
+                type="text"
+              />
             </Grid>
             <Grid item md={12} xs={12}>
               <Typography>Mô tả</Typography>

@@ -39,6 +39,7 @@ function DetailProduct({ post }) {
     id: 0,
     images: [],
     name: '',
+    link: '',
     price: '',
     slug: '',
     listImage: []
@@ -56,6 +57,7 @@ function DetailProduct({ post }) {
     let imageList = [avatar];
     imageList.concat(raw);
     let temp = { ...post, listImage: imageList };
+
     // console.log(temp);
 
     setData(temp);
@@ -223,43 +225,52 @@ function DetailProduct({ post }) {
                 className="quantity-input"
                 sx={{
                   display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  boxShadow:
-                    '0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)',
-                  borderRadius: '3px',
+                  justifyContent: 'flext-start  ',
+                  alignItems: 'flext-start',
+                  mb: 3,
                   '&:focus': {
                     background: 'red'
                   },
-                  '&__modifier, &__screen': {
+                  '.quantity-input__modifier, .quantity-input__screen': {
                     userSelect: 'none',
                     outline: 'none'
                   },
-                  '&__modifier': {
-                    padding: '.7rem',
-                    width: '3rem',
-                    fontSize: '1.5rem',
+                  '.quantity-input__modifier': {
+                    width: '35px',
+                    fontSize: '18px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
                     background: '#f3f3f3',
                     color: '#888',
                     border: ' 0 solid #dbdbdb',
                     textAlign: 'center',
                     textShadow: '0 1px 0 rgba(#fff, .6)',
                     cursor: 'pointer',
+                    height: '35px',
+                    transition: 'all 0.5s',
+                    '&:hover': {
+                      background: '#d1d1d1',
+                      color: '#000'
+                    },
+
                     '&--left': {
-                      borderRadius: '3px 0 0 3px'
+                      borderRadius: '10px 0 0 10px'
                     },
 
                     '&--right': {
-                      borderRadius: '0 3px 3px 0'
+                      borderRadius: '0 10px 10px 0'
                     }
                   },
-                  '&__screen': {
+                  '.quantity-input__screen': {
                     padding: '.7rem',
-                    fontSize: '1.5rem',
+                    fontSize: '1rem',
                     border: '0',
                     borderTop: ' 0 solid #dbdbdb',
                     borderBottom: ' 0 solid #dbdbdb',
-                    textAlign: 'center'
+                    textAlign: 'center',
+                    width: '35px',
+                    height: '35px'
                   }
                 }}
               >
@@ -267,7 +278,7 @@ function DetailProduct({ post }) {
                   className="quantity-input__modifier quantity-input__modifier--left"
                   onClick={decrement}
                 >
-                  &mdash;
+                  -
                 </button>
                 <input
                   className="quantity-input__screen"
@@ -279,7 +290,7 @@ function DetailProduct({ post }) {
                   className="quantity-input__modifier quantity-input__modifier--right"
                   onClick={increment}
                 >
-                  &#xff0b;
+                  +
                 </button>
               </Box>
               <Box
@@ -378,8 +389,13 @@ function DetailProduct({ post }) {
                     </Grid>
                   </FormatForm>
                 </DialogCommonWithoutIcon>
-                <Button variant="contained" color="info" sx={{ ml: 3 }}>
-                  Đi tới Tiktok Shop
+
+                <Button
+                  variant="contained"
+                  color="info"
+                  sx={{ ml: 3, '& a': { color: '#fff' } }}
+                >
+                  <a href={data.link}> Đi tới Tiktok Shop </a>
                 </Button>
               </Box>
               {/* <Button variant="contained" sx={{ mr: 2 }}>

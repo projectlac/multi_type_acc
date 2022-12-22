@@ -48,7 +48,10 @@ const MobileMenu = styled(Box)({
       padding: '7px 5px',
       borderLeft: '5px solid red',
       margin: '7px 0',
-      borderBottom: '1px solid #00000021'
+      borderBottom: '1px solid #00000021',
+      '& a': {
+        fontSize: '15px'
+      }
     }
   },
   '& svg': {
@@ -115,6 +118,9 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children }) => {
                 <li>
                   <Link href={'/reputation'}>Check uy tín</Link>
                 </li>
+                <li>
+                  <Link href={'/shop'}>Shop</Link>
+                </li>
               </ul>
             </Box>
             <Box sx={{ display: { xs: 'block', md: 'none' } }}>
@@ -144,6 +150,9 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children }) => {
                   </li>
                   <li>
                     <Link href={'/reputation'}>Check uy tín</Link>
+                  </li>
+                  <li>
+                    <Link href={'/shop'}>Shop</Link>
                   </li>
                   <li>
                     <Link href={'https://m.me/103780805920496'}>

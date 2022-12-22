@@ -10,8 +10,9 @@ interface IProps {
   avatar: string;
   price: string;
   amount: number;
+  link: string;
 }
-function ItemsShop({ title, url, avatar, price, amount }: IProps) {
+function ItemsShop({ title, url, avatar, link, price, amount }: IProps) {
   return (
     <Card
       sx={{
@@ -123,7 +124,7 @@ function ItemsShop({ title, url, avatar, price, amount }: IProps) {
             {title}
           </Typography>
         </Link>{' '}
-        <MagicBox linkTiktok="" slug={url} />
+        <MagicBox linkTiktok={link} slug={url} />
         <Divider sx={{ my: 1, mt: 'auto' }} />
         <Grid container columnSpacing={1.5}>
           <Grid item xs={6}>

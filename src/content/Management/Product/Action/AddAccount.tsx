@@ -3,7 +3,7 @@ import useCustomForm from '@/components/Common/Form/Form';
 import FormatForm from '@/components/Common/Form/FormatForm';
 import TextField from '@/components/Common/Form/TextField';
 import AddTwoToneIcon from '@mui/icons-material/AddTwoTone';
-import { Box, Button, Grid, TextField as TF, Typography } from '@mui/material';
+import { Box, Button, Grid, Typography } from '@mui/material';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import * as yup from 'yup';
@@ -14,7 +14,6 @@ import Basic from '@/components/Dropzone/StyledDropzone';
 import { useAuth } from '@/contexts/AuthGuard';
 import { getCategory } from 'api/category/categoryApi';
 // import { addProduct } from 'api/product/productApi';
-import { Atribute } from 'model/product';
 import { addProduct } from 'api/product/productApi';
 // import axios from 'axios';
 // import { uploadImage } from 'api/apiUploadImage/apiCloudflare';
@@ -28,6 +27,7 @@ const validationSchema = yup.object({
   file: yup.mixed().required('File is required'),
   amount: yup.number().required('Trường này là thuộc tính bắt buộc'),
   price: yup.number().required('Trường này là thuộc tính bắt buộc'),
+  link: yup.string().required('Trường này là thuộc tính bắt buộc'),
 
   category: yup.array().min(1)
 });
@@ -36,6 +36,7 @@ const initForm = {
   price: 0,
   description: '',
   file: null,
+  link: '',
   amount: 0,
   category: []
 };
@@ -82,11 +83,12 @@ function AddAccount({ title }: IEdit) {
   }, [openDialog]);
 
   const onSubmit = async (values, { resetForm }) => {
-    const { name, description, price, amount, file, category } = values;
+    const { name, description, price, link, amount, file, category } = values;
     const formData = new FormData();
 
     formData.append('name', name);
     formData.append('price', price);
+    formData.append('link', link);
 
     formData.append('description', description);
     formData.append('amount', amount);
@@ -183,7 +185,17 @@ function AddAccount({ title }: IEdit) {
                 </Grid>
               </Grid>
             </Grid>
-
+            <Grid item md={12} xs={12}>
+              <TextField
+                formik={formik}
+                label="Link Tiktok"
+                placeholder=""
+                variant="outlined"
+                fullWidth
+                name="link"
+                type="text"
+              />
+            </Grid>
             <Grid item md={12} xs={12}>
               <Typography>Mô tả</Typography>
               <TinyEditor changeBody={changeContent} defaultValue={''} />

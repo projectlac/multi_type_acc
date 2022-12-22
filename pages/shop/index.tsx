@@ -137,6 +137,7 @@ function Shop() {
                         url={`/shop/${d.slug}`}
                         avatar={d.avatar}
                         price={d.price}
+                        link={d.link}
                       ></ItemsShop>
                     </Grid>
                   );

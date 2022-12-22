@@ -95,7 +95,8 @@ function ProductCollectionItem({
         <Grid container columnSpacing={1.5}>
           <Grid item md={6} xs={6}>
             <Typography fontSize={15} fontWeight="600" component={'h5'}>
-              Số tài khoản <br />{' '}
+              {data?.type === 'PRODUCT' ? 'Số sản phẩm' : 'Số tài khoản '}
+              <br />
               <span
                 style={{ fontSize: '17px', fontWeight: 'bold', color: '#d33' }}
               >

@@ -14,6 +14,7 @@ export interface IProduct {
   categories: Category[];
   slug: string;
   avatar?: string;
+  link:string;
 }
 export interface ImageProduct {
   createdAt: string;

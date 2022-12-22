@@ -1,5 +1,7 @@
 import random from '@/assets/images/mainCategory/310172264_428812392669349_4896007792527675904_n.jpg';
 import napgame from '@/assets/images/mainCategory/310320905_485170040201744_4282135316084233675_n.jpg';
+import shopphukien from '@/assets/images/1d627-16484384414995-1920.webp';
+
 import rrr from '@/assets/images/mainCategory/310545249_770219224063920_253246776766894058_n.jpg';
 import bgVip from '@/assets/images/mainCategory/310860207_1164961827704035_4343141035597341049_n.jpg';
 import news from '@/assets/images/mainCategory/9bf1a5932675ff2ba664.jpg';
@@ -21,6 +23,7 @@ function ProductCollection() {
   const [dataAccRandom, setDataAccRandom] = useState<IAll>();
   const [dataAccReroll, setDataAccReroll] = useState<IAll>();
   const [dataAccNew, setDataAccNew] = useState<IAll>();
+  const [dataProduct, setDataProduct] = useState<IAll>();
 
   const [dataDeposit, setDataDeposit] = useState<any>({
     pending: 0,
@@ -40,6 +43,7 @@ function ProductCollection() {
         if (d.type === 'REROLL') setDataAccReroll(gianDoi(d, 64));
         if (d.type === 'RANDOM') setDataAccRandom(gianDoi(d, 103));
         if (d.type === 'NEW') setDataAccNew(gianDoi(d, 1346));
+        if (d.type === 'PRODUCT') setDataProduct(gianDoi(d, 209));
       });
     });
     getDepositHome().then((res) => {
@@ -185,6 +189,14 @@ function ProductCollection() {
             </Box>
           </Box>
         </Card>
+      </Grid>
+      <Grid item md={3} sm={6} xs={12}>
+        <ProductCollectionItem
+          title="Shop phụ kiện"
+          url="/shop"
+          image={shopphukien}
+          data={dataProduct}
+        />
       </Grid>
     </Grid>
   );
