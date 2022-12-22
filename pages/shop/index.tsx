@@ -46,7 +46,7 @@ function Shop() {
   };
 
   useEffect(() => {
-    let tempPage = pageHistory ? (+pageHistory - 1) * 9 : 0;
+    let tempPage = pageHistory ? (+pageHistory - 1) * 12 : 0;
     // var retrievedObject = localStorage.getItem('filter');
     // let filter = JSON.parse(retrievedObject);
 
@@ -143,9 +143,9 @@ function Shop() {
                   );
                 })}
               </Grid>
-              {total > 9 && (
+              {total > 12 && (
                 <PaginationPage
-                  numberOfPage={Math.ceil(total / 9)}
+                  numberOfPage={Math.ceil(total / 12)}
                   onChange={handlePage}
                   index={+pageHistory}
                 />
