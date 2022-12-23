@@ -94,33 +94,7 @@ function Shop() {
 
       <Container maxWidth="lg" sx={{ mt: 15 }}>
         <TitleSpecial>Shop phụ kiện</TitleSpecial>
-        {/* <Box
-          sx={{
-            background: `url(${ye})`,
-            width: '430px',
-            height: '540px',
-            position: 'fixed',
-            zIndex: '3',
-            backgroundRepeat: 'no-repeat',
-            right: '0',
-            bottom: '0',
-            display: { md: 'block', xs: 'none' }
-          }}
-        ></Box>
-        <Box
-          sx={{
-            background: `url(${shen})`,
-            width: '356px',
-            height: '515px',
-            position: 'fixed',
-            zIndex: '3',
-            backgroundPosition: 'contain',
-            backgroundRepeat: 'no-repeat',
-            left: '0',
-            bottom: '0',
-            display: { md: 'block', xs: 'none' }
-          }}
-        ></Box> */}
+
         <Box py={3}>
           <Card
             sx={{

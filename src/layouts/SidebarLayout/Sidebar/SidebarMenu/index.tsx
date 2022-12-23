@@ -374,6 +374,23 @@ function SidebarMenu() {
                     </Button>
                   </NextLink>
                 </ListItem>
+                <ListItem component="div">
+                  <NextLink href="/management/shop/order" passHref>
+                    <Button
+                      className={
+                        currentRoute === '/management/shop/order'
+                          ? 'active'
+                          : ''
+                      }
+                      disableRipple
+                      component="a"
+                      onClick={closeSidebar}
+                      startIcon={<BrightnessLowTwoToneIcon />}
+                    >
+                      Quản lý đơn hàng
+                    </Button>
+                  </NextLink>
+                </ListItem>
               </List>
             </SubMenuWrapper>
           </List>

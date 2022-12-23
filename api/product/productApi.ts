@@ -57,3 +57,11 @@ export const buyProduct = (
 export const queryAllProductForSiteMap = () => {
   return api.get(`/Product?limit=9999&offset=0`);
 };
+//////////////////////////////////
+
+export const getOrder = () => {
+  return api.get(`/order`);
+};
+export const updateOrderStart = (id:number , status:string) => {
+  return api.put(`/order/update/${id}`,{status:status});
+};

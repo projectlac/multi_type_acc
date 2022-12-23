@@ -22,3 +22,25 @@ export interface IGetDeposit {
   status: IStatus;
   created_at: string;
 }
+
+export interface IOrder {
+  id:string,
+  receiver: string;
+  delivery_address: string;
+  description: string;
+  details:IDetailOrder[];
+  phone:string;
+  status:IStatus;
+  total:string;
+  created_at: string;
+}
+export interface IDetailOrder {
+  amount: number;
+  id: number;
+  price: string;
+  product:IGift
+}
+export interface IGift {
+  name:string,
+  price:string
+}

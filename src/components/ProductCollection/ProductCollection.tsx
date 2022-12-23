@@ -1,6 +1,6 @@
 import random from '@/assets/images/mainCategory/310172264_428812392669349_4896007792527675904_n.jpg';
 import napgame from '@/assets/images/mainCategory/310320905_485170040201744_4282135316084233675_n.jpg';
-import shopphukien from '@/assets/images/1d627-16484384414995-1920.webp';
+import shopphukien from '@/assets/images/e8287ab33eade6f3bfbc.jpg';
 
 import rrr from '@/assets/images/mainCategory/310545249_770219224063920_253246776766894058_n.jpg';
 import bgVip from '@/assets/images/mainCategory/310860207_1164961827704035_4343141035597341049_n.jpg';
