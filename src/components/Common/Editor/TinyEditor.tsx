@@ -12,11 +12,12 @@ export default function TinyEditor({ changeBody, defaultValue }: TinyProps) {
 
   useEffect(() => {
     editorRef.current = '';
-  }, [update]);
+  }, [update, defaultValue]);
 
   return (
     <>
       <Editor
+        id="tinyeditor"
         apiKey="jvnq0huwvxzja1sev6byqabo1g6qc276no4top15pw2m6odd"
         onInit={(evt, editor) => {
           editorRef.current = editor;

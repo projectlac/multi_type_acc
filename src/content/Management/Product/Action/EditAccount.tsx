@@ -223,7 +223,7 @@ function EditAccount({ title, slug }: IEdit) {
                   trigger={trigger}
                   title="Danh sách danh mục sản phẩm"
                   data={category}
-                  id="create-vip-weapon"
+                  id="create-vip-weapon-product"
                   name="category"
                   formik={formik}
                   defaultValue={defaultData.category}

@@ -19,8 +19,8 @@ import { IProduct } from 'model/product';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { ReactElement, useEffect, useState } from 'react';
-import ye from '../../src/assets/images/Character_Yelan_Portrait.webp';
-import shen from '../../src/assets/images/shenhe.png';
+// import ye from '../../src/assets/images/Character_Yelan_Portrait.webp';
+// import shen from '../../src/assets/images/shenhe.png';
 
 interface IVipAccFilter {
   priceSort: boolean | '';
@@ -94,7 +94,7 @@ function Shop() {
 
       <Container maxWidth="lg" sx={{ mt: 15 }}>
         <TitleSpecial>Shop phụ kiện</TitleSpecial>
-        <Box
+        {/* <Box
           sx={{
             background: `url(${ye})`,
             width: '430px',
@@ -120,7 +120,7 @@ function Shop() {
             bottom: '0',
             display: { md: 'block', xs: 'none' }
           }}
-        ></Box>
+        ></Box> */}
         <Box py={3}>
           <Card
             sx={{

@@ -17,6 +17,7 @@ import { getCategory } from 'api/category/categoryApi';
 import { addProduct } from 'api/product/productApi';
 // import axios from 'axios';
 // import { uploadImage } from 'api/apiUploadImage/apiCloudflare';
+
 interface IEdit {
   title: string;
 }
@@ -44,6 +45,7 @@ const initForm = {
 function AddAccount({ title }: IEdit) {
   const { handleSetMessage, updateSuccess } = useAuth();
   const [category, setCategory] = useState([]);
+  const editorContent: string = '';
   const [openDialog, setOpenDialog] = useState<boolean>(false);
   const [preview, setPreview] = useState<string[]>([]);
   const [trigger, setTrigger] = useState<boolean>(false);
@@ -113,6 +115,12 @@ function AddAccount({ title }: IEdit) {
         handleCloseDialog();
         resetForm();
         setPreview([]);
+        formik.handleChange({
+          target: { name: 'file', value: null }
+        });
+        formik.handleChange({
+          target: { name: 'description', value: '' }
+        });
         updateSuccess();
       });
     } catch (error) {
@@ -198,7 +206,10 @@ function AddAccount({ title }: IEdit) {
             </Grid>
             <Grid item md={12} xs={12}>
               <Typography>Mô tả</Typography>
-              <TinyEditor changeBody={changeContent} defaultValue={''} />
+              <TinyEditor
+                changeBody={changeContent}
+                defaultValue={editorContent}
+              />
             </Grid>
             <Grid item md={12} xs={12}>
               <Box>
