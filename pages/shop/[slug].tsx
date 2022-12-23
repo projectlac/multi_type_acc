@@ -67,7 +67,7 @@ function DetailProduct({ post }) {
   const onSubmit = async (value, { resetForm }) => {
     if (isAuthenticated) {
       const { receiver, delivery_address, phone, description } = value;
-      let details = [{ product: data.slug, amount: 1 }];
+      let details = [{ product: data.slug, amount: quanlity }];
       setPending(true);
       try {
         await buyProduct(
@@ -200,7 +200,7 @@ function DetailProduct({ post }) {
               >
                 {data.name}
               </Typography>
-              <Typography
+              {/* <Typography
                 sx={{
                   fontSize: '17px',
                   fontWeight: '500',
@@ -209,7 +209,7 @@ function DetailProduct({ post }) {
                 }}
               >
                 Số lượng: {data.amount}
-              </Typography>
+              </Typography> */}
 
               <Typography
                 sx={{

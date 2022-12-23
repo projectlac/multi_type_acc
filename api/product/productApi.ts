@@ -24,7 +24,7 @@ export const getProductInShop = (
   sortPrice: string
 ) => {
   return api.get(
-    `/Product?limit=${limit}&offset=${offset}&category=${category}${
+    `/Product?limit=${limit}&offset=${offset}&sortCreatedAt=true&category=${category}${
       sortPrice !== '' ? `&sortPriceAfterSale=${sortPrice} ` : ''
     }`
   );
