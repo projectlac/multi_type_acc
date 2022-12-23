@@ -3,8 +3,17 @@ import PaginationPage from '@/components/Common/PaginationPage';
 import TitleSpecial from '@/components/Common/TitleSpecial';
 import ItemsShop from '@/components/Shop/Items/ItemsShop';
 import BaseLayout from '@/layouts/BaseLayout';
-import { Box, Container, Grid } from '@mui/material';
-import { getProduct } from 'api/product/productApi';
+import {
+  Box,
+  Card,
+  Container,
+  Grid,
+  MenuItem,
+  TextField,
+  Typography
+} from '@mui/material';
+import { getCategory } from 'api/category/categoryApi';
+import { getProductInShop } from 'api/product/productApi';
 // import { queryShop } from 'api/apiAccount/account';
 import { IProduct } from 'model/product';
 import Head from 'next/head';
@@ -27,28 +36,14 @@ function Shop() {
   const { page: pageHistory } = router.query;
 
   const [data, setData] = useState<IProduct[]>([]);
-  const [open, setOpen] = useState<boolean>(false);
-  const [total, setTotal] = useState<number>(0);
 
-  const [filter, setFilter] = useState<IVipAccFilter>({
-    ar: '',
-    server: 'ASIA',
-    rangeMoney: '',
-    hero: '',
-    weapon: '',
-    priceSort: '',
-    keyword: ''
-  });
-  const handleFilter = (data) => {
-    setFilter(data);
-    localStorage.setItem('filter', JSON.stringify(data));
-    router.push(`/account/vip`);
-  };
+  const [category, setCategory] = useState([]);
+  const [total, setTotal] = useState<number>(0);
+  const [filter, setFilter] = useState<string>('');
+  const [sortPrice, setSortPrice] = useState<string>('');
 
   useEffect(() => {
     let tempPage = pageHistory ? (+pageHistory - 1) * 12 : 0;
-    // var retrievedObject = localStorage.getItem('filter');
-    // let filter = JSON.parse(retrievedObject);
 
     executeScroll();
     const param = {
@@ -56,12 +51,17 @@ function Shop() {
       offset: tempPage
     };
 
-    getProduct(param.limit, param.offset).then((res) => {
-      setData(res.data.data);
-      setTotal(res.data.total);
-    });
-  }, [pageHistory, filter]);
+    getProductInShop(param.limit, param.offset, filter, sortPrice).then(
+      (res) => {
+        setData(res.data.data);
+        setTotal(res.data.total);
+      }
+    );
+  }, [pageHistory, filter, sortPrice]);
 
+  useEffect(() => {
+    getCategory().then((res) => setCategory(res.data));
+  }, []);
   // const toggleOpen = () => {
   //   setOpen(!open);
   // };
@@ -79,6 +79,12 @@ function Shop() {
     window.scrollTo({ top: y, behavior: 'smooth' });
   };
 
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setFilter(event.target.value);
+  };
+  const handleChangePrice = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSortPrice(event.target.value);
+  };
   return (
     <Box>
       <Head>
@@ -116,6 +122,65 @@ function Shop() {
           }}
         ></Box>
         <Box py={3}>
+          <Card
+            sx={{
+              padding: '25px',
+              mb: 3,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between'
+            }}
+          >
+            <Box
+              sx={{
+                display: 'flex',
+                alignItems: 'center'
+              }}
+            >
+              <Typography fontSize="17px" fontWeight="600">
+                Lọc theo danh mục sản phẩm:
+              </Typography>
+              <TextField
+                sx={{ ml: 2, minWidth: '200px' }}
+                select
+                defaultValue=""
+                SelectProps={{
+                  displayEmpty: true
+                }}
+                onChange={handleChange}
+              >
+                <MenuItem value={''}>Tất cả</MenuItem>
+                {category.map((option) => (
+                  <MenuItem key={option.id} value={option.slug}>
+                    {option.name}
+                  </MenuItem>
+                ))}
+              </TextField>
+            </Box>
+            <Box
+              sx={{
+                display: 'flex',
+                alignItems: 'center'
+              }}
+            >
+              <Typography fontSize="17px" fontWeight="600">
+                Sắp xếp theo
+              </Typography>
+              <TextField
+                sx={{ ml: 2, minWidth: '200px' }}
+                select
+                defaultValue=""
+                SelectProps={{
+                  displayEmpty: true
+                }}
+                onChange={handleChangePrice}
+              >
+                <MenuItem value={''}>Mặc định</MenuItem>
+                <MenuItem value={'false'}>Tăng dần</MenuItem>
+                <MenuItem value={'true'}>Giảm dần</MenuItem>
+              </TextField>
+            </Box>
+          </Card>
           <Grid container columnSpacing={2}>
             <Grid item xs={12} md={12} id="scrollTo">
               <Grid container columnSpacing={1.7} rowSpacing={2}>
