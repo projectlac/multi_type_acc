@@ -26,7 +26,7 @@ export default function ReputationItem() {
           <span>Lưu ý :</span> <br /> Các Youtuber và Tiktok chỉ đang hợp tác
           quảng cáo cùng shop. <br /> Mọi vấn đề về account và Shop các bạn ib
           cho page qua{' '}
-          <a href="https://m.me/152659528261467" target={'__blank'}>
+          <a href="https://m.me/103780805920496" target={'__blank'}>
             GenshinViet
           </a>{' '}
           để Shop xử lý cho các bạn.
