@@ -56,6 +56,9 @@ export default function CustomizedSnackbars({
         open={open}
         autoHideDuration={6000}
         onClose={handleClose}
+        sx={{
+          zIndex: '9999'
+        }}
       >
         <Alert
           onClose={handleClose}

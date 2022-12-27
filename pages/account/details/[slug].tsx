@@ -27,6 +27,7 @@ interface IDetail {
   price: string;
   images: string;
   desc: string;
+  id: number;
 }
 function DetailAccout({ post }) {
   const { handleSetMessage } = useAuth();
@@ -36,6 +37,7 @@ function DetailAccout({ post }) {
   const { slug } = router.query;
 
   const data: IDetail = {
+    id: post.id,
     ar_level: post.ar_level,
     server: post.server.desc,
     hero: post.heroes,
@@ -117,7 +119,27 @@ function DetailAccout({ post }) {
                 }}
               >
                 <Grid container columnSpacing={1.5} rowSpacing={2}>
-                  <Grid item md={4} xs={4}>
+                  <Grid item md={6} xs={6}>
+                    <Box
+                      textAlign={'center'}
+                      sx={{
+                        color: '#fff'
+                      }}
+                    >
+                      <Typography
+                        sx={{
+                          fontSize: { md: 25, xs: 15 }
+                        }}
+                        fontWeight={'bold'}
+                      >
+                        Mã tài khoản
+                      </Typography>
+                      <Typography fontSize={20} fontWeight={'bold'}>
+                        {data?.id}
+                      </Typography>
+                    </Box>
+                  </Grid>
+                  <Grid item md={6} xs={6}>
                     <Box
                       textAlign={'center'}
                       sx={{
@@ -137,7 +159,7 @@ function DetailAccout({ post }) {
                       </Typography>
                     </Box>
                   </Grid>
-                  <Grid item md={4} xs={4}>
+                  <Grid item md={6} xs={6}>
                     <Box
                       textAlign={'center'}
                       sx={{
@@ -157,7 +179,7 @@ function DetailAccout({ post }) {
                       </Typography>
                     </Box>
                   </Grid>
-                  <Grid item md={4} xs={4}>
+                  <Grid item md={6} xs={6}>
                     <Box
                       textAlign={'center'}
                       sx={{
