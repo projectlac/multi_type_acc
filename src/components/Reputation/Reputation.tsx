@@ -230,7 +230,7 @@ export default function ReputationItem() {
                   }}
                 >
                   <iframe
-                    src="https://www.tiktok.com/embed/7167689591422569755"
+                    src="https://www.tiktok.com/embed/7181651062791736603"
                     allowFullScreen
                     scrolling="no"
                     allow="encrypted-media;"
@@ -248,7 +248,7 @@ export default function ReputationItem() {
                   }}
                 >
                   <iframe
-                    src="https://www.tiktok.com/embed/7167303358674439425"
+                    src="https://www.tiktok.com/embed/7180542569481358618"
                     allowFullScreen
                     scrolling="no"
                     allow="encrypted-media;"
@@ -266,7 +266,7 @@ export default function ReputationItem() {
                   }}
                 >
                   <iframe
-                    src="https://www.tiktok.com/embed/7166561066711862555"
+                    src="https://www.tiktok.com/embed/7178805471157996827"
                     allowFullScreen
                     scrolling="no"
                     allow="encrypted-media;"
@@ -285,7 +285,7 @@ export default function ReputationItem() {
                 >
                   {' '}
                   <iframe
-                    src="https://www.tiktok.com/embed/7165438272053742875"
+                    src="https://www.tiktok.com/embed/7178482412769316123"
                     allowFullScreen
                     scrolling="no"
                     allow="encrypted-media;"
