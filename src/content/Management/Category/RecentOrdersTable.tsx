@@ -28,6 +28,7 @@ import PropTypes from 'prop-types';
 import { ChangeEvent, FC, useState } from 'react';
 import DeleteAccount from './Action/DeleteAccount';
 import EditAccount from './Action/EditAccount';
+
 interface RecentOrdersTableProps {
   className?: string;
   cryptoOrders: Category[];

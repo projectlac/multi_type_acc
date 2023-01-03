@@ -18,7 +18,7 @@ const validationSchema = yup.object({
   name: yup.string().required('Tên tài khoản is required')
 });
 
-function EditAccout({ title, slug }: IEdit) {
+function EditAccount({ title, slug }: IEdit) {
   const { handleSetMessage, updateSuccess } = useAuth();
 
   const [openDialog, setOpenDialog] = useState<boolean>(false);
@@ -106,4 +106,4 @@ function EditAccout({ title, slug }: IEdit) {
   );
 }
 
-export default EditAccout;
+export default EditAccount;
