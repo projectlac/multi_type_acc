@@ -149,36 +149,3 @@ export default AccountVip;
 AccountVip.getLayout = function getLayout(page: ReactElement) {
   return <BaseLayout>{page}</BaseLayout>;
 };
-
-// export const getServerSideProps = async ({ query }) => {
-//   // Fetch the first page as default
-//   const page = query.page || 1;
-//   let userData = null;
-//   const filter = {
-//     ar: '',
-//     server: 'ASIA',
-//     rangeMoney: '',
-//     hero: '',
-//     weapon: '',
-//     priceSort: '',
-//     keyword: ''
-//   };
-
-//   const param1 = {
-//     ...filter,
-//     limit: 9,
-//     offset: page
-//   };
-//   // Fetch data from external API
-//   try {
-//     await queryAccountVip(param1).then((res) => {
-//       console.log(res);
-//     });
-//     userData = await res.json();
-//   } catch (err) {
-//     userData = { error: { message: err.message } };
-//   }
-
-//   // Pass data to the page via props
-//   return { props: { userData } };
-// };

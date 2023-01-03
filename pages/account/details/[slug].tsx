@@ -14,7 +14,7 @@ import { buyAccount, getAccountBySlug } from 'api/apiAccount/account';
 import Head from 'next/head';
 
 import { useRouter } from 'next/router';
-import { ReactElement, useRef, useState } from 'react';
+import { ReactElement, useEffect, useRef, useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
@@ -22,30 +22,32 @@ import 'slick-carousel/slick/slick.css';
 interface IDetail {
   ar_level: string;
   server: string;
+  name: string;
   hero: any;
   weapons: any;
   price: string;
   images: string;
   desc: string;
   id: number;
+  avatar: string;
 }
-function DetailAccout({ post }) {
+function DetailAccout() {
   const { handleSetMessage } = useAuth();
   const [openDialog, setOpenDialog] = useState<boolean>(false);
   const customeSlider = useRef<any>();
   const router = useRouter();
   const { slug } = router.query;
-
-  const data: IDetail = {
-    id: post.id,
-    ar_level: post.ar_level,
-    server: post.server.desc,
-    hero: post.heroes,
-    price: post.price,
-    images: post.avatar,
-    desc: post.description,
-    weapons: post.weapons
-  };
+  const [data, setData] = useState<IDetail>();
+  // const data: IDetail = {
+  //   id: post.id,
+  //   ar_level: post.ar_level,
+  //   server: post.server.desc,
+  //   hero: post.heroes,
+  //   price: post.price,
+  //   images: post.avatar,
+  //   desc: post.description,
+  //   weapons: post.weapons
+  // };
   const [pending, setPending] = useState(false);
   const handleOpenDialog = () => {
     setOpenDialog(true);
@@ -53,6 +55,12 @@ function DetailAccout({ post }) {
   const handleCloseDialog = () => {
     setOpenDialog(false);
   };
+
+  useEffect(() => {
+    getAccountBySlug(slug as string).then((res) => {
+      setData(res.data);
+    });
+  }, [slug]);
 
   const buyAccountSubmit = async () => {
     setPending(true);
@@ -85,17 +93,17 @@ function DetailAccout({ post }) {
   return (
     <>
       <Head>
-        <title>{post.name}</title>
+        <title>{data?.name}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
 
         <meta property="og:type" content="article" />
-        <meta property="og:title" content={post?.name || 'GenshinViet.com'} />
+        <meta property="og:title" content={data?.name || 'GenshinViet.com'} />
         <meta
           property="og:description"
-          content={`Thông tin account ${post.name}`}
+          content={`Thông tin account ${data?.name}`}
         />
-        <meta property="og:image" content={post.avatar} />
-        <meta property="og:image:alt" content={post.name} />
+        <meta property="og:image" content={data?.avatar} />
+        <meta property="og:image:alt" content={data?.name} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
       </Head>
@@ -351,11 +359,11 @@ DetailAccout.getLayout = function getLayout(page: ReactElement) {
   return <BaseLayout>{page}</BaseLayout>;
 };
 
-export async function getServerSideProps(context) {
-  const { slug } = context.query;
+// export async function getServerSideProps(context) {
+//   const { slug } = context.query;
 
-  const res = await getAccountBySlug(slug as string);
-  const post = await res.data;
+//   const res = await getAccountBySlug(slug as string);
+//   const post = await res.data;
 
-  return { props: { post } };
-}
+//   return { props: { post } };
+// }

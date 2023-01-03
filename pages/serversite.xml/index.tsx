@@ -1,22 +1,15 @@
 import { queryAllAccountForSiteMap } from 'api/apiAccount/account';
-import { queryAllProductForSiteMap } from 'api/product/productApi';
 
 import { getServerSideSitemap, ISitemapField } from 'next-sitemap';
 
 export const GetPost = async () => {
   const data = await queryAllAccountForSiteMap();
-
   return data.data.data;
 };
-export const GetProduct = async () => {
-  const data = await queryAllProductForSiteMap();
 
-  return data.data.data;
-};
 export const getServerSideProps: any = async (ctx) => {
   const siteUrl = 'https://GenshinViet.com';
-  const news: any = await GetPost();
-  const product: any = await GetProduct();
+  // const news: any = await GetPost();
 
   const fieldHome: ISitemapField[] = [
     {
@@ -49,18 +42,14 @@ export const getServerSideProps: any = async (ctx) => {
     }
   ];
 
-  const fieldsNews: ISitemapField[] = news?.map((data: any) => ({
-    loc: `${siteUrl}/account/details/${data.slug}`,
-    lastmod: new Date().toISOString()
-  }));
-  const productList: ISitemapField[] = product?.map((data: any) => ({
-    loc: `${siteUrl}/shop/${data.slug}`,
-    lastmod: new Date().toISOString()
-  }));
+  // const fieldsNews: ISitemapField[] = news?.map((data: any) => ({
+  //   loc: `${siteUrl}/account/details/${data.slug}`,
+  //   lastmod: new Date().toISOString()
+  // }));
 
-  const fields = fieldsNews.concat(fieldHome);
-  const raw = productList.concat(fields);
-  return getServerSideSitemap(ctx, raw);
+  // const fields = fieldsNews.concat(fieldHome);
+
+  return getServerSideSitemap(ctx, fieldHome);
 };
 
 export default function Site() {
