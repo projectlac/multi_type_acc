@@ -22,9 +22,10 @@ import TextField from '@/components/Common/Form/TextField';
 import { useAuth } from '@/contexts/AuthGuard';
 import { useRouter } from 'next/router';
 
-function DetailProduct({ post }) {
+function DetailProduct() {
   const nav = useRouter();
 
+  const [post, setPost] = useState<any>();
   const { handleSetMessage, isAuthenticated } = useAuth();
   const [nav1, setNav1] = useState();
   const [nav2, setNav2] = useState();
@@ -52,17 +53,21 @@ function DetailProduct({ post }) {
     setQuanlity((prev) => (prev === 1 ? prev : prev - 1));
   };
   useEffect(() => {
-    const { images, avatar } = post;
-    let raw = JSON.parse(images);
-    let imageList = [avatar];
-    imageList.concat(raw);
-    let temp = { ...post, listImage: imageList };
+    if (nav.query.slug)
+      getProductBySlug(nav.query.slug as string).then((res) => {
+        setPost(res.data);
+        const { images, avatar } = res.data;
+        let raw = JSON.parse(images);
+        let imageList = [avatar];
+        imageList.concat(raw);
+        let temp = { ...res.data, listImage: imageList };
 
-    // console.log(temp);
+        setData(temp);
+        console.log(temp);
+      });
 
-    setData(temp);
-    // console.log(post);
-  }, []);
+    // // console.log(post);
+  }, [nav.query.slug]);
 
   const onSubmit = async (value, { resetForm }) => {
     if (isAuthenticated) {
@@ -123,17 +128,17 @@ function DetailProduct({ post }) {
   return (
     <>
       <Head>
-        <title>{post.name}</title>
+        <title>{post?.name}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
 
         <meta property="og:type" content="article" />
         <meta property="og:title" content={post?.name || 'GenshinViet.com'} />
         <meta
           property="og:description"
-          content={`Thông tin account ${post.name}`}
+          content={`Thông tin account ${post?.name}`}
         />
-        <meta property="og:image" content={post.avatar} />
-        <meta property="og:image:alt" content={post.name} />
+        <meta property="og:image" content={post?.avatar} />
+        <meta property="og:image:alt" content={post?.name} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
       </Head>
@@ -422,12 +427,3 @@ export default DetailProduct;
 DetailProduct.getLayout = function getLayout(page: ReactElement) {
   return <BaseLayout>{page}</BaseLayout>;
 };
-
-export async function getServerSideProps(context) {
-  const { slug } = context.query;
-
-  const res = await getProductBySlug(slug as string);
-  const post = await res.data;
-
-  return { props: { post } };
-}
