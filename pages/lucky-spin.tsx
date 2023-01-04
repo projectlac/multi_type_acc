@@ -19,11 +19,11 @@ const Transition = React.forwardRef(function Transition(
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-interface Rate {
-  persent: number;
-  image: string;
-  gift: string;
-}
+// interface Rate {
+//   persent: number;
+//   image: string;
+//   gift: string;
+// }
 function LuckSpin() {
   const [value, setValue] = useState<number>(0);
   const [result, setResult] = useState<string>('');
@@ -184,7 +184,7 @@ function LuckSpin() {
     if (a) a.style.transform = `rotate(${random}deg)`;
     setTimeout(() => {
       getPosition(random % 360);
-    }, 100);
+    }, 5000);
   };
 
   const btnSubmit = () => {};
