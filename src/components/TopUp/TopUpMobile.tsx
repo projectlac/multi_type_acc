@@ -453,13 +453,13 @@ export default function TopUpMobile() {
                     }}
                   >
                     <Typography fontSize={17} mr={1}>
-                      0372790362
+                      0904448980
                     </Typography>{' '}
                     <Tooltip title={copyText} arrow placement="right">
                       <IconButton
                         aria-label="copy"
                         onClick={() => {
-                          copySomething('0372790362');
+                          copySomething('0904448980');
                         }}
                       >
                         <ContentCopyIcon
@@ -570,7 +570,7 @@ export default function TopUpMobile() {
               <b style={{ color: '#FF1943' }}>ADMIN</b>{' '}
             </a>
             hoặc số điện thoại{' '}
-            <b style={{ color: '#FF1943' }}>0372790362 (8h-24h)</b> để được hỗ
+            <b style={{ color: '#FF1943' }}>0904448980 (8h-24h)</b> để được hỗ
             trợ.
           </Typography>
         </Box>
