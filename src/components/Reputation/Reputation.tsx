@@ -14,6 +14,8 @@ import Img11 from '@/assets/images/repu/8619c1451addc2839bcc.jpg';
 import Img12 from '@/assets/images/repu/657341d89940411e1851.jpg';
 import Img13 from '@/assets/images/repu/bb6c12e8c970112e4861.jpg';
 import Img14 from '@/assets/images/repu/ecd7999e43069b58c217.jpg';
+import Img15 from '@/assets/images/repu/400383bd9a2742791b36.jpg';
+import Img16 from '@/assets/images/repu/b57d9fef86755e2b0764.jpg';
 
 import { Box, Button, Divider, Grid, Typography } from '@mui/material';
 export default function ReputationItem() {
@@ -585,6 +587,46 @@ export default function ReputationItem() {
                       width: '100%',
                       height: '250px',
                       background: `url(${Img14})`,
+                      backgroundSize: 'cover'
+                    }}
+                  ></Box>
+                </Grid>
+                <Grid
+                  item
+                  lg={3}
+                  md={4}
+                  xs={12}
+                  sm={6}
+                  sx={{
+                    display: 'flex',
+                    justifyContent: 'center'
+                  }}
+                >
+                  <Box
+                    sx={{
+                      width: '100%',
+                      height: '250px',
+                      background: `url(${Img15})`,
+                      backgroundSize: 'cover'
+                    }}
+                  ></Box>
+                </Grid>
+                <Grid
+                  item
+                  lg={3}
+                  md={4}
+                  xs={12}
+                  sm={6}
+                  sx={{
+                    display: 'flex',
+                    justifyContent: 'center'
+                  }}
+                >
+                  <Box
+                    sx={{
+                      width: '100%',
+                      height: '250px',
+                      background: `url(${Img16})`,
                       backgroundSize: 'cover'
                     }}
                   ></Box>
