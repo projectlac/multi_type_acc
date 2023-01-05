@@ -236,60 +236,6 @@ export default function ReputationItem() {
                     allow="encrypted-media;"
                   ></iframe>
                 </Grid>
-                <Grid
-                  item
-                  lg={3}
-                  md={4}
-                  xs={12}
-                  sm={6}
-                  sx={{
-                    display: 'flex',
-                    justifyContent: 'center'
-                  }}
-                >
-                  <iframe
-                    src="https://www.tiktok.com/embed/7180542569481358618"
-                    allowFullScreen
-                    scrolling="no"
-                    allow="encrypted-media;"
-                  ></iframe>
-                </Grid>
-                <Grid
-                  item
-                  lg={3}
-                  md={4}
-                  xs={12}
-                  sm={6}
-                  sx={{
-                    display: 'flex',
-                    justifyContent: 'center'
-                  }}
-                >
-                  <iframe
-                    src="https://www.tiktok.com/embed/7178805471157996827"
-                    allowFullScreen
-                    scrolling="no"
-                    allow="encrypted-media;"
-                  ></iframe>
-                </Grid>
-                <Grid
-                  item
-                  lg={3}
-                  md={4}
-                  xs={12}
-                  sm={6}
-                  sx={{
-                    display: { xs: 'flex', md: 'none', lg: 'flex' },
-                    justifyContent: 'center'
-                  }}
-                >
-                  <iframe
-                    src="https://www.tiktok.com/embed/7183586270528998682"
-                    allowFullScreen
-                    scrolling="no"
-                    allow="encrypted-media;"
-                  ></iframe>
-                </Grid>
 
                 <Grid
                   item
