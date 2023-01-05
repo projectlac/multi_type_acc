@@ -607,7 +607,8 @@ export default function ReputationItem() {
                       width: '100%',
                       height: '250px',
                       background: `url(${Img15})`,
-                      backgroundSize: 'cover'
+                      backgroundSize: 'cover',
+                      backgroundPositionY: '-30px'
                     }}
                   ></Box>
                 </Grid>
@@ -627,7 +628,8 @@ export default function ReputationItem() {
                       width: '100%',
                       height: '250px',
                       background: `url(${Img16})`,
-                      backgroundSize: 'cover'
+                      backgroundSize: 'cover',
+                      backgroundPositionY: '-30px'
                     }}
                   ></Box>
                 </Grid>
