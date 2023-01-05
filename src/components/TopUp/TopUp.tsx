@@ -476,13 +476,13 @@ function TopUp() {
                       }}
                     >
                       <Typography fontSize={17} mr={2}>
-                        0904448980
+                        0372790362
                       </Typography>{' '}
                       <Tooltip title={copyText} arrow placement="right">
                         <IconButton
                           aria-label="copy"
                           onClick={() => {
-                            copySomething('0904448980');
+                            copySomething('0372790362');
                           }}
                         >
                           <ContentCopyIcon
@@ -602,7 +602,7 @@ function TopUp() {
           </Typography>
           <Typography ml={3}>
             - Nếu chuyển sai, vui lòng liên hệ <b>ADMIN</b> hoặc số điện thoại{' '}
-            <b>0904448980 (8h-24h)</b> để được hỗ trợ.
+            <b>0372790362 (8h-24h)</b> để được hỗ trợ.
           </Typography>
         </Box>
       </TabPanel>
