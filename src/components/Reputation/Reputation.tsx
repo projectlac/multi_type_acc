@@ -161,7 +161,7 @@ export default function ReputationItem() {
               <iframe
                 width="560"
                 height="315"
-                src="https://www.youtube.com/embed/1w9wiNJW46U"
+                src="https://www.youtube.com/embed/-LSlqjNkrLM"
                 title="YouTube video player"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -205,15 +205,12 @@ export default function ReputationItem() {
                       fontWeight: 'bold'
                     }}
                   >
-                    F2P Impact Official
+                    Phúc Thế Kỷ
                   </Typography>
-                  @F2PImpactOfficial <br /> 35,3 N người đăng ký
+                  @PhucTheKy <br /> 12,4 N người đăng ký
                 </Box>
                 <Box>
-                  <a
-                    href="https://www.youtube.com/@F2PImpactOfficial"
-                    target="__blank"
-                  >
+                  <a href="https://www.youtube.com/@PhucTheKy" target="__blank">
                     <Button color="error" variant="contained">
                       Subscribe now
                     </Button>
@@ -265,7 +262,7 @@ export default function ReputationItem() {
                   }}
                 >
                   <iframe
-                    src="https://www.tiktok.com/embed/7183930391466675483"
+                    src="https://www.tiktok.com/embed/7185037290895412506"
                     allowFullScreen
                     scrolling="no"
                     allow="encrypted-media;"
