@@ -476,9 +476,10 @@ function TopUp() {
                       }}
                     >
                       <Typography fontSize={17} mr={2}>
-                        0372790362
+                        {/* 0372790362 */} Nạp Momo đang lỗi, vui lòng ib Shop
+                        để được nạp tiền
                       </Typography>{' '}
-                      <Tooltip title={copyText} arrow placement="right">
+                      {/* <Tooltip title={copyText} arrow placement="right">
                         <IconButton
                           aria-label="copy"
                           onClick={() => {
@@ -491,7 +492,7 @@ function TopUp() {
                             }}
                           />
                         </IconButton>
-                      </Tooltip>
+                      </Tooltip> */}
                     </Box>
                   </td>
                 </tr>
