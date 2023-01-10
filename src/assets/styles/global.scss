@@ -340,15 +340,15 @@ a {
 }
 
 .wheel {
-  width: 312px;
-  height: 312px;
+  width: 512px;
+  height: 512px;
   border-radius: 50%;
   border: solid 6px #fff;
   box-shadow: 0 4px 9px 0 rgba(0, 0, 0, 0.1);
   position: relative;
   &__inner {
-    width: 300px;
-    height: 300px;
+    width: 500px;
+    height: 500px;
     border-radius: 50%;
     position: relative;
     overflow: hidden;
@@ -356,37 +356,18 @@ a {
   }
   &__sec {
     position: absolute;
-    top: 0;
-    left: 62px;
+    top: -17px;
+    left: 142px;
     width: 0;
     height: 0;
     border: solid;
-    border-width: 150px 88px 0;
+    border-width: 268px 112px 0;
     border-color: transparent;
     transform-origin: 50% 100%;
-    &:nth-child(1) {
-      border-top-color: #16a085;
-    }
-    &:nth-child(2) {
-      border-top-color: #2980b9;
-      transform: rotate(60deg);
-    }
-    &:nth-child(3) {
-      border-top-color: #34495e;
-      transform: rotate(120deg);
-    }
-    &:nth-child(4) {
-      border-top-color: #f39c12;
-      transform: rotate(180deg);
-    }
-    &:nth-child(5) {
-      border-top-color: #d35400;
-      transform: rotate(240deg);
-    }
-    &:nth-child(6) {
-      border-top-color: #c0392b;
-      transform: rotate(300deg);
-    }
+    display: flex;
+    align-items: self-end;
+    justify-content: center;
+    box-sizing: border-box;
   }
   &__text {
     margin: 70px 0 0 70px;
@@ -396,13 +377,16 @@ a {
     height: 70px;
     background: #fff;
     position: absolute;
-    top: 121px;
-    left: 115px;
+    top: 50%;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
+    transform: translateY(-50%);
     font-family: 'Open sans', sans-serif;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
     &::after {
       content: '';
       position: absolute;
