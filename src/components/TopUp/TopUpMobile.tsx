@@ -344,7 +344,8 @@ export default function TopUpMobile() {
               </Typography>
               <Divider sx={{ my: 1 }}></Divider>
               <Typography fontSize={'15px'} fontWeight={500}>
-                THẺ CÀO VIETTEL + VINAPHONE CHIẾT KHẤU 12%(100K THẺ = 88K)
+                THẺ CÀO VIETTEL + VINAPHONE CHIẾT KHẤU 12%(100K THẺ = 88K){' '}
+                <br /> LƯU Ý : MỆNH GIÁ 500K CHIẾT KHẤU 17%
               </Typography>
               <Typography fontSize={'15px'} fontWeight={500}>
                 <span style={{ color: 'red', background: 'white' }}>
