@@ -344,8 +344,7 @@ export default function TopUpMobile() {
               </Typography>
               <Divider sx={{ my: 1 }}></Divider>
               <Typography fontSize={'15px'} fontWeight={500}>
-                Viettel, Mobiphone, Vinaphone, Vietnamobile được nhận 80% giá
-                trị do chiết khấu
+                THẺ CÀO VIETTEL + VINAPHONE CHIẾT KHẤU 12%(100K THẺ = 88K)
               </Typography>
               <Typography fontSize={'15px'} fontWeight={500}>
                 <span style={{ color: 'red', background: 'white' }}>
