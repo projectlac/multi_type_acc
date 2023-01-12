@@ -26,7 +26,8 @@ function RecentOrders() {
             phone: d.phone,
             note: d.note,
             status: d.transaction.status,
-            created_at: d.transaction.created_at
+            created_at: d.transaction.created_at,
+            transaction: d.transaction
           });
         });
         setData(temp);

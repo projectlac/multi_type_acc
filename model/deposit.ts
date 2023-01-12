@@ -21,6 +21,7 @@ export interface IGetDeposit {
   note?: string;
   status: IStatus;
   created_at: string;
+  transaction:any
 }
 
 export interface IOrder {

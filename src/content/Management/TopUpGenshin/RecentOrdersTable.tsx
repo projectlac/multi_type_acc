@@ -146,8 +146,9 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ cryptoOrders }) => {
           <TableHead>
             <TableRow>
               <TableCell width={'5%'}>#</TableCell>
-
+              <TableCell width={'30%'}>Người mua</TableCell>
               <TableCell width={'30%'}>Gói nạp</TableCell>
+
               <TableCell>Thông tin</TableCell>
               <TableCell align="right">Ngày mua</TableCell>
               <TableCell align="right">Trạng thái</TableCell>
@@ -167,6 +168,16 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ cryptoOrders }) => {
                       noWrap
                     >
                       {cryptoOrder.id}
+                    </Typography>
+                  </TableCell>
+                  <TableCell>
+                    <Typography
+                      variant="body1"
+                      color="text.primary"
+                      gutterBottom
+                      noWrap
+                    >
+                      {cryptoOrder.transaction?.user?.username}
                     </Typography>
                   </TableCell>
                   <TableCell>
