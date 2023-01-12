@@ -372,8 +372,8 @@ function TopUp() {
               </Typography>
               <Divider sx={{ my: 1 }}></Divider>
               <Typography fontSize={'15px'} fontWeight={500}>
-                Viettel, Mobiphone, Vinaphone, Vietnamobile được nhận 80% giá
-                trị do chiết khấu
+                THẺ CÀO VIETTEL + VINAPHONE CHIẾT KHẤU 12%(100K THẺ = 88K){' '}
+                <br /> LƯU Ý : MỆNH GIÁ 500K CHIẾT KHẤU 17%
               </Typography>
               <Typography fontSize={'15px'} fontWeight={500}>
                 <span style={{ color: 'red', background: 'white' }}>
@@ -476,10 +476,11 @@ function TopUp() {
                       }}
                     >
                       <Typography fontSize={17} mr={2}>
-                        {/* 0372790362 */} Nạp Momo đang lỗi, vui lòng ib Shop
-                        để được nạp tiền
+                        0372790362
+                        {/* Nạp Momo đang lỗi, vui lòng ib Shop
+                        để được nạp tiền */}
                       </Typography>{' '}
-                      {/* <Tooltip title={copyText} arrow placement="right">
+                      <Tooltip title={copyText} arrow placement="right">
                         <IconButton
                           aria-label="copy"
                           onClick={() => {
@@ -492,7 +493,7 @@ function TopUp() {
                             }}
                           />
                         </IconButton>
-                      </Tooltip> */}
+                      </Tooltip>
                     </Box>
                   </td>
                 </tr>
