@@ -190,14 +190,14 @@ function ProductCollection() {
           </Box>
         </Card>
       </Grid>
-      <Grid item md={3} sm={6} xs={12}>
+      {/* <Grid item md={3} sm={6} xs={12}>
         <ProductCollectionItem
           title="Shop phụ kiện"
           url="/shop"
           image={shopphukien}
           data={dataProduct}
         />
-      </Grid>
+      </Grid> */}
     </Grid>
   );
 }
