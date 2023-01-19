@@ -12,7 +12,7 @@ function RecentOrders() {
   useEffect(() => {
     const callApi = async () => {
       await getOrder().then((res) => {
-        const data = res.data;
+        const data = res.data.data;
 
         let temp: IOrder[] = [];
 
