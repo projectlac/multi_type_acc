@@ -1,27 +1,13 @@
 import DialogCommon from '@/components/Common/DialogCommon/DialogCommon';
 import useCustomForm from '@/components/Common/Form/Form';
 import FormatForm from '@/components/Common/Form/FormatForm';
-import Selection from '@/components/Common/Form/Selection';
 import TextField from '@/components/Common/Form/TextField';
 import { useAuth } from '@/contexts/AuthGuard';
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 import UploadTwoToneIcon from '@mui/icons-material/UploadTwoTone';
-import {
-  Box,
-  Button,
-  FormControl,
-  FormControlLabel,
-  FormLabel,
-  Grid,
-  Radio,
-  RadioGroup,
-  useTheme
-} from '@mui/material';
+import { Box, Button, Grid, useTheme } from '@mui/material';
 import { styled } from '@mui/styles';
-import {
-  getAccountBySlugToManager,
-  updateAccountNomal
-} from 'api/apiAccount/account';
+import { updateAccountNomal } from 'api/apiAccount/account';
 import { getOneGiftById } from 'api/apiWheel/wheelApi';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
@@ -36,7 +22,7 @@ const Input = styled('input')({
 });
 const validationSchema = yup.object({
   name: yup.string().required('Trường này là bắt buộc'),
-  reate: yup.number().required('Tỷ lệ là thuộc tính bắt buộc')
+  rate: yup.number().required('Tỷ lệ là thuộc tính bắt buộc')
 });
 
 function EditAccount({ title, slug }: IEdit) {
@@ -203,7 +189,14 @@ function EditAccount({ title, slug }: IEdit) {
             </Grid>
 
             <Grid item md={12} xs={12}>
-              <Button variant="contained" fullWidth type="submit">
+              <Button
+                variant="contained"
+                fullWidth
+                type="submit"
+                onClick={() => {
+                  console.log(formik.errors);
+                }}
+              >
                 {formik.isSubmitting ? 'Loading...' : 'Sửa'}
               </Button>
             </Grid>

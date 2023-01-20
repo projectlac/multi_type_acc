@@ -1,13 +1,8 @@
 import {
   Box,
   Card,
-  CardHeader,
   Divider,
-  FormControl,
   IconButton,
-  InputLabel,
-  MenuItem,
-  Select,
   Table,
   TableBody,
   TableCell,
@@ -21,15 +16,10 @@ import {
   useTheme
 } from '@mui/material';
 import { format } from 'date-fns';
-import numeral from 'numeral';
+import { IAccountVipAdmin } from 'model/account';
 import PropTypes from 'prop-types';
 import { ChangeEvent, FC, useState } from 'react';
-import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
-import Label from '@/components/Label';
-import { IAccountVipAdmin } from 'model/account';
-import DeleteAccount from './Action/DeleteAccount';
 import EditAccount from './Action/EditAccount';
-import { sliceString } from '@/utility/sliceString';
 
 interface RecentOrdersTableProps {
   className?: string;
@@ -71,46 +61,6 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ cryptoOrders }) => {
   const [filters, setFilters] = useState<Filters>({
     status: null
   });
-  const clickSort = () => {
-    switch (buyTimeSort) {
-      case true:
-        setBuyTimeSort(false);
-        break;
-      case false:
-        setBuyTimeSort(null);
-        break;
-      default:
-        setBuyTimeSort(true);
-        break;
-    }
-  };
-  const statusOptions = [
-    {
-      id: 'all',
-      name: 'All'
-    },
-    {
-      id: 'true',
-      name: 'Đã bán'
-    },
-    {
-      id: 'false',
-      name: 'Chưa bán'
-    }
-  ];
-
-  const handleStatusChange = (e: ChangeEvent<HTMLInputElement>): void => {
-    let value = null;
-
-    if (e.target.value !== 'all') {
-      value = e.target.value;
-    }
-
-    setFilters((prevFilters) => ({
-      ...prevFilters,
-      status: value
-    }));
-  };
 
   const handlePageChange = (_event: any, newPage: number): void => {
     setPage(newPage);
@@ -175,10 +125,8 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ cryptoOrders }) => {
           <TableHead>
             <TableRow>
               <TableCell>#ID</TableCell>
-              <TableCell>Tên quà</TableCell>
-
+              <TableCell>Tên quà</TableCell> <TableCell>Tỷ lệ</TableCell>
               <TableCell align="right">Thời gian tạo</TableCell>
-
               <TableCell align="right">Actions</TableCell>
             </TableRow>
           </TableHead>
@@ -208,7 +156,16 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ cryptoOrders }) => {
                       {cryptoOrder.name}
                     </Typography>
                   </TableCell>
-
+                  <TableCell>
+                    <Typography
+                      variant="body1"
+                      color="text.primary"
+                      gutterBottom
+                      noWrap
+                    >
+                      {cryptoOrder['number']} %
+                    </Typography>
+                  </TableCell>
                   <TableCell align="right">
                     <Typography
                       variant="body1"
