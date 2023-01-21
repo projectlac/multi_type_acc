@@ -55,11 +55,10 @@
     "dev": "next -p 8080",
     "build": "next build",
     "start": "next start",
-    "export": "npm run build && next export -o _static",
+    "export": "npm run build",
     "lint": "next lint",
     "lint-fix": "next lint --fix",
     "format": "prettier --write \"./**/*.{ts,tsx,js,jsx,json}\" --config ./.prettierrc"
-
   },
   "devDependencies": {
     "eslint": "8.17.0",
