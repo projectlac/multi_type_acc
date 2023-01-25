@@ -78,9 +78,9 @@ function Footer() {
               <p className="footer-p">
                 <Link href={'/account/random'}>ACC RANDOM</Link>
               </p>
-              {/* <p className="footer-p">
+              <p className="footer-p">
                 <Link href={'/topup-genshin'}>NẠP GAME</Link>
-              </p> */}
+              </p>
               {/* <p className="footer-p">
                 <Link href={'/shop'}>SHOP PHỤ KIỆN</Link>
               </p> */}
