@@ -107,12 +107,12 @@ function TopUp() {
             message: 'Thẻ đang được xử lý, vui lòng đợi'
           });
           resetForm();
-          captchaRef.current.reset();
         }
       });
     } catch (error) {
       handleSetMessage({ type: 'error', message: error.response.data.message });
     }
+    captchaRef.current.reset();
   };
 
   const onSubmitBank = async () => {
