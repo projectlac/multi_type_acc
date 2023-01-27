@@ -78,6 +78,7 @@ function TopUp() {
   const [value, setValue] = React.useState(0);
   const [copyText, setCopyTexy] = React.useState(CopyTextDefaut.COPY);
 
+  const captchaRef = React.useRef(null);
   const [token, getToken] = React.useState('');
   const refreshCapcha = () => {
     getToken('');
@@ -106,6 +107,7 @@ function TopUp() {
             message: 'Thẻ đang được xử lý, vui lòng đợi'
           });
           resetForm();
+          captchaRef.current.reset();
         }
       });
     } catch (error) {
@@ -335,6 +337,7 @@ function TopUp() {
                       <ReCAPTCHA
                         sitekey="6LdGLHkjAAAAAJysfam5Ylmnjmq37torTEoPqsrD"
                         onChange={onChange}
+                        ref={captchaRef}
                       />
                       {/* <Typography textAlign={'center'}>
                         Hệ thống nạp thẻ cào đang bảo trì, <br /> vui lòng liên
