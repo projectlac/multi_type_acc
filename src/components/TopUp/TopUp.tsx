@@ -78,7 +78,7 @@ function TopUp() {
   const [value, setValue] = React.useState(0);
   const [copyText, setCopyTexy] = React.useState(CopyTextDefaut.COPY);
 
-  const captchaRef = React.useRef(null);
+  // const captchaRef = React.useRef(null);
   const [token, getToken] = React.useState('');
   const refreshCapcha = () => {
     getToken('');
@@ -112,7 +112,7 @@ function TopUp() {
     } catch (error) {
       handleSetMessage({ type: 'error', message: error.response.data.message });
     }
-    captchaRef.current.reset();
+    // captchaRef.current.reset();
   };
 
   const onSubmitBank = async () => {
@@ -337,7 +337,7 @@ function TopUp() {
                       <ReCAPTCHA
                         sitekey="6LdGLHkjAAAAAJysfam5Ylmnjmq37torTEoPqsrD"
                         onChange={onChange}
-                        ref={captchaRef}
+                        // ref={captchaRef}
                       />
                       {/* <Typography textAlign={'center'}>
                         Hệ thống nạp thẻ cào đang bảo trì, <br /> vui lòng liên
