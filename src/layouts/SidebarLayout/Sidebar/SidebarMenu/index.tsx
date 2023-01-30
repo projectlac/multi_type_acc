@@ -391,6 +391,21 @@ function SidebarMenu() {
                     </Button>
                   </NextLink>
                 </ListItem>
+              </List>
+            </SubMenuWrapper>
+          </List>
+        )}
+        {user && user?.role === 'ADMIN_PRODUCT' && (
+          <List
+            component="div"
+            subheader={
+              <ListSubheader component="div" disableSticky>
+                Vòng quay may mắn
+              </ListSubheader>
+            }
+          >
+            <SubMenuWrapper>
+              <List component="div">
                 <ListItem component="div">
                   <NextLink href="/management/lucky-spin" passHref>
                     <Button
@@ -404,7 +419,24 @@ function SidebarMenu() {
                       onClick={closeSidebar}
                       startIcon={<BrightnessLowTwoToneIcon />}
                     >
-                      Quản lý vòng quay
+                      Quản lý
+                    </Button>
+                  </NextLink>
+                </ListItem>
+                <ListItem component="div">
+                  <NextLink href="/management/lucky-spin/history" passHref>
+                    <Button
+                      className={
+                        currentRoute === '/management/lucky-spin/history'
+                          ? 'active'
+                          : ''
+                      }
+                      disableRipple
+                      component="a"
+                      onClick={closeSidebar}
+                      startIcon={<BrightnessLowTwoToneIcon />}
+                    >
+                      Lịch sử
                     </Button>
                   </NextLink>
                 </ListItem>
@@ -412,7 +444,6 @@ function SidebarMenu() {
             </SubMenuWrapper>
           </List>
         )}
-
         {user && user?.role === 'ADMIN' && (
           <>
             <List

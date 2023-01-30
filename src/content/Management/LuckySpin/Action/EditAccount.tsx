@@ -8,7 +8,7 @@ import UploadTwoToneIcon from '@mui/icons-material/UploadTwoTone';
 import { Box, Button, Grid, useTheme } from '@mui/material';
 import { styled } from '@mui/styles';
 import { updateAccountNomal } from 'api/apiAccount/account';
-import { getOneGiftById } from 'api/apiWheel/wheelApi';
+import { getOneGiftById, updateGiftById } from 'api/apiWheel/wheelApi';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import * as yup from 'yup';
@@ -67,7 +67,7 @@ function EditAccount({ title, slug }: IEdit) {
     file && formData.append('image', file);
 
     try {
-      await updateAccountNomal(slug, formData).then(() => {
+      await updateGiftById(slug, formData).then(() => {
         handleSetMessage({
           type: 'success',
           message: `Sửa phần quà vòng quay thành công`
@@ -93,13 +93,12 @@ function EditAccount({ title, slug }: IEdit) {
     if (openDialog) {
       getOneGiftById(slug).then((res) => {
         const data = res.data;
+        console.log(data);
 
         let temp = {
           name: data.name,
-
           rate: data.number,
-
-          file: null
+          file: data.image ? data.image : null
         };
         setDefaultData(temp);
       });
@@ -159,7 +158,7 @@ function EditAccount({ title, slug }: IEdit) {
                         : theme.colors.primary.main
                     }}
                   >
-                    Upload avatar
+                    Upload file
                   </Button>
                 </label>
               </Box>
@@ -174,10 +173,10 @@ function EditAccount({ title, slug }: IEdit) {
                 </Box>
               ) : (
                 <Box sx={{ display: 'flex' }}>
-                  {defaultData.avatar && (
+                  {defaultData.file && (
                     <Box width={200} height={150}>
                       <Image
-                        src={defaultData.avatar}
+                        src={defaultData.file}
                         layout="responsive"
                         width={200}
                         height={150}

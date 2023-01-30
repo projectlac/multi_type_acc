@@ -21,27 +21,41 @@ export interface IGetDeposit {
   note?: string;
   status: IStatus;
   created_at: string;
-  transaction:any
+  transaction: any;
 }
 
 export interface IOrder {
-  id:string,
+  id: string;
   receiver: string;
   delivery_address: string;
   description: string;
-  details:IDetailOrder[];
-  phone:string;
-  status:IStatus;
-  total:string;
+  details: IDetailOrder[];
+  phone: string;
+  status: IStatus;
+  total: string;
   created_at: string;
 }
 export interface IDetailOrder {
   amount: number;
   id: number;
   price: string;
-  product:IGift
+  product: IGift;
 }
 export interface IGift {
-  name:string,
-  price:string
+  name: string;
+  price: string;
+}
+
+export interface ISpinUser {
+  username: string;
+  email: string;
+}
+export interface ISpinGift {
+  name: string;
+}
+export interface ISpinHistory {
+  user: ISpinUser;
+  wheel: ISpinGift;
+  created_at: string;
+  id: number;
 }
