@@ -77,7 +77,7 @@ export default function TopUpMobile() {
   const [code, setCode] = React.useState<string>('');
 
   const [copyText, setCopyTexy] = React.useState(CopyTextDefaut.COPY);
-
+  const captchaRef = React.useRef(null);
   const [token, getToken] = React.useState('');
   const refreshCapcha = () => {
     getToken('');
@@ -149,6 +149,7 @@ export default function TopUpMobile() {
     } catch (error) {
       handleSetMessage({ type: 'error', message: error.response.data.message });
     }
+    captchaRef.current.reset();
   };
 
   const formik = useCustomForm(validationSchema, initForm, onSubmit);
@@ -304,14 +305,15 @@ export default function TopUpMobile() {
                       />
                     </Grid>
                     <Grid item xs={12} justifyContent="center">
-                      <ReCAPTCHA
+                      {/* <ReCAPTCHA
                         sitekey="6LdGLHkjAAAAAJysfam5Ylmnjmq37torTEoPqsrD"
                         onChange={onChange}
-                      />
-                      {/* <Typography textAlign={'center'}>
+                        ref={captchaRef}
+                      /> */}
+                      <Typography textAlign={'center'}>
                         Hệ thống nạp thẻ cào đang bảo trì, <br /> vui lòng liên
                         hệ admin để nạp thẻ
-                      </Typography> */}
+                      </Typography>
                       {token && (
                         <Button
                           fullWidth
