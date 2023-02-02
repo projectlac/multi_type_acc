@@ -16,3 +16,9 @@ export const getListGiftById = () => {
 export const getOneGiftById = (slug: string) => {
   return api.get(`/wheel/get-one-by-admin/${slug}`);
 };
+export const updateGiftById = (slug: string, data: FormData) => {
+  return api.put(`/wheel/update/${slug}`, data);
+};
+export const spinWheelHistory = () => {
+  return api.get(`/spin/history`);
+};
