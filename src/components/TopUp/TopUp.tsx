@@ -121,7 +121,7 @@ function TopUp() {
         setCode(res.data);
         handleSetMessage({
           type: 'success',
-          message: 'Lấy mã thành công'
+          message: 'Lấy mã thành công!'
         });
       });
     } catch (error) {
