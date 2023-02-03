@@ -305,15 +305,15 @@ export default function TopUpMobile() {
                       />
                     </Grid>
                     <Grid item xs={12} justifyContent="center">
-                      {/* <ReCAPTCHA
+                      <ReCAPTCHA
                         sitekey="6LdGLHkjAAAAAJysfam5Ylmnjmq37torTEoPqsrD"
                         onChange={onChange}
                         ref={captchaRef}
-                      /> */}
-                      <Typography textAlign={'center'}>
+                      />
+                      {/* <Typography textAlign={'center'}>
                         Hệ thống nạp thẻ cào đang bảo trì, <br /> vui lòng liên
                         hệ admin để nạp thẻ
-                      </Typography>
+                      </Typography> */}
                       {token && (
                         <Button
                           fullWidth

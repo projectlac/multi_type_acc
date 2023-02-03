@@ -334,15 +334,15 @@ function TopUp() {
                       />
                     </Grid>
                     <Grid item xs={12}>
-                      {/* <ReCAPTCHA
+                      <ReCAPTCHA
                         sitekey="6LdGLHkjAAAAAJysfam5Ylmnjmq37torTEoPqsrD"
                         onChange={onChange}
                         ref={captchaRef}
-                      /> */}
-                      <Typography textAlign={'center'}>
+                      />
+                      {/* <Typography textAlign={'center'}>
                         Hệ thống nạp thẻ cào đang bảo trì, <br /> vui lòng liên
                         hệ admin để nạp thẻ
-                      </Typography>
+                      </Typography> */}
                       {token && (
                         <Button
                           sx={{
