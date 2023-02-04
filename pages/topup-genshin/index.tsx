@@ -245,7 +245,7 @@ export default function VerticalTabs() {
                     <Grid item md={6} xs={12}>
                       <TextField
                         formik={formik}
-                        label="Thông tin liên hệ (FB hoặc Zalo)"
+                        label="Số điện thoại"
                         placeholder=""
                         variant="outlined"
                         fullWidth
@@ -256,7 +256,7 @@ export default function VerticalTabs() {
                     <Grid item xs={12}>
                       <TextField
                         formik={formik}
-                        label="Ghi chú"
+                        label="Ghi chú ,Zalo hoặc link Facebook"
                         placeholder=""
                         variant="outlined"
                         fullWidth
