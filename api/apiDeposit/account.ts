@@ -7,7 +7,7 @@ export const createDeposit = (param: IDepositCreate) => {
 };
 
 export const getDeposit = () => {
-  return api.get('/deposit?limit=9999');
+  return api.get('/deposit?limit=99999');
 };
 
 export const changeStatusDeposit = (id: number, status: string) => {

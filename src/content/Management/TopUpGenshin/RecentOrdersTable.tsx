@@ -16,6 +16,7 @@ import {
   TableHead,
   TablePagination,
   TableRow,
+  TextField,
   Tooltip,
   Typography,
   useTheme
@@ -85,7 +86,7 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ cryptoOrders }) => {
   const [filters, setFilters] = useState<Filters>({
     role: null
   });
-
+  const [search, setSearch] = useState<string>('');
   const handleStatusChange = (e: ChangeEvent<HTMLInputElement>): void => {
     let value = null;
 
@@ -107,17 +108,32 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ cryptoOrders }) => {
     setLimit(parseInt(event.target.value));
   };
 
-  const filteredCryptoOrders = applyFilters(cryptoOrders, filters);
+  let filter = cryptoOrders.filter((d) =>
+    d.username.toLowerCase().includes(search.toLowerCase())
+  );
+  // console.log(cryptoOrders);
+
+  const filteredCryptoOrders = applyFilters(filter, filters);
   const paginatedCryptoOrders = applyPagination(
     filteredCryptoOrders,
     page,
     limit
   );
 
+  const handleChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value);
+  };
   const theme = useTheme();
 
   return (
     <Card>
+      <Box p={1}>
+        <TextField
+          fullWidth
+          label="Nhập username account genshin để tìm kiếm"
+          onChange={handleChangeSearch}
+        />
+      </Box>
       <CardHeader
         action={
           <Box width={150}>
