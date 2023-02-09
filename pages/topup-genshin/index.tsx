@@ -277,6 +277,7 @@ export default function VerticalTabs() {
                           <span style={{ color: '#d33' }}>Lưu ý:</span> Shop sẽ
                           lấy mã nạp game trong khoản từ 20h-22h cùng ngày.
                         </b>
+                        <br /> Các bạn điền SĐT Zalo, shop sẽ liên hệ qua Zalo
                       </p>
                     </Grid>
                   </Grid>
