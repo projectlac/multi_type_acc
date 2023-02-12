@@ -275,7 +275,8 @@ export default function VerticalTabs() {
                       <p>
                         <b>
                           <span style={{ color: '#d33' }}>Lưu ý:</span> Shop sẽ
-                          lấy mã nạp game trong khoản từ 20h-22h cùng ngày.
+                          lấy mã nạp game cho các bạn trong 24h kể từ khi lên
+                          đơn.
                         </b>
                         <br /> Các bạn điền SĐT Zalo, shop sẽ liên hệ qua Zalo
                       </p>

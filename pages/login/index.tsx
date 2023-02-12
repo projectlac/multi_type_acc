@@ -5,7 +5,12 @@ import {
   Button,
   Card,
   Container,
+  FormControl,
   Grid,
+  IconButton,
+  InputAdornment,
+  InputLabel,
+  OutlinedInput,
   styled,
   Typography
 } from '@mui/material';
@@ -18,7 +23,9 @@ import * as yup from 'yup';
 import FormatForm from '@/components/Common/Form/FormatForm';
 import TextField from '@/components/Common/Form/TextField';
 import { useAuth } from '@/contexts/AuthGuard';
-
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import PasswordField from '@/components/Common/Form/PasswordField';
 const OverviewWrapper = styled(Box)(
   () => `
     overflow: auto;
@@ -52,6 +59,7 @@ const validationSchemaRegis = yup.object({
 function Overview() {
   const [loginMode, setLoginMode] = useState<boolean>(true);
   const { login, register } = useAuth();
+
   const initForm = {
     username: '',
     password: ''
@@ -107,15 +115,7 @@ function Overview() {
                         formik={formikRegis}
                         fullWidth
                       />
-                      <TextField
-                        sx={{ mt: 2.48 }}
-                        name="password"
-                        type="password"
-                        formik={formikRegis}
-                        label="Mật khẩu"
-                        variant="outlined"
-                        fullWidth
-                      />
+                      <PasswordField formik={formikRegis} />
                       <TextField
                         sx={{ mt: 2.48 }}
                         name="email"
@@ -163,16 +163,8 @@ function Overview() {
                         name="username"
                         type="text"
                       />
-                      <TextField
-                        formik={formik}
-                        sx={{ mt: 3 }}
-                        id="outlined-basic"
-                        label="Mật khẩu"
-                        variant="outlined"
-                        fullWidth
-                        name="password"
-                        type="password"
-                      />
+
+                      <PasswordField formik={formik} />
 
                       <Typography
                         textAlign={'right'}
