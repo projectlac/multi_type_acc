@@ -375,7 +375,7 @@ function TopUp() {
               </Typography>
               <Divider sx={{ my: 1 }}></Divider>
               <Typography fontSize={'15px'} fontWeight={500}>
-                THẺ CÀO ZING CHIẾT KHẤU 16%(100K THẺ = 84K) <br /> LƯU Ý : MỆNH
+                THẺ VIETTEL CHIẾT KHẤU 10%(100K THẺ = 90K) <br /> LƯU Ý : MỆNH
                 GIÁ THẺ CÀO ĐƯỢC CẬP NHẬT Ở THÔNG BÁO
               </Typography>
               <Typography fontSize={'15px'} fontWeight={500}>
