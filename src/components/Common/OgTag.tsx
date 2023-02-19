@@ -15,7 +15,8 @@ function OgTag({ title, description }: IOG) {
         content={
           description
             ? description
-            : 'Shop Genshin Impact - GenshinViet - Mua Bán - Giá Rẻ - Uy Tín - Chất Lượng'
+            : `Shop Genshin Của Người Việt Uy Tín Giá Rẻ Nhất Thị Trường Việt Nam Được Tin Dùng Và Quảng Bá Bởi Các Youtuber Nổi Tiếng Damper, Tuấn Max, Phúc Thế Kỷ...
+            Acc Genshin Trắng Thông Tin,Cam Kết Bảo Hành Acc Trọn Đời`
         }
       />
       <meta
@@ -24,7 +25,8 @@ function OgTag({ title, description }: IOG) {
         content={
           description
             ? description
-            : 'Shop Genshin Impact - GenshinViet - Mua Bán - Giá Rẻ - Uy Tín - Chất Lượng'
+            : `Shop Genshin Của Người Việt Uy Tín Giá Rẻ Nhất Thị Trường Việt Nam Được Tin Dùng Và Quảng Bá Bởi Các Youtuber Nổi Tiếng Damper, Tuấn Max, Phúc Thế Kỷ...
+Acc Genshin Trắng Thông Tin,Cam Kết Bảo Hành Acc Trọn Đời`
         }
       />
 
@@ -38,7 +40,8 @@ function OgTag({ title, description }: IOG) {
       <meta property="og:image:height" content="300" />
       <meta
         property="og:image:alt"
-        content="Shop Genshin Impact - GenshinViet - Mua Bán - Giá Rẻ - Uy Tín - Chất Lượng"
+        content={`Shop Genshin Của Người Việt Uy Tín Giá Rẻ Nhất Thị Trường Việt Nam Được Tin Dùng Và Quảng Bá Bởi Các Youtuber Nổi Tiếng Damper, Tuấn Max, Phúc Thế Kỷ...
+Acc Genshin Trắng Thông Tin,Cam Kết Bảo Hành Acc Trọn Đời`}
       />
     </>
   );
