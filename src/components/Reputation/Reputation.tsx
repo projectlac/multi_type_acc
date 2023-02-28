@@ -1,5 +1,8 @@
 import youLogo1 from '@/assets/images/channels4_profile (1).jpg';
 import youLogo from '@/assets/images/channels4_profile.jpg';
+import youLogo2 from '@/assets/images/unnamed.jpg';
+import youLogo3 from '@/assets/images/channels4_profil.jpg';
+
 import Img1 from '@/assets/images/repu/1da53a29e1b139ef60a0.jpg';
 import Img2 from '@/assets/images/repu/1f602ed2f64a2e14775b.jpg';
 import Img3 from '@/assets/images/repu/4e24cfec1474cc2a9565.jpg';
@@ -102,8 +105,10 @@ export default function ReputationItem() {
                 sx={{
                   width: '50px',
                   height: '50px',
+
                   borderRadius: '50%',
-                  background: `url(${youLogo})`
+                  background: `url(${youLogo})`,
+                  backgroundSize: 'cover'
                 }}
               />
               <Box
@@ -184,8 +189,10 @@ export default function ReputationItem() {
                 sx={{
                   width: '50px',
                   height: '50px',
+
                   borderRadius: '50%',
-                  background: `url(${youLogo1})`
+                  background: `url(${youLogo1})`,
+                  backgroundSize: 'cover'
                 }}
               />
               <Box
@@ -211,6 +218,177 @@ export default function ReputationItem() {
                 </Box>
                 <Box>
                   <a href="https://www.youtube.com/@PhucTheKy" target="__blank">
+                    <Button color="error" variant="contained">
+                      Subscribe now
+                    </Button>
+                  </a>
+                </Box>
+              </Box>
+            </Box>
+          </Box>
+        </Grid>
+        <Grid item md={6} xs={12}>
+          <Box
+            sx={{
+              '& div.video': {
+                position: 'relative',
+                height: '0%',
+                borderRadius: '5px',
+                overflow: 'hidden',
+                paddingBottom: { md: `50.3%`, xs: '56.25%' },
+                '& iframe': {
+                  position: 'absolute',
+                  top: '0',
+                  left: '0',
+                  width: '100%',
+                  height: '100%'
+                }
+              }
+            }}
+          >
+            <Box className="video">
+              <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/w1LyZyn8q-I"
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </Box>
+            <Box
+              display={'flex'}
+              sx={{
+                padding: '15px',
+                borderRadius: '5px',
+                width: 'auto',
+                background: '#fff',
+                margin: '0 auto',
+                mt: 3,
+                alignItems: 'center'
+              }}
+            >
+              <Box
+                sx={{
+                  width: '50px',
+                  height: '50px',
+
+                  borderRadius: '50%',
+                  background: `url(${youLogo2})`,
+                  backgroundSize: 'cover'
+                }}
+              />
+              <Box
+                ml={3}
+                textAlign="left"
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  width: 'calc(100% - 50px)'
+                }}
+              >
+                <Box>
+                  <Typography
+                    sx={{
+                      fontSize: '20px',
+                      fontWeight: 'bold'
+                    }}
+                  >
+                    Damper
+                  </Typography>
+                  @Damper <br /> 47,7 N người đăng ký
+                </Box>
+                <Box>
+                  <a href="https://www.youtube.com/@Damper" target="__blank">
+                    <Button color="error" variant="contained">
+                      Subscribe now
+                    </Button>
+                  </a>
+                </Box>
+              </Box>
+            </Box>
+          </Box>
+        </Grid>
+        <Grid item md={6} xs={12}>
+          <Box
+            sx={{
+              '& div.video': {
+                position: 'relative',
+                height: '0%',
+                borderRadius: '5px',
+                overflow: 'hidden',
+                paddingBottom: { md: `50.3%`, xs: '56.25%' },
+                '& iframe': {
+                  position: 'absolute',
+                  top: '0',
+                  left: '0',
+                  width: '100%',
+                  height: '100%'
+                }
+              }
+            }}
+          >
+            <Box className="video">
+              <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/1G6RMO5V2Sw"
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </Box>
+            <Box
+              display={'flex'}
+              sx={{
+                padding: '15px',
+                borderRadius: '5px',
+                width: 'auto',
+                background: '#fff',
+                margin: '0 auto',
+                mt: 3,
+                alignItems: 'center'
+              }}
+            >
+              <Box
+                sx={{
+                  width: '50px',
+                  height: '50px',
+
+                  borderRadius: '50%',
+                  background: `url(${youLogo3})`,
+                  backgroundSize: 'cover'
+                }}
+              />
+              <Box
+                ml={3}
+                textAlign="left"
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  width: 'calc(100% - 50px)'
+                }}
+              >
+                <Box>
+                  <Typography
+                    sx={{
+                      fontSize: '20px',
+                      fontWeight: 'bold'
+                    }}
+                  >
+                    Bèo Bèo
+                  </Typography>
+                  @beobeo0911 <br /> 5,79 N người đăng ký
+                </Box>
+                <Box>
+                  <a
+                    href="https://www.youtube.com/@beobeo0911"
+                    target="__blank"
+                  >
                     <Button color="error" variant="contained">
                       Subscribe now
                     </Button>
@@ -280,7 +458,7 @@ export default function ReputationItem() {
                   }}
                 >
                   <iframe
-                    src="https://www.tiktok.com/embed/7184984252038122753"
+                    src="https://www.tiktok.com/embed/7204854403386313985"
                     allowFullScreen
                     scrolling="no"
                     allow="encrypted-media;"
@@ -298,7 +476,7 @@ export default function ReputationItem() {
                   }}
                 >
                   <iframe
-                    src="https://www.tiktok.com/embed/7185127146640264475"
+                    src="https://www.tiktok.com/embed/7204772564030311706"
                     allowFullScreen
                     scrolling="no"
                     allow="encrypted-media;"

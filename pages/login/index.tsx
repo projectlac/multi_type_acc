@@ -1,16 +1,11 @@
-import image from '@/assets/images/Genshin_Impact_cover.jpg';
+import image from '@/assets/images/loginImage.jpg';
 import useCustomForm from '@/components/Common/Form/Form';
 import {
   Box,
   Button,
   Card,
   Container,
-  FormControl,
   Grid,
-  IconButton,
-  InputAdornment,
-  InputLabel,
-  OutlinedInput,
   styled,
   Typography
 } from '@mui/material';
@@ -21,11 +16,9 @@ import BaseLayout from 'src/layouts/BaseLayout';
 import * as yup from 'yup';
 
 import FormatForm from '@/components/Common/Form/FormatForm';
+import PasswordField from '@/components/Common/Form/PasswordField';
 import TextField from '@/components/Common/Form/TextField';
 import { useAuth } from '@/contexts/AuthGuard';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import PasswordField from '@/components/Common/Form/PasswordField';
 const OverviewWrapper = styled(Box)(
   () => `
     overflow: auto;
@@ -203,6 +196,7 @@ function Overview() {
                       background: `url(${image})`,
                       width: '100%',
                       height: '100%',
+                      backgroundPosition: 'center',
                       backgroundSize: 'cover'
                     }}
                   ></Box>
