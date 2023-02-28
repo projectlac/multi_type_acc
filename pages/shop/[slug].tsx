@@ -395,13 +395,13 @@ function DetailProduct() {
                   </FormatForm>
                 </DialogCommonWithoutIcon>
 
-                <Button
+                {/* <Button
                   variant="contained"
                   color="info"
                   sx={{ ml: 3, '& a': { color: '#fff' } }}
                 >
                   <a href={data.link}> Đi tới Tiktok Shop </a>
-                </Button>
+                </Button> */}
               </Box>
               {/* <Button variant="contained" sx={{ mr: 2 }}>
                 Mua ngay

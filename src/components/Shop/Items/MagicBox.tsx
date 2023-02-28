@@ -1,12 +1,10 @@
 import { Box } from '@mui/material';
 import Link from 'next/link';
-import React from 'react';
-import imgTik from '../../../assets/images/tiktok-logo-4500.svg';
 interface IProp {
   linkTiktok: string;
   slug: string;
 }
-function MagicBox({ linkTiktok, slug }: IProp) {
+function MagicBox({ slug }: IProp) {
   return (
     <Box
       sx={{
@@ -15,7 +13,7 @@ function MagicBox({ linkTiktok, slug }: IProp) {
         mt: 2
       }}
     >
-      <Box
+      {/* <Box
         sx={{
           height: '37px',
           position: 'absolute',
@@ -64,7 +62,7 @@ function MagicBox({ linkTiktok, slug }: IProp) {
           <img src={imgTik} alt="An SVG of an eye" />
           <span>Đi tới Tiktok Shop</span>
         </a>
-      </Box>
+      </Box> */}
       <Box
         sx={{
           height: '37px',
