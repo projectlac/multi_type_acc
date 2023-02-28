@@ -57,6 +57,7 @@ export default function Table({ data }: IProp) {
         <MuiTable sx={{ minWidth: 700 }} aria-label="customized table">
           <TableHead>
             <TableRow>
+              <StyledTableCell align="left">ID</StyledTableCell>
               <StyledTableCell align="left">Tài khoản</StyledTableCell>
               <StyledTableCell align="left">Mật khẩu</StyledTableCell>
               <StyledTableCell align="left">Giá</StyledTableCell>
@@ -73,6 +74,7 @@ export default function Table({ data }: IProp) {
               } = row;
               return (
                 <StyledTableRow key={detail[0].id}>
+                  <StyledTableCell align="left">{detail[0].id}</StyledTableCell>
                   <StyledTableCell align="left">
                     {detail[0].username}
                   </StyledTableCell>

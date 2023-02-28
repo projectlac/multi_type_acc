@@ -20,6 +20,7 @@ import useCustomForm from '../Common/Form/Form';
 import FormatForm from '../Common/Form/FormatForm';
 import Selection from '../Common/Form/Selection';
 import TextField from '../Common/Form/TextField';
+import imageTutorial from '../../assets/images/tutorial.jpg';
 const validationSchema = yup.object({
   homeNetwork: yup.string().required('Trường này là bắt buộc'),
   cost: yup.string().required('Trường này là bắt buộc'),
@@ -207,6 +208,11 @@ function TopUp() {
           <Tab
             label="Nạp thẻ qua ATM/MOMO"
             {...a11yProps(1)}
+            onClick={refreshCapcha}
+          />
+          <Tab
+            label="Hướng dẫn nạp thẻ"
+            {...a11yProps(2)}
             onClick={refreshCapcha}
           />
         </Tabs>
@@ -610,6 +616,28 @@ function TopUp() {
             <b>0372790362 (8h-24h)</b> để được hỗ trợ.
           </Typography>
         </Box>
+      </TabPanel>
+      <TabPanel value={value} index={2}>
+        <Typography
+          variant="h3"
+          component="h2"
+          sx={{
+            color: '#fff'
+          }}
+        >
+          Hướng dẫn nạp thẻ
+        </Typography>
+        <Box
+          width={'100%'}
+          sx={{
+            mt: 3,
+            minHeight: '440px',
+            background: `url(${imageTutorial})`,
+            backgroundSize: 'contain',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center'
+          }}
+        ></Box>
       </TabPanel>
     </Box>
   );
