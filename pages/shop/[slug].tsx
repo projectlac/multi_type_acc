@@ -394,8 +394,14 @@ function DetailProduct() {
                     </Grid>
                   </FormatForm>
                 </DialogCommonWithoutIcon>
-                Lưu ý : Khách nhận hàng tự trả ship vì giá ship sẽ tùy vào khu
-                vực trung bình dưới 30k
+                <Typography
+                  sx={{
+                    color: '#fff'
+                  }}
+                >
+                  Lưu ý : Khách nhận hàng tự trả ship vì giá ship sẽ tùy vào khu
+                  vực trung bình dưới 30k
+                </Typography>
                 {/* <Button
                   variant="contained"
                   color="info"
