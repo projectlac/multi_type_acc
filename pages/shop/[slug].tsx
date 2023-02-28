@@ -394,14 +394,7 @@ function DetailProduct() {
                     </Grid>
                   </FormatForm>
                 </DialogCommonWithoutIcon>
-                <Typography
-                  sx={{
-                    color: '#fff'
-                  }}
-                >
-                  Lưu ý : Khách nhận hàng tự trả ship vì giá ship sẽ tùy vào khu
-                  vực trung bình dưới 30k
-                </Typography>
+
                 {/* <Button
                   variant="contained"
                   color="info"
@@ -410,6 +403,14 @@ function DetailProduct() {
                   <a href={data.link}> Đi tới Tiktok Shop </a>
                 </Button> */}
               </Box>
+              <Typography
+                sx={{
+                  color: '#fff'
+                }}
+              >
+                Lưu ý : Khách nhận hàng tự trả ship vì giá ship sẽ tùy vào khu
+                vực trung bình dưới 30k
+              </Typography>
               {/* <Button variant="contained" sx={{ mr: 2 }}>
                 Mua ngay
               </Button> */}
