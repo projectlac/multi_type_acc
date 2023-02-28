@@ -81,9 +81,9 @@ function Footer() {
               <p className="footer-p">
                 <Link href={'/topup-genshin'}>NẠP GAME</Link>
               </p>
-              {/* <p className="footer-p">
+              <p className="footer-p">
                 <Link href={'/shop'}>SHOP PHỤ KIỆN</Link>
-              </p> */}
+              </p>
             </Box>
           </Grid>
           <Grid item md={4} xs={12}>

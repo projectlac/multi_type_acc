@@ -76,6 +76,7 @@ function LuckSpin() {
     getListGift().then((res) => {
       setGift(res.data);
       setRadian(360 / res.data.length);
+      console.log(res.data);
     });
   });
 
@@ -90,35 +91,67 @@ function LuckSpin() {
             '& .wheel__sec': {
               '&:nth-of-type(1)': {
                 borderTopColor: '#16a085',
-                transform: `rotate(0deg)`
+                transform: `rotate(0deg)`,
+
+                '&:before': {
+                  background: `url(${gift[0]?.image}) center top / contain no-repeat`
+                }
               },
               '&:nth-of-type(2)': {
                 borderTopColor: '#2980b9',
-                transform: `rotate(${radian}deg)`
+                transform: `rotate(${radian}deg)`,
+
+                '&:before': {
+                  background: `url(${gift[1]?.image}) center top / contain no-repeat`
+                }
               },
               '&:nth-of-type(3)': {
                 borderTopColor: '#34495e',
-                transform: `rotate(${2 * radian}deg)`
+                transform: `rotate(${2 * radian}deg)`,
+
+                '&:before': {
+                  background: `url(${gift[2]?.image}) center top / contain no-repeat`
+                }
               },
               '&:nth-of-type(4)': {
                 borderTopColor: '#f39c12',
-                transform: `rotate(${3 * radian}deg)`
+                transform: `rotate(${3 * radian}deg)`,
+
+                '&:before': {
+                  background: `url(${gift[3]?.image}) center top / contain no-repeat`
+                }
               },
               '&:nth-of-type(5)': {
                 borderTopColor: '#d35400',
-                transform: `rotate(${4 * radian}deg)`
+                transform: `rotate(${4 * radian}deg)`,
+
+                '&:before': {
+                  background: `url(${gift[4]?.image}) center top / contain no-repeat`
+                }
               },
               '&:nth-of-type(6)': {
                 borderTopColor: '#c0392b',
-                transform: `rotate(${5 * radian}deg)`
+                transform: `rotate(${5 * radian}deg)`,
+
+                '&:before': {
+                  background: `url(${gift[5]?.image}) center top / contain no-repeat`
+                }
               },
               '&:nth-of-type(7)': {
                 borderTopColor: '#d35400',
-                transform: `rotate(${6 * radian}deg)`
+                transform: `rotate(${6 * radian}deg)`,
+
+                '&:before': {
+                  background: `url(${gift[6]?.image}) center top / contain no-repeat`
+                }
               },
               '&:nth-of-type(8)': {
                 borderTopColor: '#c0392b',
-                transform: `rotate(${7 * radian}deg)`
+                transform: `rotate(${7 * radian}deg)`,
+
+                '&:before': {
+                  background: `url(${gift[7]?.image}) center top / contain no-repeat`
+                }
               }
             }
           }}

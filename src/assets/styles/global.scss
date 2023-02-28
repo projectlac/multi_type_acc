@@ -368,6 +368,16 @@ a {
     align-items: self-end;
     justify-content: center;
     box-sizing: border-box;
+    color:transparent;
+    &::before{
+      position: absolute;
+      clip-path: polygon(50% 100%, 0 0, 100% 0);
+      // width: 129px;
+      // height: 238px;
+      width: 234px;
+      height: 258px;
+      content:'',
+    }
   }
   &__text {
     margin: 70px 0 0 70px;
