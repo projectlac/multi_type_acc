@@ -461,7 +461,7 @@ export default function TopUpMobile() {
                     }}
                   >
                     <Typography fontSize={17} mr={1}>
-                      0904448980
+                      0372790362
                       {/* Nạp Momo đang lỗi, vui lòng ib Shop để
                       được nạp tiền */}
                     </Typography>{' '}
@@ -469,7 +469,7 @@ export default function TopUpMobile() {
                       <IconButton
                         aria-label="copy"
                         onClick={() => {
-                          copySomething('0904448980');
+                          copySomething('0372790362');
                         }}
                       >
                         <ContentCopyIcon
