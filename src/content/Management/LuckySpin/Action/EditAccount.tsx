@@ -62,7 +62,7 @@ function EditAccount({ title, slug }: IEdit) {
 
     const formData = new FormData();
     formData.append('name', name);
-    formData.append('rate', rate.toString());
+    formData.append('number', rate.toString());
 
     file && formData.append('image', file);
 
@@ -93,7 +93,6 @@ function EditAccount({ title, slug }: IEdit) {
     if (openDialog) {
       getOneGiftById(slug).then((res) => {
         const data = res.data;
-        console.log(data);
 
         let temp = {
           name: data.name,
