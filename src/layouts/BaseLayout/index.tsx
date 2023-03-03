@@ -7,7 +7,7 @@ import { Box, Container, styled } from '@mui/material';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 import { FC, ReactNode, useState } from 'react';
-import MessengerChat from 'react-messenger-customer-chat';
+// import MessengerChat from 'react-messenger-customer-chat';
 import HeaderUserbox from './Userbox';
 interface BaseLayoutProps {
   children?: ReactNode;
@@ -174,7 +174,7 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children }) => {
               )}
             </Box>
           </MenuWrapper>
-          <MessengerChat pageId="103780805920496" language="vi_VN" />
+          {/* <MessengerChat pageId="103780805920496" language="vi_VN" /> */}
         </Container>
       </Header>
       <FullBG>
