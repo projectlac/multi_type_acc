@@ -76,7 +76,6 @@ function LuckSpin() {
     getListGift().then((res) => {
       setGift(res.data);
       setRadian(360 / res.data.length);
-      console.log(res.data);
     });
   });
 
