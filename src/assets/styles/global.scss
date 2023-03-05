@@ -358,17 +358,18 @@ a {
     position: absolute;
     top: -17px;
     left: 142px;
-    width: 0;
-    height: 0;
+    width: 217px;
+    height: 269px;
     border: solid;
-    border-width: 268px 112px 0;
+    border-width: 0;
     border-color: transparent;
     transform-origin: 50% 100%;
     display: flex;
     align-items: self-end;
     justify-content: center;
     box-sizing: border-box;
-    color:transparent;
+    color: transparent;
+    clip-path: polygon(50% 100%,0 0,100% 0);
     &::before{
       position: absolute;
       clip-path: polygon(50% 100%, 0 0, 100% 0);
