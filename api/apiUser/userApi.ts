@@ -39,3 +39,6 @@ export const checkToken = (token: string) => {
 export const getNotification = (limit:number,offset: number) => {
   return api.get(`/history/bonus?limit=${limit}&offset=${offset}`);
 };
+export const get500PaymentHistory = (limit:number) => {
+  return api.get(`/history/bank-transfer?limit=${limit}`);
+};

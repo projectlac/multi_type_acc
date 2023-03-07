@@ -1,5 +1,24 @@
 
 export type IType = 'hero' | 'weapon';
+export type History = 'SUCCESS' | 'ERROR';
+export interface IHistoryData {
+  history_message:string;
+  created_at:string;
+  id:number;
+  transaction:IHistoryTransaction;
+  user:IHistoryUser
+};
+export interface IHistoryUser {
+  email:string;
+  username:string
+};
+export interface IHistoryTransaction {
+  status:History;
+  description:string;
+  bank_name:string
+
+};
+
 
 export interface IData {
   id: number;

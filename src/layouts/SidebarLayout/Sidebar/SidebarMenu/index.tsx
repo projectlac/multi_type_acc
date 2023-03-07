@@ -243,6 +243,23 @@ function SidebarMenu() {
                     </Button>
                   </NextLink>
                 </ListItem>
+                <ListItem component="div">
+                  <NextLink href="/management/payment-history" passHref>
+                    <Button
+                      className={
+                        currentRoute === '/management/payment-history'
+                          ? 'active'
+                          : ''
+                      }
+                      disableRipple
+                      component="a"
+                      onClick={closeSidebar}
+                      startIcon={<TableChartTwoToneIcon />}
+                    >
+                      Lịch sử nạp
+                    </Button>
+                  </NextLink>
+                </ListItem>
               </List>
             </SubMenuWrapper>
           </List>
