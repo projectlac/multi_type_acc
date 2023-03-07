@@ -131,7 +131,7 @@ const RecentOrdersTableLuckySpin: FC<RecentOrdersTableProps> = ({
       <Box p={2}>
         <TablePagination
           component="div"
-          count={paginatedCryptoOrders.length}
+          count={cryptoOrders.length}
           onPageChange={handlePageChange}
           onRowsPerPageChange={handleLimitChange}
           page={page}

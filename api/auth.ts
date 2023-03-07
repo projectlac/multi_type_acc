@@ -22,3 +22,6 @@ export const getWebInformation = () => {
 export const updateWebInformation = (youtube:string,description:string) => {
   return api.put(`/information/update`,{youtube, description})
 }
+export const updatePriceSpin = (price:number) => {
+  return api.put(`/information/update`,{spinning_price:price})
+}

@@ -1,6 +1,6 @@
 import { useAuth } from '@/contexts/AuthGuard';
 import { Card } from '@mui/material';
-import { spinWheelHistory } from 'api/apiWheel/wheelApi';
+import { spinWheelHistory, spinWheelHistoryAdmin } from 'api/apiWheel/wheelApi';
 import { ISpinHistory } from 'model/deposit';
 import { useEffect, useState } from 'react';
 import RecentOrdersTableLuckySpin from './RecentOrdersTableLuckySpin';
@@ -11,7 +11,7 @@ function RecentOrders() {
 
   useEffect(() => {
     const callApi = async () => {
-      await spinWheelHistory().then((res) => {
+      await spinWheelHistoryAdmin().then((res) => {
         const data = res.data.data;
 
         let temp: ISpinHistory[] = [];

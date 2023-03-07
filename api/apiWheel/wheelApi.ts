@@ -20,5 +20,8 @@ export const updateGiftById = (slug: string, data: FormData) => {
   return api.put(`/wheel/update/${slug}`, data);
 };
 export const spinWheelHistory = () => {
-  return api.get(`/spin/history`);
+  return api.get(`/spin/history?limit=10`);
+};
+export const spinWheelHistoryAdmin = () => {
+  return api.get(`/spin/history?limit=99999`);
 };

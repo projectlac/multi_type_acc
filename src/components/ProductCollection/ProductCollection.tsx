@@ -3,6 +3,8 @@ import napgame from '@/assets/images/mainCategory/310320905_485170040201744_4282
 import shopphukien from '@/assets/images/e8287ab33eade6f3bfbc.jpg';
 
 import rrr from '@/assets/images/mainCategory/310545249_770219224063920_253246776766894058_n.jpg';
+import lucky from '@/assets/images/lucky.jpg';
+
 import bgVip from '@/assets/images/mainCategory/310860207_1164961827704035_4343141035597341049_n.jpg';
 import news from '@/assets/images/mainCategory/9bf1a5932675ff2ba664.jpg';
 
@@ -197,6 +199,76 @@ function ProductCollection() {
           image={shopphukien}
           data={dataProduct}
         />
+      </Grid>
+      <Grid item md={3} sm={6} xs={12}>
+        <Card
+          sx={{
+            background:
+              'linear-gradient(90deg, rgba(228,214,200,1) 0%, rgba(239,231,225,1) 50%, rgba(228,214,200,1) 100%)',
+            padding: '15px',
+            borderRadius: '5px',
+            transition: 'all 0.5s',
+            '&:hover': {
+              transform: 'scale(1.05)',
+              '& .eff:before': {
+                WebkitAnimation: 'shine .75s',
+                animation: 'shine .75s'
+              }
+            }
+          }}
+        >
+          <Link href={'/lucky-spin'}>
+            <Box
+              className="eff"
+              sx={{
+                height: '175px',
+                background: `url(${lucky})`,
+                width: '100%',
+                backgroundSize: 'cover',
+                borderRadius: '5px',
+                position: 'relative',
+                overflow: 'hidden',
+                '&:before': {
+                  position: 'absolute',
+                  top: '0',
+                  left: '-75%',
+                  zIndex: '2',
+                  display: 'block',
+                  content: "''",
+                  width: '50%',
+                  height: '100%',
+                  background:
+                    'linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%)',
+                  WebkitTransform: 'skewX(-25deg)',
+                  transform: 'skewX(-25deg)'
+                }
+              }}
+            ></Box>
+          </Link>
+
+          <Box mt={1}>
+            <Typography
+              textAlign={'center'}
+              fontWeight={'900'}
+              fontFamily="Roboto"
+              fontSize={25}
+              color={'primary'}
+              textTransform="uppercase"
+              component={'h2'}
+            >
+              Lucky Spin
+            </Typography>
+            <Divider sx={{ mt: 1, mb: 8 }} />
+            <Divider sx={{ mt: 1, mb: 1 }} />
+            <Box textAlign={'center'}>
+              <Link href={'/lucky-spin'}>
+                <Button variant="contained" color="secondary">
+                  Khám phá
+                </Button>
+              </Link>
+            </Box>
+          </Box>
+        </Card>
       </Grid>
     </Grid>
   );
