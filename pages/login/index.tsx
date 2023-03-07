@@ -31,7 +31,7 @@ const OverviewWrapper = styled(Box)(
 const validationSchema = yup.object({
   username: yup
     .string()
-    .required('Email là bắt buộc')
+    .required('Tài khoản là bắt buộc')
     .matches(/^[a-zA-Z0-9\W|_]\S+$/g, 'Không được có khoảng trắng'),
   password: yup
     .string()
