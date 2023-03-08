@@ -19,6 +19,7 @@ import {
   spinWheelHistory
 } from 'api/apiWheel/wheelApi';
 import { getWebInformation } from 'api/auth';
+import { format } from 'date-fns';
 import React, { ReactElement, useEffect, useState } from 'react';
 
 const Transition = React.forwardRef(function Transition(
@@ -80,7 +81,7 @@ function LuckSpin() {
       .catch((err) => {
         handleSetMessage({
           type: 'error',
-          message: 'Có lỗi xảy ra,  vui lòng kiểm tra lại'
+          message: 'Có lỗi xảy ra, vui lòng kiểm tra lại'
         });
       });
   };
@@ -397,26 +398,40 @@ function LuckSpin() {
               }}
             >
               {history.map((d, i) => (
-                <Typography
-                  key={i}
-                  sx={{
-                    color: '#fff',
-                    textAlign: 'left',
-                    fontSize: '14px'
-                  }}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    className="bi bi-dot"
-                    viewBox="0 0 16 16"
+                <Box key={i}>
+                  <Typography
+                    sx={{
+                      color: '#fff',
+                      textAlign: 'left',
+                      fontSize: '14px'
+                    }}
                   >
-                    <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z" />
-                  </svg>{' '}
-                  {d.wheel.name}
-                </Typography>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      className="bi bi-dot"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z" />
+                    </svg>{' '}
+                    {d.wheel.name}
+                    <br />
+                  </Typography>
+                  <Typography
+                    sx={{
+                      color: '#fff',
+                      fontStyle: 'italic',
+                      fontSize: '12px',
+                      textAlign: 'right',
+                      paddingRight: '15px'
+                    }}
+                  >
+                    {format(new Date(d.wheel.created_at), 'dd/MM/yyyy')} -{' '}
+                    {format(new Date(d.wheel.created_at), 'hh:mm:ss')}
+                  </Typography>
+                </Box>
               ))}
             </Box>
           </Box>
