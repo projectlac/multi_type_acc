@@ -432,8 +432,8 @@ function LuckSpin() {
                       paddingRight: '15px'
                     }}
                   >
-                    {format(new Date(d.wheel.created_at), 'dd/MM/yyyy')} -{' '}
-                    {format(new Date(d.wheel.created_at), 'hh:mm:ss')}
+                    {format(new Date(d.created_at), 'dd/MM/yyyy')} -{' '}
+                    {format(new Date(d.created_at), 'hh:mm:ss')}
                   </Typography>
                 </Box>
               ))}
