@@ -81,8 +81,12 @@ function LuckSpin() {
       .catch((err) => {
         handleSetMessage({
           type: 'error',
-          message: 'Có lỗi xảy ra, vui lòng kiểm tra lại'
+          message: err.response.data.message
+            ? err.response.data.message
+            : 'Có lỗi xảy ra, vui lòng kiểm tra lại'
         });
+
+        setDisable(false);
       });
   };
 
