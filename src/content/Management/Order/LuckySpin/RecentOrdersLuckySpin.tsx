@@ -21,7 +21,9 @@ function RecentOrders() {
             id: d.id,
             user: d.user,
             wheel: d.wheel,
-            created_at: d.created_at
+            created_at: d.created_at,
+            is_receive: d.is_receive,
+            amount: d.amount
           });
         });
         setData(temp);

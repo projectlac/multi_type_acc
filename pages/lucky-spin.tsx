@@ -111,7 +111,7 @@ function LuckSpin() {
             display: 'flex',
             flexDirection: { md: 'row', xs: 'column' },
             alignItems: 'center',
-            justifyContent: 'center'
+            justifyContent: 'space-between'
           }}
         >
           <Box
@@ -342,13 +342,13 @@ function LuckSpin() {
 
           <Box
             sx={{
-              position: { md: 'absolute', xs: 'relative' },
+              position: 'relative',
               right: '0',
               height: '320px',
               background: '#000000cf',
               padding: '15px',
               borderRadius: '8px',
-              width: '250px'
+              width: { md: 'calc(100% - 550px)', xs: '100%' }
             }}
           >
             <Typography

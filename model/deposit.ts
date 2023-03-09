@@ -58,4 +58,6 @@ export interface ISpinHistory {
   wheel: ISpinGift;
   created_at: string;
   id: number;
+  amount:number;
+  is_receive:boolean;
 }

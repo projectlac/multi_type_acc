@@ -35,7 +35,11 @@ const validationSchema = yup.object({
     .required('Thông tin này là bắt buộc'),
 
   file: yup.mixed().required('File is required'),
-  price: yup.number().integer().min(10000).required('Thông tin này là bắt buộc')
+  price: yup
+    .number()
+    .integer()
+    .min(10000, 'Vui lòng điền đúng giá')
+    .required('Thông tin này là bắt buộc')
 });
 const initForm = {
   name: '',
@@ -43,7 +47,7 @@ const initForm = {
   password: '',
   server: 'ASIA',
   detail: '',
-  price: 10000,
+  price: 0,
   ar: 10,
   weapon: [],
   hero: [],

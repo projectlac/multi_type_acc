@@ -35,7 +35,10 @@ const validationSchema = yup.object({
     .required('Thông tin này là bắt buộc'),
 
   file: yup.mixed().required('File is required'),
-  price: yup.number().required('Thông tin này là bắt buộc')
+  price: yup
+    .number()
+    .required('Thông tin này là bắt buộc')
+    .min(10000, 'Vui lòng điền đúng giá')
 });
 const initForm = {
   name: '',

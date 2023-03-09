@@ -23,5 +23,8 @@ export const spinWheelHistory = () => {
   return api.get(`/spin/history?limit=10`);
 };
 export const spinWheelHistoryAdmin = () => {
-  return api.get(`/spin/history?limit=99999`);
+  return api.get(`/gift?limit=99999`);
+};
+export const updateStatusWheel = (id:number, is_receive:boolean) => {
+  return api.put(`/gift/update/${id}`,{is_receive});
 };
