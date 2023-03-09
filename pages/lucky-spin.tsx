@@ -15,6 +15,7 @@ import { TransitionProps } from '@mui/material/transitions';
 import { Box } from '@mui/system';
 import {
   getListGift,
+  getSpinLastest,
   spinWheel,
   spinWheelHistory
 } from 'api/apiWheel/wheelApi';
@@ -95,7 +96,7 @@ function LuckSpin() {
       setGift(res.data);
       setRadian(360 / res.data.length);
     });
-    spinWheelHistory().then((res) => {
+    getSpinLastest().then((res) => {
       setHistory(res.data.data);
     });
 
@@ -376,6 +377,25 @@ function LuckSpin() {
             >
               10 lần quay gần nhất
             </Typography>
+            <Box
+              sx={{
+                display: 'flex'
+              }}
+            >
+              <Box
+                sx={{
+                  width: '20%'
+                }}
+              >
+                User
+              </Box>
+              <Box>Quay được</Box>
+              <Box
+                sx={{
+                  width: '20%'
+                }}
+              ></Box>
+            </Box>
             <Box
               sx={{
                 height: '240px',

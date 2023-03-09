@@ -28,3 +28,6 @@ export const spinWheelHistoryAdmin = () => {
 export const updateStatusWheel = (id:number, is_receive:boolean) => {
   return api.put(`/gift/update/${id}`,{is_receive});
 };
+export const getSpinLastest = () => {
+  return api.get(`/spin/latest-spin/`);
+};
