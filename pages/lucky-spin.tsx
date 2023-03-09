@@ -20,6 +20,7 @@ import {
   spinWheelHistory
 } from 'api/apiWheel/wheelApi';
 import { getWebInformation } from 'api/auth';
+import { getHistory } from 'api/user';
 import { format } from 'date-fns';
 import React, { ReactElement, useEffect, useState } from 'react';
 
@@ -37,6 +38,8 @@ function LuckSpin() {
   const [gift, setGift] = useState([]);
   const [radian, setRadian] = useState<number>(0);
   const [history, setHistory] = useState<any>([]);
+  const [history1, setHistory1] = useState<any>([]);
+
   const [value, setValue] = useState<number>(0);
   const [result, setResult] = useState<string>('');
 
@@ -99,7 +102,9 @@ function LuckSpin() {
     getSpinLastest().then((res) => {
       setHistory(res.data.data);
     });
-
+    spinWheelHistory().then((res) => {
+      setHistory1(res.data.data);
+    });
     getWebInformation().then((res) => {
       setPrice(
         typeof res.data[0].spinning_price === 'string'
@@ -345,118 +350,244 @@ function LuckSpin() {
               </Box>
             </Dialog>
           </Box>
-
           <Box
             sx={{
-              position: 'relative',
-              right: '0',
-              height: '320px',
-              background: '#000000cf',
-              padding: '15px',
-              borderRadius: '8px',
               width: { md: 'calc(100% - 550px)', xs: '100%' }
             }}
           >
-            <Typography
-              sx={{
-                color: '#fff',
-                textAlign: 'center',
-                fontSize: '14px',
-                fontWeight: 'bold'
-              }}
-            >
-              Giá quay lần này: {formatMoney(price)} VNĐ
-            </Typography>
-            <Typography
-              sx={{
-                color: '#fff',
-                textAlign: 'center',
-                fontSize: '18px',
-                fontWeight: 'bold'
-              }}
-            >
-              10 lần quay gần nhất
-            </Typography>
             <Box
               sx={{
-                display: 'flex'
+                position: 'relative',
+                right: '0',
+                height: '320px',
+                background: '#000000cf',
+                padding: '15px',
+                borderRadius: '8px',
+                width: '100%',
+                mb: 2
               }}
             >
-              <Box
+              <Typography
                 sx={{
-                  width: '20%'
+                  color: '#fff',
+                  textAlign: 'center',
+                  fontSize: '14px',
+                  fontWeight: 'bold'
                 }}
               >
-                User
-              </Box>
-              <Box>Quay được</Box>
+                Giá quay lần này: {formatMoney(price)} VNĐ
+              </Typography>
+              <Typography
+                sx={{
+                  color: '#fff',
+                  textAlign: 'center',
+                  fontSize: '18px',
+                  fontWeight: 'bold'
+                }}
+              >
+                10 lần quay gần nhất
+              </Typography>
               <Box
                 sx={{
-                  width: '20%'
+                  display: 'flex',
+                  color: '#fff',
+                  textAlign: 'left',
+                  fontSize: '14px',
+                  justifyContent: 'space-between',
+                  fontWeight: 'bold',
+                  mb: 1
                 }}
-              ></Box>
+              >
+                <Box>Kết quả</Box>
+                <Box
+                  sx={{
+                    width: '20%',
+                    textAlign: 'right'
+                  }}
+                >
+                  Thời gian
+                </Box>
+              </Box>
+              <Box
+                sx={{
+                  height: '200px',
+                  overflow: 'hidden',
+                  overflowY: 'auto',
+                  '&::-webkit-scrollbar': {
+                    width: '10px'
+                  },
+
+                  /* Track */
+                  '&::-webkit-scrollbar-track': {
+                    background: '#f1f1f1'
+                  },
+
+                  /* Handle */
+                  '&::-webkit-scrollbar-thumb': {
+                    background: '#888'
+                  },
+
+                  /* Handle on hover */
+                  '&::-webkit-scrollbar-thumb:hover': {
+                    background: '#555'
+                  }
+                }}
+              >
+                {history.map((d, i) => (
+                  <Box
+                    key={i}
+                    sx={{
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      mb: 1
+                    }}
+                  >
+                    <Typography
+                      sx={{
+                        color: '#fff',
+                        textAlign: 'left',
+                        fontSize: '14px'
+                      }}
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        className="bi bi-dot"
+                        viewBox="0 0 16 16"
+                      >
+                        <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z" />
+                      </svg>{' '}
+                      {d.message}
+                      <br />
+                    </Typography>
+                    <Typography
+                      sx={{
+                        color: '#fff',
+                        fontStyle: 'italic',
+                        fontSize: '12px',
+                        textAlign: 'right',
+                        paddingRight: '3px'
+                      }}
+                    >
+                      {format(new Date(d.date), 'dd/MM/yyyy')} -{' '}
+                      {format(new Date(d.date), 'hh:mm:ss')}
+                    </Typography>
+                  </Box>
+                ))}
+              </Box>
             </Box>
             <Box
               sx={{
-                height: '240px',
-                overflow: 'hidden',
-                overflowY: 'auto',
-                '&::-webkit-scrollbar': {
-                  width: '10px'
-                },
-
-                /* Track */
-                '&::-webkit-scrollbar-track': {
-                  background: '#f1f1f1'
-                },
-
-                /* Handle */
-                '&::-webkit-scrollbar-thumb': {
-                  background: '#888'
-                },
-
-                /* Handle on hover */
-                '&::-webkit-scrollbar-thumb:hover': {
-                  background: '#555'
-                }
+                position: 'relative',
+                right: '0',
+                height: '300px',
+                background: '#000000cf',
+                padding: '15px',
+                borderRadius: '8px'
               }}
             >
-              {history.map((d, i) => (
-                <Box key={i}>
-                  <Typography
-                    sx={{
-                      color: '#fff',
-                      textAlign: 'left',
-                      fontSize: '14px'
-                    }}
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      className="bi bi-dot"
-                      viewBox="0 0 16 16"
-                    >
-                      <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z" />
-                    </svg>{' '}
-                    {d.wheel.name}
-                    <br />
-                  </Typography>
-                  <Typography
-                    sx={{
-                      color: '#fff',
-                      fontStyle: 'italic',
-                      fontSize: '12px',
-                      textAlign: 'right',
-                      paddingRight: '15px'
-                    }}
-                  >
-                    {format(new Date(d.created_at), 'dd/MM/yyyy')} -{' '}
-                    {format(new Date(d.created_at), 'hh:mm:ss')}
-                  </Typography>
+              <Typography
+                sx={{
+                  color: '#fff',
+                  textAlign: 'center',
+                  fontSize: '18px',
+                  fontWeight: 'bold'
+                }}
+              >
+                Lịch sử quay của bạn
+              </Typography>
+              <Box
+                sx={{
+                  display: 'flex',
+                  color: '#fff',
+                  textAlign: 'left',
+                  fontSize: '14px',
+                  justifyContent: 'space-between',
+                  fontWeight: 'bold',
+                  mb: 1
+                }}
+              >
+                <Box>Kết quả</Box>
+                <Box
+                  sx={{
+                    width: '20%',
+                    textAlign: 'right'
+                  }}
+                >
+                  Thời gian
                 </Box>
-              ))}
+              </Box>
+              <Box
+                sx={{
+                  height: '200px',
+                  overflow: 'hidden',
+                  overflowY: 'auto',
+                  '&::-webkit-scrollbar': {
+                    width: '10px'
+                  },
+
+                  /* Track */
+                  '&::-webkit-scrollbar-track': {
+                    background: '#f1f1f1'
+                  },
+
+                  /* Handle */
+                  '&::-webkit-scrollbar-thumb': {
+                    background: '#888'
+                  },
+
+                  /* Handle on hover */
+                  '&::-webkit-scrollbar-thumb:hover': {
+                    background: '#555'
+                  }
+                }}
+              >
+                {history1.map((d, i) => (
+                  <Box
+                    key={i}
+                    sx={{
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      mb: 1
+                    }}
+                  >
+                    <Typography
+                      sx={{
+                        color: '#fff',
+                        textAlign: 'left',
+                        fontSize: '14px'
+                      }}
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        className="bi bi-dot"
+                        viewBox="0 0 16 16"
+                      >
+                        <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z" />
+                      </svg>{' '}
+                      {d.wheel.name}
+                      <br />
+                    </Typography>
+                    <Typography
+                      sx={{
+                        color: '#fff',
+                        fontStyle: 'italic',
+                        fontSize: '12px',
+                        textAlign: 'right',
+                        paddingRight: '3px'
+                      }}
+                    >
+                      {format(new Date(d.created_at), 'dd/MM/yyyy')} -{' '}
+                      {format(new Date(d.created_at), 'hh:mm:ss')}
+                    </Typography>
+                  </Box>
+                ))}
+              </Box>
             </Box>
           </Box>
         </Box>
