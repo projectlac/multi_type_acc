@@ -37,7 +37,7 @@ function EditTag({ title, id }: IEdit) {
     const { status } = value;
 
     try {
-      await updateStatusWheel(id, status).then(() => {
+      await updateStatusWheel(id, status.toString()).then(() => {
         handleSetMessage({
           type: 'success',
           message: 'Thay đổi trạng thái thành công'

@@ -1,3 +1,4 @@
+import Label from '@/components/Label';
 import {
   Box,
   Card,
@@ -110,6 +111,22 @@ const RecentOrdersTableLuckySpin: FC<RecentOrdersTableProps> = ({
       name: 'Chưa gửi'
     }
   ];
+  const getStatusLabel = (cryptoOrderStatus: boolean): JSX.Element => {
+    const map = {
+      false: {
+        text: 'Chưa gửi',
+        color: 'error'
+      },
+      true: {
+        text: 'Đã gửi',
+        color: 'success'
+      }
+    };
+
+    const { text, color }: any = map[cryptoOrderStatus.toString()];
+
+    return <Label color={color}>{text}</Label>;
+  };
   const theme = useTheme();
   return (
     <Card>
@@ -201,7 +218,7 @@ const RecentOrdersTableLuckySpin: FC<RecentOrdersTableProps> = ({
                       gutterBottom
                       noWrap
                     >
-                      {cryptoOrder.is_receive ? 'Đã gửi' : 'Chưa gửi '}
+                      {getStatusLabel(cryptoOrder.is_receive)}
                     </Typography>
                   </TableCell>
 
