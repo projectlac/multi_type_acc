@@ -108,8 +108,10 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ cryptoOrders }) => {
     setLimit(parseInt(event.target.value));
   };
 
-  let filter = cryptoOrders.filter((d) =>
-    d.username.toLowerCase().includes(search.toLowerCase())
+  let filter = cryptoOrders.filter(
+    (d) =>
+      d.username.toLowerCase().includes(search.toLowerCase()) ||
+      d.id.toString().includes(search.toLowerCase())
   );
   // console.log(cryptoOrders);
 
@@ -253,7 +255,7 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ cryptoOrders }) => {
                       {format(new Date(cryptoOrder.created_at), 'dd/MM/yyyy')}
                     </Typography>
                     <Typography>
-                      {format(new Date(cryptoOrder.created_at), 'hh:mm:ss')}
+                      {format(new Date(cryptoOrder.created_at), 'HH:mm:ss')}
                     </Typography>
                   </TableCell>
                   <TableCell align="right">

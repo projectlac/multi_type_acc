@@ -30,6 +30,7 @@ function RecentOrders() {
             transaction: d.transaction
           });
         });
+
         setData(temp);
       });
     };
