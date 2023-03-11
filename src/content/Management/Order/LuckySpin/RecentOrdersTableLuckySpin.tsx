@@ -16,6 +16,7 @@ import {
   TableHead,
   TablePagination,
   TableRow,
+  TextField,
   Tooltip,
   Typography,
   useTheme
@@ -49,6 +50,20 @@ const RecentOrdersTableLuckySpin: FC<RecentOrdersTableProps> = ({
   const [filters, setFilters] = useState<Filters>({
     status: null
   });
+  const [search, setSearch] = useState<string>('');
+  const handleChangeSearch = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value);
+  };
+
+  const filterBySearch = (cryptoOrders: ISpinHistory[]) => {
+    let filter = cryptoOrders.filter(
+      (d) =>
+        d.user.username.toLowerCase().includes(search.toLowerCase()) ||
+        d.user.email.includes(search)
+    );
+
+    return filter;
+  };
 
   const handleStatusChange = (e: ChangeEvent<HTMLInputElement>): void => {
     let value = null;
@@ -88,8 +103,8 @@ const RecentOrdersTableLuckySpin: FC<RecentOrdersTableProps> = ({
       return matches;
     });
   };
-
-  const filteredCryptoOrders = applyFilters(cryptoOrders, filters);
+  const fileterSearch = filterBySearch(cryptoOrders);
+  const filteredCryptoOrders = applyFilters(fileterSearch, filters);
 
   const paginatedCryptoOrders = applyPagination(
     filteredCryptoOrders,
@@ -130,6 +145,19 @@ const RecentOrdersTableLuckySpin: FC<RecentOrdersTableProps> = ({
   const theme = useTheme();
   return (
     <Card>
+      <Box
+        sx={{
+          padding: '10px 15px 0px'
+        }}
+      >
+        <TextField
+          variant="outlined"
+          fullWidth
+          label="Search by username hoặc email"
+          value={search}
+          onChange={handleChangeSearch}
+        ></TextField>
+      </Box>
       <CardHeader
         action={
           <Box width={150}>
