@@ -22,25 +22,25 @@ import {
   useTheme
 } from '@mui/material';
 import { format } from 'date-fns';
-import { ISpinHistory } from 'model/deposit';
+import { IOrderGift } from 'model/gift';
 import PropTypes from 'prop-types';
 import { ChangeEvent, FC, useState } from 'react';
 import EditTag from './Action/EditTag';
 
 interface RecentOrdersTableProps {
   className?: string;
-  cryptoOrders: ISpinHistory[];
+  cryptoOrders: IOrderGift[];
 }
 
 const applyPagination = (
-  cryptoOrders: ISpinHistory[],
+  cryptoOrders: IOrderGift[],
   page: number,
   limit: number
-): ISpinHistory[] => {
+): IOrderGift[] => {
   return cryptoOrders.slice(page * limit, page * limit + limit);
 };
 interface Filters {
-  status?: 'true' | 'false';
+  status?: 'SUCCESS' | 'PENDING';
 }
 const RecentOrdersTableLuckySpin: FC<RecentOrdersTableProps> = ({
   cryptoOrders
@@ -55,7 +55,7 @@ const RecentOrdersTableLuckySpin: FC<RecentOrdersTableProps> = ({
     setSearch(e.target.value);
   };
 
-  const filterBySearch = (cryptoOrders: ISpinHistory[]) => {
+  const filterBySearch = (cryptoOrders: IOrderGift[]) => {
     let filter = cryptoOrders.filter(
       (d) =>
         d.user.username.toLowerCase().includes(search.toLowerCase()) ||
@@ -87,16 +87,13 @@ const RecentOrdersTableLuckySpin: FC<RecentOrdersTableProps> = ({
   };
 
   const applyFilters = (
-    cryptoOrders: ISpinHistory[],
+    cryptoOrders: IOrderGift[],
     filters: Filters
-  ): ISpinHistory[] => {
+  ): IOrderGift[] => {
     return cryptoOrders.filter((cryptoOrder) => {
       let matches = true;
 
-      if (
-        filters.status &&
-        cryptoOrder.is_receive.toString() !== filters.status
-      ) {
+      if (filters.status && cryptoOrder.status.toString() !== filters.status) {
         matches = false;
       }
 
@@ -118,26 +115,29 @@ const RecentOrdersTableLuckySpin: FC<RecentOrdersTableProps> = ({
       name: 'All'
     },
     {
-      id: 'true',
+      id: 'SUCCESS',
       name: 'Đã gửi'
     },
     {
-      id: 'false',
+      id: 'PENDING',
       name: 'Chưa gửi'
     }
   ];
-  const getStatusLabel = (cryptoOrderStatus: boolean): JSX.Element => {
+  const getStatusLabel = (cryptoOrderStatus: string): JSX.Element => {
     const map = {
-      false: {
-        text: 'Chưa gửi',
+      PENDING: {
+        text: 'PENDING',
         color: 'error'
       },
-      true: {
-        text: 'Đã gửi',
+      SUCCESS: {
+        text: 'SUCCESS',
         color: 'success'
+      },
+      ERROR: {
+        text: 'ERROR',
+        color: 'error'
       }
     };
-
     const { text, color }: any = map[cryptoOrderStatus.toString()];
 
     return <Label color={color}>{text}</Label>;
@@ -188,11 +188,13 @@ const RecentOrdersTableLuckySpin: FC<RecentOrdersTableProps> = ({
             <TableRow>
               <TableCell width={'5%'}>#</TableCell>
 
-              <TableCell width={'30%'}>Người quay</TableCell>
+              <TableCell width={'20%'}>Người nhận</TableCell>
               <TableCell>Thông tin</TableCell>
-              <TableCell>Trạng thái</TableCell>
-              <TableCell align="right">Ngày quay</TableCell>
-              <TableCell align="right">Action</TableCell>
+              <TableCell>Sản phẩm</TableCell>
+
+              <TableCell align="right">Ngày mua</TableCell>
+              <TableCell align="right">Trạng thái</TableCell>
+              <TableCell align="right">Actions</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -218,15 +220,7 @@ const RecentOrdersTableLuckySpin: FC<RecentOrdersTableProps> = ({
                       gutterBottom
                       noWrap
                     >
-                      {cryptoOrder.user.username}
-                    </Typography>
-                    <Typography
-                      variant="body1"
-                      color="text.primary"
-                      gutterBottom
-                      noWrap
-                    >
-                      {cryptoOrder.user.email}
+                      {cryptoOrder.receiver}
                     </Typography>
                   </TableCell>
                   <TableCell>
@@ -236,20 +230,40 @@ const RecentOrdersTableLuckySpin: FC<RecentOrdersTableProps> = ({
                       gutterBottom
                       noWrap
                     >
-                      {cryptoOrder.wheel.name} x {cryptoOrder.amount}
+                      <b>Địa chỉ: </b> {cryptoOrder.delivery_address} |{' '}
+                      <b>Số điện thoại: </b>
+                      {cryptoOrder.phone}
                     </Typography>
-                  </TableCell>
-                  <TableCell>
-                    <Typography
-                      variant="body1"
-                      color="text.primary"
-                      gutterBottom
-                      noWrap
-                    >
-                      {getStatusLabel(cryptoOrder.is_receive)}
-                    </Typography>
-                  </TableCell>
 
+                    <Typography
+                      variant="body1"
+                      color="text.primary"
+                      gutterBottom
+                      noWrap
+                    >
+                      {cryptoOrder.description && (
+                        <>
+                          <b>Chú thích: </b>
+                          {cryptoOrder.description}
+                        </>
+                      )}
+                    </Typography>
+                  </TableCell>
+                  <TableCell align="right">
+                    {cryptoOrder.details.length > 0 &&
+                      cryptoOrder.details.map((f, i) => (
+                        <Box key={i}>
+                          <Typography
+                            variant="body1"
+                            color="text.primary"
+                            gutterBottom
+                            noWrap
+                          >
+                            {f.gift.wheel.name}x {f.gift.amount}
+                          </Typography>
+                        </Box>
+                      ))}
+                  </TableCell>
                   <TableCell align="right">
                     <Typography
                       variant="body1"
@@ -265,21 +279,21 @@ const RecentOrdersTableLuckySpin: FC<RecentOrdersTableProps> = ({
                     </Typography>
                   </TableCell>
                   <TableCell align="right">
-                    <Tooltip title="Đổi role" arrow>
+                    {getStatusLabel(cryptoOrder.status)}
+                  </TableCell>
+                  <TableCell align="right">
+                    <Tooltip title="Đổi trạng thái" arrow>
                       <IconButton
                         sx={{
                           '&:hover': {
-                            background: theme.colors.primary.lighter
+                            background: theme.colors.success.lighter
                           },
-                          color: theme.palette.primary.main
+                          color: theme.palette.success.main
                         }}
-                        color="inherit"
+                        color="success"
                         size="small"
                       >
-                        <EditTag
-                          title="Chuyển đổi trạng thái"
-                          id={cryptoOrder.id}
-                        />
+                        <EditTag title="Đổi trạng thái" id={+cryptoOrder.id} />
                       </IconButton>
                     </Tooltip>
                   </TableCell>

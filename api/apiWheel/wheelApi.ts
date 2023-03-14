@@ -31,3 +31,29 @@ export const updateStatusWheel = (id:number, is_receive:boolean) => {
 export const getSpinLastest = () => {
   return api.get(`/spin/latest-spin/`);
 };
+export const getUnreceivedGift = () => {
+  return api.get(`/gift?limit=999&is_receive=false`);
+};
+export const orderGiftInLuckySpin = (
+  receiver: string,
+  delivery_address: string,
+  phone: string,
+  description: string,
+  gift: number[]
+) => {
+  return api.post(`/order/create-gift`, {
+    receiver,
+    delivery_address,
+    phone,
+    description,
+    gift
+  });
+};
+
+
+export const getOrderGift = () => {
+  return api.get(`/order?limit=9999&type=Đổi thưởng`);
+};
+export const changeStatusOrder = (id:number, status:string) =>{
+return api.put(`order/update/${id}`,{status})
+}

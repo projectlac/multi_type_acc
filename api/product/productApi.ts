@@ -60,7 +60,7 @@ export const queryAllProductForSiteMap = () => {
 //////////////////////////////////
 
 export const getOrder = () => {
-  return api.get(`/order`);
+  return api.get(`/order?limit=9999&type=Mua mô hình`);
 };
 export const updateOrderStart = (id:number , status:string) => {
   return api.put(`/order/update/${id}`,{status:status});

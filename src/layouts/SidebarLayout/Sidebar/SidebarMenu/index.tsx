@@ -457,6 +457,23 @@ function SidebarMenu() {
                     </Button>
                   </NextLink>
                 </ListItem>
+                <ListItem component="div">
+                  <NextLink href="/management/lucky-spin/order" passHref>
+                    <Button
+                      className={
+                        currentRoute === '/management/lucky-spin/order'
+                          ? 'active'
+                          : ''
+                      }
+                      disableRipple
+                      component="a"
+                      onClick={closeSidebar}
+                      startIcon={<BrightnessLowTwoToneIcon />}
+                    >
+                      Đơn
+                    </Button>
+                  </NextLink>
+                </ListItem>
               </List>
             </SubMenuWrapper>
           </List>

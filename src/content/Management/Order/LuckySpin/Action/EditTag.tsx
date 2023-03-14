@@ -5,7 +5,7 @@ import Selection from '@/components/Common/Form/Selection';
 import { useAuth } from '@/contexts/AuthGuard';
 import SettingsSuggestIcon from '@mui/icons-material/SettingsSuggest';
 import { Button } from '@mui/material';
-import { updateOrderStart } from 'api/product/productApi';
+import { updateStatusWheel } from 'api/apiWheel/wheelApi';
 import { useState } from 'react';
 import * as yup from 'yup';
 interface IEdit {
@@ -15,14 +15,14 @@ interface IEdit {
 }
 
 const validationSchema = yup.object({
-  status: yup.string().required('Trạng thái không được để trống')
+  status: yup.boolean().required('Trạng thái không được để trống')
 });
 
 function EditTag({ title, id }: IEdit) {
   const { handleSetMessage, updateSuccess } = useAuth();
 
   const initForm = {
-    status: 'SUCCESS'
+    status: true
   };
 
   const [openDialog, setOpenDialog] = useState<boolean>(false);
@@ -37,7 +37,7 @@ function EditTag({ title, id }: IEdit) {
     const { status } = value;
 
     try {
-      await updateOrderStart(id, status.toString()).then(() => {
+      await updateStatusWheel(id, status.toString()).then(() => {
         handleSetMessage({
           type: 'success',
           message: 'Thay đổi trạng thái thành công'
@@ -73,7 +73,7 @@ function EditTag({ title, id }: IEdit) {
           sx={{
             my: 2
           }}
-          options={[{ value: 'SUCCESS', title: 'Hoàn thành' }]}
+          options={[{ value: true, title: 'Hoàn thành' }]}
         />
 
         <Button variant="contained" fullWidth type="submit">

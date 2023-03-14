@@ -1,6 +1,6 @@
 import PageTitleWrapper from '@/components/PageTitleWrapper';
-import PageHeader from '@/content/Management/Order/LuckySpin/PageHeaderLuckySpin';
-import RecentOrders from '@/content/Management/Order/LuckySpin/RecentOrdersLuckySpin';
+import PageHeader from '@/content/Management/Order/WheelOrder/PageHeaderLuckySpin';
+import RecentOrders from '@/content/Management/Order/WheelOrder/RecentOrdersLuckySpin';
 
 import SidebarLayout from '@/layouts/SidebarLayout';
 import { Container, Grid } from '@mui/material';
@@ -10,7 +10,7 @@ function UserManagement() {
   return (
     <>
       <Head>
-        <title>Quản lý đơn</title>
+        <title>Quản lý Đơn</title>
       </Head>
       <PageTitleWrapper>
         <PageHeader />

@@ -40,6 +40,7 @@ export interface IDetailOrder {
   id: number;
   price: string;
   product: IGift;
+  
 }
 export interface IGift {
   name: string;

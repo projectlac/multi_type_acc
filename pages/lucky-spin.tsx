@@ -1,3 +1,7 @@
+import DialogCommonWithoutIcon from '@/components/Common/DialogCommon/DialogCommonWithoutIcon';
+import useCustomForm from '@/components/Common/Form/Form';
+import FormatForm from '@/components/Common/Form/FormatForm';
+import TextField from '@/components/Common/Form/TextField';
 import { useAuth } from '@/contexts/AuthGuard';
 import { ProtectGuess } from '@/contexts/ProtectGuess';
 import BaseLayout from '@/layouts/BaseLayout';
@@ -16,14 +20,16 @@ import { Box } from '@mui/system';
 import {
   getListGift,
   getSpinLastest,
+  getUnreceivedGift,
+  orderGiftInLuckySpin,
   spinWheel,
   spinWheelHistory
 } from 'api/apiWheel/wheelApi';
 import { getWebInformation } from 'api/auth';
-import { getHistory } from 'api/user';
 import { format } from 'date-fns';
+import { useRouter } from 'next/router';
 import React, { ReactElement, useEffect, useState } from 'react';
-
+import * as yup from 'yup';
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
     children: React.ReactElement<any, any>;
@@ -34,7 +40,10 @@ const Transition = React.forwardRef(function Transition(
 });
 
 function LuckSpin() {
-  const { handleSetMessage, update, updateSuccess } = useAuth();
+  const { handleSetMessage, update, updateSuccess, isAuthenticated } =
+    useAuth();
+  const nav = useRouter();
+
   const [gift, setGift] = useState([]);
   const [radian, setRadian] = useState<number>(0);
   const [history, setHistory] = useState<any>([]);
@@ -47,6 +56,10 @@ function LuckSpin() {
   const [disable, setDisable] = useState<boolean>(false);
   const [countTurn, setCountTurn] = useState(0);
   const [openDialog, setOpenDialog] = useState<boolean>(false);
+  const [pending, setPending] = useState(false);
+  const [unreceivedGift, setUnreceivedGift] = useState([]);
+  const [openDialogOrder, setOpenDialogOrder] = useState<boolean>(false);
+
   function getPosition(position) {
     handleOpenDialog();
     setValue(position);
@@ -56,6 +69,13 @@ function LuckSpin() {
   };
   const handleCloseDialog = () => {
     setOpenDialog(false);
+  };
+
+  const handleOpenDialogOrder = () => {
+    setOpenDialogOrder(true);
+  };
+  const handleCloseDialogOrder = () => {
+    setOpenDialogOrder(false);
   };
 
   const spin = () => {
@@ -112,7 +132,57 @@ function LuckSpin() {
           : 0
       );
     });
+    getUnreceivedGift().then((res) => {
+      setUnreceivedGift(res.data.data);
+    });
   }, [update]);
+
+  const onSubmit = async (value, { resetForm }) => {
+    if (isAuthenticated) {
+      const { receiver, delivery_address, phone, description } = value;
+      let gift = unreceivedGift.map((d) => d.id);
+      setPending(true);
+      try {
+        await orderGiftInLuckySpin(
+          receiver,
+          delivery_address,
+          phone,
+          description,
+          gift
+        ).then(() => {
+          handleSetMessage({
+            type: 'success',
+            message: 'Bạn đã gửi thông tin thành công'
+          });
+          resetForm();
+          setPending(false);
+          handleCloseDialogOrder();
+        });
+      } catch (error) {
+        setPending(false);
+        handleSetMessage({
+          type: 'error',
+          message: 'Có lỗi xảy ra, vui lòng liên hệ với Admin để kiểm tra lại'
+        });
+      }
+    } else {
+      nav.push('/login');
+    }
+  };
+
+  const validationSchema = yup.object({
+    receiver: yup.string().required('Tên người nhận là bất buộc'),
+    phone: yup.string().required('Số điện thoại là bất buộc'),
+    delivery_address: yup.string().required('Địa chỉ nhận hàng là bất buộc')
+  });
+  const initForm = {
+    receiver: '',
+    delivery_address: '',
+    phone: '',
+    description: ''
+  };
+
+  const formik = useCustomForm(validationSchema, initForm, onSubmit);
 
   return (
     <ProtectGuess>
@@ -127,229 +197,328 @@ function LuckSpin() {
         >
           <Box
             sx={{
-              width: { md: '515px', xs: '300px' },
-              height: { md: '515px', xs: '300px' },
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              borderRadius: '50%',
-              background: '#fff',
-              overflow: 'hidden',
-              boxShadow: '0px 0px 8px 1px #1c1c1c'
+              textAlign: 'center'
             }}
-            mb={6}
           >
-            <div className="wheel">
-              <Box
-                className="wheel__inner"
-                id="wheel__inner"
-                sx={{
-                  '& .wheel__sec': {
-                    '&:nth-of-type(1)': {
-                      borderTopColor: '#16a085',
-                      transform: `rotate(0deg)`,
+            <Box
+              sx={{
+                width: { md: '515px', xs: '300px' },
+                height: { md: '515px', xs: '300px' },
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                borderRadius: '50%',
+                background: '#fff',
+                overflow: 'hidden',
+                boxShadow: '0px 0px 8px 1px #1c1c1c'
+              }}
+              mb={6}
+            >
+              <div className="wheel">
+                <Box
+                  className="wheel__inner"
+                  id="wheel__inner"
+                  sx={{
+                    '& .wheel__sec': {
+                      '&:nth-of-type(1)': {
+                        borderTopColor: '#16a085',
+                        transform: `rotate(0deg)`,
 
-                      '&:before': {
-                        md: {
-                          background: `url(${gift[0]?.image}) center top / contain no-repeat`
-                        },
-                        xs: {
-                          background: `url(${gift[0]?.image}) center / contain no-repeat`
+                        '&:before': {
+                          md: {
+                            background: `url(${gift[0]?.image}) center top / contain no-repeat`
+                          },
+                          xs: {
+                            background: `url(${gift[0]?.image}) center / contain no-repeat`
+                          }
                         }
-                      }
-                    },
-                    '&:nth-of-type(2)': {
-                      borderTopColor: '#2980b9',
-                      transform: `rotate(${radian}deg)`,
+                      },
+                      '&:nth-of-type(2)': {
+                        borderTopColor: '#2980b9',
+                        transform: `rotate(${radian}deg)`,
 
-                      '&:before': {
-                        md: {
-                          background: `url(${gift[1]?.image}) center top / contain no-repeat`
-                        },
-                        xs: {
-                          background: `url(${gift[1]?.image}) center / contain no-repeat`
+                        '&:before': {
+                          md: {
+                            background: `url(${gift[1]?.image}) center top / contain no-repeat`
+                          },
+                          xs: {
+                            background: `url(${gift[1]?.image}) center / contain no-repeat`
+                          }
                         }
-                      }
-                    },
-                    '&:nth-of-type(3)': {
-                      borderTopColor: '#34495e',
-                      transform: `rotate(${2 * radian}deg)`,
+                      },
+                      '&:nth-of-type(3)': {
+                        borderTopColor: '#34495e',
+                        transform: `rotate(${2 * radian}deg)`,
 
-                      '&:before': {
-                        md: {
-                          background: `url(${gift[2]?.image}) center top / contain no-repeat`
-                        },
-                        xs: {
-                          background: `url(${gift[2]?.image}) center / contain no-repeat`
+                        '&:before': {
+                          md: {
+                            background: `url(${gift[2]?.image}) center top / contain no-repeat`
+                          },
+                          xs: {
+                            background: `url(${gift[2]?.image}) center / contain no-repeat`
+                          }
                         }
-                      }
-                    },
-                    '&:nth-of-type(4)': {
-                      borderTopColor: '#f39c12',
-                      transform: `rotate(${3 * radian}deg)`,
+                      },
+                      '&:nth-of-type(4)': {
+                        borderTopColor: '#f39c12',
+                        transform: `rotate(${3 * radian}deg)`,
 
-                      '&:before': {
-                        md: {
-                          background: `url(${gift[3]?.image}) center top / contain no-repeat`
-                        },
-                        xs: {
-                          background: `url(${gift[3]?.image}) center / contain no-repeat`
+                        '&:before': {
+                          md: {
+                            background: `url(${gift[3]?.image}) center top / contain no-repeat`
+                          },
+                          xs: {
+                            background: `url(${gift[3]?.image}) center / contain no-repeat`
+                          }
                         }
-                      }
-                    },
-                    '&:nth-of-type(5)': {
-                      borderTopColor: '#d35400',
-                      transform: `rotate(${4 * radian}deg)`,
+                      },
+                      '&:nth-of-type(5)': {
+                        borderTopColor: '#d35400',
+                        transform: `rotate(${4 * radian}deg)`,
 
-                      '&:before': {
-                        md: {
-                          background: `url(${gift[4]?.image}) center top / contain no-repeat`
-                        },
-                        xs: {
-                          background: `url(${gift[4]?.image}) center / contain no-repeat`
+                        '&:before': {
+                          md: {
+                            background: `url(${gift[4]?.image}) center top / contain no-repeat`
+                          },
+                          xs: {
+                            background: `url(${gift[4]?.image}) center / contain no-repeat`
+                          }
                         }
-                      }
-                    },
-                    '&:nth-of-type(6)': {
-                      borderTopColor: '#c0392b',
-                      transform: `rotate(${5 * radian}deg)`,
+                      },
+                      '&:nth-of-type(6)': {
+                        borderTopColor: '#c0392b',
+                        transform: `rotate(${5 * radian}deg)`,
 
-                      '&:before': {
-                        md: {
-                          background: `url(${gift[5]?.image}) center top / contain no-repeat`
-                        },
-                        xs: {
-                          background: `url(${gift[5]?.image}) center / contain no-repeat`
+                        '&:before': {
+                          md: {
+                            background: `url(${gift[5]?.image}) center top / contain no-repeat`
+                          },
+                          xs: {
+                            background: `url(${gift[5]?.image}) center / contain no-repeat`
+                          }
                         }
-                      }
-                    },
-                    '&:nth-of-type(7)': {
-                      borderTopColor: '#d35400',
-                      transform: `rotate(${6 * radian}deg)`,
+                      },
+                      '&:nth-of-type(7)': {
+                        borderTopColor: '#d35400',
+                        transform: `rotate(${6 * radian}deg)`,
 
-                      '&:before': {
-                        md: {
-                          background: `url(${gift[6]?.image}) center top / contain no-repeat`
-                        },
-                        xs: {
-                          background: `url(${gift[6]?.image}) center / contain no-repeat`
+                        '&:before': {
+                          md: {
+                            background: `url(${gift[6]?.image}) center top / contain no-repeat`
+                          },
+                          xs: {
+                            background: `url(${gift[6]?.image}) center / contain no-repeat`
+                          }
                         }
-                      }
-                    },
-                    '&:nth-of-type(8)': {
-                      borderTopColor: '#c0392b',
-                      transform: `rotate(${7 * radian}deg)`,
+                      },
+                      '&:nth-of-type(8)': {
+                        borderTopColor: '#c0392b',
+                        transform: `rotate(${7 * radian}deg)`,
 
-                      '&:before': {
-                        md: {
-                          background: `url(${gift[7]?.image}) center top / contain no-repeat`
-                        },
-                        xs: {
-                          background: `url(${gift[7]?.image}) center / contain no-repeat`
+                        '&:before': {
+                          md: {
+                            background: `url(${gift[7]?.image}) center top / contain no-repeat`
+                          },
+                          xs: {
+                            background: `url(${gift[7]?.image}) center / contain no-repeat`
+                          }
                         }
                       }
                     }
-                  }
-                }}
-              >
-                <div className="wheel__sec">
-                  {gift.length > 0 && gift[0]?.name}
-                </div>
-                <div className="wheel__sec">
-                  {gift.length > 0 && gift[1]?.name}
-                </div>
-                <div className="wheel__sec">
-                  {gift.length > 0 && gift[2]?.name}
-                </div>
-                <div className="wheel__sec">
-                  {gift.length > 0 && gift[3]?.name}
-                </div>
-                <div className="wheel__sec">
-                  {gift.length > 0 && gift[4]?.name}
-                </div>
-                <div className="wheel__sec">
-                  {gift.length > 0 && gift[5]?.name}
-                </div>
-                <div className="wheel__sec">
-                  {gift.length > 0 && gift[6]?.name}
-                </div>
-                <div className="wheel__sec">
-                  {gift.length > 0 && gift[7]?.name}
-                </div>
-              </Box>
-              <div className="wheel__arrow">
-                <button
-                  className="wheel__button"
-                  onClick={spin}
-                  disabled={disable}
+                  }}
                 >
-                  QUAY
-                </button>
+                  <div className="wheel__sec">
+                    {gift.length > 0 && gift[0]?.name}
+                  </div>
+                  <div className="wheel__sec">
+                    {gift.length > 0 && gift[1]?.name}
+                  </div>
+                  <div className="wheel__sec">
+                    {gift.length > 0 && gift[2]?.name}
+                  </div>
+                  <div className="wheel__sec">
+                    {gift.length > 0 && gift[3]?.name}
+                  </div>
+                  <div className="wheel__sec">
+                    {gift.length > 0 && gift[4]?.name}
+                  </div>
+                  <div className="wheel__sec">
+                    {gift.length > 0 && gift[5]?.name}
+                  </div>
+                  <div className="wheel__sec">
+                    {gift.length > 0 && gift[6]?.name}
+                  </div>
+                  <div className="wheel__sec">
+                    {gift.length > 0 && gift[7]?.name}
+                  </div>
+                </Box>
+                <div className="wheel__arrow">
+                  <button
+                    className="wheel__button"
+                    onClick={spin}
+                    disabled={disable}
+                  >
+                    QUAY
+                  </button>
+                </div>
               </div>
-            </div>
-            <Dialog
-              open={openDialog}
-              TransitionComponent={Transition}
-              keepMounted
-              onClose={handleCloseDialog}
-              aria-describedby="alert-dialog-slide-description"
-            >
-              <Box sx={{ p: 2, width: { md: '500px', xs: '100%' } }}>
-                <Typography
-                  sx={{
-                    fontWeight: 'bold',
-                    fontSize: '18px',
-                    textAlign: 'center',
-                    mb: 1
-                  }}
-                >
-                  Thông báo
-                </Typography>
-                <Divider />
-                <Typography
-                  sx={{
-                    fontWeight: '600',
-                    fontSize: '15px',
-                    textAlign: 'center',
-                    mt: 3
-                  }}
-                >
-                  {result}
-                </Typography>
-                <Divider sx={{ my: 2 }} />
-                <Grid container>
-                  <Grid item md={6} xs={6} textAlign="center">
-                    <Button
-                      variant="contained"
-                      onClick={() => {
-                        handleCloseDialog();
-                        spin();
-                      }}
-                      sx={{
-                        fontSize: { xs: '11px', md: '16px' },
-                        fontWeight: 'normal'
-                      }}
-                    >
-                      Quay tiếp
-                    </Button>
+              <Dialog
+                open={openDialog}
+                TransitionComponent={Transition}
+                keepMounted
+                onClose={handleCloseDialog}
+                aria-describedby="alert-dialog-slide-description"
+              >
+                <Box sx={{ p: 2, width: { md: '500px', xs: '100%' } }}>
+                  <Typography
+                    sx={{
+                      fontWeight: 'bold',
+                      fontSize: '18px',
+                      textAlign: 'center',
+                      mb: 1
+                    }}
+                  >
+                    Thông báo
+                  </Typography>
+                  <Divider />
+                  <Typography
+                    sx={{
+                      fontWeight: '600',
+                      fontSize: '15px',
+                      textAlign: 'center',
+                      mt: 3
+                    }}
+                  >
+                    {result}
+                  </Typography>
+                  <Divider sx={{ my: 2 }} />
+                  <Grid container>
+                    <Grid item md={6} xs={6} textAlign="center">
+                      <Button
+                        variant="contained"
+                        onClick={() => {
+                          handleCloseDialog();
+                          spin();
+                        }}
+                        sx={{
+                          fontSize: { xs: '11px', md: '16px' },
+                          fontWeight: 'normal'
+                        }}
+                      >
+                        Quay tiếp
+                      </Button>
+                    </Grid>
+                    <Grid item md={6} xs={6} textAlign="center">
+                      <Button
+                        variant="contained"
+                        color="error"
+                        onClick={handleCloseDialog}
+                        sx={{
+                          fontSize: { xs: '11px', md: '16px' },
+                          fontWeight: 'normal'
+                        }}
+                      >
+                        Đóng
+                      </Button>
+                    </Grid>
                   </Grid>
-                  <Grid item md={6} xs={6} textAlign="center">
-                    <Button
-                      variant="contained"
-                      color="error"
-                      onClick={handleCloseDialog}
-                      sx={{
-                        fontSize: { xs: '11px', md: '16px' },
-                        fontWeight: 'normal'
-                      }}
-                    >
-                      Đóng
-                    </Button>
+                </Box>
+              </Dialog>
+            </Box>
+            {unreceivedGift.length > 0 && (
+              <DialogCommonWithoutIcon
+                titleButton={'Nhận quà đã quay'}
+                title={'Xác nhận thông tin'}
+                handleCloseDialog={handleCloseDialogOrder}
+                handleOpenDialog={handleOpenDialogOrder}
+                openDialog={openDialogOrder}
+              >
+                <FormatForm formik={formik}>
+                  <Grid container columnSpacing={2} rowSpacing={3}>
+                    <Grid item md={6} xs={12}>
+                      <TextField
+                        formik={formik}
+                        label="Tên người nhận"
+                        placeholder=""
+                        variant="outlined"
+                        fullWidth
+                        name="receiver"
+                        type="text"
+                      />
+                    </Grid>
+                    <Grid item md={6} xs={12}>
+                      <TextField
+                        formik={formik}
+                        label="Số điện thoại"
+                        placeholder=""
+                        variant="outlined"
+                        fullWidth
+                        name="phone"
+                        type="text"
+                      />
+                    </Grid>
+                    <Grid item md={12} xs={12}>
+                      <TextField
+                        formik={formik}
+                        label="Địa chỉ nhận hàng"
+                        placeholder=""
+                        variant="outlined"
+                        fullWidth
+                        name="delivery_address"
+                        type="text"
+                      />
+                    </Grid>
+                    <Grid item md={12} xs={12}>
+                      <TextField
+                        formik={formik}
+                        label="Ghi chú"
+                        placeholder=""
+                        variant="outlined"
+                        fullWidth
+                        name="description"
+                        type="text"
+                      />
+                    </Grid>
+                    <Grid item md={12} xs={12}>
+                      Quà chưa nhận:
+                      <Box>
+                        {unreceivedGift.length > 0 &&
+                          unreceivedGift.map((d: any) => (
+                            <Typography key={d.id}>
+                              {' '}
+                              - {d?.wheel?.name} x {d?.amount}
+                            </Typography>
+                          ))}
+                      </Box>
+                    </Grid>
                   </Grid>
-                </Grid>
-              </Box>
-            </Dialog>
+
+                  <Divider sx={{ my: 2 }} />
+                  <Grid container>
+                    <Grid item md={6} xs={12} textAlign="center">
+                      <Button
+                        variant="contained"
+                        disabled={pending}
+                        type="submit"
+                      >
+                        Xác nhận
+                      </Button>
+                    </Grid>
+                    <Grid item md={6} xs={12} textAlign="center">
+                      <Button
+                        variant="contained"
+                        color="error"
+                        onClick={handleCloseDialogOrder}
+                      >
+                        Đóng
+                      </Button>
+                    </Grid>
+                  </Grid>
+                </FormatForm>
+              </DialogCommonWithoutIcon>
+            )}
           </Box>
+
           <Box
             sx={{
               width: { md: 'calc(100% - 550px)', xs: '100%' }
