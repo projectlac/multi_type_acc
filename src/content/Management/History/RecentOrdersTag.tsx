@@ -1,6 +1,6 @@
 import { useAuth } from '@/contexts/AuthGuard';
 import { Card } from '@mui/material';
-import { get500PaymentHistory } from 'api/apiUser/userApi';
+import { get500PaymentHistory, get500Transacions } from 'api/apiUser/userApi';
 import { IHistoryData } from 'model/tag';
 import { useEffect, useState } from 'react';
 import RecentOrdersTable from './RecentOrdersTable';
@@ -10,7 +10,8 @@ function RecentOrdersTag() {
   const { update } = useAuth();
   useEffect(() => {
     const callApi = async () => {
-      await get500PaymentHistory(500).then((res) => setData(res.data.data));
+      // await get500PaymentHistory(500).then((res) => setData(res.data.data));
+      await get500Transacions('', '').then((res) => setData(res.data.data));
     };
     callApi();
   }, [update]);
