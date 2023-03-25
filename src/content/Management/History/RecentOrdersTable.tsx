@@ -102,7 +102,7 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ cryptoOrders }) => {
     return cryptoOrders.filter((cryptoOrder) => {
       let matches = true;
 
-      if (filters.type && cryptoOrder.transaction.status !== filters.type) {
+      if (filters.type && cryptoOrder.status !== filters.type) {
         matches = false;
       }
 
@@ -171,7 +171,7 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ cryptoOrders }) => {
               <TableCell>Giá</TableCell>
               <TableCell>Trạng thái</TableCell>
 
-              <TableCell>Mô tả</TableCell>
+              <TableCell>ID</TableCell>
 
               <TableCell align="right">Thời gian tạo</TableCell>
             </TableRow>
@@ -225,7 +225,12 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ cryptoOrders }) => {
                   </TableCell>
                   <TableCell>{cryptoOrder.total}</TableCell>
                   <TableCell>{getStatusLabel(cryptoOrder.status)} </TableCell>
-                  <TableCell>{cryptoOrder.description}</TableCell>
+                  <TableCell>
+                    {cryptoOrder.trading_code &&
+                      `Tranding Code: ${cryptoOrder.trading_code}`}{' '}
+                    <br /> ID:
+                    {cryptoOrder.id}
+                  </TableCell>
                   <TableCell align="right">
                     <Typography
                       variant="body1"

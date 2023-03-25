@@ -10,6 +10,8 @@ export interface IHistoryData {
   total: number;
   status: History;
   description: string;
+ trading_code:string
+
 }
 export interface IHistoryUser {
   email: string;
