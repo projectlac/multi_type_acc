@@ -25,3 +25,7 @@ export const updateWebInformation = (youtube:string,description:string) => {
 export const updatePriceSpin = (price:number) => {
   return api.put(`/information/update`,{spinning_price:price})
 }
+export const changePasswordByUser = (oldPassword: string, newPassword:string, confirmPassword:string) =>{
+  return api.patch(`/user/change-password`,{oldPassword, newPassword, confirmPassword})
+
+}

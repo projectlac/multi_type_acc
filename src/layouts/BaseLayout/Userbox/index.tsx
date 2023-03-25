@@ -19,6 +19,7 @@ import formatMoney from '@/utility/formatMoney';
 import ExpandMoreTwoToneIcon from '@mui/icons-material/ExpandMoreTwoTone';
 import LockOpenTwoToneIcon from '@mui/icons-material/LockOpenTwoTone';
 import { styled } from '@mui/material/styles';
+import DialogChangePassword from '@/components/Common/DialogCommon/DialogChangePassword';
 
 const UserBoxButton = styled(Button)(
   ({ theme }) => `
@@ -66,6 +67,16 @@ function HeaderUserbox() {
   const ref = useRef<any>(null);
   const [isOpen, setOpen] = useState<boolean>(false);
   const { user: userData } = useAuth();
+
+  const [openDialogChangePassword, setOpenDialogChangePassword] =
+    useState<boolean>(false);
+
+  const handleClickOpen = () => {
+    setOpenDialogChangePassword(true);
+  };
+  const handleClickClose = () => {
+    setOpenDialogChangePassword(false);
+  };
 
   const handleOpen = (): void => {
     setOpen(true);
@@ -140,6 +151,14 @@ function HeaderUserbox() {
               </ListItem>
             </NextLink>
           )}
+          {userData.role && (
+            <Box onClick={handleClickOpen}>
+              <ListItem button>
+                <AccountTreeTwoToneIcon fontSize="small" />
+                <ListItemText primary="Đổi mật khẩu" />
+              </ListItem>
+            </Box>
+          )}
         </List>
         <Divider />
         <Box sx={{ m: 1 }}>
@@ -149,6 +168,10 @@ function HeaderUserbox() {
           </Button>
         </Box>
       </Popover>
+      <DialogChangePassword
+        open={openDialogChangePassword}
+        handleClose={handleClickClose}
+      ></DialogChangePassword>
     </>
   );
 }
