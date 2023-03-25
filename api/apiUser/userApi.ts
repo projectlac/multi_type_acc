@@ -9,8 +9,7 @@ export const getListUser = (limit?: number) => {
   return api.get(`/user-manager?${checkCall('limit', limit)}`);
 };
 
-export const getCode = (bank: string, token:string) => {
-
+export const getCode = (bank: string, token: string) => {
   return api.post(`/action-cronjob`, { bank: bank, token });
 };
 
@@ -19,7 +18,7 @@ export const topUpWithCard = (
   amount: number,
   serial: string,
   code: string,
-  token:string
+  token: string
 ) => {
   return api.post(`/action-cronjob/top-up`, {
     telco,
@@ -35,10 +34,15 @@ export const checkToken = (token: string) => {
   return api.get(`/action-cronjob/check-captcha/${token}`);
 };
 
-
-export const getNotification = (limit:number,offset: number) => {
+export const getNotification = (limit: number, offset: number) => {
   return api.get(`/history/bonus?limit=${limit}&offset=${offset}`);
 };
-export const get500PaymentHistory = (limit:number) => {
+export const get500PaymentHistory = (limit: number) => {
   return api.get(`/history/bank-transfer?limit=${limit}`);
+};
+
+export const get500Transacions = (id?: string, username?: string) => {
+  return api.get(
+    `/transactions?limit=500&id=${id}&username=${username}&transaction_type=Nạp tiền tài khoản`
+  );
 };

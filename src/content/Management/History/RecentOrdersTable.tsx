@@ -31,7 +31,7 @@ interface RecentOrdersTableProps {
 }
 
 interface Filters {
-  type: 'SUCCESS' | 'ERROR';
+  type: 'SUCCESS' | 'ERROR' | 'EXPIRED' | 'PENDING';
 }
 
 const applyPagination = (
@@ -58,6 +58,14 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ cryptoOrders }) => {
       SUCCESS: {
         text: 'Thành công',
         color: 'success'
+      },
+      EXPIRED: {
+        text: 'Hết hạn',
+        color: 'error'
+      },
+      PENDING: {
+        text: 'Đang chờ',
+        color: 'primary'
       }
     };
 
@@ -116,7 +124,6 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ cryptoOrders }) => {
   const handleChangeSearch = (e: ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
   };
-  console.log(paginatedCryptoOrders);
 
   return (
     <Card>
@@ -162,6 +169,10 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ cryptoOrders }) => {
               <TableCell>Tên</TableCell>
               <TableCell>Phương thức</TableCell>
               <TableCell>Giá</TableCell>
+              <TableCell>Trạng thái</TableCell>
+
+              <TableCell>Mô tả</TableCell>
+
               <TableCell align="right">Thời gian tạo</TableCell>
             </TableRow>
           </TableHead>
@@ -209,14 +220,12 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ cryptoOrders }) => {
                       gutterBottom
                       noWrap
                     >
-                      {cryptoOrder.transaction.bank_name}
+                      {cryptoOrder.bank_name}
                     </Typography>
                   </TableCell>
-                  <TableCell>{cryptoOrder.history_message}</TableCell>
-                  <TableCell>
-                    {getStatusLabel(cryptoOrder.transaction.status)}
-                  </TableCell>
-
+                  <TableCell>{cryptoOrder.total}</TableCell>
+                  <TableCell>{getStatusLabel(cryptoOrder.status)} </TableCell>
+                  <TableCell>{cryptoOrder.description}</TableCell>
                   <TableCell align="right">
                     <Typography
                       variant="body1"
