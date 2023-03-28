@@ -43,6 +43,6 @@ export const get500PaymentHistory = (limit: number) => {
 
 export const get500Transacions = (id?: string, username?: string) => {
   return api.get(
-    `/transactions?limit=500&id=${id}&username=${username}&transaction_type=Nạp tiền tài khoản`
+    `/transactions?limit=500&offset=0&id=${id}&username=${username}&transaction_type=Nạp tiền tài khoản`
   );
 };
