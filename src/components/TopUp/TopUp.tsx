@@ -385,8 +385,7 @@ function TopUp() {
               </Typography>
               <Divider sx={{ my: 1 }}></Divider>
               <Typography fontSize={'15px'} fontWeight={500}>
-                {content} <br /> LƯU Ý : MỆNH GIÁ THẺ CÀO ĐƯỢC CẬP NHẬT Ở THÔNG
-                BÁO
+                {content}
               </Typography>
               <Typography fontSize={'15px'} fontWeight={500}>
                 <span style={{ color: 'red', background: 'white' }}>
