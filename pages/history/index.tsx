@@ -56,8 +56,9 @@ function Overview() {
                 <a href="https://account.hoyoverse.com/#/login?cb_route=%2Faccount%2FsafetySettings">
                   Ấn vào đây
                 </a>
-                Nếu acc lỗi không vào được hoặc có mail ib qua trang page để
-                được xử lý <a href="https://m.me/103780805920496">Ấn vào đây</a>
+                <br /> Nếu acc lỗi không vào được hoặc có mail ib qua trang page
+                để được xử lý{' '}
+                <a href="https://m.me/103780805920496">Ấn vào đây</a>
                 <br /> Các bạn gặp bất cứ khó khăn gì về thông tin acc cứ ib qua
                 page shop rep hỗ trợ ngay <br /> <br /> Sau 24h kể từ khi lúc
                 mua acc shop không thể hỗ trợ các bạn được
