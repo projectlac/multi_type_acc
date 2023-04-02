@@ -21,6 +21,7 @@ import FormatForm from '../Common/Form/FormatForm';
 import Selection from '../Common/Form/Selection';
 import TextField from '../Common/Form/TextField';
 import imageTutorial from '../../assets/images/tutorial.jpg';
+import { getWebInformation } from 'api/auth';
 const validationSchema = yup.object({
   homeNetwork: yup.string().required('Trường này là bắt buộc'),
   cost: yup.string().required('Trường này là bắt buộc'),
@@ -78,7 +79,7 @@ function TopUp() {
   const [code, setCode] = React.useState<string>('');
   const [value, setValue] = React.useState(0);
   const [copyText, setCopyTexy] = React.useState(CopyTextDefaut.COPY);
-
+  const [content, setContent] = React.useState<string>('');
   const captchaRef = React.useRef(null);
   const [token, getToken] = React.useState('');
   const refreshCapcha = () => {
@@ -96,6 +97,9 @@ function TopUp() {
     setValue(newValue);
   };
 
+  React.useEffect(() => {
+    getWebInformation().then((res) => setContent(res.data[0].facebook));
+  }, []);
   const onSubmit = async (values, { resetForm }) => {
     const { homeNetwork, cost, seri, code } = values;
     try {
@@ -381,8 +385,8 @@ function TopUp() {
               </Typography>
               <Divider sx={{ my: 1 }}></Divider>
               <Typography fontSize={'15px'} fontWeight={500}>
-                THẺ VIETTEL CHIẾT KHẤU 10%(100K THẺ = 90K) <br /> LƯU Ý : MỆNH
-                GIÁ THẺ CÀO ĐƯỢC CẬP NHẬT Ở THÔNG BÁO
+                {content} <br /> LƯU Ý : MỆNH GIÁ THẺ CÀO ĐƯỢC CẬP NHẬT Ở THÔNG
+                BÁO
               </Typography>
               <Typography fontSize={'15px'} fontWeight={500}>
                 <span style={{ color: 'red', background: 'white' }}>

@@ -6,7 +6,7 @@ import PageTitleWrapper from '@/components/PageTitleWrapper';
 import { useAuth } from '@/contexts/AuthGuard';
 import SidebarLayout from '@/layouts/SidebarLayout';
 import SaveIcon from '@mui/icons-material/Save';
-import { Button, Grid, Typography } from '@mui/material';
+import { Box, Button, Grid, Typography, TextField as TF } from '@mui/material';
 
 import { getWebInformation, updateWebInformation } from 'api/auth';
 import Head from 'next/head';
@@ -20,12 +20,13 @@ function ContentManager() {
   const { handleSetMessage } = useAuth();
   const [data, setData] = useState({
     description: '',
-    youtube: ''
+    youtube: '',
+    facebook: ''
   });
   const onSubmit = async (values) => {
-    const { youtube, description } = values;
+    const { youtube, description, facebook } = values;
     try {
-      updateWebInformation(youtube, description).then(() => {
+      updateWebInformation(youtube, description, facebook).then(() => {
         handleSetMessage({
           type: 'success',
           message: `Cập nhật thành công`
@@ -47,7 +48,8 @@ function ContentManager() {
     getWebInformation().then((res) =>
       setData({
         youtube: res.data[0].youtube,
-        description: res.data[0].description
+        description: res.data[0].description,
+        facebook: res.data[0].facebook
       })
     );
   }, []);
@@ -94,6 +96,20 @@ function ContentManager() {
             defaultValue={data.description}
           />
         </FormatForm>
+        <TF
+          id="outlined-multiline-static"
+          label="Chiết khấu"
+          multiline
+          fullWidth
+          onChange={formik.handleChange}
+          name="facebook"
+          rows={4}
+          value={formik.values['facebook']}
+          sx={{
+            background: '#fff',
+            mt: 3
+          }}
+        />
       </PageTitleWrapper>
     </>
   );

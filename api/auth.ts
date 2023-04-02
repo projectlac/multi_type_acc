@@ -19,8 +19,8 @@ export const changePassword = (param: IResetPassword) => {
 export const getWebInformation = () => {
   return api.get(`/information`)
 }
-export const updateWebInformation = (youtube:string,description:string) => {
-  return api.put(`/information/update`,{youtube, description})
+export const updateWebInformation = (youtube:string,description:string, facebook:string) => {
+  return api.put(`/information/update`,{youtube, description, facebook})
 }
 export const updatePriceSpin = (price:number) => {
   return api.put(`/information/update`,{spinning_price:price})
