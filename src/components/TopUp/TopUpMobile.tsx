@@ -177,12 +177,12 @@ export default function TopUpMobile() {
             onClick={refreshCapcha}
           />
           <Tab
-            label="Nạp thẻ qua ATM/MOMO"
+            label="Nạp Tiền Qua ATM/MOMO"
             {...a11yProps(1)}
             onClick={refreshCapcha}
           />
           <Tab
-            label="Hướng dẫn nạp thẻ"
+            label="Chi Tiết Nạp Qua Bank/Momo"
             {...a11yProps(2)}
             onClick={refreshCapcha}
           />
@@ -266,8 +266,8 @@ export default function TopUpMobile() {
                           { value: 'MOBIFONE', title: 'MobiPhone' },
                           { value: 'VINAPHONE', title: 'VinaPhone' },
                           { value: 'VIETNAMOBILE', title: 'VietnamMobile' },
-                          { value: 'ZING', title: 'Zing' },
-                          { value: 'GATE', title: 'Gate' }
+                          { value: 'ZING', title: 'Zing' }
+
                           // { value: 'GARENA', title: 'Garena' }
                         ]}
                       />
@@ -394,7 +394,7 @@ export default function TopUpMobile() {
             mt: 2
           }}
         >
-          Nạp thẻ qua ATM/MOMO
+          Nạp Tiền Qua ATM/MOMO
         </Typography>
         <Box
           mt={2}
@@ -600,7 +600,7 @@ export default function TopUpMobile() {
             mt: 2
           }}
         >
-          Hướng dẫn nạp thẻ
+          Chi Tiết Nạp Qua Bank/Momo
         </Typography>
         <Box
           width={'100%'}
