@@ -7,6 +7,11 @@ import { useAuth } from '@/contexts/AuthGuard';
 import SidebarLayout from '@/layouts/SidebarLayout';
 import SaveIcon from '@mui/icons-material/Save';
 import { Box, Button, Grid, Typography, TextField as TF } from '@mui/material';
+import {
+  setDescRANDOM,
+  setDescRERUN,
+  setDescVIP
+} from 'api/apiSetting/apiSetting';
 
 import { getWebInformation, updateWebInformation } from 'api/auth';
 import Head from 'next/head';
@@ -15,7 +20,15 @@ import * as yup from 'yup';
 const validationSchema = yup.object({
   youtube: yup.string().required('Trường này là bắt buộc')
 });
-
+const vip = yup.object({
+  vip: yup.string().required('Trường này là bắt buộc')
+});
+const random = yup.object({
+  random: yup.string().required('Trường này là bắt buộc')
+});
+const rerun = yup.object({
+  rerun: yup.string().required('Trường này là bắt buộc')
+});
 function ContentManager() {
   const { handleSetMessage } = useAuth();
   const [data, setData] = useState({
@@ -36,8 +49,59 @@ function ContentManager() {
       handleSetMessage({ type: 'error', message: error.response.data.message });
     }
   };
+  const onSubmitVip = async (values) => {
+    const { vip } = values;
+    try {
+      setDescVIP(vip).then(() => {
+        handleSetMessage({
+          type: 'success',
+          message: `Cập nhật thành công`
+        });
+      });
+    } catch (error) {
+      handleSetMessage({ type: 'error', message: error.response.data.message });
+    }
+  };
+
+  const onSubmitRerun = async (values) => {
+    const { rerun } = values;
+    try {
+      // console.log(rerun);
+      setDescRERUN(rerun).then(() => {
+        handleSetMessage({
+          type: 'success',
+          message: `Cập nhật thành công`
+        });
+      });
+    } catch (error) {
+      handleSetMessage({ type: 'error', message: error.response.data.message });
+    }
+  };
+
+  const onSubmitRandom = async (values) => {
+    const { random } = values;
+    try {
+      setDescRANDOM(random).then(() => {
+        handleSetMessage({
+          type: 'success',
+          message: `Cập nhật thành công`
+        });
+      });
+    } catch (error) {
+      handleSetMessage({ type: 'error', message: error.response.data.message });
+    }
+  };
+
   const initForm = data;
+  const initForm1 = { vip: '' };
+  const initForm2 = { random: '' };
+  const initForm3 = { rerun: '' };
+
   const formik = useCustomForm(validationSchema, initForm, onSubmit);
+  const formikVip = useCustomForm(vip, initForm1, onSubmitVip);
+  const formikRandom = useCustomForm(random, initForm2, onSubmitRandom);
+  const formikRerun = useCustomForm(rerun, initForm3, onSubmitRerun);
+
   const changeContent = (data: string) => {
     formik.handleChange({
       target: { name: 'description', value: data }
@@ -110,6 +174,87 @@ function ContentManager() {
             mt: 3
           }}
         />
+        <FormatForm formik={formikVip}>
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center'
+            }}
+          >
+            <TextField
+              formik={formikVip}
+              label="Mô tả acc vip"
+              placeholder=""
+              variant="outlined"
+              fullWidth
+              name="vip"
+              type="text"
+              sx={{ my: 3, background: '#fff' }}
+            />
+            <Button
+              sx={{ mt: { xs: 2, md: 0 }, height: '53px', ml: 1 }}
+              variant="contained"
+              startIcon={<SaveIcon fontSize="small" />}
+              type="submit"
+            >
+              Lưu
+            </Button>
+          </Box>
+        </FormatForm>
+        <FormatForm formik={formikRandom}>
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center'
+            }}
+          >
+            <TextField
+              formik={formikRandom}
+              label="Mô tả acc random"
+              placeholder=""
+              variant="outlined"
+              fullWidth
+              name="random"
+              type="text"
+              sx={{ my: 3, background: '#fff' }}
+            />
+            <Button
+              sx={{ mt: { xs: 2, md: 0 }, height: '53px', ml: 1 }}
+              variant="contained"
+              startIcon={<SaveIcon fontSize="small" />}
+              type="submit"
+            >
+              Lưu
+            </Button>
+          </Box>
+        </FormatForm>
+        <FormatForm formik={formikRerun}>
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center'
+            }}
+          >
+            <TextField
+              formik={formikRerun}
+              label="Mô tả acc rerun"
+              placeholder=""
+              variant="outlined"
+              fullWidth
+              name="rerun"
+              type="text"
+              sx={{ my: 3, background: '#fff' }}
+            />
+            <Button
+              sx={{ mt: { xs: 2, md: 0 }, height: '53px', ml: 1 }}
+              variant="contained"
+              startIcon={<SaveIcon fontSize="small" />}
+              type="submit"
+            >
+              Lưu
+            </Button>
+          </Box>
+        </FormatForm>
       </PageTitleWrapper>
     </>
   );

@@ -59,22 +59,24 @@ function DetailAccout() {
 
   useEffect(() => {
     setLoading(true);
-    getAccountBySlug(slug as string).then((res) => {
-      const raw: IDetail = {
-        id: res.data.id,
-        ar_level: res.data.ar_level,
-        server: res.data.server.desc,
-        hero: res.data.heroes,
-        price: res.data.price,
-        images: res.data.avatar,
-        desc: res.data.description,
-        weapons: res.data.weapons,
-        name: res.data.name,
-        avatar: res.data.avatar
-      };
-      setData(raw);
-      setLoading(false);
-    });
+    if (slug !== undefined)
+      getAccountBySlug(slug as string).then((res) => {
+        const raw: IDetail = {
+          id: res.data.id,
+          ar_level: res.data.ar_level,
+          server: res.data.server.desc,
+          hero: res.data.heroes,
+          price: res.data.price,
+          images: res.data.avatar,
+          desc: res.data.description,
+          weapons: res.data.weapons,
+          name: res.data.name,
+          avatar: res.data.avatar
+        };
+
+        setData(raw);
+        setLoading(false);
+      });
   }, [slug]);
 
   const buyAccountSubmit = async () => {
