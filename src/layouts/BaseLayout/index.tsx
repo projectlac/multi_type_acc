@@ -102,7 +102,7 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children }) => {
             <Box sx={{ display: { xs: 'none', md: 'block' } }}>
               <ul style={{ padding: 0 }}>
                 <li style={{ marginLeft: 0 }}>
-                  <Link href={'https://m.me/103780805920496'}>
+                  <Link href={'https://www.facebook.com/nguyenhung208/'}>
                     <a target="_blank">Fanpage hỗ trợ khách hàng</a>
                   </Link>
                 </li>
@@ -155,7 +155,7 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children }) => {
                     <Link href={'/shop'}>Shop</Link>
                   </li>
                   <li>
-                    <Link href={'https://m.me/103780805920496'}>
+                    <Link href={'https://www.facebook.com/nguyenhung208/'}>
                       <a target="_blank">Fanpage hỗ trợ khách hàng</a>
                     </Link>
                   </li>
