@@ -58,13 +58,30 @@ export default function TableDeposit({ data }: IProp) {
         <MuiTable aria-label="customized table">
           <TableHead>
             <TableRow>
-              <StyledTableCell align="left">#</StyledTableCell>
+              <StyledTableCell
+                sx={{
+                  fontSize: '11px',
+                  padding: '16px 5px',
+                  textAlign: 'center'
+                }}
+              >
+                Mã đơn
+              </StyledTableCell>
               <StyledTableCell align="left" width={'40%'}>
                 Gói
               </StyledTableCell>
               <StyledTableCell align="left">Giá</StyledTableCell>
               <StyledTableCell align="center">Ngày mua</StyledTableCell>
-              <StyledTableCell align="right">Trạng thái</StyledTableCell>
+              <StyledTableCell
+                align="right"
+                sx={{
+                  fontSize: '11px',
+                  padding: '16px 5px',
+                  textAlign: 'center'
+                }}
+              >
+                Trạng thái
+              </StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
