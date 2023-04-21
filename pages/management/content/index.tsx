@@ -8,6 +8,7 @@ import SidebarLayout from '@/layouts/SidebarLayout';
 import SaveIcon from '@mui/icons-material/Save';
 import { Box, Button, Grid, Typography, TextField as TF } from '@mui/material';
 import {
+  setDescNEW,
   setDescRANDOM,
   setDescRERUN,
   setDescVIP
@@ -28,6 +29,9 @@ const random = yup.object({
 });
 const rerun = yup.object({
   rerun: yup.string().required('Trường này là bắt buộc')
+});
+const newAcc = yup.object({
+  newAcc: yup.string().required('Trường này là bắt buộc')
 });
 function ContentManager() {
   const { handleSetMessage } = useAuth();
@@ -78,6 +82,20 @@ function ContentManager() {
     }
   };
 
+  const onSubmitNew = async (values) => {
+    const { newAcc } = values;
+    try {
+      // console.log(rerun);
+      setDescNEW(newAcc).then(() => {
+        handleSetMessage({
+          type: 'success',
+          message: `Cập nhật thành công`
+        });
+      });
+    } catch (error) {
+      handleSetMessage({ type: 'error', message: error.response.data.message });
+    }
+  };
   const onSubmitRandom = async (values) => {
     const { random } = values;
     try {
@@ -96,11 +114,13 @@ function ContentManager() {
   const initForm1 = { vip: '' };
   const initForm2 = { random: '' };
   const initForm3 = { rerun: '' };
+  const initForm4 = { newAcc: '' };
 
   const formik = useCustomForm(validationSchema, initForm, onSubmit);
   const formikVip = useCustomForm(vip, initForm1, onSubmitVip);
   const formikRandom = useCustomForm(random, initForm2, onSubmitRandom);
   const formikRerun = useCustomForm(rerun, initForm3, onSubmitRerun);
+  const formikNew = useCustomForm(newAcc, initForm4, onSubmitNew);
 
   const changeContent = (data: string) => {
     formik.handleChange({
@@ -242,6 +262,33 @@ function ContentManager() {
               variant="outlined"
               fullWidth
               name="rerun"
+              type="text"
+              sx={{ my: 3, background: '#fff' }}
+            />
+            <Button
+              sx={{ mt: { xs: 2, md: 0 }, height: '53px', ml: 1 }}
+              variant="contained"
+              startIcon={<SaveIcon fontSize="small" />}
+              type="submit"
+            >
+              Lưu
+            </Button>
+          </Box>
+        </FormatForm>
+        <FormatForm formik={formikNew}>
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center'
+            }}
+          >
+            <TextField
+              formik={formikNew}
+              label="Mô tả acc khởi đầu"
+              placeholder=""
+              variant="outlined"
+              fullWidth
+              name="newAcc"
               type="text"
               sx={{ my: 3, background: '#fff' }}
             />

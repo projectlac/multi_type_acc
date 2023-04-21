@@ -18,3 +18,9 @@ export const setDescRANDOM = (description: string) => {
     description
   });
 };
+export const setDescNEW = (description: string) => {
+  return api.patch(`/account/set-description-by-admin`, {
+    type: 'NEW',
+    description
+  });
+};
