@@ -10,7 +10,7 @@ function RecentOrders() {
 
   const [data, setData] = useState<IAccountVipAdmin[]>([]);
   useEffect(() => {
-    getAccountNomalFromDashboard(9999, 'genshin-impact').then((res) =>
+    getAccountNomalFromDashboard(9999, 'honkai-star-rail').then((res) =>
       setData(res.data.data)
     );
   }, [update]);

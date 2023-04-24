@@ -27,6 +27,9 @@ export const getAccountVipFromDashboard = (param: IAccountVip) => {
     )}${checkCall('is_sold', param.is_sold)}${checkCall(
       'sold_date',
       param.sold_date
+    )}${checkCall(
+      'game',
+      param.game
     )}`
   );
 };
@@ -51,9 +54,9 @@ export const updateAccountNomal = (slug: string, data: FormData) => {
   return apiFormData.put(`/account/update-account/${slug}`, data);
 };
 
-export const getAccountNomalFromDashboard = (limit: number) => {
+export const getAccountNomalFromDashboard = (limit: number, game:string) => {
   return apiFormData.get(
-    `/account/get-accounts-by-admin?type=REROLL,RANDOM&limit=${limit}&offset=0`
+    `/account/get-accounts-by-admin?type=REROLL,RANDOM&limit=${limit}&offset=0&game=${game}`
   );
 };
 
@@ -74,7 +77,7 @@ export const queryRerollAccount = (param: IQueryRandomAcc) => {
     }&priceSort=${param.priceSort}${checkCall(
       'keyword',
       param.keyword
-    )}${checkCall('ar', param.ar)}${checkCall('rangeMoney', param.rangeMoney)}`
+    )}${checkCall('ar', param.ar)}${checkCall('rangeMoney', param.rangeMoney)}${checkCall('game', param.game)}`
   );
 };
 
@@ -91,7 +94,7 @@ export const queryAccountVip = (param: IQueryVipAcc) => {
     )}${checkCall('hero', param.hero)}${checkCall(
       'weapon',
       param.weapon
-    )}${checkCall('rangeMoney', param.rangeMoney)}`
+    )}${checkCall('rangeMoney', param.rangeMoney)}${checkCall('game', param.game)}`
   );
 };
 
@@ -125,6 +128,9 @@ export const getAccountNewFromDashboard = (param: IAccountVip) => {
     )}${checkCall('is_sold', param.is_sold)}${checkCall(
       'sold_date',
       param.sold_date
+    )}${checkCall(
+      'game',
+      param.game
     )}`
   );
 };
@@ -141,6 +147,6 @@ export const queryAccountNew = (param: IQueryVipAcc) => {
     )}${checkCall('hero', param.hero)}${checkCall(
       'weapon',
       param.weapon
-    )}${checkCall('rangeMoney', param.rangeMoney)}`
+    )}${checkCall('rangeMoney', param.rangeMoney)}${checkCall('game', param.game)}`
   );
 };

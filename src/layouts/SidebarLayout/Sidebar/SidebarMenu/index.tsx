@@ -269,7 +269,7 @@ function SidebarMenu() {
           component="div"
           subheader={
             <ListSubheader component="div" disableSticky>
-              Management
+              Genshin Impact
             </ListSubheader>
           }
         >
@@ -343,6 +343,74 @@ function SidebarMenu() {
                   </NextLink>
                 </ListItem>
               )}
+            </List>
+          </SubMenuWrapper>
+        </List>
+        <List
+          component="div"
+          subheader={
+            <ListSubheader component="div" disableSticky>
+              Honkai Star Rail
+            </ListSubheader>
+          }
+        >
+          <SubMenuWrapper>
+            <List component="div">
+              <ListItem component="div">
+                <NextLink href="/management/honkai-star-rail/vip" passHref>
+                  <Button
+                    className={
+                      currentRoute === '/management/honkai-star-rail/vip'
+                        ? 'active'
+                        : ''
+                    }
+                    disableRipple
+                    component="a"
+                    onClick={closeSidebar}
+                    startIcon={<TableChartTwoToneIcon />}
+                  >
+                    Tài khoản VIP
+                  </Button>
+                </NextLink>
+              </ListItem>
+              <ListItem component="div">
+                <NextLink href="/management/honkai-star-rail/new" passHref>
+                  <Button
+                    className={
+                      currentRoute === '/management/honkai-star-rail/new'
+                        ? 'active'
+                        : ''
+                    }
+                    disableRipple
+                    component="a"
+                    onClick={closeSidebar}
+                    startIcon={<TableChartTwoToneIcon />}
+                  >
+                    Tài khoản khởi đầu
+                  </Button>
+                </NextLink>
+              </ListItem>
+              <ListItem component="div">
+                <NextLink
+                  href="/management/honkai-star-rail/reroll-random"
+                  passHref
+                >
+                  <Button
+                    className={
+                      currentRoute ===
+                      '/management/honkai-star-rail/reroll-random'
+                        ? 'active'
+                        : ''
+                    }
+                    disableRipple
+                    component="a"
+                    onClick={closeSidebar}
+                    startIcon={<TableChartTwoToneIcon />}
+                  >
+                    Tài khoản thường
+                  </Button>
+                </NextLink>
+              </ListItem>
             </List>
           </SubMenuWrapper>
         </List>
@@ -484,7 +552,7 @@ function SidebarMenu() {
               component="div"
               subheader={
                 <ListSubheader component="div" disableSticky>
-                  Genshin Impact
+                  Thuộc tính
                 </ListSubheader>
               }
             >

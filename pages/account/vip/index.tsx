@@ -53,7 +53,8 @@ function AccountVip() {
     const param = {
       ...filter,
       limit: 9,
-      offset: tempPage
+      offset: tempPage,
+      game: 'genshin-impact'
     };
 
     queryAccountVip(param).then((res) => {

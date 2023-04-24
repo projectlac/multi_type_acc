@@ -6,7 +6,7 @@ import FilterVip from '@/components/Shop/Filters/FilterVip';
 import Items from '@/components/Shop/Items/Items';
 import BaseLayout from '@/layouts/BaseLayout';
 import { Box, Container, Grid } from '@mui/material';
-import { queryAccountNew } from 'api/apiAccount/account';
+import { queryAccountVip } from 'api/apiAccount/account';
 import { IAccountShop } from 'model/account';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
@@ -41,7 +41,7 @@ function AccountVip() {
   const handleFilter = (data) => {
     setFilter(data);
     localStorage.setItem('filter', JSON.stringify(data));
-    router.push(`/account/new`);
+    router.push(`/account/vip`);
   };
 
   useEffect(() => {
@@ -54,10 +54,10 @@ function AccountVip() {
       ...filter,
       limit: 9,
       offset: tempPage,
-      game: 'genshin-impact'
+      game: 'honkai-star-rail'
     };
 
-    queryAccountNew(param).then((res) => {
+    queryAccountVip(param).then((res) => {
       setData(res.data.data);
       setTotal(res.data.total);
     });
@@ -68,7 +68,7 @@ function AccountVip() {
   };
   const handlePage = (event: React.ChangeEvent<unknown>, value: number) => {
     console.log(event.type);
-    router.push(`/account/new?page=${value}`);
+    router.push(`/account/vip?page=${value}`);
   };
 
   const executeScroll = () => {
@@ -83,12 +83,12 @@ function AccountVip() {
   return (
     <Box>
       <Head>
-        <title>Account Khởi Đầu</title>
-        <OgTag title="Account Khởi Đầu" />
+        <title>Account Vip Nhất</title>
+        <OgTag title="Account Vip Nhất" />
       </Head>
 
       <Container maxWidth="lg" sx={{ mt: 15 }}>
-        <TitleSpecial>Account Khởi Đầu</TitleSpecial>
+        <TitleSpecial>Account Vip</TitleSpecial>
         <Box py={3}>
           <Grid container columnSpacing={2}>
             <Grid item xs={12} md={3}>

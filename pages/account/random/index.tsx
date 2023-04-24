@@ -52,7 +52,8 @@ function AccountRandom() {
       ar: ar,
       keyword: code,
       rangeMoney: priceRange,
-      priceSort: sort
+      priceSort: sort,
+      game: 'genshin-impact'
     }).then((res) => {
       setData(res.data.data);
       setTotal(res.data.total);

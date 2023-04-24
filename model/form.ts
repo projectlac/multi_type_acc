@@ -60,6 +60,7 @@ export interface IAccountVip {
   keyword?:string;
   is_sold?:boolean|null;
   sold_date?:'true' | 'false' | null;
+  game?:string
 }
 
 export interface IQueryRandomAcc {
@@ -69,6 +70,7 @@ export interface IQueryRandomAcc {
   ar: string;
   keyword: string;
   rangeMoney?: string;
+  game?:string
 }
 
 export interface IQueryVipAcc {
@@ -81,4 +83,5 @@ export interface IQueryVipAcc {
   server: string;
   keyword: string;
   rangeMoney?: string;
+  game?:string
 }

@@ -54,7 +54,7 @@ function AccountVip() {
       ...filter,
       limit: 9,
       offset: tempPage,
-      game: 'genshin-impact'
+      game: 'honkai-star-rail'
     };
 
     queryAccountNew(param).then((res) => {
