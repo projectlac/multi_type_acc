@@ -41,7 +41,7 @@ function AccountVip() {
   const handleFilter = (data) => {
     setFilter(data);
     localStorage.setItem('filter', JSON.stringify(data));
-    router.push(`/account/new`);
+    router.push(`/account/genshin-impact/new`);
   };
 
   useEffect(() => {
@@ -68,7 +68,7 @@ function AccountVip() {
   };
   const handlePage = (event: React.ChangeEvent<unknown>, value: number) => {
     console.log(event.type);
-    router.push(`/account/new?page=${value}`);
+    router.push(`/account/genshin-impact/new?page=${value}`);
   };
 
   const executeScroll = () => {

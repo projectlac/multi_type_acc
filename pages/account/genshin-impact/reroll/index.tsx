@@ -6,13 +6,12 @@ import FilterRandom from '@/components/Shop/Filters/FilterRandom';
 import Items from '@/components/Shop/Items/Items';
 import BaseLayout from '@/layouts/BaseLayout';
 import { Box, Container, Grid } from '@mui/material';
-import { queryRandomAccount } from 'api/apiAccount/account';
+import { queryRerollAccount } from 'api/apiAccount/account';
 import { IAccountShop } from 'model/account';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { ReactElement, useEffect, useState } from 'react';
-
-function AccountRandom() {
+function AccountReroll() {
   const router = useRouter();
   const { page: pageHistory } = router.query;
   const [open, setOpen] = useState<boolean>(false);
@@ -34,7 +33,7 @@ function AccountRandom() {
     setSort(isTrueSet);
     setAr(ar);
     setCode(code);
-    router.push(`/account/random`);
+    router.push(`/account/genshin-impact/reroll`);
   };
 
   const toggleOpen = () => {
@@ -42,11 +41,11 @@ function AccountRandom() {
   };
   const handlePage = (event: React.ChangeEvent<unknown>, value: number) => {
     console.log(event.type);
-    router.push(`/account/random?page=${value}`);
+    router.push(`/account/genshin-impact/reroll?page=${value}`);
   };
   useEffect(() => {
     executeScroll();
-    queryRandomAccount({
+    queryRerollAccount({
       limit: 9,
       offset: pageHistory ? (+pageHistory - 1) * 9 : 0,
       ar: ar,
@@ -73,12 +72,12 @@ function AccountRandom() {
   return (
     <Box>
       <Head>
-        <title>Account Random Mới Nhất</title>
-        <OgTag title="Account Random Mới Nhất" />
+        <title>Account Reroll Mới Nhất</title>
+        <OgTag title="Account Reroll Mới Nhất" />
       </Head>
 
       <Container maxWidth="lg" sx={{ mt: 15 }}>
-        <TitleSpecial>Account Random</TitleSpecial>
+        <TitleSpecial>Account Reroll</TitleSpecial>
         <Box py={3}>
           <Grid container columnSpacing={2}>
             <Grid item xs={12} md={3}>
@@ -121,7 +120,7 @@ function AccountRandom() {
   );
 }
 
-export default AccountRandom;
-AccountRandom.getLayout = function getLayout(page: ReactElement) {
+export default AccountReroll;
+AccountReroll.getLayout = function getLayout(page: ReactElement) {
   return <BaseLayout>{page}</BaseLayout>;
 };

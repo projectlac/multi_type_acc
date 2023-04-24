@@ -33,7 +33,7 @@ function AccountReroll() {
     setSort(isTrueSet);
     setAr(ar);
     setCode(code);
-    router.push(`/account/reroll`);
+    router.push(`/account/honkai-star-rail/reroll`);
   };
 
   const toggleOpen = () => {
@@ -41,7 +41,7 @@ function AccountReroll() {
   };
   const handlePage = (event: React.ChangeEvent<unknown>, value: number) => {
     console.log(event.type);
-    router.push(`/account/reroll?page=${value}`);
+    router.push(`/account/honkai-star-rail/reroll?page=${value}`);
   };
   useEffect(() => {
     executeScroll();

@@ -5,12 +5,12 @@ const checkCall = (key, param) => {
   else return '';
 };
 
-export const getWeapon = (limit?: number) => {
-  return api.get(`/weapon?${checkCall('limit', limit)}`);
+export const getWeapon = (limit?: number, game?:string) => {
+  return api.get(`/weapon?${checkCall('limit', limit)}&${checkCall('game', game)}`);
 };
 
-export const getHero = (limit?: number) => {
-  return api.get(`/hero?${checkCall('limit', limit)}`);
+export const getHero = (limit?: number,game?:string) => {
+  return api.get(`/hero?${checkCall('limit', limit)}&${checkCall('game', game)}`);
 };
 export const createWeapon = (data: FormData) => {
   return api.post(`/weapon/create`, data);

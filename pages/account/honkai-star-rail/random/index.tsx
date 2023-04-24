@@ -34,7 +34,7 @@ function AccountRandom() {
     setSort(isTrueSet);
     setAr(ar);
     setCode(code);
-    router.push(`/account/random`);
+    router.push(`/account/honkai-star-rail/random`);
   };
 
   const toggleOpen = () => {
@@ -42,7 +42,7 @@ function AccountRandom() {
   };
   const handlePage = (event: React.ChangeEvent<unknown>, value: number) => {
     console.log(event.type);
-    router.push(`/account/random?page=${value}`);
+    router.push(`/account/honkai-star-rail/random?page=${value}`);
   };
   useEffect(() => {
     executeScroll();

@@ -36,11 +36,11 @@ function FilterVip({ handleFilter, toggleOpen }: IProps) {
       let tempOptionHero = [];
       let tempOptionWeapon = [];
 
-      await getWeapon(999).then((res) => {
+      await getWeapon(999, 'genshin-impact').then((res) => {
         setOptionWeapon(res.data.data);
         tempOptionWeapon = res.data.data;
       });
-      await getHero(999).then((res) => {
+      await getHero(999, 'genshin-impact').then((res) => {
         setOptionHero(res.data.data);
         tempOptionHero = res.data.data;
       });

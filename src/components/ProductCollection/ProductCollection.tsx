@@ -57,7 +57,7 @@ function ProductCollection() {
       <Grid item md={3} sm={6} xs={12}>
         <ProductCollectionItem
           title="Acc Vip"
-          url="/account/vip"
+          url="/account/genshin-impact/vip"
           image={bgVip}
           data={dataAccVip}
         />
@@ -65,7 +65,7 @@ function ProductCollection() {
       <Grid item md={3} sm={6} xs={12}>
         <ProductCollectionItem
           title="Acc Khởi Đầu"
-          url="/account/new"
+          url="/account/genshin-impact/new"
           image={news}
           data={dataAccNew}
         />
@@ -73,7 +73,7 @@ function ProductCollection() {
       <Grid item md={3} sm={6} xs={12}>
         <ProductCollectionItem
           title="Acc Reroll"
-          url="/account/reroll"
+          url="/account/genshin-impact/reroll"
           image={rrr}
           data={dataAccReroll}
         />
@@ -81,7 +81,7 @@ function ProductCollection() {
       <Grid item md={3} sm={6} xs={12}>
         <ProductCollectionItem
           title="Acc Random"
-          url="/account/random"
+          url="/account/genshin-impact/random"
           image={random}
           data={dataAccRandom}
         />

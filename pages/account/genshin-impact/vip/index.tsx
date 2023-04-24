@@ -2,69 +2,80 @@ import FilterAccount from '@/components/Common/Filter/FilterAccount';
 import OgTag from '@/components/Common/OgTag';
 import PaginationPage from '@/components/Common/PaginationPage';
 import TitleSpecial from '@/components/Common/TitleSpecial';
-import FilterRandom from '@/components/Shop/Filters/FilterRandom';
+import FilterVip from '@/components/Shop/Filters/FilterVip';
 import Items from '@/components/Shop/Items/Items';
 import BaseLayout from '@/layouts/BaseLayout';
 import { Box, Container, Grid } from '@mui/material';
-import { queryRerollAccount } from 'api/apiAccount/account';
+import { queryAccountVip } from 'api/apiAccount/account';
 import { IAccountShop } from 'model/account';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { ReactElement, useEffect, useState } from 'react';
-function AccountReroll() {
+
+interface IVipAccFilter {
+  priceSort: boolean | '';
+  ar: string;
+  hero: string;
+  weapon: string;
+  server: string;
+  keyword: string;
+  rangeMoney?: string;
+}
+function AccountVip() {
   const router = useRouter();
   const { page: pageHistory } = router.query;
-  const [open, setOpen] = useState<boolean>(false);
+
   const [data, setData] = useState<IAccountShop[]>([]);
+  const [open, setOpen] = useState<boolean>(false);
   const [total, setTotal] = useState<number>(0);
 
-  const [priceRange, setPriceRange] = useState<string>('');
-  const [sort, setSort] = useState<boolean | ''>('');
-  const [ar, setAr] = useState<string>('');
-  const [code, setCode] = useState<string>('');
-
-  const handleData = (
-    currency: string,
-    isTrueSet: boolean,
-    ar: string,
-    code: string
-  ) => {
-    setPriceRange(currency);
-    setSort(isTrueSet);
-    setAr(ar);
-    setCode(code);
-    router.push(`/account/reroll`);
+  const [filter, setFilter] = useState<IVipAccFilter>({
+    ar: '',
+    server: 'ASIA',
+    rangeMoney: '',
+    hero: '',
+    weapon: '',
+    priceSort: '',
+    keyword: ''
+  });
+  const handleFilter = (data) => {
+    setFilter(data);
+    localStorage.setItem('filter', JSON.stringify(data));
+    router.push(`/account/genshin-impact/vip`);
   };
+
+  useEffect(() => {
+    let tempPage = pageHistory ? (+pageHistory - 1) * 9 : 0;
+    var retrievedObject = localStorage.getItem('filter');
+    let filter = JSON.parse(retrievedObject);
+
+    executeScroll();
+    const param = {
+      ...filter,
+      limit: 9,
+      offset: tempPage,
+      game: 'genshin-impact'
+    };
+
+    queryAccountVip(param).then((res) => {
+      setData(res.data.data);
+      setTotal(res.data.total);
+    });
+  }, [pageHistory, filter]);
 
   const toggleOpen = () => {
     setOpen(!open);
   };
   const handlePage = (event: React.ChangeEvent<unknown>, value: number) => {
     console.log(event.type);
-    router.push(`/account/reroll?page=${value}`);
+    router.push(`/account/genshin-impact/vip?page=${value}`);
   };
-  useEffect(() => {
-    executeScroll();
-    queryRerollAccount({
-      limit: 9,
-      offset: pageHistory ? (+pageHistory - 1) * 9 : 0,
-      ar: ar,
-      keyword: code,
-      rangeMoney: priceRange,
-      priceSort: sort,
-      game: 'genshin-impact'
-    }).then((res) => {
-      setData(res.data.data);
-      setTotal(res.data.total);
-    });
-  }, [pageHistory, sort, ar, code]);
 
   const executeScroll = () => {
     const id = 'scrollTo';
     const yOffset = -95;
     const element = document.getElementById(id);
-    const y =
-      element?.getBoundingClientRect().top + window.pageYOffset + yOffset;
+    const y = element?.getBoundingClientRect().top + window.scrollY + yOffset;
 
     window.scrollTo({ top: y, behavior: 'smooth' });
   };
@@ -72,24 +83,37 @@ function AccountReroll() {
   return (
     <Box>
       <Head>
-        <title>Account Reroll Mới Nhất</title>
-        <OgTag title="Account Reroll Mới Nhất" />
+        <title>Account Vip Nhất</title>
+        <OgTag title="Account Vip Nhất" />
       </Head>
 
       <Container maxWidth="lg" sx={{ mt: 15 }}>
-        <TitleSpecial>Account Reroll</TitleSpecial>
+        <TitleSpecial>Account Vip</TitleSpecial>
         <Box py={3}>
           <Grid container columnSpacing={2}>
             <Grid item xs={12} md={3}>
               <FilterAccount open={open} toggleOpen={toggleOpen}>
-                <FilterRandom handleData={handleData} toggleOpen={toggleOpen} />
+                <FilterVip
+                  handleFilter={handleFilter}
+                  toggleOpen={toggleOpen}
+                />
               </FilterAccount>
             </Grid>
-            <Grid item xs={12} md={9}>
-              <Grid container columnSpacing={1.7} rowSpacing={2} id="scrollTo">
+
+            <Grid item xs={12} md={9} id="scrollTo">
+              <Grid container columnSpacing={1.7} rowSpacing={2}>
                 {data.map((d, i) => {
                   return (
-                    <Grid item xs={12} md={4} sm={6} key={i}>
+                    <Grid
+                      item
+                      xs={12}
+                      md={4}
+                      sm={6}
+                      key={i}
+                      sx={{
+                        display: 'flex'
+                      }}
+                    >
                       <Items
                         title={d.name}
                         url={`/account/details/${d.slug}`}
@@ -100,6 +124,8 @@ function AccountReroll() {
                         isSold={d.is_sold}
                         ar_level={d.ar_level}
                         server={d.server}
+                        heroes={d.heroes}
+                        weapons={d.weapons}
                       ></Items>
                     </Grid>
                   );
@@ -120,7 +146,7 @@ function AccountReroll() {
   );
 }
 
-export default AccountReroll;
-AccountReroll.getLayout = function getLayout(page: ReactElement) {
+export default AccountVip;
+AccountVip.getLayout = function getLayout(page: ReactElement) {
   return <BaseLayout>{page}</BaseLayout>;
 };
