@@ -10,6 +10,7 @@ import {
   Typography
 } from '@mui/material';
 import { getHero, getWeapon } from 'api/apiTag/tagApi';
+import { useRouter } from 'next/router';
 
 import React, { useEffect, useState } from 'react';
 interface IFilm {
@@ -30,20 +31,25 @@ function FilterVip({ handleFilter, toggleOpen }: IProps) {
   const [inputValueWeapon, setInputValueWeapon] = useState<IFilm[]>([]);
   const [optionHero, setOptionHero] = useState([]);
   const [optionWeapon, setOptionWeapon] = useState([]);
-
+  const router = useRouter();
   useEffect(() => {
     const callApi = async () => {
       let tempOptionHero = [];
       let tempOptionWeapon = [];
 
-      await getWeapon(999, 'genshin-impact').then((res) => {
+      await getWeapon(
+        999,
+        router.asPath.split('/')[2] ?? 'genshin-impact'
+      ).then((res) => {
         setOptionWeapon(res.data.data);
         tempOptionWeapon = res.data.data;
       });
-      await getHero(999, 'genshin-impact').then((res) => {
-        setOptionHero(res.data.data);
-        tempOptionHero = res.data.data;
-      });
+      await getHero(999, router.asPath.split('/')[2] ?? 'genshin-impact').then(
+        (res) => {
+          setOptionHero(res.data.data);
+          tempOptionHero = res.data.data;
+        }
+      );
 
       var retrievedObject = localStorage.getItem('filter');
       let filter = JSON.parse(retrievedObject);
@@ -127,7 +133,6 @@ function FilterVip({ handleFilter, toggleOpen }: IProps) {
         <Grid item xs={12}>
           <Autocomplete
             multiple
-            id="tags-standard"
             options={optionHero}
             value={inputValueHero}
             onChange={(event: any, newValue: any) => {
@@ -148,7 +153,6 @@ function FilterVip({ handleFilter, toggleOpen }: IProps) {
         <Grid item xs={12}>
           <Autocomplete
             multiple
-            id="tags-standard"
             options={optionWeapon}
             getOptionLabel={(option: IFilm) => option?.desc}
             value={inputValueWeapon}

@@ -92,11 +92,11 @@ function EditAccout({ title, slug }: IEdit) {
 
   useEffect(() => {
     const callApi = async () => {
-      getWeapon(999).then((res) => {
+      getWeapon(999, 'genshin-impact').then((res) => {
         let temp = res.data.data.map((d) => ({ slug: d.slug, desc: d.desc }));
         setWeapon(temp);
       });
-      getHero(999).then((res) => {
+      getHero(999, 'genshin-impact').then((res) => {
         let temp = res.data.data.map((d) => ({ slug: d.slug, desc: d.desc }));
         setHero(temp);
       });
@@ -151,7 +151,7 @@ function EditAccout({ title, slug }: IEdit) {
     formData.append('ar_level', ar);
     formData.append('weapon', weapon.map((d) => d.desc).toString());
     formData.append('hero', hero.map((d) => d.desc).toString());
-
+    formData.append('game', 'genshin-impact');
     file && formData.append('avatar', file);
 
     try {

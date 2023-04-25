@@ -3,37 +3,49 @@ import useCustomForm from '@/components/Common/Form/Form';
 import FormatForm from '@/components/Common/Form/FormatForm';
 import TextField from '@/components/Common/Form/TextField';
 import { useAuth } from '@/contexts/AuthGuard';
-import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
-import { Box, Button, useTheme } from '@mui/material';
-import { styled } from '@mui/system';
+import AddTwoToneIcon from '@mui/icons-material/AddTwoTone';
 import {
-  editHero,
-  editWeapon,
-  getHeroBySlug,
-  getWeaponBySlug
-} from 'api/apiTag/tagApi';
-import { useEffect, useState } from 'react';
+  Box,
+  Button,
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  Radio,
+  RadioGroup,
+  styled,
+  useTheme
+} from '@mui/material';
+import { createHero, createWeapon } from 'api/apiTag/tagApi';
+import { useState } from 'react';
 import * as yup from 'yup';
+import UploadTwoToneIcon from '@mui/icons-material/UploadTwoTone';
+import Image from 'next/image';
+
 interface IEdit {
   title: string;
-  slug: string;
-  type: string;
 }
-import UploadTwoToneIcon from '@mui/icons-material/UploadTwoTone';
 
-import Image from 'next/image';
 const Input = styled('input')({
   display: 'none'
 });
-function EditTag({ title, slug, type }: IEdit) {
+
+const validationSchema = yup.object({
+  title: yup.string().required('Tên tag là thuộc tính bắt buộc'),
+  type: yup.string().required('Loại tag là thuộc tính bắt buộc')
+});
+
+const initForm = {
+  title: '',
+  type: 'weapon',
+  file: null
+};
+
+function AddTag({ title }: IEdit) {
   const theme = useTheme();
   const { handleSetMessage, updateSuccess } = useAuth();
-  const [defaultData, setDefaultData] = useState<any>({
-    title: '',
-    image: ''
-  });
-  const [openDialog, setOpenDialog] = useState<boolean>(false);
   const [preview, setPreview] = useState<string>('');
+  const [openDialog, setOpenDialog] = useState<boolean>(false);
+
   const handleOpenDialog = () => {
     setOpenDialog(true);
   };
@@ -41,46 +53,27 @@ function EditTag({ title, slug, type }: IEdit) {
     setOpenDialog(false);
   };
 
-  const validationSchema = yup.object({
-    title: yup.string().required('Tên tag là thuộc tính bắt buộc')
-  });
-  const initForm = {
-    title: defaultData.title,
-    file: null
-  };
-
-  useEffect(() => {
-    if (openDialog) {
-      if (type === 'weapon') {
-        getWeaponBySlug(slug).then((res) =>
-          setDefaultData({ title: res.data.desc, image: res?.data?.image?.url })
-        );
-      } else {
-        getHeroBySlug(slug).then((res) =>
-          setDefaultData({ title: res.data.desc, image: res?.data?.image?.url })
-        );
-      }
-    } else {
-    }
-  }, [openDialog]);
-
   const onSubmit = (value, { resetForm }) => {
-    const { title, file } = value;
+    const { title, file, type } = value;
     const formData = new FormData();
     formData.append('desc', title);
-    formData.append('game', 'genshin-impact');
-    file && formData.append('file', file);
+    formData.append('game', 'honkai-star-rail');
 
+    file && formData.append('file', file);
     if (type === 'weapon') {
       try {
-        editWeapon(slug, formData).then(() => {
+        createWeapon(formData).then(() => {
           handleSetMessage({
             type: 'success',
-            message: 'Sửa vũ khí thành công'
+            message: 'Thêm vũ khí thành công'
           });
           handleCloseDialog();
           resetForm();
-
+          (
+            document.getElementById(
+              'change-cover-create-tag'
+            ) as HTMLInputElement
+          ).value = '';
           updateSuccess();
         });
       } catch (error) {
@@ -91,10 +84,10 @@ function EditTag({ title, slug, type }: IEdit) {
       }
     } else {
       try {
-        editHero(slug, formData).then(() => {
+        createHero(formData).then(() => {
           handleSetMessage({
             type: 'success',
-            message: 'Sửa nhân vật thành công'
+            message: 'Thêm nhân vật thành công'
           });
           handleCloseDialog();
           resetForm();
@@ -120,7 +113,15 @@ function EditTag({ title, slug, type }: IEdit) {
   const formik = useCustomForm(validationSchema, initForm, onSubmit);
   return (
     <DialogCommon
-      icon={<EditTwoToneIcon />}
+      icon={
+        <Button
+          sx={{ mt: { xs: 2, md: 0 } }}
+          variant="contained"
+          startIcon={<AddTwoToneIcon fontSize="small" />}
+        >
+          {title}
+        </Button>
+      }
       title={title}
       openDialog={openDialog}
       handleOpenDialog={handleOpenDialog}
@@ -130,22 +131,53 @@ function EditTag({ title, slug, type }: IEdit) {
         <FormatForm formik={formik}>
           <TextField
             formik={formik}
-            sx={{ mt: 1, mb: 3 }}
+            sx={{ mt: 1 }}
             label="Tên"
             variant="outlined"
             fullWidth
             name="title"
             type="text"
           />
-          <Box>
+          <FormControl sx={{ my: 3 }}>
+            <FormLabel id="demo-row-radio-buttons-group-label">
+              Loại tag
+            </FormLabel>
+            <RadioGroup
+              row
+              aria-labelledby="demo-row-radio-buttons-group-label"
+              name="type"
+              value={formik.values.type}
+              onChange={(event) => {
+                formik.handleChange({
+                  target: {
+                    name: 'type',
+                    value: event.target.value
+                  }
+                });
+              }}
+            >
+              <FormControlLabel
+                value="weapon"
+                control={<Radio />}
+                label="Vũ khí"
+              />
+              <FormControlLabel
+                value="hero"
+                control={<Radio />}
+                label="Nhân vật"
+              />
+            </RadioGroup>
+          </FormControl>
+
+          <Box mb={3}>
             <Input
               accept="image/*"
-              id={`change-avatar-edit-tag-${slug}`}
+              id="change-cover-create-tag"
               type="file"
               name="file"
               onChange={handleFile}
             />
-            <label htmlFor={`change-avatar-edit-tag-${slug}`}>
+            <label htmlFor="change-cover-create-tag">
               <Button
                 startIcon={<UploadTwoToneIcon />}
                 variant="contained"
@@ -160,8 +192,7 @@ function EditTag({ title, slug, type }: IEdit) {
               </Button>
             </label>
           </Box>
-
-          {preview ? (
+          {preview && (
             <Box width={150} height={150} mb={3}>
               <Image
                 src={preview}
@@ -170,22 +201,10 @@ function EditTag({ title, slug, type }: IEdit) {
                 height={150}
               ></Image>
             </Box>
-          ) : (
-            <Box sx={{ display: 'flex' }}>
-              {defaultData.image && (
-                <Box width={150} height={150} mt={3} mb={3}>
-                  <Image
-                    src={defaultData.image}
-                    layout="responsive"
-                    width={150}
-                    height={150}
-                  ></Image>
-                </Box>
-              )}
-            </Box>
           )}
+
           <Button variant="contained" fullWidth type="submit">
-            Sửa
+            Thêm
           </Button>
         </FormatForm>
       </Box>
@@ -193,4 +212,4 @@ function EditTag({ title, slug, type }: IEdit) {
   );
 }
 
-export default EditTag;
+export default AddTag;

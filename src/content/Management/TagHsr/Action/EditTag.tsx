@@ -68,7 +68,7 @@ function EditTag({ title, slug, type }: IEdit) {
     const { title, file } = value;
     const formData = new FormData();
     formData.append('desc', title);
-    formData.append('game', 'genshin-impact');
+    formData.append('game', 'honkai-star-rail');
     file && formData.append('file', file);
 
     if (type === 'weapon') {

@@ -12,11 +12,11 @@ function RecentOrdersTag() {
     const callApi = async () => {
       let hero: ITag = null;
       let weapon: ITag = null;
-      await getHero(999, 'genshin-impact').then((res) => {
+      await getHero(999, 'honkai-star-rail').then((res) => {
         const temp = res.data.data.map((d) => ({ ...d, type: 'hero' }));
         hero = { data: temp, total: res.data.total };
       });
-      await getWeapon(999, 'genshin-impact').then((res) => {
+      await getWeapon(999, 'honkai-star-rail').then((res) => {
         const temp = res.data.data.map((d) => ({ ...d, type: 'weapon' }));
         weapon = { data: temp, total: res.data.total };
       });

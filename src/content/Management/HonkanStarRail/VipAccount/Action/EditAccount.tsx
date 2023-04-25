@@ -92,11 +92,11 @@ function EditAccout({ title, slug }: IEdit) {
 
   useEffect(() => {
     const callApi = async () => {
-      getWeapon(999).then((res) => {
+      getWeapon(999, 'honkai-star-rail').then((res) => {
         let temp = res.data.data.map((d) => ({ slug: d.slug, desc: d.desc }));
         setWeapon(temp);
       });
-      getHero(999).then((res) => {
+      getHero(999, 'honkai-star-rail').then((res) => {
         let temp = res.data.data.map((d) => ({ slug: d.slug, desc: d.desc }));
         setHero(temp);
       });

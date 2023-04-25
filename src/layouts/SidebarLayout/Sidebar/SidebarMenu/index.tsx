@@ -569,7 +569,22 @@ function SidebarMenu() {
                         onClick={closeSidebar}
                         startIcon={<BallotTwoToneIcon />}
                       >
-                        Vũ khí và nhân vật
+                        VK - NV - GI
+                      </Button>
+                    </NextLink>
+                  </ListItem>
+                  <ListItem component="div">
+                    <NextLink href="/management/tag-hsr" passHref>
+                      <Button
+                        className={
+                          currentRoute === '/management/tag-hsr' ? 'active' : ''
+                        }
+                        disableRipple
+                        component="a"
+                        onClick={closeSidebar}
+                        startIcon={<BallotTwoToneIcon />}
+                      >
+                        VK - NV - HSR
                       </Button>
                     </NextLink>
                   </ListItem>

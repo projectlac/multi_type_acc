@@ -56,6 +56,7 @@ function AddTag({ title }: IEdit) {
   const onSubmit = (value, { resetForm }) => {
     const { title, file, type } = value;
     const formData = new FormData();
+    formData.append('game', 'genshin-impact');
     formData.append('desc', title);
     file && formData.append('file', file);
     if (type === 'weapon') {

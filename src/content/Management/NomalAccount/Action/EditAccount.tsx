@@ -95,7 +95,7 @@ function EditAccount({ title, slug }: IEdit) {
     formData.append('price', price);
     formData.append('ar_level', ar);
     formData.append('type', type);
-
+    formData.append('game', 'genshin-impact');
     file && formData.append('avatar', file);
 
     try {

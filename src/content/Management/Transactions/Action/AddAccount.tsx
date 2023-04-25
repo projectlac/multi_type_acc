@@ -90,11 +90,11 @@ function AddAccount({ title }: IEdit) {
 
   useEffect(() => {
     if (openDialog) {
-      getWeapon(999).then((res) => {
+      getWeapon(999, 'genshin-impact').then((res) => {
         let temp = res.data.data.map((d) => ({ desc: d.desc, slug: d.slug }));
         setWeapon(temp);
       });
-      getHero(999).then((res) => {
+      getHero(999, 'genshin-impact').then((res) => {
         let temp = res.data.data.map((d) => ({ desc: d.desc, slug: d.slug }));
         setHero(temp);
       });
@@ -127,7 +127,7 @@ function AddAccount({ title }: IEdit) {
     formData.append('weapon', weapon.map((d) => d.desc).toString());
     formData.append('hero', hero.map((d) => d.desc).toString());
     file && formData.append('avatar', file);
-
+    formData.append('game', 'genshin-impact');
     try {
       await createAccountVip(formData).then(() => {
         handleSetMessage({

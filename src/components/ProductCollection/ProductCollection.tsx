@@ -1,5 +1,7 @@
 import random from '@/assets/images/mainCategory/310172264_428812392669349_4896007792527675904_n.jpg';
 import napgame from '@/assets/images/mainCategory/310320905_485170040201744_4282135316084233675_n.jpg';
+import hsr from '@/assets/images/mainCategory/accvip.jpg';
+
 import shopphukien from '@/assets/images/e8287ab33eade6f3bfbc.jpg';
 
 import rrr from '@/assets/images/mainCategory/310545249_770219224063920_253246776766894058_n.jpg';
@@ -19,6 +21,7 @@ interface IAll {
   sold: number;
   total: string;
   type: string;
+  gameSlug: string;
 }
 function ProductCollection() {
   const [dataAccVip, setDataAccVip] = useState<IAll>();
@@ -26,7 +29,7 @@ function ProductCollection() {
   const [dataAccReroll, setDataAccReroll] = useState<IAll>();
   const [dataAccNew, setDataAccNew] = useState<IAll>();
   const [dataProduct, setDataProduct] = useState<IAll>();
-
+  const [dataHsr, setDataHsr] = useState<IAll>();
   const [dataDeposit, setDataDeposit] = useState<any>({
     pending: 0,
     success: 0
@@ -41,10 +44,16 @@ function ProductCollection() {
   useEffect(() => {
     getInfoAllAccount().then((res) => {
       res.data.map((d) => {
-        if (d.type === 'VIP') setDataAccVip(gianDoi(d, 142));
-        if (d.type === 'REROLL') setDataAccReroll(gianDoi(d, 64));
-        if (d.type === 'RANDOM') setDataAccRandom(gianDoi(d, 103));
-        if (d.type === 'NEW') setDataAccNew(gianDoi(d, 1346));
+        if (d.type === 'VIP' && d.gameSlug === 'genshin-impact')
+          setDataAccVip(gianDoi(d, 142));
+        if (d.type === 'VIP' && d.gameSlug === 'honkai-star-rail')
+          setDataHsr(d);
+        if (d.type === 'REROLL' && d.gameSlug === 'genshin-impact')
+          setDataAccReroll(gianDoi(d, 64));
+        if (d.type === 'RANDOM' && d.gameSlug === 'genshin-impact')
+          setDataAccRandom(gianDoi(d, 103));
+        if (d.type === 'NEW' && d.gameSlug === 'genshin-impact')
+          setDataAccNew(gianDoi(d, 1346));
         if (d.type === 'PRODUCT') setDataProduct(gianDoi(d, 209));
       });
     });
@@ -84,6 +93,14 @@ function ProductCollection() {
           url="/account/genshin-impact/random"
           image={random}
           data={dataAccRandom}
+        />
+      </Grid>
+      <Grid item md={3} sm={6} xs={12}>
+        <ProductCollectionItem
+          title="HSR VIP"
+          url="/account/honkai-star-rail/vip"
+          image={hsr}
+          data={dataHsr}
         />
       </Grid>
       <Grid item md={3} sm={6} xs={12}>

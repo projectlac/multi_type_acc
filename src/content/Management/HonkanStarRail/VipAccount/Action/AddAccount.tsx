@@ -90,11 +90,11 @@ function AddAccount({ title }: IEdit) {
 
   useEffect(() => {
     if (openDialog) {
-      getWeapon(999).then((res) => {
+      getWeapon(999, 'honkai-star-rail').then((res) => {
         let temp = res.data.data.map((d) => ({ desc: d.desc, slug: d.slug }));
         setWeapon(temp);
       });
-      getHero(999).then((res) => {
+      getHero(999, 'honkai-star-rail').then((res) => {
         let temp = res.data.data.map((d) => ({ desc: d.desc, slug: d.slug }));
         setHero(temp);
       });
