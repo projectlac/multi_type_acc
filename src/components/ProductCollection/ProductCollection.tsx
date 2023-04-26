@@ -112,7 +112,7 @@ function ProductCollection() {
           title="HSR Khởi đầu"
           url="/account/honkai-star-rail/new"
           image={newHsr}
-          data={dataHsr}
+          data={dataNewHsr}
         />
       </Grid>
       <Grid item md={3} sm={6} xs={12}>
