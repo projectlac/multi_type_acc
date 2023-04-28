@@ -2,6 +2,8 @@ import random from '@/assets/images/mainCategory/310172264_428812392669349_48960
 import napgame from '@/assets/images/mainCategory/310320905_485170040201744_4282135316084233675_n.jpg';
 import hsr from '@/assets/images/mainCategory/accvip.jpg';
 import newHsr from '@/assets/images/mainCategory/ACCKHOIDAU.jpg';
+import rerollHsr from '@/assets/images/mainCategory/accreroll.jpg';
+
 import shopphukien from '@/assets/images/e8287ab33eade6f3bfbc.jpg';
 
 import rrr from '@/assets/images/mainCategory/310545249_770219224063920_253246776766894058_n.jpg';
@@ -31,6 +33,7 @@ function ProductCollection() {
   const [dataProduct, setDataProduct] = useState<IAll>();
   const [dataHsr, setDataHsr] = useState<IAll>();
   const [dataNewHsr, setDataNewHsr] = useState<IAll>();
+  const [dataRerollHsr, setDataRerollHsr] = useState<IAll>();
 
   const [dataDeposit, setDataDeposit] = useState<any>({
     pending: 0,
@@ -59,6 +62,8 @@ function ProductCollection() {
         if (d.type === 'PRODUCT') setDataProduct(gianDoi(d, 209));
         if (d.type === 'NEW' && d.gameSlug === 'honkai-star-rail')
           setDataNewHsr(d);
+        if (d.type === 'REROLL' && d.gameSlug === 'honkai-star-rail')
+          setDataRerollHsr(d);
       });
     });
     getDepositHome().then((res) => {
@@ -113,6 +118,14 @@ function ProductCollection() {
           url="/account/honkai-star-rail/new"
           image={newHsr}
           data={dataNewHsr}
+        />
+      </Grid>
+      <Grid item md={3} sm={6} xs={12}>
+        <ProductCollectionItem
+          title="HSR Reroll"
+          url="/account/honkai-star-rail/reroll"
+          image={rerollHsr}
+          data={dataRerollHsr}
         />
       </Grid>
       <Grid item md={3} sm={6} xs={12}>
