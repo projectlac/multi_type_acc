@@ -15,7 +15,7 @@ function OgTag({ title, description }: IOG) {
         content={
           description
             ? description
-            : `Shop Genshin Của Người Việt Uy Tín Giá Rẻ Nhất Thị Trường Việt Nam Được Tin Dùng Và Quảng Bá Bởi Các Youtuber Nổi Tiếng Damper, Tuấn Max, Phúc Thế Kỷ...
+            : `Shop Genshin, Honkai Star Rail Của Người Việt Uy Tín Giá Rẻ Nhất Thị Trường Việt Nam được Tin Dùng Và Quảng Bá Bởi Các Youtuber Nổi Tiếng Damper, Tuấn Max, Phúc Thế Kỷ...
             Acc Genshin Trắng Thông Tin,Cam Kết Bảo Hành Acc Trọn Đời`
         }
       />
@@ -25,7 +25,7 @@ function OgTag({ title, description }: IOG) {
         content={
           description
             ? description
-            : `Shop Genshin Của Người Việt Uy Tín Giá Rẻ Nhất Thị Trường Việt Nam Được Tin Dùng Và Quảng Bá Bởi Các Youtuber Nổi Tiếng Damper, Tuấn Max, Phúc Thế Kỷ...
+            : `Shop Genshin, Honkai Star Rail Của Người Việt Uy Tín Giá Rẻ Nhất Thị Trường Việt Nam được Tin Dùng Và Quảng Bá Bởi Các Youtuber Nổi Tiếng Damper, Tuấn Max, Phúc Thế Kỷ...
 Acc Genshin Trắng Thông Tin,Cam Kết Bảo Hành Acc Trọn Đời`
         }
       />
