@@ -84,7 +84,7 @@ function AccountVip() {
     <Box>
       <Head>
         <title>Account Vip Nhất</title>
-        <OgTag title="Account Vip Nhất" />
+        <OgTag title="GenshinViet.com - Account Genshin Vip" />
       </Head>
 
       <Container maxWidth="lg" sx={{ mt: 15 }}>

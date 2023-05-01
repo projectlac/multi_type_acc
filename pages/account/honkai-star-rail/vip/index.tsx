@@ -83,12 +83,12 @@ function AccountVip() {
   return (
     <Box>
       <Head>
-        <title>Account Vip Nhất</title>
-        <OgTag title="Account Vip Nhất" />
+        <title>GenshinViet.com - Account Honkai Star Rail Vip</title>
+        <OgTag title="GenshinViet.com - Account Honkai star rail Vip" />
       </Head>
 
       <Container maxWidth="lg" sx={{ mt: 15 }}>
-        <TitleSpecial>Account Vip</TitleSpecial>
+        <TitleSpecial>Account Honkai Star Rail Vip</TitleSpecial>
         <Box py={3}>
           <Grid container columnSpacing={2}>
             <Grid item xs={12} md={3}>
