@@ -67,7 +67,7 @@ export const queryRandomAccount = (param: IQueryRandomAcc) => {
     }${checkCallPriceSort('priceSort', param.priceSort)}${checkCall(
       'keyword',
       param.keyword
-    )}${checkCall('ar', param.ar)}${checkCall('rangeMoney', param.rangeMoney)}`
+    )}${checkCall('ar', param.ar)}${checkCall('rangeMoney', param.rangeMoney)}${checkCall('game', param.game)}`
   );
 };
 export const queryRerollAccount = (param: IQueryRandomAcc) => {
