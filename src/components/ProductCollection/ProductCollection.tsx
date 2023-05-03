@@ -11,6 +11,7 @@ import lucky from '@/assets/images/lucky.jpg';
 
 import bgVip from '@/assets/images/mainCategory/310860207_1164961827704035_4343141035597341049_n.jpg';
 import news from '@/assets/images/mainCategory/9bf1a5932675ff2ba664.jpg';
+import randomHsr from '@/assets/images/mainCategory/random.jpg';
 
 import { Box, Button, Card, Divider, Grid, Typography } from '@mui/material';
 import ProductCollectionItem from './ProductCollectionItem';
@@ -34,6 +35,7 @@ function ProductCollection() {
   const [dataHsr, setDataHsr] = useState<IAll>();
   const [dataNewHsr, setDataNewHsr] = useState<IAll>();
   const [dataRerollHsr, setDataRerollHsr] = useState<IAll>();
+  const [dataRandomHsr, setDataRandomHsr] = useState<IAll>();
 
   const [dataDeposit, setDataDeposit] = useState<any>({
     pending: 0,
@@ -64,6 +66,8 @@ function ProductCollection() {
           setDataNewHsr(d);
         if (d.type === 'REROLL' && d.gameSlug === 'honkai-star-rail')
           setDataRerollHsr(d);
+        if (d.type === 'RANDOM' && d.gameSlug === 'honkai-star-rail')
+          setDataRandomHsr(d);
       });
     });
     getDepositHome().then((res) => {
@@ -126,6 +130,14 @@ function ProductCollection() {
           url="/account/honkai-star-rail/reroll"
           image={rerollHsr}
           data={dataRerollHsr}
+        />
+      </Grid>
+      <Grid item md={3} sm={6} xs={12}>
+        <ProductCollectionItem
+          title="HSR Random"
+          url="/account/honkai-star-rail/random"
+          image={randomHsr}
+          data={dataRandomHsr}
         />
       </Grid>
       <Grid item md={3} sm={6} xs={12}>
