@@ -82,7 +82,7 @@ export default function ReputationItem() {
               <iframe
                 width="560"
                 height="315"
-                src="https://www.youtube.com/embed/U2CUIMJv8GY"
+                src="https://www.youtube.com/embed/nCD8pTAl8Kw"
                 title="YouTube video player"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -421,7 +421,7 @@ export default function ReputationItem() {
                   }}
                 >
                   <iframe
-                    src="https://www.tiktok.com/embed/7181651062791736603"
+                    src="https://www.tiktok.com/embed/7229277788145077510"
                     allowFullScreen
                     scrolling="no"
                     allow="encrypted-media;"
