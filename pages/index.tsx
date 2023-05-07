@@ -74,7 +74,9 @@ function Overview() {
           textAlign={{ xs: 'center', md: 'left' }}
           justifyContent="center"
         >
-          <TitleWeb mt={2}> Shop Acc Việt Nam Giá Rẻ</TitleWeb>
+          <TitleWeb mt={2}>
+            SHOP GENSHIN & HONKAI <br /> GIÁ HUỶ DIỆT THỊ TRƯỜNG
+          </TitleWeb>
         </Box>
         <Grid container columnSpacing={2} rowSpacing={2}>
           <Grid
