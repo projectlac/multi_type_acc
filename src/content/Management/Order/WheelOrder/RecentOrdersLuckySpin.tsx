@@ -14,7 +14,6 @@ function RecentOrders() {
       await getOrderGift().then((res) => {
         const data = res.data.data;
         let temp: IOrderGift[] = [];
-        console.log(data);
 
         data.map((d) => {
           temp.push({

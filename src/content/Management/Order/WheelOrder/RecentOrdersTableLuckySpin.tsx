@@ -222,6 +222,15 @@ const RecentOrdersTableLuckySpin: FC<RecentOrdersTableProps> = ({
                     >
                       {cryptoOrder.receiver}
                     </Typography>
+                    <Typography
+                      variant="body1"
+                      fontWeight="normal"
+                      color="text.primary"
+                      gutterBottom
+                      noWrap
+                    >
+                      Username: <b>{cryptoOrder.user.username}</b>
+                    </Typography>
                   </TableCell>
                   <TableCell>
                     <Typography
