@@ -1,4 +1,5 @@
 import { Box, Button, Card, Divider, Grid, Typography } from '@mui/material';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import CountUp from 'react-countup';
 interface IAll {
@@ -43,9 +44,15 @@ function ProductCollectionItem({
           localStorage.removeItem('filter');
           router.push(url);
         }}
-        sx={{ cursor: 'pointer' }}
+        sx={{
+          cursor: 'pointer',
+          minHeight: '175px',
+          width: '100%',
+          position: 'relative'
+        }}
       >
-        <Box
+        <Image src={image} alt={title} layout="fill" objectFit="cover" />
+        {/* <Box
           className="eff"
           sx={{
             height: '175px',
@@ -71,7 +78,7 @@ function ProductCollectionItem({
               transform: 'skewX(-25deg)'
             }
           }}
-        ></Box>
+        ></Box> */}
       </Box>
 
       <Box mt={1}>

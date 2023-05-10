@@ -1,17 +1,14 @@
-import random from '@/assets/images/mainCategory/310172264_428812392669349_4896007792527675904_n.jpg';
-import napgame from '@/assets/images/mainCategory/310320905_485170040201744_4282135316084233675_n.jpg';
-import hsr from '@/assets/images/mainCategory/accvip.jpg';
-import newHsr from '@/assets/images/mainCategory/ACCKHOIDAU.jpg';
-import rerollHsr from '@/assets/images/mainCategory/accreroll.jpg';
-
-import shopphukien from '@/assets/images/e8287ab33eade6f3bfbc.jpg';
-
-import rrr from '@/assets/images/mainCategory/310545249_770219224063920_253246776766894058_n.jpg';
-import lucky from '@/assets/images/lucky.jpg';
-
-import bgVip from '@/assets/images/mainCategory/310860207_1164961827704035_4343141035597341049_n.jpg';
-import news from '@/assets/images/mainCategory/9bf1a5932675ff2ba664.jpg';
-import randomHsr from '@/assets/images/mainCategory/random.jpg';
+import random from '@/assets/images/mainCategory/310172264_428812392669349_4896007792527675904_n.webp';
+import napgame from '@/assets/images/mainCategory/310320905_485170040201744_4282135316084233675_n.webp';
+import hsr from '@/assets/images/mainCategory/accvip.webp';
+import newHsr from '@/assets/images/mainCategory/ACCKHOIDAU.webp';
+import rerollHsr from '@/assets/images/mainCategory/accreroll.webp';
+import shopphukien from '@/assets/images/e8287ab33eade6f3bfbc.webp';
+import rrr from '@/assets/images/mainCategory/310545249_770219224063920_253246776766894058_n.webp';
+import lucky from '@/assets/images/lucky.webp';
+import bgVip from '@/assets/images/mainCategory/310860207_1164961827704035_4343141035597341049_n.webp';
+import news from '@/assets/images/mainCategory/9bf1a5932675ff2ba664.webp';
+import randomHsr from '@/assets/images/mainCategory/random.webp';
 
 import { Box, Button, Card, Divider, Grid, Typography } from '@mui/material';
 import ProductCollectionItem from './ProductCollectionItem';
@@ -20,6 +17,7 @@ import { getDepositHome, getInfoAllAccount } from 'api/apiAccount/account';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import TitleWeb from '../Common/TitleWeb';
+import Image from 'next/image';
 interface IAll {
   inStock: number;
   sold: number;
@@ -37,7 +35,6 @@ function ProductCollection() {
   const [dataNewHsr, setDataNewHsr] = useState<IAll>();
   const [dataRerollHsr, setDataRerollHsr] = useState<IAll>();
   const [dataRandomHsr, setDataRandomHsr] = useState<IAll>();
-
   const [dataDeposit, setDataDeposit] = useState<any>({
     pending: 0,
     success: 0
@@ -141,6 +138,21 @@ function ProductCollection() {
         >
           <Link href={'/topup-genshin'}>
             <Box
+              sx={{
+                cursor: 'pointer',
+                minHeight: '175px',
+                width: '100%',
+                position: 'relative'
+              }}
+            >
+              <Image
+                src={napgame}
+                alt="Nạp game"
+                layout="fill"
+                objectFit="cover"
+              />
+            </Box>
+            {/* <Box
               className="eff"
               sx={{
                 height: '175px',
@@ -165,7 +177,7 @@ function ProductCollection() {
                   transform: 'skewX(-25deg)'
                 }
               }}
-            ></Box>
+            ></Box> */}
           </Link>
 
           <Box mt={1}>
@@ -254,7 +266,7 @@ function ProductCollection() {
           }}
         >
           <Link href={'/lucky-spin'}>
-            <Box
+            {/* <Box
               className="eff"
               sx={{
                 height: '175px',
@@ -279,7 +291,22 @@ function ProductCollection() {
                   transform: 'skewX(-25deg)'
                 }
               }}
-            ></Box>
+            ></Box> */}
+            <Box
+              sx={{
+                cursor: 'pointer',
+                minHeight: '175px',
+                width: '100%',
+                position: 'relative'
+              }}
+            >
+              <Image
+                src={lucky}
+                alt="Vòng quay may mắn"
+                layout="fill"
+                objectFit="cover"
+              />
+            </Box>
           </Link>
 
           <Box mt={1}>

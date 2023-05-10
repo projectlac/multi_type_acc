@@ -6,6 +6,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { Box, Container, styled } from '@mui/material';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
+import MessengerChat from 'react-messenger-customer-chat';
 import { FC, ReactNode, useState } from 'react';
 // import MessengerChat from 'react-messenger-customer-chat';
 import HeaderUserbox from './Userbox';
@@ -184,7 +185,9 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children }) => {
         </Container>
       </Header>
       <FullBG>
-        {children} <Footer />
+        {children}
+        <MessengerChat pageId="100088608761650" language="vi_VN" />
+        <Footer />
       </FullBG>
     </Box>
   );
