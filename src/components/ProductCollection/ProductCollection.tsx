@@ -12,7 +12,6 @@ import randomHsr from '@/assets/images/mainCategory/random.webp';
 
 import { Box, Button, Card, Divider, Grid, Typography } from '@mui/material';
 import ProductCollectionItem from './ProductCollectionItem';
-
 import { getDepositHome, getInfoAllAccount } from 'api/apiAccount/account';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';

@@ -10,9 +10,8 @@ import {
 } from '@mui/material';
 import { ReactElement, useEffect, useState } from 'react';
 import BaseLayout from 'src/layouts/BaseLayout';
-
+import LazyLoad from 'react-lazyload';
 import Head from 'next/head';
-
 import OgTag from '@/components/Common/OgTag';
 import TitleWeb from '@/components/Common/TitleWeb';
 import ProductCollection from '@/components/ProductCollection/ProductCollection';
@@ -85,86 +84,88 @@ function Overview() {
             xs={12}
             sx={{ display: { xs: 'none', md: 'block' } }}
           >
-            <Card
-              sx={{
-                background:
-                  'linear-gradient(90deg, rgba(228,214,200,1) 0%, rgba(239,231,225,1) 50%, rgba(228,214,200,1) 100%)'
-              }}
-            >
-              <Typography
-                textAlign="center"
+            <LazyLoad height={600}>
+              <Card
                 sx={{
-                  padding: '15px',
-                  fontSize: { md: '24px', xs: '15px' },
-                  fontWeight: 'bold',
-                  color: '#856f56',
-                  textTransform: 'uppercase'
-                }}
-                component="h2"
-              >
-                Top Nạp
-              </Typography>
-              <Divider />
-              <Box
-                sx={{
-                  padding: '0 15px '
+                  background:
+                    'linear-gradient(90deg, rgba(228,214,200,1) 0%, rgba(239,231,225,1) 50%, rgba(228,214,200,1) 100%)'
                 }}
               >
-                <ul style={{ padding: 0, listStyle: 'none' }}>
-                  {top10.map((d: ITopUp, i) => (
-                    <li
-                      style={{
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        padding: '7px 0',
-                        alignItems: 'center'
-                      }}
-                      key={i}
-                    >
-                      <Typography
-                        sx={{
-                          fontSize: { md: '17px', xs: '15px' },
+                <Typography
+                  textAlign="center"
+                  sx={{
+                    padding: '15px',
+                    fontSize: { md: '24px', xs: '15px' },
+                    fontWeight: 'bold',
+                    color: '#856f56',
+                    textTransform: 'uppercase'
+                  }}
+                  component="h2"
+                >
+                  Top Nạp
+                </Typography>
+                <Divider />
+                <Box
+                  sx={{
+                    padding: '0 15px '
+                  }}
+                >
+                  <ul style={{ padding: 0, listStyle: 'none' }}>
+                    {top10.map((d: ITopUp, i) => (
+                      <li
+                        style={{
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          padding: '7px 0',
+                          alignItems: 'center'
+                        }}
+                        key={i}
+                      >
+                        <Typography
+                          sx={{
+                            fontSize: { md: '17px', xs: '15px' },
 
-                          fontWeight: '600',
-                          display: 'flex',
-                          color: '#a7947f',
-                          fontStyle: 'italic',
-                          '& span': {
-                            width: '26px',
-                            height: '26px',
+                            fontWeight: '600',
                             display: 'flex',
-                            background: '#e5d7ca',
-                            borderRadius: '50%',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            fontSize: '12px',
-                            marginRight: '15px',
-                            border: '2px solid #c7ae92',
-                            color: '#917c65'
-                          }
-                        }}
-                      >
-                        <span>{i + 1} </span> ***{d.username}
-                      </Typography>
-                      <Typography
-                        sx={{
-                          fontSize: '13px',
-                          fontWeight: '600',
-                          display: 'flex',
-                          color: '#a7947f',
-                          background: '#ffffff59',
-                          padding: '5px 10px',
-                          borderRadius: '15px',
-                          border: '2px solid #c7ae92'
-                        }}
-                      >
-                        {formatMoney(d.sum)} VNĐ
-                      </Typography>
-                    </li>
-                  ))}
-                </ul>
-              </Box>
-            </Card>
+                            color: '#a7947f',
+                            fontStyle: 'italic',
+                            '& span': {
+                              width: '26px',
+                              height: '26px',
+                              display: 'flex',
+                              background: '#e5d7ca',
+                              borderRadius: '50%',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              fontSize: '12px',
+                              marginRight: '15px',
+                              border: '2px solid #c7ae92',
+                              color: '#917c65'
+                            }
+                          }}
+                        >
+                          <span>{i + 1} </span> ***{d.username}
+                        </Typography>
+                        <Typography
+                          sx={{
+                            fontSize: '13px',
+                            fontWeight: '600',
+                            display: 'flex',
+                            color: '#a7947f',
+                            background: '#ffffff59',
+                            padding: '5px 10px',
+                            borderRadius: '15px',
+                            border: '2px solid #c7ae92'
+                          }}
+                        >
+                          {formatMoney(d.sum)} VNĐ
+                        </Typography>
+                      </li>
+                    ))}
+                  </ul>
+                </Box>
+              </Card>
+            </LazyLoad>
           </Grid>
 
           <Grid item md={8} xs={12}>
@@ -185,15 +186,17 @@ function Overview() {
                 }
               }}
             >
-              <iframe
-                width="1500"
-                height="900"
-                src={`https://www.youtube.com/embed/${data.youtube}`}
-                title="YouTube video player"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
+              <LazyLoad height={900}>
+                <iframe
+                  width="1500"
+                  height="900"
+                  src={`https://www.youtube.com/embed/${data.youtube}`}
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </LazyLoad>
             </Box>
           </Grid>
 

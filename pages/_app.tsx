@@ -51,6 +51,12 @@ function TokyoApp(props: TokyoAppProps) {
           <ThemeProvider>
             <LocalizationProvider dateAdapter={AdapterDateFns}>
               <CssBaseline />
+
+              {process.env.NEXT_PUBLIC_MAINTENANCE_MODE === 'false' ? (
+                getLayout(<Component {...pageProps} />)
+              ) : (
+                <Maintenance />
+              )}
               <Script
                 strategy="lazyOnload"
                 src={`https://www.googletagmanager.com/gtag/js?id=G-QKWZFM4WFR`}
@@ -65,11 +71,6 @@ function TokyoApp(props: TokyoAppProps) {
           gtag('config', 'G-QKWZFM4WFR');
         `}
               </Script>
-              {process.env.NEXT_PUBLIC_MAINTENANCE_MODE === 'false' ? (
-                getLayout(<Component {...pageProps} />)
-              ) : (
-                <Maintenance />
-              )}
             </LocalizationProvider>
           </ThemeProvider>
         </SidebarProvider>
