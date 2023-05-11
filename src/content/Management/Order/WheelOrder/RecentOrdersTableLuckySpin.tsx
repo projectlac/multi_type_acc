@@ -40,7 +40,7 @@ const applyPagination = (
   return cryptoOrders.slice(page * limit, page * limit + limit);
 };
 interface Filters {
-  status?: 'SUCCESS' | 'PENDING';
+  status?: 'SUCCESS' | 'PENDING' | 'ERROR';
 }
 const RecentOrdersTableLuckySpin: FC<RecentOrdersTableProps> = ({
   cryptoOrders
@@ -121,6 +121,10 @@ const RecentOrdersTableLuckySpin: FC<RecentOrdersTableProps> = ({
     {
       id: 'PENDING',
       name: 'Chưa gửi'
+    },
+    {
+      id: 'ERROR',
+      name: 'Hủy'
     }
   ];
   const getStatusLabel = (cryptoOrderStatus: string): JSX.Element => {

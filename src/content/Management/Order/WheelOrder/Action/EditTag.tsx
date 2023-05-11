@@ -73,7 +73,10 @@ function EditTag({ title, id }: IEdit) {
           sx={{
             my: 2
           }}
-          options={[{ value: 'SUCCESS', title: 'Hoàn thành' }]}
+          options={[
+            { value: 'SUCCESS', title: 'Hoàn thành' },
+            { value: 'ERROR', title: 'Hủy' }
+          ]}
         />
 
         <Button variant="contained" fullWidth type="submit">

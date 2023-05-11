@@ -64,13 +64,28 @@ function TokyoApp(props: TokyoAppProps) {
 
               <Script strategy="lazyOnload" id="">
                 {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
 
-          gtag('config', 'G-QKWZFM4WFR');
-        `}
+                  gtag('config', 'G-QKWZFM4WFR');
+                `}
               </Script>
+              <Script strategy="lazyOnload" id="">
+                {`
+                 window.dataLayer = window.dataLayer || [];
+                 function gtag(){dataLayer.push(arguments);}
+                 gtag('js', new Date());
+               
+                 gtag('config', 'AW-11172811540');
+                `}
+              </Script>
+              <Script
+                strategy="lazyOnload"
+                id=""
+                async
+                src="https://www.googletagmanager.com/gtag/js?id=AW-11172811540"
+              ></Script>
             </LocalizationProvider>
           </ThemeProvider>
         </SidebarProvider>
