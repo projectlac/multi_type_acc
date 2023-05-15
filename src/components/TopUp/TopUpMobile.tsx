@@ -464,9 +464,9 @@ export default function TopUpMobile() {
                     }}
                   >
                     <Typography fontSize={17} mr={1}>
-                      0372790362
-                      {/* Nạp Momo đang lỗi, vui lòng ib Shop để
-                      được nạp tiền */}
+                      {/* 0372790362 */}
+                      Nạp Momo đang lỗi, vui lòng ib Shop để
+                      được nạp tiền
                     </Typography>{' '}
                     <Tooltip title={copyText} arrow placement="right">
                       <IconButton
