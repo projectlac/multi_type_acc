@@ -12,6 +12,13 @@ function Selection({ formik, name, label, options, ...props }) {
       error={formik.touched[name] && Boolean(formik.errors[name])}
       helperText={formik.touched[name] && formik.errors[name]}
       InputLabelProps={{ shrink: true }}
+      SelectProps={{
+        MenuProps: {
+          style: {
+            maxHeight: '300px'
+          }
+        }
+      }}
       {...props}
     >
       {options.map((option) => (

@@ -75,6 +75,143 @@ export default function VerticalTabs() {
   }, [update]);
   const formik = useCustomForm(validationSchema, initForm, onSubmit);
 
+  const listGenshin = [
+    {
+      value: '1',
+      title: 'Genshin - 105,000 đ - Gói nạp không nguyệt chúc phúc x1'
+    },
+    {
+      value: '2',
+      title: 'Genshin - 209,000 đ - Gói nạp không nguyệt chúc phúc x2'
+    },
+    {
+      value: '3',
+      title: 'Genshin - 315,000 đ - Gói nạp không nguyệt chúc phúc x3'
+    },
+    {
+      value: '4',
+      title: 'Genshin - 316,000 đ - Goi nạp không nguyệt chúc phúc + Nhật kí'
+    },
+    {
+      value: '5',
+      title: 'Genshin - 525,000 đ - Gói nạp không nguyệt + Bài ca chân châu'
+    },
+    {
+      value: '6',
+      title: 'Genshin - 210,000 đ - Gói nạp nhật ký hành trình'
+    },
+    {
+      value: '7',
+      title: 'Genshin - 420,000 đ - Gói nạp bài ca chân châu'
+    },
+    {
+      value: '8',
+      title: 'Genshin - 106,000 đ - Gói nạp 300 đá sáng thế'
+    },
+    {
+      value: '9',
+      title: 'Genshin - 310,000 đ - Gói nạp 980 đá sáng thế'
+    },
+    {
+      value: '10',
+      title: 'Genshin - 620,000 đ - Gói nạp 1980 đá sáng thế'
+    },
+    {
+      value: '11',
+      title: 'Genshin - 1,000,000 đ - Gói nạp 3280 đá sáng thế'
+    },
+    {
+      value: '12',
+      title: 'Genshin - 2,000,000 đ - Gói nạp 6480 đá sáng thế x1'
+    },
+    {
+      value: '13',
+      title: 'Genshin - 4,000,000 đ - Gói nạp 6480 đá sáng thế x2'
+    },
+    {
+      value: '14',
+      title: 'Genshin - 6,000,000 đ - Gói nạp 6480 đá sáng thế x3'
+    },
+    {
+      value: '15',
+      title: 'Genshin - 8,000,000 đ - Gói nạp 6480 đá sáng thế x4'
+    },
+    {
+      value: '16',
+      title: 'Genshin - 10,000,000 đ - Gói nạp 6480 đá sáng thế x5'
+    }
+  ];
+
+  const listHsr = [
+    {
+      value: '17',
+      title: 'HSR - 105,000 đ - Chứng nhận tiếp tế đội tàu x1'
+    },
+    {
+      value: '18',
+      title: 'HSR - 209,000 đ - Chứng nhận tiếp tế đội tàu x2'
+    },
+    {
+      value: '19',
+      title: 'HSR - 315,000 đ - Chứng nhận tiếp tế đội tàu x3'
+    },
+    {
+      value: '20',
+      title: 'HSR - 316,000 đ - Chứng nhận tiếp tế đội tàu + Vinh quang khách'
+    },
+    {
+      value: '21',
+      title: 'HSR - 525,000 đ - Chứng nhận tiếp tế đội tàu + Huân chương khách'
+    },
+    {
+      value: '22',
+      title: 'HSR - 210,000 đ - Vinh quang khách vô danh'
+    },
+    {
+      value: '23',
+      title: 'HSR - 420,000 đ - Huân chương khách vô danh'
+    },
+    {
+      value: '24',
+      title: 'HSR - 106,000 đ - Gói nạp 300 mộng ước viễn cổ'
+    },
+    {
+      value: '25',
+      title: 'HSR - 310,000 đ - Gói nạp 980 mộng ước viễn cổ'
+    },
+    {
+      value: '26',
+      title: 'HSR - 620,000 đ - Gói nạp 1980 mộng ước viễn cổ'
+    },
+    {
+      value: '27',
+      title: 'HSR - 1,000,000 đ - Gói nạp 3280 mộng ước viễn cổ'
+    },
+    {
+      value: '28',
+      title: 'HSR - 2,000,000 đ - Gói nạp 6480 mộng ước viễn cổ x1'
+    },
+    {
+      value: '29',
+      title: 'HSR - 4,000,000 đ - Gói nạp 6480 mộng ước viễn cổ x2'
+    },
+    {
+      value: '30',
+      title: 'HSR - 6,000,000 đ - Gói nạp 6480 mộng ước viễn cổ x3'
+    },
+    {
+      value: '31',
+      title: 'HSR - 8,000,000 đ - Gói nạp 6480 mộng ước viễn cổ x4'
+    },
+    {
+      value: '32',
+      title: 'HSR - 10,000,000 đ - Gói nạp 6480 mộng ước viễn cổ x5'
+    },
+    {
+      value: '33',
+      title: 'HSR - 20,000,000 đ - Gói nạp 6480 mộng ước viễn cổ x10'
+    }
+  ];
   // React.useEffect(()=>{
 
   // },[])
@@ -99,7 +236,7 @@ export default function VerticalTabs() {
                       mb: 2
                     }}
                   >
-                    Nạp Genshin Impact
+                    Nạp Genshin Impact & HSR
                   </Typography>
 
                   <Grid container columnSpacing={1.5} rowSpacing={2}>
@@ -110,77 +247,7 @@ export default function VerticalTabs() {
                         variant="outlined"
                         fullWidth
                         name="pack"
-                        options={[
-                          {
-                            value: '1',
-                            title:
-                              '105,000 đ - Gói nạp không nguyệt chúc phúc x1'
-                          },
-                          {
-                            value: '2',
-                            title:
-                              '209,000 đ - Gói nạp không nguyệt chúc phúc x2'
-                          },
-                          {
-                            value: '3',
-                            title:
-                              '315,000 đ - Gói nạp không nguyệt chúc phúc x3'
-                          },
-                          {
-                            value: '4',
-                            title:
-                              '316,000 đ - Goi nạp không nguyệt chúc phúc + Nhật kí'
-                          },
-                          {
-                            value: '5',
-                            title:
-                              '525,000 đ - Gói nạp không nguyệt + Bài ca chân châu'
-                          },
-                          {
-                            value: '6',
-                            title: '210,000 đ - Gói nạp nhật ký hành trình'
-                          },
-                          {
-                            value: '7',
-                            title: '420,000 đ - Gói nạp bài ca chân châu'
-                          },
-                          {
-                            value: '8',
-                            title: '106,000 đ - Gói nạp 300 đá sáng thế'
-                          },
-                          {
-                            value: '9',
-                            title: '310,000 đ - Gói nạp 980 đá sáng thế'
-                          },
-                          {
-                            value: '10',
-                            title: '620,000 đ - Gói nạp 1980 đá sáng thế'
-                          },
-                          {
-                            value: '11',
-                            title: '1,000,000 đ - Gói nạp 3280 đá sáng thế'
-                          },
-                          {
-                            value: '12',
-                            title: '2,000,000 đ - Gói nạp 6480 đá sáng thế x1'
-                          },
-                          {
-                            value: '13',
-                            title: '4,000,000 đ - Gói nạp 6480 đá sáng thế x2'
-                          },
-                          {
-                            value: '14',
-                            title: '6,000,000 đ - Gói nạp 6480 đá sáng thế x3'
-                          },
-                          {
-                            value: '15',
-                            title: '8,000,000 đ - Gói nạp 6480 đá sáng thế x4'
-                          },
-                          {
-                            value: '16',
-                            title: '10,000,000 đ - Gói nạp 6480 đá sáng thế x5'
-                          }
-                        ]}
+                        options={[...listGenshin, ...listHsr]}
                       />
                     </Grid>
                     <Grid item md={6} xs={12}>
