@@ -189,7 +189,7 @@ function ProductCollection() {
               textTransform="uppercase"
               component={'h2'}
             >
-              Nạp Game
+              Nạp Genshin & HSR
             </Typography>
             <Divider sx={{ my: 1 }} />
             <Grid container columnSpacing={1.5}>
