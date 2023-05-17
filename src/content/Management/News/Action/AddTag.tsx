@@ -4,18 +4,18 @@ import useCustomForm from '@/components/Common/Form/Form';
 import FormatForm from '@/components/Common/Form/FormatForm';
 import TextField from '@/components/Common/Form/TextField';
 import { useAuth } from '@/contexts/AuthGuard';
-import getNameSortAtoB from '@/utility/sortArray';
 import AddTwoToneIcon from '@mui/icons-material/AddTwoTone';
 import UploadTwoToneIcon from '@mui/icons-material/UploadTwoTone';
 import {
   Autocomplete,
   Box,
   Button,
+  TextField as MuiTextField,
+  Typography,
   styled,
-  useTheme, TextField as MuiTextField, Typography
+  useTheme
 } from '@mui/material';
 import { createNews, getListNewsCategory } from 'api/apiNews/newsApi';
-import { createWeapon } from 'api/apiTag/tagApi';
 import { INewsCategory } from 'model/news';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
@@ -33,7 +33,7 @@ const validationSchema = yup.object({
   title: yup.string().required('Tên bài viết là thuộc tính bắt buộc'),
   detail: yup.string().required('Mô tả là thuộc tính bắt buộc'),
   category: yup.string().required('Danh mục là thuộc tính bắt buộc'),
-  description: yup.string().required('Nội dung là thuộc tính bắt buộc'),
+  description: yup.string().required('Nội dung là thuộc tính bắt buộc')
 });
 
 const initForm = {
@@ -47,6 +47,7 @@ const initForm = {
 
 function AddTag({ title }: IEdit) {
   const theme = useTheme();
+  const [loading, setLoading] = useState<boolean>(false);
   const { handleSetMessage, updateSuccess } = useAuth();
   const [preview, setPreview] = useState<string>('');
   const [value, setValue] = useState<INewsCategory>();
@@ -58,10 +59,10 @@ function AddTag({ title }: IEdit) {
   };
   const handleCloseDialog = () => {
     setOpenDialog(false);
-
   };
 
   const onSubmit = (value, { resetForm }) => {
+    setLoading(true);
     const { title, file, detail, category, keyword, description } = value;
     const formData = new FormData();
     formData.append('title', title);
@@ -73,7 +74,6 @@ function AddTag({ title }: IEdit) {
 
     file && formData.append('image', file);
 
-
     try {
       createNews(formData).then(() => {
         handleSetMessage({
@@ -83,20 +83,19 @@ function AddTag({ title }: IEdit) {
         handleCloseDialog();
         resetForm();
         (
-          document.getElementById(
-            'change-cover-news-image'
-          ) as HTMLInputElement
+          document.getElementById('change-cover-news-image') as HTMLInputElement
         ).value = '';
-        setPreview('')
+        setPreview('');
         updateSuccess();
+        setLoading(false);
       });
     } catch (error) {
       handleSetMessage({
         type: 'error',
         message: 'Có lỗi xảy ra, kiểm tra lại hoặc liên hệ DEV'
       });
+      setLoading(false);
     }
-
   };
   const handleFile = (e: React.FormEvent<HTMLInputElement>) => {
     const objectUrl = URL.createObjectURL(
@@ -116,13 +115,13 @@ function AddTag({ title }: IEdit) {
   };
   useEffect(() => {
     const callApi = async () => {
-      const res = await getListNewsCategory()
-      setListCategory(res.data)
-    }
+      const res = await getListNewsCategory();
+      setListCategory(res.data);
+    };
     if (openDialog) {
       callApi();
     }
-  }, [openDialog])
+  }, [openDialog]);
   const formik = useCustomForm(validationSchema, initForm, onSubmit);
   return (
     <DialogCommon
@@ -171,8 +170,6 @@ function AddTag({ title }: IEdit) {
                 formik.handleChange({
                   target: { name: 'category', value: newValue.slug ?? '' }
                 });
-
-
               }}
               isOptionEqualToValue={(option, value) => {
                 return option.name === value.name;
@@ -192,15 +189,21 @@ function AddTag({ title }: IEdit) {
           <Box mt={1} mb={1}>
             <TinyEditor
               changeBody={changeContent}
-              defaultValue={''}
+              defaultValue={formik.values.description}
             />
-            {
-              formik.touched.description && Boolean(formik.errors.description) && (<Typography sx={{
-                color: '#FF1943',
-                fontSize: '12px', fontWeight: 'bold', marginLeft: '8px',
-                marginRight: '8px',
-              }}>Chi tiết bài viết không được để trống</Typography>)
-            }
+            {formik.touched.description && Boolean(formik.errors.description) && (
+              <Typography
+                sx={{
+                  color: '#FF1943',
+                  fontSize: '12px',
+                  fontWeight: 'bold',
+                  marginLeft: '8px',
+                  marginRight: '8px'
+                }}
+              >
+                Chi tiết bài viết không được để trống
+              </Typography>
+            )}
           </Box>
           <Box mb={3}>
             <TextField
@@ -221,7 +224,6 @@ function AddTag({ title }: IEdit) {
               name="file"
               onChange={handleFile}
             />
-
 
             <label htmlFor="change-cover-news-image">
               <Button
@@ -249,8 +251,13 @@ function AddTag({ title }: IEdit) {
             </Box>
           )}
 
-          <Button variant="contained" fullWidth type="submit">
-            Thêm
+          <Button
+            variant="contained"
+            fullWidth
+            type="submit"
+            disabled={loading}
+          >
+            {loading ? 'Loading...' : 'Thêm'}
           </Button>
         </FormatForm>
       </Box>
