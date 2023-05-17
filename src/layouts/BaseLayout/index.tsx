@@ -123,7 +123,7 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children }) => {
                   <Link href={'/reputation'}>Check uy tín</Link>
                 </li>
                 <li>
-                  <Link href={'/shop'}>Phụ kiện</Link>
+                  <Link href={'/news'}>Thông tin Shop</Link>
                 </li>
               </ul>
             </Box>
@@ -156,7 +156,7 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children }) => {
                     <Link href={'/reputation'}>Check uy tín</Link>
                   </li>
                   <li>
-                    <Link href={'/shop'}>Shop</Link>
+                    <Link href={'/news'}>Thông tin Shop</Link>
                   </li>
                   <li>
                     <Link

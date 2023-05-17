@@ -136,12 +136,22 @@ function HeaderUserbox() {
         <Divider sx={{ mb: 0 }} />
         <List sx={{ p: 1 }} component="nav">
           {userData.role !== 'USER' && (
-            <NextLink href="/dashboards" passHref>
-              <ListItem button>
-                <AccountTreeTwoToneIcon fontSize="small" />
-                <ListItemText primary="Quản lý" />
-              </ListItem>
-            </NextLink>
+            <>
+              {
+                userData && userData?.role === 'NEWS' ? (<NextLink href="/management/news" passHref>
+                  <ListItem button>
+                    <AccountTreeTwoToneIcon fontSize="small" />
+                    <ListItemText primary="Quản lý" />
+                  </ListItem>
+                </NextLink>) : (<NextLink href="/dashboards" passHref>
+                  <ListItem button>
+                    <AccountTreeTwoToneIcon fontSize="small" />
+                    <ListItemText primary="Quản lý" />
+                  </ListItem>
+                </NextLink>)
+              }
+            </>
+
           )}
           {userData.role && (
             <NextLink href="/history" passHref>

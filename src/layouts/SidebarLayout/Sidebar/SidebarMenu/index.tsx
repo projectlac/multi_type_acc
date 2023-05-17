@@ -134,9 +134,9 @@ const SubMenuWrapper = styled(Box)(
                 background: ${theme.colors.alpha.trueWhite[100]};
                 opacity: 0;
                 transition: ${theme.transitions.create([
-                  'transform',
-                  'opacity'
-                ])};
+    'transform',
+    'opacity'
+  ])};
                 width: 6px;
                 height: 6px;
                 transform: scale(0);
@@ -189,34 +189,39 @@ function SidebarMenu() {
             </List>
           </SubMenuWrapper>
         </List>
-        <List
-          component="div"
-          subheader={
-            <ListSubheader component="div" disableSticky>
-              Dashboards
-            </ListSubheader>
-          }
-        >
-          <SubMenuWrapper>
-            <List component="div">
-              <ListItem component="div">
-                <NextLink href="/dashboards/crypto" passHref>
-                  <Button
-                    className={
-                      currentRoute === '/dashboards/crypto' ? 'active' : ''
-                    }
-                    disableRipple
-                    component="a"
-                    onClick={closeSidebar}
-                    startIcon={<BrightnessLowTwoToneIcon />}
-                  >
-                    Thống kê
-                  </Button>
-                </NextLink>
-              </ListItem>
+        {
+          user && user?.role !== 'NEWS' && (
+            <List
+              component="div"
+              subheader={
+                <ListSubheader component="div" disableSticky>
+                  Dashboards
+                </ListSubheader>
+              }
+            >
+              <SubMenuWrapper>
+                <List component="div">
+                  <ListItem component="div">
+                    <NextLink href="/dashboards/crypto" passHref>
+                      <Button
+                        className={
+                          currentRoute === '/dashboards/crypto' ? 'active' : ''
+                        }
+                        disableRipple
+                        component="a"
+                        onClick={closeSidebar}
+                        startIcon={<BrightnessLowTwoToneIcon />}
+                      >
+                        Thống kê
+                      </Button>
+                    </NextLink>
+                  </ListItem>
+                </List>
+              </SubMenuWrapper>
             </List>
-          </SubMenuWrapper>
-        </List>
+          )
+        }
+
         {user && user?.role === 'ADMIN' && (
           <List
             component="div"
@@ -264,156 +269,161 @@ function SidebarMenu() {
             </SubMenuWrapper>
           </List>
         )}
+        {
+          user && user?.role !== 'NEWS' && (
+            <>  <List
+              component="div"
+              subheader={
+                <ListSubheader component="div" disableSticky>
+                  Genshin Impact
+                </ListSubheader>
+              }
+            >
+              <SubMenuWrapper>
+                <List component="div">
+                  <ListItem component="div">
+                    <NextLink href="/management/transactions" passHref>
+                      <Button
+                        className={
+                          currentRoute === '/management/transactions'
+                            ? 'active'
+                            : ''
+                        }
+                        disableRipple
+                        component="a"
+                        onClick={closeSidebar}
+                        startIcon={<TableChartTwoToneIcon />}
+                      >
+                        Tài khoản VIP
+                      </Button>
+                    </NextLink>
+                  </ListItem>
+                  <ListItem component="div">
+                    <NextLink href="/management/new-account" passHref>
+                      <Button
+                        className={
+                          currentRoute === '/management/new-account' ? 'active' : ''
+                        }
+                        disableRipple
+                        component="a"
+                        onClick={closeSidebar}
+                        startIcon={<TableChartTwoToneIcon />}
+                      >
+                        Tài khoản khởi đầu
+                      </Button>
+                    </NextLink>
+                  </ListItem>
+                  <ListItem component="div">
+                    <NextLink href="/management/nomal-account" passHref>
+                      <Button
+                        className={
+                          currentRoute === '/management/nomal-account'
+                            ? 'active'
+                            : ''
+                        }
+                        disableRipple
+                        component="a"
+                        onClick={closeSidebar}
+                        startIcon={<TableChartTwoToneIcon />}
+                      >
+                        Tài khoản thường
+                      </Button>
+                    </NextLink>
+                  </ListItem>
+                  {user && user?.role === 'ADMIN' && (
+                    <ListItem component="div">
+                      <NextLink href="/management/topup-genshin" passHref>
+                        <Button
+                          className={
+                            currentRoute === '/management/topup-genshin'
+                              ? 'active'
+                              : ''
+                          }
+                          disableRipple
+                          component="a"
+                          onClick={closeSidebar}
+                          startIcon={<TableChartTwoToneIcon />}
+                        >
+                          Quản lý nạp
+                        </Button>
+                      </NextLink>
+                    </ListItem>
+                  )}
+                </List>
+              </SubMenuWrapper>
+            </List>
+              <List
+                component="div"
+                subheader={
+                  <ListSubheader component="div" disableSticky>
+                    Honkai Star Rail
+                  </ListSubheader>
+                }
+              >
+                <SubMenuWrapper>
+                  <List component="div">
+                    <ListItem component="div">
+                      <NextLink href="/management/honkai-star-rail/vip" passHref>
+                        <Button
+                          className={
+                            currentRoute === '/management/honkai-star-rail/vip'
+                              ? 'active'
+                              : ''
+                          }
+                          disableRipple
+                          component="a"
+                          onClick={closeSidebar}
+                          startIcon={<TableChartTwoToneIcon />}
+                        >
+                          Tài khoản VIP
+                        </Button>
+                      </NextLink>
+                    </ListItem>
+                    <ListItem component="div">
+                      <NextLink href="/management/honkai-star-rail/new" passHref>
+                        <Button
+                          className={
+                            currentRoute === '/management/honkai-star-rail/new'
+                              ? 'active'
+                              : ''
+                          }
+                          disableRipple
+                          component="a"
+                          onClick={closeSidebar}
+                          startIcon={<TableChartTwoToneIcon />}
+                        >
+                          Tài khoản khởi đầu
+                        </Button>
+                      </NextLink>
+                    </ListItem>
+                    <ListItem component="div">
+                      <NextLink
+                        href="/management/honkai-star-rail/reroll-random"
+                        passHref
+                      >
+                        <Button
+                          className={
+                            currentRoute ===
+                              '/management/honkai-star-rail/reroll-random'
+                              ? 'active'
+                              : ''
+                          }
+                          disableRipple
+                          component="a"
+                          onClick={closeSidebar}
+                          startIcon={<TableChartTwoToneIcon />}
+                        >
+                          Tài khoản thường
+                        </Button>
+                      </NextLink>
+                    </ListItem>
+                  </List>
+                </SubMenuWrapper>
+              </List></>
+          )
+        }
 
-        <List
-          component="div"
-          subheader={
-            <ListSubheader component="div" disableSticky>
-              Genshin Impact
-            </ListSubheader>
-          }
-        >
-          <SubMenuWrapper>
-            <List component="div">
-              <ListItem component="div">
-                <NextLink href="/management/transactions" passHref>
-                  <Button
-                    className={
-                      currentRoute === '/management/transactions'
-                        ? 'active'
-                        : ''
-                    }
-                    disableRipple
-                    component="a"
-                    onClick={closeSidebar}
-                    startIcon={<TableChartTwoToneIcon />}
-                  >
-                    Tài khoản VIP
-                  </Button>
-                </NextLink>
-              </ListItem>
-              <ListItem component="div">
-                <NextLink href="/management/new-account" passHref>
-                  <Button
-                    className={
-                      currentRoute === '/management/new-account' ? 'active' : ''
-                    }
-                    disableRipple
-                    component="a"
-                    onClick={closeSidebar}
-                    startIcon={<TableChartTwoToneIcon />}
-                  >
-                    Tài khoản khởi đầu
-                  </Button>
-                </NextLink>
-              </ListItem>
-              <ListItem component="div">
-                <NextLink href="/management/nomal-account" passHref>
-                  <Button
-                    className={
-                      currentRoute === '/management/nomal-account'
-                        ? 'active'
-                        : ''
-                    }
-                    disableRipple
-                    component="a"
-                    onClick={closeSidebar}
-                    startIcon={<TableChartTwoToneIcon />}
-                  >
-                    Tài khoản thường
-                  </Button>
-                </NextLink>
-              </ListItem>
-              {user && user?.role === 'ADMIN' && (
-                <ListItem component="div">
-                  <NextLink href="/management/topup-genshin" passHref>
-                    <Button
-                      className={
-                        currentRoute === '/management/topup-genshin'
-                          ? 'active'
-                          : ''
-                      }
-                      disableRipple
-                      component="a"
-                      onClick={closeSidebar}
-                      startIcon={<TableChartTwoToneIcon />}
-                    >
-                      Quản lý nạp
-                    </Button>
-                  </NextLink>
-                </ListItem>
-              )}
-            </List>
-          </SubMenuWrapper>
-        </List>
-        <List
-          component="div"
-          subheader={
-            <ListSubheader component="div" disableSticky>
-              Honkai Star Rail
-            </ListSubheader>
-          }
-        >
-          <SubMenuWrapper>
-            <List component="div">
-              <ListItem component="div">
-                <NextLink href="/management/honkai-star-rail/vip" passHref>
-                  <Button
-                    className={
-                      currentRoute === '/management/honkai-star-rail/vip'
-                        ? 'active'
-                        : ''
-                    }
-                    disableRipple
-                    component="a"
-                    onClick={closeSidebar}
-                    startIcon={<TableChartTwoToneIcon />}
-                  >
-                    Tài khoản VIP
-                  </Button>
-                </NextLink>
-              </ListItem>
-              <ListItem component="div">
-                <NextLink href="/management/honkai-star-rail/new" passHref>
-                  <Button
-                    className={
-                      currentRoute === '/management/honkai-star-rail/new'
-                        ? 'active'
-                        : ''
-                    }
-                    disableRipple
-                    component="a"
-                    onClick={closeSidebar}
-                    startIcon={<TableChartTwoToneIcon />}
-                  >
-                    Tài khoản khởi đầu
-                  </Button>
-                </NextLink>
-              </ListItem>
-              <ListItem component="div">
-                <NextLink
-                  href="/management/honkai-star-rail/reroll-random"
-                  passHref
-                >
-                  <Button
-                    className={
-                      currentRoute ===
-                      '/management/honkai-star-rail/reroll-random'
-                        ? 'active'
-                        : ''
-                    }
-                    disableRipple
-                    component="a"
-                    onClick={closeSidebar}
-                    startIcon={<TableChartTwoToneIcon />}
-                  >
-                    Tài khoản thường
-                  </Button>
-                </NextLink>
-              </ListItem>
-            </List>
-          </SubMenuWrapper>
-        </List>
+
         {user && user?.role === 'ADMIN_PRODUCT' && (
           <List
             component="div"
@@ -619,6 +629,54 @@ function SidebarMenu() {
                 </List>
               </SubMenuWrapper>
             </List>
+          </>
+        )}
+        {user && user?.role === 'NEWS' && (
+          <>
+            <List
+              component="div"
+              subheader={
+                <ListSubheader component="div" disableSticky>
+                  Tin tức
+                </ListSubheader>
+              }
+            >
+              <SubMenuWrapper>
+                <List component="div">
+                  <ListItem component="div">
+                    <NextLink href="/management/news" passHref>
+                      <Button
+                        className={
+                          currentRoute === '/management/news' ? 'active' : ''
+                        }
+                        disableRipple
+                        component="a"
+                        onClick={closeSidebar}
+                        startIcon={<BallotTwoToneIcon />}
+                      >
+                        Danh sách tin tức
+                      </Button>
+                    </NextLink>
+                  </ListItem>
+                  <ListItem component="div">
+                    <NextLink href="/management/news/category" passHref>
+                      <Button
+                        className={
+                          currentRoute === '/management/news/category' ? 'active' : ''
+                        }
+                        disableRipple
+                        component="a"
+                        onClick={closeSidebar}
+                        startIcon={<BallotTwoToneIcon />}
+                      >
+                        Danh mục
+                      </Button>
+                    </NextLink>
+                  </ListItem>
+                </List>
+              </SubMenuWrapper>
+            </List>
+
           </>
         )}
         {/* <List

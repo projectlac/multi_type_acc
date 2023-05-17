@@ -31,6 +31,7 @@ import { format } from 'date-fns';
 import { getMoneyTable, getRemainingMoney } from 'api/apiDashboard/userApi';
 import { useAuth } from '@/contexts/AuthGuard';
 import formatMoney from '@/utility/formatMoney';
+import { useRouter } from 'next/router';
 
 ChartJS.register(
   CategoryScale,
@@ -49,7 +50,8 @@ interface IChart {
 }
 
 function DashboardCrypto() {
-  const { update } = useAuth();
+  const { update, user } = useAuth();
+  const router = useRouter()
   const [dataRemain, setDataRemain] = useState({
     account_remaining: '0',
     account_sold: '0',
@@ -151,6 +153,7 @@ function DashboardCrypto() {
     datasets
   };
   useEffect(() => {
+
     getRemainingMoney().then((res) => setDataRemain(res.data));
     const date = new Date();
     const date1 = format(
@@ -167,6 +170,7 @@ function DashboardCrypto() {
         }
       }
     );
+
   }, [update]);
   useEffect(() => {
     const date = new Date(end);
@@ -174,6 +178,10 @@ function DashboardCrypto() {
       new Date(date.getTime() + 1 * 24 * 60 * 60 * 1000),
       'yyyy/MM/dd'
     );
+    if (user && user?.role === 'NEWS') {
+      router.push('/management/news')
+
+    }
     getMoneyTable(start, date1, currency).then((res) => {
       const data = res.data;
       const temp: IData[] = data.map((d: any) => ({

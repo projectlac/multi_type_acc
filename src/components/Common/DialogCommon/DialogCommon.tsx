@@ -44,6 +44,7 @@ export default function DialogCommon({
         keepMounted
         onClose={handleCloseDialog}
         aria-describedby="alert-dialog-slide-description"
+        disableEnforceFocus
       >
         <DialogTitle>{title}</DialogTitle>
         <DialogContent>{children}</DialogContent>
