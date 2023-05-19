@@ -33,6 +33,26 @@ function Overview() {
 
         <Container maxWidth="md" sx={{ mt: 15 }}>
           <Box py={3}>
+            <Card
+              sx={{
+                mb: 3,
+                px: 3,
+                py: 2
+              }}
+            >
+              <Typography
+                sx={{
+                  fontWeight: 'bold',
+                  a: {
+                    color: '#33d'
+                  }
+                }}
+              >
+                <span style={{ textAlign: 'center', display: "block", fontSize: '17px' }}> Các bạn lưu ý:</span>
+                Sau khi mua acc, các bạn liên kết mail xong thì <span style={{ color: 'red' }}>đừng vội đổi mật khẩu</span> vì Mihoyo đang hạn chế mua bán
+                <br /> Còn lại mọi thứ đều bình thường, các bạn cứ mua acc thoải mái, bên mình bảo hành tất cả nhé
+              </Typography>
+            </Card>
             <Card>
               <Table data={data} />
             </Card>
