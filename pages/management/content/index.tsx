@@ -123,6 +123,8 @@ function ContentManager() {
   const formikNew = useCustomForm(newAcc, initForm4, onSubmitNew);
 
   const changeContent = (data: string) => {
+    console.log(data);
+
     formik.handleChange({
       target: { name: 'description', value: data }
     });
@@ -177,7 +179,7 @@ function ContentManager() {
           />
           <TinyEditor
             changeBody={changeContent}
-            defaultValue={data.description}
+            defaultValue={formik.values.description}
           />
         </FormatForm>
         <TF
