@@ -107,7 +107,7 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children }) => {
                     href={'https://m.me/103780805920496'}
                     target={'__blank'}
                   >
-                    <a target="_blank">Fanpage </a>
+                    <a target="_blank">Hỗ trợ KH </a>
                   </Link>
                 </li>
                 <li>

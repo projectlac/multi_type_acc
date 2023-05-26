@@ -21,8 +21,6 @@ export default function TinyEditor({ changeBody, defaultValue }: TinyProps) {
           console.log(evt.type);
         }}
         onEditorChange={(e) => {
-          console.log(e);
-
           changeBody(e);
         }}
         value={defaultValue}
