@@ -104,7 +104,11 @@ function DetailNews() {
             <Typography
               sx={{
                 textAlign: 'left',
-                fontSize: '15px'
+                fontSize: '15px',
+                img: {
+                  maxWidth: '100%',
+                  height: 'auto'
+                }
               }}
               dangerouslySetInnerHTML={{ __html: data?.description }}
             ></Typography>
