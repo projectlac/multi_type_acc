@@ -48,9 +48,23 @@ function Overview() {
                   }
                 }}
               >
-                <span style={{ textAlign: 'center', display: "block", fontSize: '17px' }}> Các bạn lưu ý:</span>
-                Sau khi mua acc, các bạn liên kết mail xong thì <span style={{ color: 'red' }}>đừng vội đổi mật khẩu</span> vì Mihoyo đang hạn chế mua bán
-                <br /> Còn lại mọi thứ đều bình thường, các bạn cứ mua acc thoải mái, bên mình bảo hành tất cả nhé
+                <span
+                  style={{
+                    textAlign: 'center',
+                    display: 'block',
+                    fontSize: '17px'
+                  }}
+                >
+                  {' '}
+                  Các bạn lưu ý:
+                </span>
+                Sau khi mua acc, các bạn liên kết mail xong thì{' '}
+                <span style={{ color: 'red' }}>đừng vội đổi mật khẩu</span> vì
+                Mihoyo đang hạn chế mua bán
+                <br /> Còn lại mọi thứ đều bình thường, các bạn cứ mua acc thoải
+                mái, bên mình bảo hành tất cả nhé
+                <br />
+                Các bạn mua acc Genshin thì đổi thông tin thoải mái
               </Typography>
             </Card>
             <Card>
