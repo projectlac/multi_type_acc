@@ -74,6 +74,7 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({
   const [page, setPage] = useState<number>(0);
   const [search, setSearch] = useState<string>('');
   const [buyTimeSort, setBuyTimeSort] = useState<boolean | null>(null);
+
   const [limit, setLimit] = useState<number>(10);
   const [filters, setFilters] = useState<Filters>({
     status: null
@@ -95,6 +96,7 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({
         break;
     }
   };
+
   const handleStatusChange = (e: ChangeEvent<HTMLInputElement>): void => {
     let value = null;
 

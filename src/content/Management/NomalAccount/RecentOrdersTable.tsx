@@ -88,7 +88,11 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ cryptoOrders }) => {
   const [filters, setFilters] = useState<Filters>({
     status: null
   });
+  const [buyTimeCreatedSort, setBuyTimeCreatedSort] = useState<boolean | null>(
+    null
+  );
   const clickSort = () => {
+    setBuyTimeCreatedSort(null);
     switch (buyTimeSort) {
       case true:
         setBuyTimeSort(false);
@@ -100,6 +104,12 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ cryptoOrders }) => {
         setBuyTimeSort(true);
         break;
     }
+  };
+  const clickSortCreate = () => {
+    setBuyTimeCreatedSort((prev) => {
+      if (prev === null) return true;
+      else return !prev;
+    });
   };
   const statusOptions = [
     {
@@ -153,6 +163,21 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ cryptoOrders }) => {
       case false:
         filter = filter.sort(
           (a, b) => Date.parse(b.updated_at) - Date.parse(a.updated_at)
+        );
+        break;
+      default:
+        break;
+    }
+
+    switch (buyTimeCreatedSort) {
+      case true:
+        filter = filter.sort(
+          (a, b) => Date.parse(a.created_at) - Date.parse(b.created_at)
+        );
+        break;
+      case false:
+        filter = filter.sort(
+          (a, b) => Date.parse(b.created_at) - Date.parse(a.created_at)
         );
         break;
       default:
@@ -218,7 +243,9 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ cryptoOrders }) => {
               <TableCell>Title</TableCell>
               <TableCell>Người đăng</TableCell>
               <TableCell>Loại ACC</TableCell>
-              <TableCell align="right">Thời gian tạo</TableCell>
+              <TableCell align="right" onClick={clickSortCreate}>
+                Thời gian tạo
+              </TableCell>
               <TableCell
                 align="right"
                 sx={{
