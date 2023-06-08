@@ -32,7 +32,10 @@ Acc Genshin Trắng Thông Tin,Cam Kết Bảo Hành Acc Trọn Đời`
 
       <meta property="og:locale" content="vi_GB" />
       <meta property="og:locale:alternate" content="vi-VN" />
-
+      <meta
+        name="google-site-verification"
+        content="qy7s9Icea_TQczIdquJ0c88UxCIPd2pLpEaT4iK0hJc"
+      />
       <meta property="og:image" content={img} />
       <meta property="og:image:secure_url" content={img} />
       <meta property="og:image:type" content="image/jpeg" />
