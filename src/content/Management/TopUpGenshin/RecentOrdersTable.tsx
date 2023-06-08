@@ -5,10 +5,12 @@ import {
   CardHeader,
   Divider,
   FormControl,
+  FormControlLabel,
   IconButton,
   InputLabel,
   MenuItem,
   Select,
+  Switch,
   Table,
   TableBody,
   TableCell,
@@ -26,10 +28,14 @@ import { IGetDeposit, IStatus } from 'model/deposit';
 import PropTypes from 'prop-types';
 import { ChangeEvent, FC, useState } from 'react';
 import EditTag from './Action/EditTag';
+import { TYPE_DEPOSIT } from '@/models/enum';
 
 interface RecentOrdersTableProps {
   className?: string;
   cryptoOrders: IGetDeposit[];
+  changeType: () => void;
+  type: TYPE_DEPOSIT;
+  loading: boolean;
 }
 
 interface Filters {
@@ -80,7 +86,12 @@ const applyPagination = (
   return cryptoOrders.slice(page * limit, page * limit + limit);
 };
 
-const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ cryptoOrders }) => {
+const RecentOrdersTable: FC<RecentOrdersTableProps> = ({
+  cryptoOrders,
+  changeType,
+  type,
+  loading
+}) => {
   const [page, setPage] = useState<number>(0);
   const [limit, setLimit] = useState<number>(10);
   const [filters, setFilters] = useState<Filters>({
@@ -126,6 +137,7 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ cryptoOrders }) => {
     setSearch(e.target.value);
   };
   const theme = useTheme();
+  console.log(loading);
 
   return (
     <Card>
@@ -135,6 +147,20 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ cryptoOrders }) => {
           label="Nhập username account genshin để tìm kiếm"
           onChange={handleChangeSearch}
         />
+        <Switch
+          checked={type === TYPE_DEPOSIT.CAY_THUE}
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+            changeType();
+            console.log(event.target.checked);
+          }}
+        />
+        {loading
+          ? 'Loading...'
+          : `Đang hiện: ${
+              type === TYPE_DEPOSIT.CAY_THUE
+                ? 'Danh sách yêu cầu cày thuê'
+                : 'Danh sách yêu cầu nạp game'
+            }`}
       </Box>
       <CardHeader
         action={

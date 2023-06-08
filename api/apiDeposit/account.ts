@@ -1,3 +1,4 @@
+import { TYPE_DEPOSIT } from '@/models/enum';
 import api from 'api/api';
 import { IDepositCreate } from 'model/deposit';
 
@@ -6,8 +7,8 @@ export const createDeposit = (param: IDepositCreate) => {
   return api.post('/deposit/create', param);
 };
 
-export const getDeposit = () => {
-  return api.get('/deposit?limit=99999');
+export const getDeposit = (type:TYPE_DEPOSIT) => {
+  return api.get(`/deposit?type=${type}&limit=99999`);
 };
 
 export const changeStatusDeposit = (id: number, status: string) => {

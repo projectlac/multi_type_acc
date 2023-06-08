@@ -7,6 +7,7 @@ import TablePlowing from '@/components/Table/TablePlowing';
 import { useAuth } from '@/contexts/AuthGuard';
 import { ProtectGuess } from '@/contexts/ProtectGuess';
 import BaseLayout from '@/layouts/BaseLayout';
+import { TYPE_DEPOSIT } from '@/models/enum';
 import { Button, Card, Container, Grid } from '@mui/material';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -69,7 +70,7 @@ export default function VerticalTabs() {
   };
 
   React.useEffect(() => {
-    getDeposit().then((res) => {
+    getDeposit(TYPE_DEPOSIT.CAY_THUE).then((res) => {
       setHistory(res.data.data);
     });
   }, [update]);
