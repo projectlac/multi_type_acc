@@ -84,79 +84,79 @@ export default function VerticalTabs() {
       },
       {
         value: '35',
-        title: '120,000 VNĐ - Nham Thần Đồng(131)'
+        title: '120,000 VNĐ - Nham Thần Đồng (131)'
       },
       {
         value: '36',
-        title: '190,000 VNĐ - Lôi Thần Đồng(181)'
+        title: '190,000 VNĐ - Lôi Thần Đồng (181)'
       },
       {
         value: '37',
-        title: '300,000 VNĐ - Thảo Thần Đồng(271)'
+        title: '300,000 VNĐ - Thảo Thần Đồng (271)'
       },
       {
         value: '38',
-        title: '90,000 VNĐ - Mã Não Đỏ Thẫm(80)'
+        title: '90,000 VNĐ - Mã Não Đỏ Thẫm (80)'
       },
       {
         value: '39',
-        title: '90,000 VNĐ - Lưu Tinh Minh Thạch( 83)'
+        title: '90,000 VNĐ - Lưu Tinh Minh Thạch (83)'
       },
       {
         value: '40',
-        title: '70,000 VNĐ - Ấn Khóa(59)'
+        title: '70,000 VNĐ - Ấn Khóa (59)'
       },
       {
         value: '41',
-        title: '60,000 VNĐ - Đá Thánh(108)'
+        title: '60,000 VNĐ - Đá Thánh (108)'
       },
       {
         value: '42',
-        title: '40,000 VNĐ - Tinh Quang Vũ(36)'
+        title: '40,000 VNĐ - Tinh Quang Vũ (36)'
       },
       {
         value: '43',
-        title: '400,000 VNĐ - Mondstadt(4 khu vực)'
+        title: '400,000 VNĐ - Mondstadt (4 khu vực)'
       },
       {
         value: '44',
-        title: '150,000 VNĐ - Long tích tuyết sơn(1 khu vực)'
+        title: '150,000 VNĐ - Long tích tuyết sơn (1 khu vực)'
       },
       {
         value: '45',
-        title: '600,000 VNĐ - Liyue(5 khu vực)'
+        title: '600,000 VNĐ - Liyue (5 khu vực)'
       },
       {
         value: '46',
-        title: '400,000 VNĐ - Khu mỏ chính / Ngầm(2 khu vực)'
+        title: '400,000 VNĐ - Khu mỏ chính / Ngầm (2 khu vực)'
       },
       {
         value: '47',
-        title: '750,000 VNĐ - Inazuma(6 khu vực)'
+        title: '750,000 VNĐ - Inazuma (6 khu vực)'
       },
       {
         value: '48',
-        title: '150,000 VNĐ - Enkanomiya(1 khu vực)'
+        title: '150,000 VNĐ - Enkanomiya (1 khu vực)'
       },
       {
         value: '49',
-        title: '850,000 VNĐ - Sumeru rừng mưa(7 khu vực)'
+        title: '850,000 VNĐ - Sumeru rừng mưa (7 khu vực)'
       },
       {
         value: '50',
-        title: '400,000 VNĐ - Sumeru Sa Mạc 3.1(3 khu vực)'
+        title: '400,000 VNĐ - Sumeru Sa Mạc 3.1 (3 khu vực)'
       },
       {
         value: '51',
-        title: '250,000 đ - Sumeru Sa Mạc 3.4(1 khu vực)'
+        title: '250,000 đ - Sumeru Sa Mạc 3.4 (1 khu vực)'
       },
       {
         value: '52',
-        title: '250,000 đ - Sumeru Sa Mạc 3.6(2 khu vực)'
+        title: '250,000 đ - Sumeru Sa Mạc 3.6 (2 khu vực)'
       },
       {
         value: '53',
-        title: '12,000 đ - Mở điểm tele( 1 khu)'
+        title: '12,000 đ - Mở điểm tele (1 khu)'
       },
       {
         value: '54',
@@ -168,7 +168,7 @@ export default function VerticalTabs() {
       },
       {
         value: '56',
-        title: '40,000 đ - Nhặt Nguyên Liệu Mondsadt ( 100)'
+        title: '40,000 đ - Nhặt Nguyên Liệu Mondsadt (100)'
       },
       {
         value: '57',
@@ -176,15 +176,15 @@ export default function VerticalTabs() {
       },
       {
         value: '58',
-        title: '60,000 đ - Nhặt Nguyên Liệu Inazuma(100)'
+        title: '60,000 đ - Nhặt Nguyên Liệu Inazuma (100)'
       },
       {
         value: '59',
-        title: '70,000 đ - Nhặt Nguyên Liệu Sumeru(100)'
+        title: '70,000 đ - Nhặt Nguyên Liệu Sumeru (100)'
       },
       {
         value: '60',
-        title: '130,000 đ - Lao xiên cá R5( ghi chú ar)'
+        title: '130,000 đ - Lao xiên cá R5 (ghi chú ar)'
       },
       {
         value: '61',
@@ -205,7 +205,7 @@ export default function VerticalTabs() {
       {
         value: '65',
         title:
-          '120,000 đ - Tích xanh quyển aranyaka( 5 tích) yêu cầu đã hoàn thành xong nhiệm vụ aranyaka'
+          '120,000 đ - Tích xanh quyển aranyaka (5 tích) yêu cầu đã hoàn thành xong nhiệm vụ aranyaka'
       },
       {
         value: '66',
@@ -221,11 +221,11 @@ export default function VerticalTabs() {
       },
       {
         value: '69',
-        title: '150,000 đ - Chuyến săn sấm Seira(4 chương)'
+        title: '150,000 đ - Chuyến săn sấm Seira (4 chương)'
       },
       {
         value: '70',
-        title: '120,000 đ - Di sản Orobashi(4 chương)'
+        title: '120,000 đ - Di sản Orobashi (4 chương)'
       },
       {
         value: '71',
@@ -237,7 +237,7 @@ export default function VerticalTabs() {
       },
       {
         value: '73',
-        title: '400,000 đ - Cõi mộng hoàng kim(4 chương)'
+        title: '400,000 đ - Cõi mộng hoàng kim (4 chương)'
       },
       {
         value: '74',
@@ -285,7 +285,7 @@ export default function VerticalTabs() {
       },
       {
         value: '85',
-        title: '80,000 đ - Nhiệm Vụ Ma Thần ( 3 màn)'
+        title: '80,000 đ - Nhiệm Vụ Ma Thần (3 màn)'
       },
       {
         value: '86',

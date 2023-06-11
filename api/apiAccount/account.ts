@@ -134,6 +134,29 @@ export const getAccountNewFromDashboard = (param: IAccountVip) => {
     )}`
   );
 };
+
+
+export const getCodeFromDashboard = (param: IAccountVip) => {
+  return apiFormData.get(
+    `/account/get-accounts-by-admin?type=CODE&limit=${param.limit}&offset=${
+      param.offset
+    }&priceSort=${param.priceSort}${checkCall('hero', param.hero)}${checkCall(
+      'server',
+      param.server
+    )}${checkCall('weapon', param.weapon)}${checkCall(
+      'keyword',
+      param.keyword
+    )}${checkCall('is_sold', param.is_sold)}${checkCall(
+      'sold_date',
+      param.sold_date
+    )}${checkCall(
+      'game',
+      param.game
+    )}`
+  );
+};
+
+
 export const queryAccountNew = (param: IQueryVipAcc) => {
   return apiFormData.get(
     `/account/get-accounts?type=NEW&limit=${param.limit}&offset=${
