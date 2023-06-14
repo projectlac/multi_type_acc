@@ -53,7 +53,8 @@ export default function VerticalTabs() {
         server,
         name: ingame,
         phone: social,
-        note
+        note,
+        type: TYPE_DEPOSIT.NAP_GAME
       }).then(() => {
         updateSuccess();
         handleSetMessage({

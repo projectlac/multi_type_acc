@@ -53,12 +53,13 @@ export default function VerticalTabs() {
         server,
         name: ingame,
         phone: social,
-        note
+        note,
+        type: TYPE_DEPOSIT.CAY_THUE
       }).then(() => {
         updateSuccess();
         handleSetMessage({
           type: 'success',
-          message: 'Yêu cầu nạp thành công'
+          message: 'Yêu cầu được gửi thành công'
         });
         setPending(false);
         resetForm();

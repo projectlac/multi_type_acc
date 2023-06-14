@@ -1,3 +1,5 @@
+import { TYPE_DEPOSIT } from "@/models/enum";
+
 export interface IDepositCreate {
   uuid: string;
   username: string;
@@ -7,6 +9,7 @@ export interface IDepositCreate {
   phone: string;
   pack: number;
   note?: string;
+  type:TYPE_DEPOSIT
 }
 export type IStatus = 'PEDDING' | 'SUCCESS' | 'ERROR';
 export interface IGetDeposit {
