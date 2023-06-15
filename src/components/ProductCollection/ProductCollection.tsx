@@ -7,6 +7,7 @@ import shopphukien from '@/assets/images/e8287ab33eade6f3bfbc.webp';
 import rrr from '@/assets/images/mainCategory/310545249_770219224063920_253246776766894058_n.webp';
 import lucky from '@/assets/images/lucky.webp';
 import caythue from '@/assets/images/mainCategory/CT.jpg';
+import codegame from '@/assets/images/mainCategory/CODE.jpg';
 
 import bgVip from '@/assets/images/mainCategory/310860207_1164961827704035_4343141035597341049_n.webp';
 import news from '@/assets/images/mainCategory/9bf1a5932675ff2ba664.webp';
@@ -359,6 +360,65 @@ function ProductCollection() {
             <Divider sx={{ mt: 1, mb: 1 }} />
             <Box textAlign={'center'}>
               <Link href={'/plowing'}>
+                <Button variant="contained" color="secondary">
+                  Khám phá
+                </Button>
+              </Link>
+            </Box>
+          </Box>
+        </Card>
+      </Grid>
+      <Grid item md={3} sm={6} xs={12}>
+        <Card
+          sx={{
+            background:
+              'linear-gradient(90deg, rgba(228,214,200,1) 0%, rgba(239,231,225,1) 50%, rgba(228,214,200,1) 100%)',
+            padding: '15px',
+            borderRadius: '5px',
+            transition: 'all 0.5s',
+            '&:hover': {
+              transform: 'scale(1.05)',
+              '& .eff:before': {
+                WebkitAnimation: 'shine .75s',
+                animation: 'shine .75s'
+              }
+            }
+          }}
+        >
+          <Link href={'/code'}>
+            <Box
+              sx={{
+                cursor: 'pointer',
+                minHeight: '175px',
+                width: '100%',
+                position: 'relative'
+              }}
+            >
+              <Image
+                src={codegame}
+                alt="Code Game"
+                layout="fill"
+                objectFit="cover"
+              />
+            </Box>
+          </Link>
+
+          <Box mt={1}>
+            <Typography
+              textAlign={'center'}
+              fontWeight={'900'}
+              fontFamily="Roboto"
+              fontSize={25}
+              color={'primary'}
+              textTransform="uppercase"
+              component={'h2'}
+            >
+              Code Game
+            </Typography>
+            <Divider sx={{ mt: 1, mb: 8 }} />
+            <Divider sx={{ mt: 1, mb: 1 }} />
+            <Box textAlign={'center'}>
+              <Link href={'/code'}>
                 <Button variant="contained" color="secondary">
                   Khám phá
                 </Button>

@@ -73,7 +73,29 @@ export default function Table({ data }: IProp) {
                 transaction: { detail, updated_at }
               } = row;
               return (
-                <StyledTableRow key={detail[0].id}>
+                <StyledTableRow
+                  key={detail[0].id}
+                  sx={{
+                    '&:nth-of-type(odd)': {
+                      backgroundColor:
+                        detail[0].username === 'Gift-Code'
+                          ? '#508f27'
+                          : 'rgb(229, 232, 255)',
+                      '> td': {
+                        color:
+                          detail[0].username === 'Gift-Code' ? '#fff' : '#000'
+                      }
+                    },
+                    '&:nth-of-type(even)': {
+                      backgroundColor:
+                        detail[0].username === 'Gift-Code' ? '#39bbba' : '#fff',
+                      '> td': {
+                        color:
+                          detail[0].username === 'Gift-Code' ? '#fff' : '#000'
+                      }
+                    }
+                  }}
+                >
                   <StyledTableCell align="left">{detail[0].id}</StyledTableCell>
                   <StyledTableCell align="left">
                     {detail[0].username}

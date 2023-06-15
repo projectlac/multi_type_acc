@@ -98,6 +98,26 @@ export const queryAccountVip = (param: IQueryVipAcc) => {
   );
 };
 
+
+
+export const queryCodeGame = (param: IQueryVipAcc) => {
+  return apiFormData.get(
+    `/account/get-accounts?type=CODE&limit=${param.limit}&offset=${
+      param.offset
+    }${checkCallPriceSort('priceSort', param.priceSort)}${checkCall(
+      'code',
+      param.keyword
+    )}${checkCall('ar', param.ar)}${checkCall(
+      'server',
+      param.server
+    )}${checkCall('hero', param.hero)}${checkCall(
+      'weapon',
+      param.weapon
+    )}${checkCall('rangeMoney', param.rangeMoney)}${checkCall('game', param.game)}`
+  );
+};
+
+
 export const buyAccount = (slug: string) => {
   return api.post(`/buy-account`, { slugs: [slug] });
 };
