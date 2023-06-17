@@ -1,9 +1,6 @@
 import { useAuth } from '@/contexts/AuthGuard';
 import { Card } from '@mui/material';
-import {
-  getAccountNewFromDashboard,
-  getCodeFromDashboard
-} from 'api/apiAccount/account';
+import { getCodeFromDashboard } from 'api/apiAccount/account';
 import { IAccountVipAdmin } from 'model/account';
 import { useEffect, useState } from 'react';
 import RecentOrdersTable from './RecentOrdersTable';

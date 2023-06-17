@@ -5,12 +5,13 @@ import TextField from '@/components/Common/Form/TextField';
 import { useAuth } from '@/contexts/AuthGuard';
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 import UploadTwoToneIcon from '@mui/icons-material/UploadTwoTone';
-import { Box, Button, Grid, useTheme } from '@mui/material';
+import { Box, Button, Grid, MenuItem, useTheme } from '@mui/material';
 import { styled } from '@mui/styles';
 import {
   getAccountBySlugToManager,
   updateAccountNomal
 } from 'api/apiAccount/account';
+import { getListTagCode } from 'api/apiTag/tagApi';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import * as yup from 'yup';
@@ -25,13 +26,18 @@ const Input = styled('input')({
 const validationSchema = yup.object({
   name: yup.string().required('Tên tài khoản is required'),
   username: yup.string().required('Thông tin này là bắt buộc'),
-  price: yup.number().required('Thông tin này là bắt buộc')
+  price: yup.number().required('Thông tin này là bắt buộc'),
+  tag_code: yup.string().required('Trường này bắt buộc phải nhập')
 });
-
+interface ITagCode {
+  desc: string;
+  slug: string;
+}
 function EditAccout({ title, slug }: IEdit) {
   const { handleSetMessage, updateSuccess } = useAuth();
   const theme = useTheme();
   const [openDialog, setOpenDialog] = useState<boolean>(false);
+  const [tagCode, setTagCode] = useState<ITagCode[]>([]);
 
   const [preview, setPreview] = useState<string>('');
 
@@ -42,9 +48,21 @@ function EditAccout({ title, slug }: IEdit) {
     price: 0,
     type: 'NEW',
     avatar: '',
+    tag_code: '',
     images: '',
     file: null
   });
+  useEffect(() => {
+    const callApi = async () => {
+      const res = await getListTagCode();
+      const data = res.data.data.map((d: any) => ({
+        desc: d.desc,
+        slug: d.slug
+      }));
+      setTagCode(data);
+    };
+    callApi();
+  }, [slug]);
 
   const handleOpenDialog = () => {
     setOpenDialog(true);
@@ -75,6 +93,7 @@ function EditAccout({ title, slug }: IEdit) {
           password: data.password,
           price: data.price,
           avatar: data.avatar.url,
+          tag_code: data.tag_code,
           type: data.type,
           file: null
         };
@@ -87,7 +106,7 @@ function EditAccout({ title, slug }: IEdit) {
     }
   }, [openDialog]);
   const onSubmit = async (values, { resetForm }) => {
-    const { name, username, password, price, file, type } = values;
+    const { name, username, password, price, file, type, tag_code } = values;
 
     const formData = new FormData();
     formData.append('name', name);
@@ -95,6 +114,7 @@ function EditAccout({ title, slug }: IEdit) {
     password && formData.append('password', password);
     formData.append('server', 'ASIA');
     formData.append('ar_level', '0');
+    formData.append('tag_code', tag_code);
     formData.append('price', price);
     formData.append('type', type);
     formData.append('game', 'genshin-impact');
@@ -146,7 +166,7 @@ function EditAccout({ title, slug }: IEdit) {
                 type="text"
               />
             </Grid>
-            <Grid item md={6} xs={12}>
+            <Grid item md={4} xs={12}>
               <TextField
                 formik={formik}
                 label="Loại code"
@@ -158,7 +178,7 @@ function EditAccout({ title, slug }: IEdit) {
                 disabled
               />
             </Grid>
-            <Grid item md={6} xs={12}>
+            <Grid item md={4} xs={12}>
               <TextField
                 formik={formik}
                 label="Code"
@@ -179,6 +199,25 @@ function EditAccout({ title, slug }: IEdit) {
                 type="number"
               />
             </Grid>
+            <Grid item md={4} xs={12}>
+              <TextField
+                formik={formik}
+                label="Loại code"
+                variant="outlined"
+                fullWidth
+                name="tag_code"
+                type="text"
+                select
+              >
+                {tagCode.map((d) => (
+                  <MenuItem key={d.slug} value={d.slug}>
+                    {d.desc}
+                  </MenuItem>
+                ))}
+              </TextField>
+            </Grid>
+
+            <Grid item md={8} xs={12}></Grid>
             <Grid item md={12} xs={12}>
               <Box>
                 <Input

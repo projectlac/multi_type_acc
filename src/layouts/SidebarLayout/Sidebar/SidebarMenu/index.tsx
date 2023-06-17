@@ -613,6 +613,23 @@ function SidebarMenu() {
                       </Button>
                     </NextLink>
                   </ListItem>
+                  <ListItem component="div">
+                    <NextLink href="/management/tag-code" passHref>
+                      <Button
+                        className={
+                          currentRoute === '/management/tag-code'
+                            ? 'active'
+                            : ''
+                        }
+                        disableRipple
+                        component="a"
+                        onClick={closeSidebar}
+                        startIcon={<BallotTwoToneIcon />}
+                      >
+                        Phân loại code
+                      </Button>
+                    </NextLink>
+                  </ListItem>
                 </List>
               </SubMenuWrapper>
             </List>

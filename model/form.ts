@@ -85,3 +85,6 @@ export interface IQueryVipAcc {
   rangeMoney?: string;
   game?:string
 }
+export interface IQueryCode extends IQueryVipAcc{
+  tag_code?:string
+}

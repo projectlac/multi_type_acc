@@ -267,7 +267,7 @@ function ProductCollection() {
             }
           }}
         >
-          <Link href={'/lucky-spin'}>
+          <Link href={'/code'}>
             <Box
               sx={{
                 cursor: 'pointer',
@@ -277,8 +277,8 @@ function ProductCollection() {
               }}
             >
               <Image
-                src={lucky}
-                alt="Vòng quay may mắn"
+                src={codegame}
+                alt="Code Game"
                 layout="fill"
                 objectFit="cover"
               />
@@ -295,12 +295,12 @@ function ProductCollection() {
               textTransform="uppercase"
               component={'h2'}
             >
-              Lucky Spin
+              Code Game
             </Typography>
             <Divider sx={{ mt: 1, mb: 8 }} />
             <Divider sx={{ mt: 1, mb: 1 }} />
             <Box textAlign={'center'}>
-              <Link href={'/lucky-spin'}>
+              <Link href={'/code'}>
                 <Button variant="contained" color="secondary">
                   Khám phá
                 </Button>
@@ -385,7 +385,7 @@ function ProductCollection() {
             }
           }}
         >
-          <Link href={'/code'}>
+          <Link href={'/lucky-spin'}>
             <Box
               sx={{
                 cursor: 'pointer',
@@ -395,8 +395,8 @@ function ProductCollection() {
               }}
             >
               <Image
-                src={codegame}
-                alt="Code Game"
+                src={lucky}
+                alt="Vòng quay may mắn"
                 layout="fill"
                 objectFit="cover"
               />
@@ -413,12 +413,12 @@ function ProductCollection() {
               textTransform="uppercase"
               component={'h2'}
             >
-              Code Game
+              Lucky Spin
             </Typography>
             <Divider sx={{ mt: 1, mb: 8 }} />
             <Divider sx={{ mt: 1, mb: 1 }} />
             <Box textAlign={'center'}>
-              <Link href={'/code'}>
+              <Link href={'/lucky-spin'}>
                 <Button variant="contained" color="secondary">
                   Khám phá
                 </Button>
@@ -427,6 +427,7 @@ function ProductCollection() {
           </Box>
         </Card>
       </Grid>
+
       <Grid item md={12} sm={12} xs={12}>
         <Box
           pt={3}

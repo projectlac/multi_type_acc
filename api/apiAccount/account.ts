@@ -1,6 +1,6 @@
 import api from 'api/api';
 import apiFormData from 'api/formData/apiFormData';
-import { IAccountVip, IQueryRandomAcc, IQueryVipAcc } from 'model/form';
+import { IAccountVip, IQueryCode, IQueryRandomAcc, IQueryVipAcc } from 'model/form';
 
 const checkCall = (key, param) => {
   if (param) return `&${key}=${param}`;
@@ -100,7 +100,7 @@ export const queryAccountVip = (param: IQueryVipAcc) => {
 
 
 
-export const queryCodeGame = (param: IQueryVipAcc) => {
+export const queryCodeGame = (param: IQueryCode) => {
   return apiFormData.get(
     `/account/get-accounts?type=CODE&limit=${param.limit}&offset=${
       param.offset
@@ -113,7 +113,7 @@ export const queryCodeGame = (param: IQueryVipAcc) => {
     )}${checkCall('hero', param.hero)}${checkCall(
       'weapon',
       param.weapon
-    )}${checkCall('rangeMoney', param.rangeMoney)}${checkCall('game', param.game)}`
+    )}${checkCall('rangeMoney', param.rangeMoney)}${checkCall('game', param.game)}${checkCall('tag_code', param.tag_code)}`
   );
 };
 

@@ -42,3 +42,19 @@ export const deleteWeapon = (slug: string) => {
 export const deleteHero = (slug: string) => {
   return api.patch(`/hero/delete/${slug}`);
 };
+
+export const createTagCode = (param:FormData)=>{
+  return api.post(`/value-set/create`, param)
+} 
+export const updateTagCode = (slug:string , param:FormData)=>{
+  return api.put(`/value-set/update/${slug}`, param)
+} 
+export const deleteTagCode = (slug:string)=>{
+  return api.patch(`/value-set/delete/${slug}`)
+} 
+export const getTagCodeBySlug= (slug:string)=>{
+  return api.get(`/value-set/${slug}`);
+}
+export const getListTagCode = ()=>{
+  return api.get(`/value-set?type=TAGCODE&limit=999&offset=0`)
+}
