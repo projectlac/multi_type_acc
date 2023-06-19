@@ -101,7 +101,11 @@ function AddAccount({ title }: IEdit) {
         });
         handleCloseDialog();
         resetForm();
-
+        (
+          document.getElementById(
+            'change-cover-create-code-new'
+          ) as HTMLInputElement
+        ).value = '';
         setPreview('');
         updateSuccess();
       });

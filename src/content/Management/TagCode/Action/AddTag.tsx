@@ -45,6 +45,7 @@ function AddTag({ title }: IEdit) {
         });
         handleCloseDialog();
         resetForm();
+
         updateSuccess();
       });
     } catch (error) {
