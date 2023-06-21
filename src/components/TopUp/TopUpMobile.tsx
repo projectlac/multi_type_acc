@@ -84,6 +84,7 @@ export default function TopUpMobile() {
   const refreshCapcha = () => {
     getToken('');
   };
+  const [momo, setMomo] = React.useState<string>();
 
   const copySomething = (content: string) => {
     navigator.clipboard.writeText(content);
@@ -93,7 +94,10 @@ export default function TopUpMobile() {
     }, 500);
   };
   React.useEffect(() => {
-    getWebInformation().then((res) => setContent(res.data[0].facebook));
+    getWebInformation().then((res) => {
+      setContent(res.data[0].facebook);
+      setMomo(res.data[0].phone);
+    });
   }, []);
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
@@ -464,7 +468,7 @@ export default function TopUpMobile() {
                     }}
                   >
                     <Typography fontSize={17} mr={1}>
-                      0372790362
+                      {momo}
                       {/* Nạp Momo đang lỗi, vui lòng ib Shop để
                       được nạp tiền */}
                     </Typography>{' '}
@@ -472,7 +476,7 @@ export default function TopUpMobile() {
                       <IconButton
                         aria-label="copy"
                         onClick={() => {
-                          copySomething('0372790362');
+                          copySomething(momo);
                         }}
                       >
                         <ContentCopyIcon

@@ -85,6 +85,7 @@ function TopUp() {
   const refreshCapcha = () => {
     getToken('');
   };
+  const [momo, setMomo] = React.useState<string>();
   const copySomething = (content: string) => {
     navigator.clipboard.writeText(content);
     setCopyTexy(CopyTextDefaut.COPIED);
@@ -98,7 +99,10 @@ function TopUp() {
   };
 
   React.useEffect(() => {
-    getWebInformation().then((res) => setContent(res.data[0].facebook));
+    getWebInformation().then((res) => {
+      setContent(res.data[0].facebook);
+      setMomo(res.data[0].phone);
+    });
   }, []);
   const onSubmit = async (values, { resetForm }) => {
     const { homeNetwork, cost, seri, code } = values;
@@ -488,7 +492,7 @@ function TopUp() {
                       }}
                     >
                       <Typography fontSize={17} mr={2}>
-                        0372790362
+                        {momo}
                         {/* Nạp Momo đang lỗi, vui lòng ib Shop
                         để được nạp tiền */}
                       </Typography>{' '}
@@ -496,7 +500,7 @@ function TopUp() {
                         <IconButton
                           aria-label="copy"
                           onClick={() => {
-                            copySomething('0372790362');
+                            copySomething(momo);
                           }}
                         >
                           <ContentCopyIcon
