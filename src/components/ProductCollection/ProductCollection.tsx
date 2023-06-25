@@ -88,7 +88,6 @@ function ProductCollection() {
           <TitleWeb mt={2}>ACC GENSHIN</TitleWeb>
         </Box>
       </Grid>
-
       <Grid item md={3} sm={6} xs={12}>
         <ProductCollectionItem
           title="Acc Vip"
@@ -241,7 +240,6 @@ function ProductCollection() {
           </Box>
         </Card>
       </Grid>
-
       <Grid item md={3} sm={6} xs={12}>
         <ProductCollectionItem
           title="Shop phụ kiện"
@@ -368,6 +366,50 @@ function ProductCollection() {
           </Box>
         </Card>
       </Grid>
+      <Grid item md={12} sm={12} xs={12}>
+        <Box
+          pt={3}
+          pb={2}
+          display={{ xs: 'block', md: 'flex' }}
+          alignItems="center"
+          textAlign={{ xs: 'center', md: 'left' }}
+          justifyContent="center"
+        >
+          <TitleWeb mt={2}>ACC HONKAI STAR RAIL</TitleWeb>
+        </Box>
+      </Grid>
+      <Grid item md={3} sm={6} xs={12}>
+        <ProductCollectionItem
+          title="HSR VIP"
+          url="/account/honkai-star-rail/vip"
+          image={hsr}
+          data={dataHsr}
+        />
+      </Grid>
+      <Grid item md={3} sm={6} xs={12}>
+        <ProductCollectionItem
+          title="HSR Khởi đầu"
+          url="/account/honkai-star-rail/new"
+          image={newHsr}
+          data={dataNewHsr}
+        />
+      </Grid>
+      <Grid item md={3} sm={6} xs={12}>
+        <ProductCollectionItem
+          title="HSR Reroll"
+          url="/account/honkai-star-rail/reroll"
+          image={rerollHsr}
+          data={dataRerollHsr}
+        />
+      </Grid>
+      <Grid item md={3} sm={6} xs={12}>
+        <ProductCollectionItem
+          title="HSR Random"
+          url="/account/honkai-star-rail/random"
+          image={randomHsr}
+          data={dataRandomHsr}
+        />
+      </Grid>{' '}
       <Grid item md={3} sm={6} xs={12}>
         <Card
           sx={{
@@ -426,52 +468,6 @@ function ProductCollection() {
             </Box>
           </Box>
         </Card>
-      </Grid>
-
-      <Grid item md={12} sm={12} xs={12}>
-        <Box
-          pt={3}
-          pb={2}
-          display={{ xs: 'block', md: 'flex' }}
-          alignItems="center"
-          textAlign={{ xs: 'center', md: 'left' }}
-          justifyContent="center"
-        >
-          <TitleWeb mt={2}>ACC HONKAI STAR RAIL</TitleWeb>
-        </Box>
-      </Grid>
-
-      <Grid item md={3} sm={6} xs={12}>
-        <ProductCollectionItem
-          title="HSR VIP"
-          url="/account/honkai-star-rail/vip"
-          image={hsr}
-          data={dataHsr}
-        />
-      </Grid>
-      <Grid item md={3} sm={6} xs={12}>
-        <ProductCollectionItem
-          title="HSR Khởi đầu"
-          url="/account/honkai-star-rail/new"
-          image={newHsr}
-          data={dataNewHsr}
-        />
-      </Grid>
-      <Grid item md={3} sm={6} xs={12}>
-        <ProductCollectionItem
-          title="HSR Reroll"
-          url="/account/honkai-star-rail/reroll"
-          image={rerollHsr}
-          data={dataRerollHsr}
-        />
-      </Grid>
-      <Grid item md={3} sm={6} xs={12}>
-        <ProductCollectionItem
-          title="HSR Random"
-          url="/account/honkai-star-rail/random"
-          image={randomHsr}
-          data={dataRandomHsr}
-        />
       </Grid>
     </Grid>
   );
