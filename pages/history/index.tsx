@@ -58,13 +58,16 @@ function Overview() {
                   {' '}
                   Các bạn lưu ý:
                 </span>
-                Sau khi mua acc, các bạn liên kết mail xong thì{' '}
-                <span style={{ color: 'red' }}>đừng vội đổi mật khẩu</span> vì
-                Mihoyo đang hạn chế mua bán
-                <br /> Còn lại mọi thứ đều bình thường, các bạn cứ mua acc thoải
-                mái, bên mình bảo hành tất cả nhé
+                {`=> Shop cam kết không bán acc chết liên kết`}
                 <br />
-                Các bạn mua acc Genshin thì đổi thông tin thoải mái
+                {`=> Tất cả nick đều trắng thông tin hoặc có liên kết mail ib trang page shop đổi nhanh gọn `}{' '}
+                <a href="https://m.me/103780805920496" target="__blank">
+                  tại đây
+                </a>
+                <br />
+                {`=> Shop không bán nick chết bất cứ 1 liên kết nào và không bán nick bị phá thánh di vật hoặc `}
+                <br />
+                Hỗ trợ nhanh chóng nhân viên rep nhanh tốc độ nhiệt tình ❤
               </Typography>
             </Card>
             <Card>
