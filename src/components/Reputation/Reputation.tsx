@@ -100,6 +100,109 @@ export default function ReputationItem() {
                   fontSize: '15px'
                 }}
               >
+                F2PImpactOfficial nói gì về shop acc GenshinViet
+              </Typography>
+            </Box>
+
+            <Box className="video">
+              <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/GN4OfjhpnWs"
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              ></iframe>
+            </Box>
+          </Box>
+        </Grid>
+        <Grid item md={6} xs={12}>
+          {' '}
+          <Box
+            sx={{
+              '& div.video': {
+                position: 'relative',
+                height: '0%',
+                borderRadius: '5px',
+                overflow: 'hidden',
+                paddingBottom: { md: `50.3%`, xs: '56.25%' },
+                '& iframe': {
+                  position: 'absolute',
+                  top: '0',
+                  left: '0',
+                  width: '100%',
+                  height: '100%'
+                }
+              }
+            }}
+          >
+            <Box
+              sx={{
+                background: '#fff',
+                padding: '15px',
+                mb: 3,
+                borderRadius: '10px'
+              }}
+            >
+              <Typography
+                sx={{
+                  fontWeight: 'bold',
+                  textAlign: 'center',
+                  fontSize: '15px'
+                }}
+              >
+                Damper nói gì về shop acc GenshinViet ?
+              </Typography>
+            </Box>
+
+            <Box className="video">
+              <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/dimYqC8xfJU"
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              ></iframe>
+            </Box>
+          </Box>
+        </Grid>
+        <Grid item md={6} xs={12}>
+          <Box
+            sx={{
+              '& div.video': {
+                position: 'relative',
+                height: '0%',
+                borderRadius: '5px',
+                overflow: 'hidden',
+                paddingBottom: { md: `50.3%`, xs: '56.25%' },
+                '& iframe': {
+                  position: 'absolute',
+                  top: '0',
+                  left: '0',
+                  width: '100%',
+                  height: '100%'
+                }
+              }
+            }}
+          >
+            <Box
+              sx={{
+                background: '#fff',
+                padding: '15px',
+                mb: 3,
+                borderRadius: '10px'
+              }}
+            >
+              <Typography
+                sx={{
+                  fontWeight: 'bold',
+                  textAlign: 'center',
+                  fontSize: '15px'
+                }}
+              >
                 jonjiban nói gì về shop acc GenshinViet
               </Typography>
             </Box>
