@@ -379,10 +379,13 @@ export default function ReputationItem() {
           >
             <Box className="video">
               <iframe
-                src="https://drive.google.com/file/d/1KFduh7r9_9VhV0gBkT2GQIWxyI4EJCx8/preview"
                 width="560"
                 height="315"
-                allow="autoplay"
+                src="https://www.youtube.com/embed/gYaHGU8aOtY"
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
               ></iframe>
             </Box>
             <Box
@@ -670,7 +673,7 @@ export default function ReputationItem() {
                   }}
                 >
                   <iframe
-                    src="https://www.tiktok.com/embed/7204854403386313985"
+                    src="https://www.tiktok.com/embed/7195140738533903643"
                     allowFullScreen
                     scrolling="no"
                     allow="encrypted-media;"
