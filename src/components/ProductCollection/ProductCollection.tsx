@@ -240,14 +240,14 @@ function ProductCollection() {
           </Box>
         </Card>
       </Grid>
-      <Grid item md={3} sm={6} xs={12}>
+      {/* <Grid item md={3} sm={6} xs={12}>
         <ProductCollectionItem
           title="Shop phụ kiện"
           url="/shop"
           image={shopphukien}
           data={dataProduct}
         />
-      </Grid>
+      </Grid> */}
       <Grid item md={3} sm={6} xs={12}>
         <Card
           sx={{
@@ -410,7 +410,7 @@ function ProductCollection() {
           data={dataRandomHsr}
         />
       </Grid>{' '}
-      <Grid item md={3} sm={6} xs={12}>
+      {/* <Grid item md={3} sm={6} xs={12}>
         <Card
           sx={{
             background:
@@ -468,7 +468,7 @@ function ProductCollection() {
             </Box>
           </Box>
         </Card>
-      </Grid>
+      </Grid> */}
     </Grid>
   );
 }
