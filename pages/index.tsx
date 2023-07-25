@@ -49,8 +49,9 @@ function Overview() {
       })
     );
     getTop10().then((res) => {
-      const sort = res.data.sort((a, b) => b.sum - a.sum);
+      console.log(res.data);
 
+      const sort = res.data.sort((a, b) => b.sum - a.sum);
       setTop10(sort);
     });
   }, []);

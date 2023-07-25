@@ -189,7 +189,7 @@ function SidebarMenu() {
             </List>
           </SubMenuWrapper>
         </List>
-        {user && user?.role !== 'NEWS' && (
+        {user && !['NEW', 'CHECK'].includes(user?.role) && (
           <List
             component="div"
             subheader={
@@ -267,7 +267,7 @@ function SidebarMenu() {
             </SubMenuWrapper>
           </List>
         )}
-        {user && user?.role !== 'NEWS' && (
+        {user && !['NEW', 'CHECK'].includes(user?.role) && (
           <>
             {' '}
             <List
@@ -712,6 +712,39 @@ function SidebarMenu() {
             </List>
           </>
         )}
+        {user && user?.role === 'CHECK' && (
+          <>
+            <List
+              component="div"
+              subheader={
+                <ListSubheader component="div" disableSticky>
+                  Lịch sử
+                </ListSubheader>
+              }
+            >
+              <SubMenuWrapper>
+                <List component="div">
+                  <ListItem component="div">
+                    <NextLink href="/management/history" passHref>
+                      <Button
+                        className={
+                          currentRoute === '/management/history' ? 'active' : ''
+                        }
+                        disableRipple
+                        component="a"
+                        onClick={closeSidebar}
+                        startIcon={<BallotTwoToneIcon />}
+                      >
+                        Tra cứu lịch sử
+                      </Button>
+                    </NextLink>
+                  </ListItem>
+                </List>
+              </SubMenuWrapper>
+            </List>
+          </>
+        )}
+
         {/* <List
           component="div"
           subheader={

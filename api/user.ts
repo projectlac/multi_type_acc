@@ -1,4 +1,4 @@
-import { IRoleData } from 'model/user';
+import { IHistoryCheckParams, IRoleData } from 'model/user';
 import api from './api';
 
 export const getUser = () => {
@@ -13,4 +13,8 @@ export const changeMoney = (id: number, param: string) => {
 
 export const getHistory = () => {
   return api.get(`/history/buy-account?limit=999`);
+};
+
+export const getHistoryByAdmin2 = (param: IHistoryCheckParams) => {
+  return api.get(`/history/get-by-check?limit=${param.limit}&offset=${param.offset}&keyword=${param.keyword}&type=${param.type}`);
 };
