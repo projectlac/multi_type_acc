@@ -152,14 +152,17 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({
 
                   {type === IHistoryCheckType.DELETE_ACCOUNT && (
                     <TableCell>
-                      <Typography variant="body2" color="text.primary" noWrap>
-                        {` Tài khoản: ${
-                          JSON.parse(cryptoOrder.information)?.username || ''
-                        }`}{' '}
-                        <br />
-                        {` Mã tài khoản: ${
-                          JSON.parse(cryptoOrder.information)?.id || ''
-                        }`}
+                      <Typography
+                        variant="body2"
+                        color="text.primary"
+                        noWrap
+                        style={{ whiteSpace: 'pre-wrap' }}
+                      >
+                        {String(cryptoOrder.information)
+                          .replaceAll('"', '')
+                          .replaceAll(',', '\n')
+                          .replace('{', '')
+                          .replace('}', '')}
                       </Typography>
                     </TableCell>
                   )}
