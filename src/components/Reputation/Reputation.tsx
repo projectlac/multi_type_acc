@@ -1,33 +1,18 @@
+import youLogo3 from '@/assets/images/channels4_profil.jpg';
 import youLogo1 from '@/assets/images/channels4_profile (1).jpg';
 import youLogo from '@/assets/images/channels4_profile.jpg';
 import youLogo2 from '@/assets/images/unnamed.jpg';
-import youLogo3 from '@/assets/images/channels4_profil.jpg';
 
+import Img4 from '@/assets/images/repu/12e97244a9dc718228cd.jpg';
 import Img1 from '@/assets/images/repu/1da53a29e1b139ef60a0.jpg';
 import Img2 from '@/assets/images/repu/1f602ed2f64a2e14775b.jpg';
-import Img3 from '@/assets/images/repu/4e24cfec1474cc2a9565.jpg';
-import Img4 from '@/assets/images/repu/12e97244a9dc718228cd.jpg';
 import Img5 from '@/assets/images/repu/24b86c55b7cd6f9336dc.jpg';
 import Img6 from '@/assets/images/repu/43c57c59a7c17f9f26d0.jpg';
 import Img7 from '@/assets/images/repu/498d8c3956a18effd7b0.jpg';
+import Img3 from '@/assets/images/repu/4e24cfec1474cc2a9565.jpg';
 import Img8 from '@/assets/images/repu/556b61f7ba6f62313b7e.jpg';
-import Img9 from '@/assets/images/repu/708b545e8fc657980ed7.jpg';
-import Img10 from '@/assets/images/repu/3796cd801b18c3469a09.jpg';
-import Img11 from '@/assets/images/repu/8619c1451addc2839bcc.jpg';
-import Img12 from '@/assets/images/repu/657341d89940411e1851.jpg';
-import Img13 from '@/assets/images/repu/bb6c12e8c970112e4861.jpg';
-import Img14 from '@/assets/images/repu/ecd7999e43069b58c217.jpg';
-import Img15 from '@/assets/images/repu/400383bd9a2742791b36.jpg';
-import Img16 from '@/assets/images/repu/b57d9fef86755e2b0764.jpg';
 
-import {
-  Box,
-  Button,
-  Divider,
-  Grid,
-  TextField,
-  Typography
-} from '@mui/material';
+import { Box, Button, Divider, Grid, Typography } from '@mui/material';
 export default function ReputationItem() {
   return (
     <Box>
@@ -635,80 +620,6 @@ export default function ReputationItem() {
                     justifyContent: 'center'
                   }}
                 >
-                  <iframe
-                    src="https://www.tiktok.com/embed/7229277788145077510"
-                    allowFullScreen
-                    scrolling="no"
-                    allow="encrypted-media;"
-                  ></iframe>
-                </Grid>
-
-                <Grid
-                  item
-                  lg={3}
-                  md={4}
-                  xs={12}
-                  sm={6}
-                  sx={{
-                    display: 'flex',
-                    justifyContent: 'center'
-                  }}
-                >
-                  <iframe
-                    src="https://www.tiktok.com/embed/7185037290895412506"
-                    allowFullScreen
-                    scrolling="no"
-                    allow="encrypted-media;"
-                  ></iframe>
-                </Grid>
-                <Grid
-                  item
-                  lg={3}
-                  md={4}
-                  xs={12}
-                  sm={6}
-                  sx={{
-                    display: 'flex',
-                    justifyContent: 'center'
-                  }}
-                >
-                  <iframe
-                    src="https://www.tiktok.com/embed/7195140738533903643"
-                    allowFullScreen
-                    scrolling="no"
-                    allow="encrypted-media;"
-                  ></iframe>
-                </Grid>
-                <Grid
-                  item
-                  lg={3}
-                  md={4}
-                  xs={12}
-                  sm={6}
-                  sx={{
-                    display: 'flex',
-                    justifyContent: 'center'
-                  }}
-                >
-                  <iframe
-                    src="https://www.tiktok.com/embed/7221860421236444417"
-                    allowFullScreen
-                    scrolling="no"
-                    allow="encrypted-media;"
-                  ></iframe>
-                </Grid>
-
-                <Grid
-                  item
-                  lg={3}
-                  md={4}
-                  xs={12}
-                  sm={6}
-                  sx={{
-                    display: 'flex',
-                    justifyContent: 'center'
-                  }}
-                >
                   <Box
                     sx={{
                       width: '100%',
@@ -856,170 +767,6 @@ export default function ReputationItem() {
                       height: '250px',
                       background: `url(${Img8})`,
                       backgroundSize: 'cover'
-                    }}
-                  ></Box>
-                </Grid>
-
-                <Grid
-                  item
-                  lg={3}
-                  md={4}
-                  xs={12}
-                  sm={6}
-                  sx={{
-                    display: 'flex',
-                    justifyContent: 'center'
-                  }}
-                >
-                  <Box
-                    sx={{
-                      width: '100%',
-                      height: '250px',
-                      background: `url(${Img9})`,
-                      backgroundSize: 'cover'
-                    }}
-                  ></Box>
-                </Grid>
-                <Grid
-                  item
-                  lg={3}
-                  md={4}
-                  xs={12}
-                  sm={6}
-                  sx={{
-                    display: 'flex',
-                    justifyContent: 'center'
-                  }}
-                >
-                  <Box
-                    sx={{
-                      width: '100%',
-                      height: '250px',
-                      background: `url(${Img10})`,
-                      backgroundSize: 'cover'
-                    }}
-                  ></Box>
-                </Grid>
-                <Grid
-                  item
-                  lg={3}
-                  md={4}
-                  xs={12}
-                  sm={6}
-                  sx={{
-                    display: 'flex',
-                    justifyContent: 'center'
-                  }}
-                >
-                  <Box
-                    sx={{
-                      width: '100%',
-                      height: '250px',
-                      background: `url(${Img11})`,
-                      backgroundSize: 'cover'
-                    }}
-                  ></Box>
-                </Grid>
-                <Grid
-                  item
-                  lg={3}
-                  md={4}
-                  xs={12}
-                  sm={6}
-                  sx={{
-                    display: 'flex',
-                    justifyContent: 'center'
-                  }}
-                >
-                  <Box
-                    sx={{
-                      width: '100%',
-                      height: '250px',
-                      background: `url(${Img12})`,
-                      backgroundSize: 'cover'
-                    }}
-                  ></Box>
-                </Grid>
-
-                <Grid
-                  item
-                  lg={3}
-                  md={4}
-                  xs={12}
-                  sm={6}
-                  sx={{
-                    display: 'flex',
-                    justifyContent: 'center'
-                  }}
-                >
-                  <Box
-                    sx={{
-                      width: '100%',
-                      height: '250px',
-                      background: `url(${Img13})`,
-                      backgroundSize: 'cover'
-                    }}
-                  ></Box>
-                </Grid>
-                <Grid
-                  item
-                  lg={3}
-                  md={4}
-                  xs={12}
-                  sm={6}
-                  sx={{
-                    display: 'flex',
-                    justifyContent: 'center'
-                  }}
-                >
-                  <Box
-                    sx={{
-                      width: '100%',
-                      height: '250px',
-                      background: `url(${Img14})`,
-                      backgroundSize: 'cover'
-                    }}
-                  ></Box>
-                </Grid>
-                <Grid
-                  item
-                  lg={3}
-                  md={4}
-                  xs={12}
-                  sm={6}
-                  sx={{
-                    display: 'flex',
-                    justifyContent: 'center'
-                  }}
-                >
-                  <Box
-                    sx={{
-                      width: '100%',
-                      height: '250px',
-                      background: `url(${Img15})`,
-                      backgroundSize: 'cover',
-                      backgroundPositionY: '-30px'
-                    }}
-                  ></Box>
-                </Grid>
-                <Grid
-                  item
-                  lg={3}
-                  md={4}
-                  xs={12}
-                  sm={6}
-                  sx={{
-                    display: 'flex',
-                    justifyContent: 'center'
-                  }}
-                >
-                  <Box
-                    sx={{
-                      width: '100%',
-                      height: '250px',
-                      background: `url(${Img16})`,
-                      backgroundSize: 'cover',
-                      backgroundPositionY: '-30px'
                     }}
                   ></Box>
                 </Grid>
