@@ -9,15 +9,29 @@ function RecentOrders() {
   const { update } = useAuth();
 
   const [data, setData] = useState<IAccountVipAdmin[]>([]);
+  const [total, setTotal] = useState<number>(0);
+  const [page, setPage] = useState<number>(0);
+  const [limit, setLimit] = useState<number>(10);
+  const [search, setSearch] = useState<string>('');
+
   useEffect(() => {
-    getAccountNomalFromDashboard(9999, 'honkai-star-rail').then((res) =>
-      setData(res.data.data)
+    getAccountNomalFromDashboard(limit, page, 'honkai-star-rail', search).then(
+      (res) => {
+        setData(res.data.data);
+        setTotal(res.data.total);
+      }
     );
-  }, [update]);
+  }, [update, page, limit, search]);
 
   return (
     <Card sx={{ mb: 5 }}>
-      <RecentOrdersTable cryptoOrders={data} />
+      <RecentOrdersTable
+        cryptoOrders={data}
+        setPage={setPage}
+        setLimit={setLimit}
+        setSearch={setSearch}
+        total={total}
+      />
     </Card>
   );
 }

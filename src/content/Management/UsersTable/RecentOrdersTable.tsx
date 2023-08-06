@@ -24,13 +24,25 @@ import {
 } from '@mui/material';
 import { IRole, IUser } from 'model/user';
 import PropTypes from 'prop-types';
-import { ChangeEvent, FC, useState } from 'react';
+import {
+  ChangeEvent,
+  Dispatch,
+  FC,
+  SetStateAction,
+  useCallback,
+  useState
+} from 'react';
 import ChangeCoin from './Action/ChangeCoin';
 import EditTag from './Action/EditTag';
+import _debounce from 'lodash/debounce';
 
 interface RecentOrdersTableProps {
   className?: string;
   cryptoOrders: IUser[];
+  setPage: Dispatch<SetStateAction<number>>;
+  setLimit: Dispatch<SetStateAction<number>>;
+  setSearch: Dispatch<SetStateAction<string>>;
+  total: number;
 }
 
 interface Filters {
@@ -82,7 +94,13 @@ const applyPagination = (
   return cryptoOrders.slice(page * limit, page * limit + limit);
 };
 
-const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ cryptoOrders }) => {
+const RecentOrdersTable: FC<RecentOrdersTableProps> = ({
+  cryptoOrders,
+  setPage: setOffsetApi,
+  setLimit: setLimitApi,
+  setSearch: setSearchApi,
+  total
+}) => {
   const [page, setPage] = useState<number>(0);
   const [limit, setLimit] = useState<number>(10);
   const [filters, setFilters] = useState<Filters>({
@@ -105,26 +123,27 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ cryptoOrders }) => {
 
   const handlePageChange = (_event: any, newPage: number): void => {
     setPage(newPage);
+    setOffsetApi(newPage * limit);
   };
 
   const handleLimitChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setLimit(parseInt(event.target.value));
-  };
-  const filterBySearch = (cryptoOrders: IUser[]) => {
-    return cryptoOrders.filter(
-      (d) => d.username.includes(search) || d.email.includes(search)
-    );
+    setLimitApi(parseInt(event.target.value));
   };
 
-  const filteredCryptoOrders = applyFilters(cryptoOrders, filters);
-  const filteredCode = filterBySearch(filteredCryptoOrders);
-
-  const paginatedCryptoOrders = applyPagination(filteredCode, page, limit);
+  const paginatedCryptoOrders = applyPagination(cryptoOrders, page, limit);
 
   const theme = useTheme();
 
+  function handleDebounceFn(inputValue: string) {
+    setSearchApi(inputValue);
+  }
+
+  const debounceFn = useCallback(_debounce(handleDebounceFn, 500), []);
+
   const handleChangeSearch = (e: ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
+    debounceFn(e.target.value);
   };
 
   return (
@@ -276,7 +295,7 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ cryptoOrders }) => {
       <Box p={2}>
         <TablePagination
           component="div"
-          count={filteredCryptoOrders.length}
+          count={total}
           onPageChange={handlePageChange}
           onRowsPerPageChange={handleLimitChange}
           page={page}

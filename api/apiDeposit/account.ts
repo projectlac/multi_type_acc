@@ -8,7 +8,7 @@ export const createDeposit = (param: IDepositCreate) => {
 };
 
 export const getDeposit = (type:TYPE_DEPOSIT) => {
-  return api.get(`/deposit?type=${type}&limit=99999`);
+  return api.get(`/deposit?type=${type}&limit=500`);
 };
 
 export const changeStatusDeposit = (id: number, status: string) => {

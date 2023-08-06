@@ -53,16 +53,18 @@ function EditAccout({ title, slug }: IEdit) {
     file: null
   });
   useEffect(() => {
-    const callApi = async () => {
-      const res = await getListTagCode();
-      const data = res.data.data.map((d: any) => ({
-        desc: d.desc,
-        slug: d.slug
-      }));
-      setTagCode(data);
-    };
-    callApi();
-  }, [slug]);
+    if (openDialog) {
+      const callApi = async () => {
+        const res = await getListTagCode();
+        const data = res.data.data.map((d: any) => ({
+          desc: d.desc,
+          slug: d.slug
+        }));
+        setTagCode(data);
+      };
+      callApi();
+    }
+  }, [slug, openDialog]);
 
   const handleOpenDialog = () => {
     setOpenDialog(true);

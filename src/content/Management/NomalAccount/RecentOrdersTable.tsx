@@ -23,17 +23,29 @@ import {
 import { format } from 'date-fns';
 import numeral from 'numeral';
 import PropTypes from 'prop-types';
-import { ChangeEvent, FC, useState } from 'react';
+import {
+  ChangeEvent,
+  Dispatch,
+  FC,
+  SetStateAction,
+  useCallback,
+  useState
+} from 'react';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import Label from '@/components/Label';
 import { IAccountVipAdmin } from 'model/account';
 import DeleteAccount from './Action/DeleteAccount';
 import EditAccount from './Action/EditAccount';
 import { sliceString } from '@/utility/sliceString';
+import _debounce from 'lodash/debounce';
 
 interface RecentOrdersTableProps {
   className?: string;
   cryptoOrders: IAccountVipAdmin[];
+  setPage: Dispatch<SetStateAction<number>>;
+  setLimit: Dispatch<SetStateAction<number>>;
+  setSearch: Dispatch<SetStateAction<string>>;
+  total: number;
 }
 
 interface Filters {
@@ -80,7 +92,13 @@ const applyPagination = (
   return cryptoOrders.slice(page * limit, page * limit + limit);
 };
 
-const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ cryptoOrders }) => {
+const RecentOrdersTable: FC<RecentOrdersTableProps> = ({
+  cryptoOrders,
+  setPage: setOffsetApi,
+  setLimit: setLimitApi,
+  setSearch: setSearchApi,
+  total
+}) => {
   const [page, setPage] = useState<number>(0);
   const [limit, setLimit] = useState<number>(10);
   const [search, setSearch] = useState<string>('');
@@ -141,59 +159,68 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ cryptoOrders }) => {
 
   const handlePageChange = (_event: any, newPage: number): void => {
     setPage(newPage);
+    setOffsetApi(newPage * limit);
   };
 
   const handleLimitChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setLimit(parseInt(event.target.value));
+    setLimitApi(parseInt(event.target.value));
   };
+  // const filterBySearch = (cryptoOrders: IAccountVipAdmin[]) => {
+  //   let filter = cryptoOrders.filter(
+  //     (d) =>
+  //       d.username.toLowerCase().includes(search.toLowerCase()) ||
+  //       d.code.includes(search)
+  //   );
 
-  const filterBySearch = (cryptoOrders: IAccountVipAdmin[]) => {
-    let filter = cryptoOrders.filter(
-      (d) =>
-        d.username.toLowerCase().includes(search.toLowerCase()) ||
-        d.code.includes(search)
-    );
+  //   switch (buyTimeSort) {
+  //     case true:
+  //       filter = filter.sort(
+  //         (a, b) => Date.parse(a.updated_at) - Date.parse(b.updated_at)
+  //       );
+  //       break;
+  //     case false:
+  //       filter = filter.sort(
+  //         (a, b) => Date.parse(b.updated_at) - Date.parse(a.updated_at)
+  //       );
+  //       break;
+  //     default:
+  //       break;
+  //   }
 
-    switch (buyTimeSort) {
-      case true:
-        filter = filter.sort(
-          (a, b) => Date.parse(a.updated_at) - Date.parse(b.updated_at)
-        );
-        break;
-      case false:
-        filter = filter.sort(
-          (a, b) => Date.parse(b.updated_at) - Date.parse(a.updated_at)
-        );
-        break;
-      default:
-        break;
-    }
+  //   switch (buyTimeCreatedSort) {
+  //     case true:
+  //       filter = filter.sort(
+  //         (a, b) => Date.parse(a.created_at) - Date.parse(b.created_at)
+  //       );
+  //       break;
+  //     case false:
+  //       filter = filter.sort(
+  //         (a, b) => Date.parse(b.created_at) - Date.parse(a.created_at)
+  //       );
+  //       break;
+  //     default:
+  //       break;
+  //   }
 
-    switch (buyTimeCreatedSort) {
-      case true:
-        filter = filter.sort(
-          (a, b) => Date.parse(a.created_at) - Date.parse(b.created_at)
-        );
-        break;
-      case false:
-        filter = filter.sort(
-          (a, b) => Date.parse(b.created_at) - Date.parse(a.created_at)
-        );
-        break;
-      default:
-        break;
-    }
+  //   return filter;
+  // };
 
-    return filter;
-  };
-
-  const filteredCryptoOrders = applyFilters(cryptoOrders, filters);
-  const filteredCode = filterBySearch(filteredCryptoOrders);
-  const paginatedCryptoOrders = applyPagination(filteredCode, page, limit);
+  // const filteredCryptoOrders = applyFilters(cryptoOrders, filters);
+  // const filteredCode = filterBySearch(filteredCryptoOrders);
+  // const paginatedCryptoOrders = applyPagination(cryptoOrders, page, limit);
 
   const theme = useTheme();
+
+  function handleDebounceFn(inputValue: string) {
+    setSearchApi(inputValue);
+  }
+
+  const debounceFn = useCallback(_debounce(handleDebounceFn, 500), []);
+
   const handleChangeSearch = (e: ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
+    debounceFn(e.target.value);
   };
   return (
     <Card>
@@ -276,7 +303,7 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ cryptoOrders }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {paginatedCryptoOrders.map((cryptoOrder) => {
+            {cryptoOrders.map((cryptoOrder) => {
               return (
                 <TableRow hover key={cryptoOrder.id}>
                   <TableCell>
@@ -422,7 +449,7 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ cryptoOrders }) => {
       <Box p={2}>
         <TablePagination
           component="div"
-          count={filteredCryptoOrders.length}
+          count={total}
           onPageChange={handlePageChange}
           onRowsPerPageChange={handleLimitChange}
           page={page}

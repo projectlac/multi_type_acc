@@ -5,8 +5,8 @@ const checkCall = (key, param) => {
   else return '';
 };
 
-export const getListUser = (limit?: number) => {
-  return api.get(`/user-manager?${checkCall('limit', limit)}`);
+export const getListUser = (limit?: number, offset?:number, search?:string) => {
+  return api.get(`/user-manager?${checkCall('limit', limit)}&${checkCall('offset', offset)}&${checkCall('key', search)}`);
 };
 
 export const getCode = (bank: string, token: string) => {

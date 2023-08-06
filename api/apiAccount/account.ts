@@ -54,9 +54,9 @@ export const updateAccountNomal = (slug: string, data: FormData) => {
   return apiFormData.put(`/account/update-account/${slug}`, data);
 };
 
-export const getAccountNomalFromDashboard = (limit: number, game:string) => {
+export const getAccountNomalFromDashboard = (limit: number,offset:number, game:string, search?: string) => {
   return apiFormData.get(
-    `/account/get-accounts-by-admin?type=REROLL,RANDOM&limit=${limit}&offset=0&game=${game}`
+    `/account/get-accounts-by-admin?type=REROLL,RANDOM&limit=${limit}&offset=${offset}&game=${game}${checkCall('keyword',search)}`
   );
 };
 

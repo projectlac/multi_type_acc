@@ -8,19 +8,30 @@ import RecentOrdersTable from './RecentOrdersTable';
 function RecentOrders() {
   const [data, setData] = useState<IUser[]>([]);
   const { update } = useAuth();
+  const [total, setTotal] = useState<number>(0);
+  const [page, setPage] = useState<number>(0);
+  const [limit, setLimit] = useState<number>(10);
+  const [search, setSearch] = useState<string>('');
 
   useEffect(() => {
     const callApi = async () => {
-      await getListUser(99999).then((res) => {
+      await getListUser(limit, page, search).then((res) => {
         setData(res.data.data);
+        setTotal(res.data.total);
       });
     };
     callApi();
-  }, [update]);
+  }, [update, limit, page, search]);
 
   return (
     <Card sx={{ mb: 5 }}>
-      <RecentOrdersTable cryptoOrders={data} />
+      <RecentOrdersTable
+        cryptoOrders={data}
+        setPage={setPage}
+        setLimit={setLimit}
+        setSearch={setSearch}
+        total={total}
+      />
     </Card>
   );
 }
