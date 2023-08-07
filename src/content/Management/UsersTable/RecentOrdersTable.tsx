@@ -35,6 +35,7 @@ import {
 import ChangeCoin from './Action/ChangeCoin';
 import EditTag from './Action/EditTag';
 import _debounce from 'lodash/debounce';
+import { IUserRole } from '@/models/crypto_order';
 
 interface RecentOrdersTableProps {
   className?: string;
@@ -43,6 +44,7 @@ interface RecentOrdersTableProps {
   setLimit: Dispatch<SetStateAction<number>>;
   setSearch: Dispatch<SetStateAction<string>>;
   total: number;
+  setRole: Dispatch<SetStateAction<IUserRole>>;
 }
 
 interface Filters {
@@ -74,32 +76,13 @@ const getStatusLabel = (cryptoOrderStatus: IRole): JSX.Element => {
   return <Label color={color}>{text}</Label>;
 };
 
-const applyFilters = (cryptoOrders: IUser[], filters: Filters): IUser[] => {
-  return cryptoOrders.filter((cryptoOrder) => {
-    let matches = true;
-
-    if (filters.role && cryptoOrder.role !== filters.role) {
-      matches = false;
-    }
-
-    return matches;
-  });
-};
-
-const applyPagination = (
-  cryptoOrders: IUser[],
-  page: number,
-  limit: number
-): IUser[] => {
-  return cryptoOrders.slice(page * limit, page * limit + limit);
-};
-
 const RecentOrdersTable: FC<RecentOrdersTableProps> = ({
   cryptoOrders,
   setPage: setOffsetApi,
   setLimit: setLimitApi,
   setSearch: setSearchApi,
-  total
+  total,
+  setRole
 }) => {
   const [page, setPage] = useState<number>(0);
   const [limit, setLimit] = useState<number>(10);
@@ -113,12 +96,18 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({
 
     if (e.target.value !== 'all') {
       value = e.target.value;
+      setRole(e.target.value as IUserRole);
+    } else {
+      setRole('');
     }
 
     setFilters((prevFilters) => ({
       ...prevFilters,
       role: value
     }));
+
+    setPage(0);
+    setOffsetApi(0);
   };
 
   const handlePageChange = (_event: any, newPage: number): void => {
@@ -130,8 +119,6 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({
     setLimit(parseInt(event.target.value));
     setLimitApi(parseInt(event.target.value));
   };
-
-  const paginatedCryptoOrders = applyPagination(cryptoOrders, page, limit);
 
   const theme = useTheme();
 
@@ -198,7 +185,7 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({
             </TableRow>
           </TableHead>
           <TableBody>
-            {paginatedCryptoOrders.map((cryptoOrder) => {
+            {cryptoOrders.map((cryptoOrder) => {
               return (
                 <TableRow hover key={cryptoOrder.id}>
                   <TableCell>

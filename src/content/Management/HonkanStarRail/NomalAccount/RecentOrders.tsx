@@ -13,15 +13,20 @@ function RecentOrders() {
   const [page, setPage] = useState<number>(0);
   const [limit, setLimit] = useState<number>(10);
   const [search, setSearch] = useState<string>('');
+  const [isSold, setIsSold] = useState<boolean | ''>('');
 
   useEffect(() => {
-    getAccountNomalFromDashboard(limit, page, 'honkai-star-rail', search).then(
-      (res) => {
-        setData(res.data.data);
-        setTotal(res.data.total);
-      }
-    );
-  }, [update, page, limit, search]);
+    getAccountNomalFromDashboard(
+      limit,
+      page,
+      'honkai-star-rail',
+      search,
+      isSold
+    ).then((res) => {
+      setData(res.data.data);
+      setTotal(res.data.total);
+    });
+  }, [update, page, limit, search, isSold]);
 
   return (
     <Card sx={{ mb: 5 }}>
@@ -31,6 +36,7 @@ function RecentOrders() {
         setLimit={setLimit}
         setSearch={setSearch}
         total={total}
+        setIsSold={setIsSold}
       />
     </Card>
   );

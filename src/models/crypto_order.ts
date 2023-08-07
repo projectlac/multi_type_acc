@@ -13,3 +13,5 @@ export interface CryptoOrder {
   cryptoCurrency: string;
   currency: string;
 }
+
+export type IUserRole = '' | 'ADMIN' | 'MOD' | 'USER' |'ADMIN_PRODUCT';

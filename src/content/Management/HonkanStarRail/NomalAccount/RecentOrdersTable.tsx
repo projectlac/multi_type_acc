@@ -46,6 +46,7 @@ interface RecentOrdersTableProps {
   setLimit: Dispatch<SetStateAction<number>>;
   setSearch: Dispatch<SetStateAction<string>>;
   total: number;
+  setIsSold: Dispatch<SetStateAction<boolean | string>>;
 }
 
 interface Filters {
@@ -84,20 +85,13 @@ const getStatusLabel = (cryptoOrderStatus: boolean): JSX.Element => {
 //   });
 // };
 
-const applyPagination = (
-  cryptoOrders: IAccountVipAdmin[],
-  page: number,
-  limit: number
-): IAccountVipAdmin[] => {
-  return cryptoOrders.slice(page * limit, page * limit + limit);
-};
-
 const RecentOrdersTable: FC<RecentOrdersTableProps> = ({
   cryptoOrders,
   setPage: setOffsetApi,
   setLimit: setLimitApi,
   setSearch: setSearchApi,
-  total
+  total,
+  setIsSold
 }) => {
   const [page, setPage] = useState<number>(0);
   const [limit, setLimit] = useState<number>(10);
@@ -139,6 +133,9 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({
 
     if (e.target.value !== 'all') {
       value = e.target.value;
+      setIsSold(e.target.value);
+    } else {
+      setIsSold('');
     }
 
     setFilters((prevFilters) => ({

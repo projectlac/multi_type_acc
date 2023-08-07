@@ -1,3 +1,5 @@
+import Label from '@/components/Label';
+import { sliceString } from '@/utility/sliceString';
 import {
   Box,
   Card,
@@ -21,6 +23,8 @@ import {
   useTheme
 } from '@mui/material';
 import { format } from 'date-fns';
+import _debounce from 'lodash/debounce';
+import { IAccountVipAdmin } from 'model/account';
 import numeral from 'numeral';
 import PropTypes from 'prop-types';
 import {
@@ -31,13 +35,8 @@ import {
   useCallback,
   useState
 } from 'react';
-import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
-import Label from '@/components/Label';
-import { IAccountVipAdmin } from 'model/account';
 import DeleteAccount from './Action/DeleteAccount';
 import EditAccount from './Action/EditAccount';
-import { sliceString } from '@/utility/sliceString';
-import _debounce from 'lodash/debounce';
 
 interface RecentOrdersTableProps {
   className?: string;
@@ -46,6 +45,7 @@ interface RecentOrdersTableProps {
   setLimit: Dispatch<SetStateAction<number>>;
   setSearch: Dispatch<SetStateAction<string>>;
   total: number;
+  setIsSold: Dispatch<SetStateAction<boolean | string>>;
 }
 
 interface Filters {
@@ -69,66 +69,21 @@ const getStatusLabel = (cryptoOrderStatus: boolean): JSX.Element => {
   return <Label color={color}>{text}</Label>;
 };
 
-const applyFilters = (
-  cryptoOrders: IAccountVipAdmin[],
-  filters: Filters
-): IAccountVipAdmin[] => {
-  return cryptoOrders.filter((cryptoOrder) => {
-    let matches = true;
-
-    if (filters.status && cryptoOrder.is_sold.toString() !== filters.status) {
-      matches = false;
-    }
-
-    return matches;
-  });
-};
-
-const applyPagination = (
-  cryptoOrders: IAccountVipAdmin[],
-  page: number,
-  limit: number
-): IAccountVipAdmin[] => {
-  return cryptoOrders.slice(page * limit, page * limit + limit);
-};
-
 const RecentOrdersTable: FC<RecentOrdersTableProps> = ({
   cryptoOrders,
   setPage: setOffsetApi,
   setLimit: setLimitApi,
   setSearch: setSearchApi,
-  total
+  total,
+  setIsSold
 }) => {
   const [page, setPage] = useState<number>(0);
   const [limit, setLimit] = useState<number>(10);
   const [search, setSearch] = useState<string>('');
-  const [buyTimeSort, setBuyTimeSort] = useState<boolean | null>(null);
   const [filters, setFilters] = useState<Filters>({
     status: null
   });
-  const [buyTimeCreatedSort, setBuyTimeCreatedSort] = useState<boolean | null>(
-    null
-  );
-  const clickSort = () => {
-    setBuyTimeCreatedSort(null);
-    switch (buyTimeSort) {
-      case true:
-        setBuyTimeSort(false);
-        break;
-      case false:
-        setBuyTimeSort(null);
-        break;
-      default:
-        setBuyTimeSort(true);
-        break;
-    }
-  };
-  const clickSortCreate = () => {
-    setBuyTimeCreatedSort((prev) => {
-      if (prev === null) return true;
-      else return !prev;
-    });
-  };
+
   const statusOptions = [
     {
       id: 'all',
@@ -149,6 +104,9 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({
 
     if (e.target.value !== 'all') {
       value = e.target.value;
+      setIsSold(e.target.value);
+    } else {
+      setIsSold('');
     }
 
     setFilters((prevFilters) => ({
@@ -270,9 +228,7 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({
               <TableCell>Title</TableCell>
               <TableCell>Người đăng</TableCell>
               <TableCell>Loại ACC</TableCell>
-              <TableCell align="right" onClick={clickSortCreate}>
-                Thời gian tạo
-              </TableCell>
+              <TableCell align="right">Thời gian tạo</TableCell>
               <TableCell
                 align="right"
                 sx={{
@@ -280,23 +236,8 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({
                   alignItems: 'center',
                   flexDirection: 'row'
                 }}
-                onClick={clickSort}
               >
                 Thời gian bán{' '}
-                {filters.status === 'true' && (
-                  <ArrowDownwardIcon
-                    sx={{
-                      transition: 'all 0.2s',
-                      transform: `${
-                        buyTimeSort === true
-                          ? 'rotate(180deg)'
-                          : buyTimeSort === null
-                          ? 'rotate(-90deg)'
-                          : 'rotate(0deg)'
-                      }`
-                    }}
-                  />
-                )}
               </TableCell>
               <TableCell align="right">Status</TableCell>
               <TableCell align="right">Actions</TableCell>

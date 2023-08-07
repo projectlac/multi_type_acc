@@ -1,3 +1,4 @@
+import { IUserRole } from '@/models/crypto_order';
 import api from 'api/api';
 
 const checkCall = (key, param) => {
@@ -5,8 +6,8 @@ const checkCall = (key, param) => {
   else return '';
 };
 
-export const getListUser = (limit?: number, offset?:number, search?:string) => {
-  return api.get(`/user-manager?${checkCall('limit', limit)}&${checkCall('offset', offset)}&${checkCall('key', search)}`);
+export const getListUser = (limit: number, offset:number, search?:string, role?:IUserRole) => {
+  return api.get(`/user-manager?${checkCall('limit', limit)}&${checkCall('offset', offset)}&${checkCall('key', search)}&${checkCall('role', role)}`);
 };
 
 export const getCode = (bank: string, token: string) => {

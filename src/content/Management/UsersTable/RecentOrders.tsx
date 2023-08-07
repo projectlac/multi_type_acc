@@ -4,6 +4,7 @@ import { getListUser } from 'api/apiUser/userApi';
 import { IUser } from 'model/user';
 import { useEffect, useState } from 'react';
 import RecentOrdersTable from './RecentOrdersTable';
+import { IUserRole } from '@/models/crypto_order';
 
 function RecentOrders() {
   const [data, setData] = useState<IUser[]>([]);
@@ -12,16 +13,17 @@ function RecentOrders() {
   const [page, setPage] = useState<number>(0);
   const [limit, setLimit] = useState<number>(10);
   const [search, setSearch] = useState<string>('');
+  const [role, setRole] = useState<IUserRole>('');
 
   useEffect(() => {
     const callApi = async () => {
-      await getListUser(limit, page, search).then((res) => {
+      await getListUser(limit, page, search, role).then((res) => {
         setData(res.data.data);
         setTotal(res.data.total);
       });
     };
     callApi();
-  }, [update, limit, page, search]);
+  }, [update, limit, page, search, role]);
 
   return (
     <Card sx={{ mb: 5 }}>
@@ -31,6 +33,7 @@ function RecentOrders() {
         setLimit={setLimit}
         setSearch={setSearch}
         total={total}
+        setRole={setRole}
       />
     </Card>
   );

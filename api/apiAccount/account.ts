@@ -6,6 +6,10 @@ const checkCall = (key, param) => {
   if (param) return `&${key}=${param}`;
   else return '';
 };
+const checkBool = (key, param) => {
+  if (param !== '') return `&${key}=${param}`;
+  else return '';
+};
 const checkCallPriceSort = (key, param) => {
   if (param !== undefined) return `&${key}=${param}`;
   else return '';
@@ -54,9 +58,9 @@ export const updateAccountNomal = (slug: string, data: FormData) => {
   return apiFormData.put(`/account/update-account/${slug}`, data);
 };
 
-export const getAccountNomalFromDashboard = (limit: number,offset:number, game:string, search?: string) => {
+export const getAccountNomalFromDashboard = (limit: number,offset:number, game:string, search?: string, is_sold?:boolean | '') => {
   return apiFormData.get(
-    `/account/get-accounts-by-admin?type=REROLL,RANDOM&limit=${limit}&offset=${offset}&game=${game}${checkCall('keyword',search)}`
+    `/account/get-accounts-by-admin?type=REROLL,RANDOM&limit=${limit}&offset=${offset}&game=${game}${checkCall('keyword',search)}${checkBool('is_sold',is_sold)}`
   );
 };
 
