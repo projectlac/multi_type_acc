@@ -96,14 +96,14 @@ function ProductCollection() {
           data={dataAccVip}
         />
       </Grid>
-      <Grid item md={3} sm={6} xs={12}>
+      {/* <Grid item md={3} sm={6} xs={12}>
         <ProductCollectionItem
           title="Acc Khởi Đầu"
           url="/account/genshin-impact/new"
           image={news}
           data={dataAccNew}
         />
-      </Grid>
+      </Grid> */}
       <Grid item md={3} sm={6} xs={12}>
         <ProductCollectionItem
           title="Acc Reroll"
@@ -386,14 +386,14 @@ function ProductCollection() {
           data={dataHsr}
         />
       </Grid>
-      <Grid item md={3} sm={6} xs={12}>
+      {/* <Grid item md={3} sm={6} xs={12}>
         <ProductCollectionItem
           title="HSR Khởi đầu"
           url="/account/honkai-star-rail/new"
           image={newHsr}
           data={dataNewHsr}
         />
-      </Grid>
+      </Grid> */}
       <Grid item md={3} sm={6} xs={12}>
         <ProductCollectionItem
           title="HSR Reroll"
