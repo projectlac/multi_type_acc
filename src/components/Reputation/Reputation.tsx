@@ -37,7 +37,7 @@ export default function ReputationItem() {
           <span>Lưu ý :</span> <br />
           Shop được rất nhiều Youtuber và Tiktoker nổi tiếng uy tín hợp tác tin
           dùng <br /> Mọi vấn đề về account và Shop các bạn ib cho page qua{' '}
-          <a href="https://www.facebook.com/nguyenhung208" target={'__blank'}>
+          <a href="https://m.me/122101845332012058" target={'__blank'}>
             GenshinViet
           </a>{' '}
           để Shop xử lý cho các bạn.

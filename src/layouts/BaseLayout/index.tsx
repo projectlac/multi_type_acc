@@ -104,7 +104,7 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children }) => {
               <ul style={{ padding: 0 }}>
                 <li style={{ marginLeft: 0 }}>
                   <Link
-                    href={'https://www.facebook.com/nguyenhung208'}
+                    href={'https://m.me/122101845332012058'}
                     target={'__blank'}
                   >
                     <a target="_blank">Hỗ trợ KH </a>
@@ -119,9 +119,9 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children }) => {
                 <li>
                   <Link href={'/topup-genshin'}>Nạp game</Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link href={'/reputation'}>Check uy tín</Link>
-                </li>
+                </li> */}
                 <li>
                   <Link href={'/news'}>Thông tin Shop</Link>
                 </li>
@@ -152,15 +152,15 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children }) => {
                   <li>
                     <Link href={'/topup-genshin'}>Nạp game</Link>
                   </li>
-                  <li>
+                  {/* <li>
                     <Link href={'/reputation'}>Check uy tín</Link>
-                  </li>
+                  </li> */}
                   <li>
                     <Link href={'/news'}>Thông tin Shop</Link>
                   </li>
                   <li>
                     <Link
-                      href={'https://www.facebook.com/nguyenhung208'}
+                      href={'https://m.me/122101845332012058'}
                       target={'__blank'}
                     >
                       <a target="_blank">Fanpage hỗ trợ khách hàng</a>
@@ -186,7 +186,7 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children }) => {
       </Header>
       <FullBG>
         {children}
-        <MessengerChat pageId="103780805920496" language="vi_VN" />
+        <MessengerChat pageId="111157465409145" language="vi_VN" />
         <Footer />
       </FullBG>
     </Box>
