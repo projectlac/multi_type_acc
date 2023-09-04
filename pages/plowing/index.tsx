@@ -88,11 +88,11 @@ export default function VerticalTabs() {
     },
     {
       value: '36',
-      title: '190,000 VNĐ - Lôi Thần Đồng (181)'
+      title: '250,000 VNĐ - Lôi Thần Đồng (181)'
     },
     {
       value: '37',
-      title: '300,000 VNĐ - Thảo Thần Đồng (271)'
+      title: '400,000 VNĐ - Thảo Thần Đồng (271)'
     },
     {
       value: '38',
@@ -100,11 +100,11 @@ export default function VerticalTabs() {
     },
     {
       value: '39',
-      title: '90,000 VNĐ - Lưu Tinh Minh Thạch (83)'
+      title: '120,000 VNĐ - Lưu Tinh Minh Thạch (83)'
     },
     {
       value: '40',
-      title: '70,000 VNĐ - Ấn Khóa (59)'
+      title: '100,000 VNĐ - Ấn Khóa (59)'
     },
     {
       value: '41',
@@ -112,7 +112,7 @@ export default function VerticalTabs() {
     },
     {
       value: '42',
-      title: '40,000 VNĐ - Tinh Quang Vũ (36)'
+      title: '100,000 VNĐ - Tinh Quang Vũ (36)'
     },
     {
       value: '43',
@@ -154,17 +154,14 @@ export default function VerticalTabs() {
       value: '52',
       title: '250,000 đ - Sumeru Sa Mạc 3.6 (2 khu vực)'
     },
-    {
-      value: '53',
-      title: '12,000 đ - Mở điểm tele (1 khu)'
-    },
+
     {
       value: '54',
       title: '120,000 đ - Rust theo khu vực'
     },
     {
       value: '55',
-      title: '30,000 đ - Nhặt tinh điệp (100)'
+      title: '60,000 đ - Nhặt tinh điệp (100)'
     },
     {
       value: '56',
@@ -184,7 +181,7 @@ export default function VerticalTabs() {
     },
     {
       value: '60',
-      title: '130,000 đ - Lao xiên cá R5 (ghi chú ar)'
+      title: '150,000 đ - Lao xiên cá R5 (ghi chú ar)'
     },
     {
       value: '61',
@@ -306,6 +303,18 @@ export default function VerticalTabs() {
     {
       value: '90',
       title: '60,000 đ - La hoàn (9-12) [ acc build tốt nghiệp ]'
+    },
+    {
+      value: '91',
+      title: '35,000 đ - Cày 5 nhựa'
+    },
+    {
+      value: '92',
+      title: '70,000 đ - Cày 10 nhựa'
+    },
+    {
+      value: '93',
+      title: '180,000 đ - Thủy thần đồng'
     }
   ];
 
