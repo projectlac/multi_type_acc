@@ -148,173 +148,173 @@ export default function VerticalTabs() {
     },
     {
       value: '51',
-      title: '250,000 đ - Sumeru Sa Mạc 3.4 (1 khu vực)'
+      title: '250,000 VNĐ - Sumeru Sa Mạc 3.4 (1 khu vực)'
     },
     {
       value: '52',
-      title: '250,000 đ - Sumeru Sa Mạc 3.6 (2 khu vực)'
+      title: '250,000 VNĐ - Sumeru Sa Mạc 3.6 (2 khu vực)'
     },
 
     {
       value: '54',
-      title: '120,000 đ - Rust theo khu vực'
+      title: '120,000 VNĐ - Rust theo khu vực'
     },
     {
       value: '55',
-      title: '60,000 đ - Nhặt tinh điệp (100)'
+      title: '60,000 VNĐ - Nhặt tinh điệp (100)'
     },
     {
       value: '56',
-      title: '40,000 đ - Nhặt Nguyên Liệu Mondsadt (100)'
+      title: '40,000 VNĐ - Nhặt Nguyên Liệu Mondsadt (100)'
     },
     {
       value: '57',
-      title: '40,000 đ - Nhặt Nguyên Liệu Liyue (100)'
+      title: '40,000 VNĐ - Nhặt Nguyên Liệu Liyue (100)'
     },
     {
       value: '58',
-      title: '60,000 đ - Nhặt Nguyên Liệu Inazuma (100)'
+      title: '60,000 VNĐ - Nhặt Nguyên Liệu Inazuma (100)'
     },
     {
       value: '59',
-      title: '70,000 đ - Nhặt Nguyên Liệu Sumeru (100)'
+      title: '70,000 VNĐ - Nhặt Nguyên Liệu Sumeru (100)'
     },
     {
       value: '60',
-      title: '150,000 đ - Lao xiên cá R5 (ghi chú ar)'
+      title: '150,000 VNĐ - Lao xiên cá R5 (ghi chú ar)'
     },
     {
       value: '61',
-      title: '10,000 đ - Farm Gỗ (100)'
+      title: '10,000 VNĐ - Farm Gỗ (100)'
     },
     {
       value: '62',
-      title: '20,000 đ - Đào Khoáng (100)'
+      title: '20,000 VNĐ - Đào Khoáng (100)'
     },
     {
       value: '63',
-      title: '60,000 đ - Lần đầu Thám Hiểm vực sâu'
+      title: '60,000 VNĐ - Lần đầu Thám Hiểm vực sâu'
     },
     {
       value: '64',
-      title: '650,000 đ - Aranyaka (5 chương)'
+      title: '650,000 VNĐ - Aranyaka (5 chương)'
     },
     {
       value: '65',
       title:
-        '120,000 đ - Tích xanh quyển aranyaka (5 tích) yêu cầu đã hoàn thành xong nhiệm vụ aranyaka'
+        '120,000 VNĐ - Tích xanh quyển aranyaka (5 tích) yêu cầu đã hoàn thành xong nhiệm vụ aranyaka'
     },
     {
       value: '66',
-      title: '90,000 đ - Tế lễ thần anh đào'
+      title: '90,000 VNĐ - Tế lễ thần anh đào'
     },
     {
       value: '67',
-      title: '80,000 đ - Lò luyện Mikage chương 1'
+      title: '80,000 VNĐ - Lò luyện Mikage chương 1'
     },
     {
       value: '68',
-      title: '70,000 đ - Lò Luyện Mikage Chương 2'
+      title: '70,000 VNĐ - Lò Luyện Mikage Chương 2'
     },
     {
       value: '69',
-      title: '150,000 đ - Chuyến săn sấm Seira (4 chương)'
+      title: '150,000 VNĐ - Chuyến săn sấm Seira (4 chương)'
     },
     {
       value: '70',
-      title: '120,000 đ - Di sản Orobashi (4 chương)'
+      title: '120,000 VNĐ - Di sản Orobashi (4 chương)'
     },
     {
       value: '71',
-      title: '100,000 đ - Nhật ký hành trình của biển sương mù 1 chương'
+      title: '100,000 VNĐ - Nhật ký hành trình của biển sương mù 1 chương'
     },
     {
       value: '72',
-      title: '100,000 đ - Ghi chép cũ'
+      title: '100,000 VNĐ - Ghi chép cũ'
     },
     {
       value: '73',
-      title: '400,000 đ - Cõi mộng hoàng kim (4 chương)'
+      title: '400,000 VNĐ - Cõi mộng hoàng kim (4 chương)'
     },
     {
       value: '74',
-      title: '80,000 đ - Gấp đôi bằng chứng'
+      title: '80,000 VNĐ - Gấp đôi bằng chứng'
     },
     {
       value: '75',
-      title: '80,000 đ - Sớm chiều nơi vương quốc Đêm Trắng'
+      title: '80,000 VNĐ - Sớm chiều nơi vương quốc Đêm Trắng'
     },
     {
       value: '76',
-      title: '100,000 đ - DainSelf'
+      title: '100,000 VNĐ - DainSelf'
     },
     {
       value: '77',
-      title: '20,000 đ - Dũng khí trong tim'
+      title: '20,000 VNĐ - Dũng khí trong tim'
     },
     {
       value: '78',
-      title: '80,000 đ - Mây xưa có Li'
+      title: '80,000 VNĐ - Mây xưa có Li'
     },
     {
       value: '79',
-      title: '60,000 đ - Vực Tắm Trăng'
+      title: '60,000 VNĐ - Vực Tắm Trăng'
     },
     {
       value: '80',
-      title: '200,000 đ - Khúc Bi Ca bilqis'
+      title: '200,000 VNĐ - Khúc Bi Ca bilqis'
     },
     {
       value: '81',
-      title: '50,000 đ - Chim Ưng tadhla'
+      title: '50,000 VNĐ - Chim Ưng tadhla'
     },
     {
       value: '82',
-      title: '350,000 đ - Khvarena Thiện và Ác'
+      title: '350,000 VNĐ - Khvarena Thiện và Ác'
     },
     {
       value: '83',
-      title: '70,000 đ - Ngọn Lửa U Ám'
+      title: '70,000 VNĐ - Ngọn Lửa U Ám'
     },
     {
       value: '84',
-      title: '70,000 đ - Nghiên Cứu Bia Khắc'
+      title: '70,000 VNĐ - Nghiên Cứu Bia Khắc'
     },
     {
       value: '85',
-      title: '80,000 đ - Nhiệm Vụ Ma Thần (3 màn)'
+      title: '80,000 VNĐ - Nhiệm Vụ Ma Thần (3 màn)'
     },
     {
       value: '86',
-      title: '30,000 đ - Đồng hành'
+      title: '30,000 VNĐ - Đồng hành'
     },
     {
       value: '87',
-      title: '35,000 đ - Truyền Thuyết'
+      title: '35,000 VNĐ - Truyền Thuyết'
     },
     {
       value: '88',
-      title: '180,000 đ - Daily Tháng( ủy thác+ xả )'
+      title: '180,000 VNĐ - Daily Tháng( ủy thác+ xả )'
     },
     {
       value: '89',
-      title: '50,000 đ - La hoàn (1-8) [ acc build đủ mạnh ]'
+      title: '50,000 VNĐ - La hoàn (1-8) [ acc build đủ mạnh ]'
     },
     {
       value: '90',
-      title: '60,000 đ - La hoàn (9-12) [ acc build tốt nghiệp ]'
+      title: '60,000 VNĐ - La hoàn (9-12) [ acc build tốt nghiệp ]'
     },
     {
       value: '91',
-      title: '35,000 đ - Cày 5 nhựa'
+      title: '35,000 VNĐ - Cày 5 nhựa'
     },
     {
       value: '92',
-      title: '70,000 đ - Cày 10 nhựa'
+      title: '70,000 VNĐ - Cày 10 nhựa'
     },
     {
       value: '93',
-      title: '180,000 đ - Thủy thần đồng'
+      title: '180,000 VNĐ - Thủy thần đồng'
     }
   ];
 
