@@ -22,7 +22,11 @@ function Selection({ formik, name, label, options, ...props }) {
       {...props}
     >
       {options.map((option) => (
-        <MenuItem key={option.value} value={option.value}>
+        <MenuItem
+          style={{ whiteSpace: 'normal' }}
+          key={option.value}
+          value={option.value}
+        >
           {option.title}
         </MenuItem>
       ))}

@@ -16,7 +16,7 @@ function Reputation() {
         justifyContent="center"
       >
         <TitleWeb mt={2} fontSize={15}>
-          Đã xuất hiện tại
+          Check uy tín
         </TitleWeb>
       </Box>
       <Box>
