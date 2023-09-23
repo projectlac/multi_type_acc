@@ -110,7 +110,7 @@ function HeaderNotifications() {
           horizontal: 'right'
         }}
       >
-        <Box>
+        <Box width={450}>
           <Box
             sx={{ p: 2 }}
             display="flex"

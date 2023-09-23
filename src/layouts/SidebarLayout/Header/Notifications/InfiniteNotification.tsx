@@ -5,7 +5,7 @@ import { getNotification } from 'api/apiUser/userApi';
 import { formatDistance } from 'date-fns';
 import { vi } from 'date-fns/locale';
 import { useCallback, useEffect, useState } from 'react';
-import InfiniteScroll from 'react-infinite-scroller';
+import InfiniteCustom from './InfiniteCustom';
 
 interface IProp {
   isOpen: boolean;
@@ -16,16 +16,15 @@ function InfiniteNotification({ isOpen }: IProp) {
   } = useAuth();
   const [items, setItems] = useState([]);
   const [offset, setOffset] = useState<number>(0);
+  const [totalRows, setTotalRows] = useState(0);
   const [firstFetch, setFirstFetch] = useState<boolean>(false);
-  const [nextPageUrl, setNextPageUrl] = useState(
-    'https://api.github.com/repos/facebook/react/issues'
-  );
-  const [fetching, setFetching] = useState(false);
 
   async function fetchIssues(offset) {
     let id = localStorage.getItem('numberOfFate');
     const links = await getNotification(9, offset);
+
     const issues = links.data.data;
+    setTotalRows(links.data.total);
     const getNewsetId = localStorage.getItem(`lastestNotify-${id}`);
     !firstFetch &&
       !Boolean(getNewsetId) &&
@@ -33,7 +32,6 @@ function InfiniteNotification({ isOpen }: IProp) {
     setFirstFetch(true);
 
     return {
-      links,
       issues
     };
   }
@@ -54,30 +52,22 @@ function InfiniteNotification({ isOpen }: IProp) {
       localStorage.setItem(`indexNewsestID-${id && id}`, '0');
     }
   }, [firstFetch, isOpen]);
-  const fetchItems = useCallback(async () => {
-    if (fetching) {
-      return;
-    }
 
-    setFetching(true);
+  const fetchItems = useCallback(
+    async (offset) => {
+      try {
+        const { issues } = await fetchIssues(offset);
 
-    try {
-      const { issues, links } = await fetchIssues(offset);
-      let newOffset = offset + 9;
-      setOffset(newOffset);
-      setItems([...items, ...issues]);
-
-      if (issues.length > 0) {
-        setNextPageUrl(links.data.data);
-      } else {
-        setNextPageUrl(null);
+        setItems([...items, ...issues]);
+      } finally {
       }
-    } finally {
-      setFetching(false);
-    }
-  }, [items, fetching, nextPageUrl]);
+    },
+    [items]
+  );
 
-  const hasMoreItems = !!nextPageUrl;
+  useEffect(() => {
+    fetchItems(offset);
+  }, [offset]);
 
   const loader = (
     <div key="loader" className="loader">
@@ -95,10 +85,11 @@ function InfiniteNotification({ isOpen }: IProp) {
 
   return (
     <Box height={'500px'}>
-      <InfiniteScroll
-        loadMore={fetchItems}
-        hasMore={hasMoreItems}
+      <InfiniteCustom
         loader={loader}
+        fetchMore={() => setOffset((prev) => prev + 9)}
+        hasMore={items.length < totalRows}
+        endMessage={<p>You have seen it all</p>}
       >
         <Box>
           {items.map((item, i) => (
@@ -140,7 +131,7 @@ function InfiniteNotification({ isOpen }: IProp) {
             </Box>
           ))}
         </Box>
-      </InfiniteScroll>
+      </InfiniteCustom>
     </Box>
   );
 }
