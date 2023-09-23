@@ -1,25 +1,22 @@
 import random from '@/assets/images/mainCategory/310172264_428812392669349_4896007792527675904_n.webp';
 import napgame from '@/assets/images/mainCategory/310320905_485170040201744_4282135316084233675_n.webp';
-import hsr from '@/assets/images/mainCategory/accvip.webp';
-import newHsr from '@/assets/images/mainCategory/ACCKHOIDAU.webp';
-import rerollHsr from '@/assets/images/mainCategory/accreroll.webp';
-import shopphukien from '@/assets/images/e8287ab33eade6f3bfbc.webp';
 import rrr from '@/assets/images/mainCategory/310545249_770219224063920_253246776766894058_n.webp';
-import lucky from '@/assets/images/lucky.webp';
-import caythue from '@/assets/images/mainCategory/CT.jpg';
+import newHsr from '@/assets/images/mainCategory/ACCKHOIDAU.webp';
 import codegame from '@/assets/images/mainCategory/CODE.jpg';
+import caythue from '@/assets/images/mainCategory/CT.jpg';
+import rerollHsr from '@/assets/images/mainCategory/accreroll.webp';
+import hsr from '@/assets/images/mainCategory/accvip.webp';
 
 import bgVip from '@/assets/images/mainCategory/310860207_1164961827704035_4343141035597341049_n.webp';
 import news from '@/assets/images/mainCategory/9bf1a5932675ff2ba664.webp';
-import randomHsr from '@/assets/images/mainCategory/random.webp';
 
 import { Box, Button, Card, Divider, Grid, Typography } from '@mui/material';
-import ProductCollectionItem from './ProductCollectionItem';
 import { getDepositHome, getInfoAllAccount } from 'api/apiAccount/account';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import TitleWeb from '../Common/TitleWeb';
-import Image from 'next/image';
+import ProductCollectionItem from './ProductCollectionItem';
 interface IAll {
   inStock: number;
   sold: number;

@@ -46,6 +46,7 @@ function AccountRandom() {
   };
   useEffect(() => {
     executeScroll();
+    debugger;
     queryRandomAccount({
       limit: 9,
       offset: pageHistory ? (+pageHistory - 1) * 9 : 0,
@@ -58,7 +59,7 @@ function AccountRandom() {
       setData(res.data.data);
       setTotal(res.data.total);
     });
-  }, [pageHistory, sort, ar, code]);
+  }, [pageHistory, sort, ar, code, priceRange]);
 
   const executeScroll = () => {
     const id = 'scrollTo';

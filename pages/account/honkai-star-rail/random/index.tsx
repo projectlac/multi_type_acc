@@ -58,7 +58,7 @@ function AccountRandom() {
       setData(res.data.data);
       setTotal(res.data.total);
     });
-  }, [pageHistory, sort, ar, code]);
+  }, [pageHistory, sort, ar, code, priceRange]);
 
   const executeScroll = () => {
     const id = 'scrollTo';
