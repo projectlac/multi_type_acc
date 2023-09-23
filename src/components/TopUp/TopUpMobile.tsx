@@ -253,6 +253,9 @@ export default function TopUpMobile() {
             background: '#fff'
           }}
         >
+          <Typography fontSize={'15px'} fontWeight={500} mb={3}>
+            {content}
+          </Typography>
           <Grid container columnSpacing={1.5} rowSpacing={2}>
             <Grid item md={6} xs={12}>
               <Card sx={{ p: { md: 3, xs: 1 } }}>
@@ -359,9 +362,7 @@ export default function TopUpMobile() {
                 Hướng dẫn nạp
               </Typography>
               <Divider sx={{ my: 1 }}></Divider>
-              <Typography fontSize={'15px'} fontWeight={500}>
-                {content}
-              </Typography>
+
               <Typography fontSize={'15px'} fontWeight={500}>
                 <span style={{ color: 'red', background: 'white' }}>
                   <b>Chúng tôi sẽ cập nhật bảng giá chiết khấu sớm nhất</b>
