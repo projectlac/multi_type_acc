@@ -38,6 +38,7 @@ function AccountVip() {
     priceSort: '',
     keyword: ''
   });
+
   const handleFilter = (data) => {
     setFilter(data);
     localStorage.setItem('filter', JSON.stringify(data));
@@ -66,6 +67,7 @@ function AccountVip() {
   const toggleOpen = () => {
     setOpen(!open);
   };
+
   const handlePage = (event: React.ChangeEvent<unknown>, value: number) => {
     console.log(event.type);
     router.push(`/account/genshin-impact/vip?page=${value}`);

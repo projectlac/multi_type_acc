@@ -73,7 +73,7 @@ export default function ReputationItem() {
           Và cuối cùng shop mình tự tin với việc hỗ trợ khách hàng cực nhanh của
           shop mình nếu bạn nào từng mua nick ở shop sẽ biết tốc độ rep và hỗ
           trợ của shop không đến 2p các bạn đã có nick chơi page hỗ trợ ấn{' '}
-          <a href="https://www.facebook.com/nguyenhung208" target="__blank">
+          <a href="https://www.facebook.com/hotrogenshin/" target="__blank">
             vào đây
           </a>
           . <br />

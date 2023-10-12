@@ -63,7 +63,7 @@ function Overview() {
                 Page genshinviet hiện đang lỗi, nếu bạn nhắn lâu quá shop không
                 rep vui lòng nhắn tin cho chủ shop ấn{' '}
                 <a
-                  href="https://www.facebook.com/nguyenhung208"
+                  href="https://www.facebook.com/hotrogenshin/"
                   target="__blank"
                 >
                   vào đây
@@ -84,7 +84,7 @@ function Overview() {
                 <br />
                 {`=> Tất cả nick đều trắng thông tin hoặc có liên kết mail ib trang page shop đổi nhanh gọn `}{' '}
                 <a
-                  href="https://www.facebook.com/nguyenhung208"
+                  href="https://www.facebook.com/hotrogenshin/"
                   target="__blank"
                 >
                   tại đây
@@ -121,7 +121,7 @@ function Overview() {
                 <br /> Nếu acc lỗi không vào được hoặc có mail ib qua trang page
                 để được xử lý{' '}
                 <a
-                  href="https://www.facebook.com/nguyenhung208"
+                  href="https://www.facebook.com/hotrogenshin/"
                   target={'__blank'}
                 >
                   Ấn vào đây
