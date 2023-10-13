@@ -62,7 +62,7 @@ function Overview() {
                 <br />
                 Page genshinviet hiện đang lỗi, nếu bạn nhắn lâu quá shop không
                 rep vui lòng nhắn tin cho chủ shop ấn{' '}
-                <a href="https://m.me/145641015297132/" target="__blank">
+                <a href="https://m.me/122101845332012058/" target="__blank">
                   vào đây
                 </a>
                 <br />
@@ -80,7 +80,7 @@ function Overview() {
                 {`=> Shop cam kết không bán acc chết liên kết`}
                 <br />
                 {`=> Tất cả nick đều trắng thông tin hoặc có liên kết mail ib trang page shop đổi nhanh gọn `}{' '}
-                <a href="https://m.me/145641015297132/" target="__blank">
+                <a href="https://m.me/122101845332012058/" target="__blank">
                   tại đây
                 </a>
                 <br />
@@ -114,7 +114,7 @@ function Overview() {
                 </a>
                 <br /> Nếu acc lỗi không vào được hoặc có mail ib qua trang page
                 để được xử lý{' '}
-                <a href="https://m.me/145641015297132/" target={'__blank'}>
+                <a href="https://m.me/122101845332012058/" target={'__blank'}>
                   Ấn vào đây
                 </a>
                 <br /> Các bạn gặp bất cứ khó khăn gì về thông tin acc cứ ib qua
