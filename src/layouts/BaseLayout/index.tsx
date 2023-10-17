@@ -191,10 +191,10 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children }) => {
         <MessengerChat pageId="122101845332012058" language="vi_VN" />
         <Box
           sx={{
-            width: 100,
-            height: 100,
+            width: 90,
+            height: 90,
             position: 'fixed',
-            right: '25px',
+            right: '10px',
             bottom: '100px'
           }}
         >
@@ -202,8 +202,8 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children }) => {
             <Image
               src={Zalo}
               alt="Zalo"
-              width={100}
-              height={100}
+              width={90}
+              height={90}
               objectFit="contain"
             />
           </a>
