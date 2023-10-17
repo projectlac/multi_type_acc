@@ -38,12 +38,13 @@ function ContentManager() {
   const [data, setData] = useState({
     description: '',
     youtube: '',
-    facebook: ''
+    facebook: '',
+    discord: ''
   });
   const onSubmit = async (values) => {
-    const { youtube, description, facebook } = values;
+    const { youtube, description, facebook, discord } = values;
     try {
-      updateWebInformation(youtube, description, facebook).then(() => {
+      updateWebInformation(youtube, description, facebook, discord).then(() => {
         handleSetMessage({
           type: 'success',
           message: `Cập nhật thành công`
@@ -53,6 +54,7 @@ function ContentManager() {
       handleSetMessage({ type: 'error', message: error.response.data.message });
     }
   };
+
   const onSubmitVip = async (values) => {
     const { vip } = values;
     try {
@@ -123,8 +125,6 @@ function ContentManager() {
   const formikNew = useCustomForm(newAcc, initForm4, onSubmitNew);
 
   const changeContent = (data: string) => {
-    console.log(data);
-
     formik.handleChange({
       target: { name: 'description', value: data }
     });
@@ -135,7 +135,8 @@ function ContentManager() {
       setData({
         youtube: res.data[0].youtube,
         description: res.data[0].description,
-        facebook: res.data[0].facebook
+        facebook: res.data[0].facebook,
+        discord: res.data[0].discord
       })
     );
   }, []);
@@ -182,6 +183,26 @@ function ContentManager() {
             defaultValue={formik.values.description}
           />
         </FormatForm>
+
+        <TF
+          id="outlined-multiline-static"
+          label="Thông báo chạy"
+          multiline
+          fullWidth
+          onChange={formik.handleChange}
+          name="discord"
+          rows={4}
+          value={formik.values['discord']}
+          sx={{
+            background: '#fff',
+            mt: 3
+          }}
+        />
+        <sup>
+          Hướng dẫn dùng link: viết{' '}
+          <b>{`<a href="đường dẫn vd: https://abc.com" style="color:#d33" >Nội dung</a>`}</b>{' '}
+          ở đâu cũng được
+        </sup>
         <TF
           id="outlined-multiline-static"
           label="Chiết khấu"

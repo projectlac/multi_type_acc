@@ -8,6 +8,8 @@ import Link from 'next/link';
 import PropTypes from 'prop-types';
 import MessengerChat from 'react-messenger-customer-chat';
 import { FC, ReactNode, useState } from 'react';
+import Image from 'next/image';
+import Zalo from '@/assets/images/zalogo-png.png';
 // import MessengerChat from 'react-messenger-customer-chat';
 import HeaderUserbox from './Userbox';
 interface BaseLayoutProps {
@@ -186,7 +188,26 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children }) => {
       </Header>
       <FullBG>
         {children}
-        <MessengerChat pageId="111157465409145" language="vi_VN" />
+        <MessengerChat pageId="122101845332012058" language="vi_VN" />
+        <Box
+          sx={{
+            width: 100,
+            height: 100,
+            position: 'fixed',
+            right: '25px',
+            bottom: '100px'
+          }}
+        >
+          <a href="https://zalo.me/0372790362" target="__blank">
+            <Image
+              src={Zalo}
+              alt="Zalo"
+              width={100}
+              height={100}
+              objectFit="contain"
+            />
+          </a>
+        </Box>
         <Footer />
       </FullBG>
     </Box>

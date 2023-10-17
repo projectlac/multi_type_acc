@@ -18,6 +18,7 @@ import ProductCollection from '@/components/ProductCollection/ProductCollection'
 import formatMoney from '@/utility/formatMoney';
 import { getTop10 } from 'api/apiDeposit/account';
 import { getWebInformation } from 'api/auth';
+import Marquee from 'react-fast-marquee';
 
 const OverviewWrapper = styled(Box)(
   () => `
@@ -34,7 +35,8 @@ interface ITopUp {
 function Overview() {
   const [data, setData] = useState({
     description: '',
-    youtube: ''
+    youtube: '',
+    discord: ''
   });
   const [top10, setTop10] = useState<ITopUp[]>([]);
   const [open, setOpen] = useState(true);
@@ -45,7 +47,8 @@ function Overview() {
     getWebInformation().then((res) =>
       setData({
         youtube: res.data[0].youtube,
-        description: res.data[0].description
+        description: res.data[0].description,
+        discord: res.data[0].discord
       })
     );
     getTop10().then((res) => {
@@ -64,6 +67,19 @@ function Overview() {
       </Head>
 
       <Container maxWidth="lg" sx={{ mt: 15 }}>
+        {data.discord.trim() && (
+          <Marquee
+            style={{
+              background: 'rgb(75 75 75 / 78%)',
+              color: '#fff',
+              height: '40px',
+              fontSize: 16
+            }}
+          >
+            <Box dangerouslySetInnerHTML={{ __html: data.discord }} />
+          </Marquee>
+        )}
+
         <Box
           pt={3}
           pb={2}
@@ -76,6 +92,7 @@ function Overview() {
             SHOP GENSHIN & HONKAI <br /> GIÁ HUỶ DIỆT THỊ TRƯỜNG
           </TitleWeb>
         </Box>
+
         <Grid container columnSpacing={2} rowSpacing={2}>
           <Grid
             item
