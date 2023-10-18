@@ -244,7 +244,8 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({
                     >
                       <b>Username: </b> {cryptoOrder.username} |{' '}
                       <b>Password: </b>
-                      {cryptoOrder.password}
+                      {cryptoOrder.password} | <b>UID: </b>
+                      {cryptoOrder.uuid}
                     </Typography>
                     <Typography
                       variant="body1"

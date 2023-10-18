@@ -2,9 +2,11 @@ import Table from '@/components/Table/Table';
 import { useAuth } from '@/contexts/AuthGuard';
 import { ProtectGuess } from '@/contexts/ProtectGuess';
 import { Box, Card, Container, styled, Typography } from '@mui/material';
+import { getWebInformation } from 'api/auth';
 import { getHistory } from 'api/user';
 import Head from 'next/head';
 import { ReactElement, useEffect, useState } from 'react';
+import Marquee from 'react-fast-marquee';
 import BaseLayout from 'src/layouts/BaseLayout';
 
 const OverviewWrapper = styled(Box)(
@@ -19,10 +21,19 @@ const OverviewWrapper = styled(Box)(
 function Overview() {
   const { update } = useAuth();
   const [data, setData] = useState([]);
+  const [messsage, setNesssage] = useState({
+    discord: ''
+  });
+
   useEffect(() => {
     getHistory().then((res) => {
       setData(res.data.data);
     });
+    getWebInformation().then((res) =>
+      setNesssage({
+        discord: res.data[0].discord
+      })
+    );
   }, [update]);
   return (
     <ProtectGuess>
@@ -33,6 +44,21 @@ function Overview() {
 
         <Container maxWidth="md" sx={{ mt: 15 }}>
           <Box py={3}>
+            <Box mb={3}>
+              {messsage.discord.trim() && (
+                <Marquee
+                  style={{
+                    background: 'rgb(75 75 75 / 78%)',
+                    color: '#fff',
+                    height: '40px',
+                    fontSize: 16
+                  }}
+                >
+                  <Box dangerouslySetInnerHTML={{ __html: messsage.discord }} />
+                </Marquee>
+              )}
+            </Box>
+
             <Card
               sx={{
                 mb: 3,
