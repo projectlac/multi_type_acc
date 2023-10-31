@@ -8,11 +8,11 @@ import { useAuth } from '@/contexts/AuthGuard';
 import AddTwoToneIcon from '@mui/icons-material/AddTwoTone';
 import { Box, Button, Grid, MenuItem, useTheme } from '@mui/material';
 import { styled } from '@mui/styles';
-import { createAccountNomal } from 'api/apiAccount/account';
+import { uploadMultiCode } from 'api/apiCode/userApi';
+import { getListTagCode } from 'api/apiTag/tagApi';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import * as yup from 'yup';
-import { getListTagCode } from 'api/apiTag/tagApi';
 interface IEdit {
   title: string;
 }
@@ -22,9 +22,8 @@ const Input = styled('input')({
 });
 const validationSchema = yup.object({
   name: yup.string().required('Tên tài khoản is required'),
-  username: yup.string().required('Thông tin này là bắt buộc'),
   password: yup.string().required('Password là thuộc tính bắt buộc'),
-  file: yup.mixed().required('File is required'),
+  avatar: yup.mixed().required('File is required'),
   tag_code: yup.string().required('Trường này bắt buộc phải nhập'),
   price: yup
     .number()
@@ -33,12 +32,10 @@ const validationSchema = yup.object({
 });
 const initForm = {
   name: '',
-  username: 'Gift-Code',
   password: '',
   tag_code: '',
   price: 0,
-  type: 'CODE',
-  file: null
+  avatar: null
 };
 interface ITagCode {
   desc: string;
@@ -80,21 +77,16 @@ function AddAccount({ title }: IEdit) {
   }, []);
 
   const onSubmit = async (values, { resetForm }) => {
-    const { name, username, password, price, tag_code, file, type } = values;
+    const { name, password, price, tag_code, file } = values;
 
     const formData = new FormData();
     formData.append('name', name);
-    formData.append('username', username);
     formData.append('password', password);
-    formData.append('server', 'ASIA');
-    formData.append('ar_level', '0');
     formData.append('price', price);
     formData.append('tag_code', tag_code);
-    formData.append('type', type);
     file && formData.append('avatar', file);
-    formData.append('game', 'genshin-impact');
     try {
-      await createAccountNomal(formData).then(() => {
+      await uploadMultiCode(formData).then(() => {
         handleSetMessage({
           type: 'success',
           message: 'Thêm code thành công'
@@ -147,29 +139,21 @@ function AddAccount({ title }: IEdit) {
                 type="text"
               />
             </Grid>
-            <Grid item md={4} xs={12}>
+
+            <Grid item md={12} xs={12}>
               <TextField
                 formik={formik}
-                label="Loại code"
-                placeholder=""
-                variant="outlined"
-                fullWidth
-                name="username"
-                type="text"
-                disabled
-              />
-            </Grid>
-            <Grid item md={4} xs={12}>
-              <TextField
-                formik={formik}
-                label="Mã code"
+                label="Danh sách mã code"
                 variant="outlined"
                 fullWidth
                 name="password"
                 type="text"
+                multiline
+                rows={4}
               />
+              {`Cách nhau bằng dấu phẩy (,)`}
             </Grid>
-            <Grid item md={4} xs={12}>
+            <Grid item md={6} xs={12}>
               <TextField
                 formik={formik}
                 label="Giá"
@@ -180,7 +164,7 @@ function AddAccount({ title }: IEdit) {
               />
             </Grid>
 
-            <Grid item md={4} xs={12}>
+            <Grid item md={6} xs={12}>
               <TextField
                 formik={formik}
                 label="Loại code"
