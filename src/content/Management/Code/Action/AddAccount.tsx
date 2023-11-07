@@ -60,7 +60,10 @@ function AddAccount({ title }: IEdit) {
     );
     setPreview(objectUrl);
     formik.handleChange({
-      target: { name: 'file', value: (e.target as HTMLInputElement).files[0] }
+      target: {
+        name: 'avatar',
+        value: (e.target as HTMLInputElement).files[0]
+      }
     });
   };
 

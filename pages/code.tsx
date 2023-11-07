@@ -2,13 +2,11 @@ import OgTag from '@/components/Common/OgTag';
 import PaginationPage from '@/components/Common/PaginationPage';
 import TitleSpecial from '@/components/Common/TitleSpecial';
 import CodeItem from '@/components/Shop/Items/CodeItem';
-import Items from '@/components/Shop/Items/Items';
 import BaseLayout from '@/layouts/BaseLayout';
 import { Box, Container, Grid, MenuItem, TextField } from '@mui/material';
 import { queryCodeGame } from 'api/apiAccount/account';
 import { getListTagCode } from 'api/apiTag/tagApi';
 import { IAccountShop } from 'model/account';
-import { ITag } from 'model/tag';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { ReactElement, useEffect, useState } from 'react';
@@ -26,16 +24,16 @@ function CodeGame() {
   const [tagCode, setTagCode] = useState<ITagCodeList[]>([]);
 
   useEffect(() => {
-    let tempPage = pageHistory ? (+pageHistory - 1) * 9 : 0;
+    let tempPage = pageHistory ? (+pageHistory - 1) * 20 : 0;
     var retrievedObject = localStorage.getItem('filter');
     let filter = JSON.parse(retrievedObject);
 
     executeScroll();
     const param = {
       ...filter,
-      limit: 9,
+      limit: 20,
       offset: tempPage,
-      game: 'genshin-impact',
+
       tag_code: filterTag === 'all' ? '' : filterTag
     };
 
@@ -127,9 +125,9 @@ function CodeGame() {
                   );
                 })}
               </Grid>
-              {total > 9 && (
+              {total > 20 && (
                 <PaginationPage
-                  numberOfPage={Math.ceil(total / 9)}
+                  numberOfPage={Math.ceil(total / 20)}
                   onChange={handlePage}
                   index={+pageHistory}
                 />

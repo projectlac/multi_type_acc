@@ -43,8 +43,7 @@ function RecentOrders() {
       keyword: search,
       priceSort: '',
       is_sold: status,
-      sold_date: soldOrder,
-      game: 'genshin-impact'
+      sold_date: soldOrder
     }).then((res) => {
       setData(res.data.data);
       setTotal(res.data.total);
