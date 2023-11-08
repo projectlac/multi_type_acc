@@ -29,7 +29,6 @@ function AutoCompleteHarder({
 
   useEffect(() => {
     setInputValueHero(defaultValue);
-    console.log(defaultValue);
   }, [data, trigger]);
   return (
     <Autocomplete

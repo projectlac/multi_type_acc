@@ -27,9 +27,10 @@ import { format } from 'date-fns';
 import { IAccountVipAdmin } from 'model/account';
 import numeral from 'numeral';
 import PropTypes from 'prop-types';
-import { ChangeEvent, FC, useState } from 'react';
+import { ChangeEvent, FC, useCallback, useState } from 'react';
 import DeleteAccount from './Action/DeleteAccount';
 import EditAccount from './Action/EditAccount';
+import HiddenAccount from './Action/HiddenAccount';
 interface RecentOrdersTableProps {
   className?: string;
   cryptoOrders: IAccountVipAdmin[];
@@ -39,13 +40,14 @@ interface RecentOrdersTableProps {
   handleSearch: (keyword: string) => void;
   handleStatus: (status: boolean | null) => void;
   handleOrder: (status: 'true' | 'false' | null) => void;
+  handleHidden: (status: boolean | null) => void;
 }
 
 interface Filters {
   status?: 'true' | 'false';
 }
 
-const getStatusLabel = (cryptoOrderStatus: boolean): JSX.Element => {
+const getStatusLabel = (cryptoOrderStatus: boolean | string): JSX.Element => {
   const map = {
     false: {
       text: 'Chưa bán',
@@ -54,6 +56,10 @@ const getStatusLabel = (cryptoOrderStatus: boolean): JSX.Element => {
     true: {
       text: 'Đã bán',
       color: 'success'
+    },
+    hidden: {
+      text: 'Đã ẩn',
+      color: 'warning'
     }
   };
 
@@ -69,7 +75,8 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({
   handleSearch,
   handleStatus,
   changeLimit,
-  handleOrder
+  handleOrder,
+  handleHidden
 }) => {
   const [page, setPage] = useState<number>(0);
   const [search, setSearch] = useState<string>('');
@@ -102,7 +109,13 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({
       value = e.target.value;
     }
 
-    handleStatus(value);
+    if (e.target.value !== 'hidden') {
+      handleHidden(null);
+    } else {
+      handleHidden(true);
+    }
+
+    handleStatus(e.target.value === 'hidden' ? null : value);
     handleOrder(null);
     setFilters((prevFilters) => ({
       ...prevFilters,
@@ -126,6 +139,16 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({
     setSearch(e.target.value);
     handleSearch(e.target.value);
   };
+
+  const renderStatus = useCallback(
+    (isHidden: boolean | null, isSold: boolean) => {
+      if (isHidden) {
+        return getStatusLabel('hidden');
+      }
+      return getStatusLabel(isSold);
+    },
+    []
+  );
 
   return (
     <Card>
@@ -168,17 +191,20 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>Account ID</TableCell>
-              <TableCell>Info</TableCell>
-              <TableCell>Title</TableCell>
-              <TableCell>Người đăng</TableCell>
-              <TableCell align="right">Thời gian tạo</TableCell>
+              <TableCell sx={{ fontSize: 11 }}>Account ID</TableCell>
+              <TableCell sx={{ fontSize: 11 }}>Info</TableCell>
+              <TableCell sx={{ fontSize: 11 }}>Title</TableCell>
+              <TableCell sx={{ fontSize: 11 }}>Người đăng</TableCell>
+              <TableCell sx={{ fontSize: 11 }} align="right">
+                Thời gian tạo
+              </TableCell>
               <TableCell
                 align="right"
                 sx={{
                   display: 'flex',
                   alignItems: 'center',
-                  flexDirection: 'row'
+                  flexDirection: 'row',
+                  fontSize: 11
                 }}
                 onClick={clickSort}
               >
@@ -198,8 +224,12 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({
                   />
                 )}
               </TableCell>
-              <TableCell align="right">Status</TableCell>
-              <TableCell align="right">Actions</TableCell>
+              <TableCell sx={{ fontSize: 11 }} align="right">
+                Status
+              </TableCell>
+              <TableCell sx={{ fontSize: 11 }} align="right">
+                Actions
+              </TableCell>
             </TableRow>
           </TableHead>
 
@@ -314,7 +344,23 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({
                         />
                       </IconButton>
                     </Tooltip>
-
+                    <Tooltip title="Ẩn/Hiện" arrow>
+                      <IconButton
+                        sx={{
+                          '&:hover': {
+                            background: theme.colors.primary.lighter
+                          },
+                          color: theme.palette.primary.main
+                        }}
+                        color="inherit"
+                        size="small"
+                      >
+                        <HiddenAccount
+                          isHidden={cryptoOrder.is_hidden}
+                          slug={cryptoOrder.slug}
+                        />
+                      </IconButton>
+                    </Tooltip>
                     <Tooltip title="Delete Order" arrow>
                       <IconButton
                         sx={{

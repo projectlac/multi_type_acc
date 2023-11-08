@@ -2,6 +2,11 @@ import api from 'api/api';
 import apiFormData from 'api/formData/apiFormData';
 import { IAccountVip, IQueryCode, IQueryRandomAcc, IQueryVipAcc } from 'model/form';
 
+interface IParamUpdateHidden{
+  slug: string;
+  isHidden: boolean;
+}
+
 const checkCall = (key, param) => {
   if (param) return `&${key}=${param}`;
   else return '';
@@ -28,7 +33,7 @@ export const getAccountVipFromDashboard = (param: IAccountVip) => {
     )}${checkCall('weapon', param.weapon)}${checkCall(
       'keyword',
       param.keyword
-    )}${checkCall('is_sold', param.is_sold)}${checkCall(
+    )}${checkCall('is_sold', param.is_sold)}${checkCall('is_hidden', param.is_hidden)}${checkCall(
       'sold_date',
       param.sold_date
     )}${checkCall(
@@ -49,6 +54,10 @@ export const editAccountVip = (slug: string, formData: FormData) => {
 export const deleteAccount = (slug: string) => {
   return apiFormData.delete(`account/delete/${slug}`);
 };
+export const updateHiddenAccount = (params: IParamUpdateHidden) => {
+  return api.patch(`account/update-hidden?slug=${params.slug}&isHidden=${params.isHidden}`);
+};
+
 
 export const createAccountNomal = (data: FormData) => {
   return apiFormData.post('/account/create-account', data);
@@ -87,7 +96,7 @@ export const queryRerollAccount = (param: IQueryRandomAcc) => {
 
 export const queryAccountVip = (param: IQueryVipAcc) => {
   return apiFormData.get(
-    `/account/get-accounts?type=VIP&limit=${param.limit}&offset=${
+    `/account/get-accounts?type=VIP&is_hidden=true&limit=${param.limit}&offset=${
       param.offset
     }${checkCallPriceSort('priceSort', param.priceSort)}${checkCall(
       'code',

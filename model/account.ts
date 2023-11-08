@@ -9,6 +9,7 @@ export interface IAccountVipAdmin {
   created_at: string;
   user:any;
   is_sold: boolean;
+  is_hidden: boolean;
   description: string;
   name: string;
   slug: string;

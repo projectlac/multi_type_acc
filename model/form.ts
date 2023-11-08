@@ -61,6 +61,7 @@ export interface IAccountVip {
   is_sold?:boolean|null;
   sold_date?:'true' | 'false' | null;
   game?:string
+  is_hidden?:boolean|null;
 }
 
 export interface IQueryRandomAcc {

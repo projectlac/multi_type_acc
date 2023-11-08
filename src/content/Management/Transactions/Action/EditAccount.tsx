@@ -179,7 +179,7 @@ function EditAccout({ title, slug }: IEdit) {
   const formik = useCustomForm(validationSchema, initForm, onSubmit);
   return (
     <DialogCommon
-      icon={<EditTwoToneIcon />}
+      icon={<EditTwoToneIcon fontSize="small" />}
       title={title}
       openDialog={openDialog}
       handleOpenDialog={handleOpenDialog}

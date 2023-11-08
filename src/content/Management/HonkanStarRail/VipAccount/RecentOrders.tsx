@@ -13,7 +13,7 @@ function RecentOrders() {
   const [total, setTotal] = useState<number>(0);
   const [status, setStatus] = useState<boolean | null>(null);
   const [soldOrder, setSoldOrder] = useState<'true' | 'false' | null>(null);
-
+  const [hidden, setHidden] = useState<boolean | null>(null);
   const [search, setSearch] = useState<string>('');
 
   const changePage = (page: number) => {
@@ -35,6 +35,9 @@ function RecentOrders() {
     setPage(0);
     setSearch('');
   };
+  const handleHidden = (hidden: boolean | null) => {
+    setHidden(hidden);
+  };
   useEffect(() => {
     setData([]);
     getAccountVipFromDashboard({
@@ -44,6 +47,7 @@ function RecentOrders() {
       priceSort: '',
       is_sold: status,
       sold_date: soldOrder,
+      is_hidden: hidden,
       game: 'honkai-star-rail'
     }).then((res) => {
       setData(res.data.data);
@@ -60,6 +64,7 @@ function RecentOrders() {
         changeLimit={changeLimit}
         handleStatus={handleStatus}
         handleOrder={handleOrder}
+        handleHidden={handleHidden}
       />
     </Card>
   );
