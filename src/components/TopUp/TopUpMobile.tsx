@@ -144,7 +144,13 @@ export default function TopUpMobile() {
   const onSubmit = async (values, { resetForm }) => {
     const { homeNetwork, cost, seri, code } = values;
     try {
-      await topUpWithCard(homeNetwork, +cost, seri, code, token).then((res) => {
+      await topUpWithCard(
+        homeNetwork,
+        +cost,
+        seri.trim(),
+        code.trim(),
+        token
+      ).then((res) => {
         if (res.data) {
           handleSetMessage({ type: 'error', message: res.data.message });
         } else {
