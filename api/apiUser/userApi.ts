@@ -21,7 +21,7 @@ export const topUpWithCard = (
   code: string,
   token: string
 ) => {
-  return api.post(`/action-cronjob/top-up-v2`, {
+  return api.post(`/action-cronjob/top-up-v3`, {
     telco,
     amount,
     serial,
