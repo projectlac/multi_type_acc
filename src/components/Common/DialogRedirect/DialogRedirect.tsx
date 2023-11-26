@@ -22,7 +22,7 @@ function DialogRedirect({ open, handleClose }) {
         <DialogContentText id="alert-dialog-description">
           <Typography fontWeight={'bold'}>
             Hãy ib zalo 0372790362 để biết thêm thông tin chi tiết{' '}
-            <a href="https://m.me/0372790362" target="__blank">
+            <a href="https://zalo.me/0372790362" target="__blank">
               ấn vào đây
             </a>
           </Typography>
