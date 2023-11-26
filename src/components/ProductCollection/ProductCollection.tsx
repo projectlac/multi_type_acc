@@ -127,7 +127,7 @@ function ProductCollection({ action }) {
             }
           }}
         >
-          <Link href={'/topup-genshin'}>
+          <Link href={'#'} onClick={action}>
             <Box
               sx={{
                 cursor: 'pointer',
@@ -186,7 +186,7 @@ function ProductCollection({ action }) {
 
             <Divider sx={{ mt: 1, mb: 1.5 }} />
             <Box textAlign={'center'}>
-              <Link href={'/topup-genshin'}>
+              <Link href={'#'} onClick={action}>
                 <Button variant="contained" color="secondary">
                   Khám phá
                 </Button>
@@ -221,7 +221,7 @@ function ProductCollection({ action }) {
             }
           }}
         >
-          <Link href={'/code'}>
+          <Link href={'#'} onClick={action}>
             <Box
               sx={{
                 cursor: 'pointer',
@@ -280,7 +280,7 @@ function ProductCollection({ action }) {
             }
           }}
         >
-          <Link href={'/plowing'}>
+          <Link href={'#'} onClick={action}>
             <Box
               sx={{
                 cursor: 'pointer',
@@ -312,7 +312,7 @@ function ProductCollection({ action }) {
             </Typography>
             <Divider sx={{ mt: 1, mb: 1.5 }} />
             <Box textAlign={'center'}>
-              <Link href={'/plowing'}>
+              <Link href={'#'} onClick={action}>
                 <Button variant="contained" color="secondary">
                   Khám phá
                 </Button>
