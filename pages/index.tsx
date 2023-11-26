@@ -52,10 +52,7 @@ function Overview() {
     discord: ''
   });
   const [top10, setTop10] = useState<ITopUp[]>([]);
-  const [open, setOpen] = useState(true);
-  const handleCloseDialog = () => {
-    setOpen(false);
-  };
+
   useEffect(() => {
     getWebInformation().then((res) =>
       setData({
@@ -328,22 +325,6 @@ function Overview() {
           <DialogRedirect open={open1} handleClose={handleClose} />
         </Box>
       </Container>
-      <Dialog
-        fullWidth
-        maxWidth="md"
-        open={open}
-        keepMounted
-        onClose={handleCloseDialog}
-        aria-describedby="alert-dialog-slide-description"
-      >
-        <Box
-          sx={{
-            pa: 3,
-            textAlign: 'center'
-          }}
-          dangerouslySetInnerHTML={{ __html: data.description }}
-        ></Box>
-      </Dialog>
     </OverviewWrapper>
   );
 }
