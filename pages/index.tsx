@@ -101,9 +101,7 @@ function Overview() {
           textAlign={{ xs: 'center', md: 'left' }}
           justifyContent="center"
         >
-          <TitleWeb mt={2}>
-            GENSHIN & HONKAI <br /> GIÁ HUỶ DIỆT THỊ TRƯỜNG
-          </TitleWeb>
+          <TitleWeb mt={2}>GENSHIN & HONKAI</TitleWeb>
         </Box>
 
         <Grid container columnSpacing={2} rowSpacing={2}>

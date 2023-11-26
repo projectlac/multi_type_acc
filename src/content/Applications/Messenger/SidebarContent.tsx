@@ -95,7 +95,7 @@ const TabsContainerWrapper = styled(Box)(
 function SidebarContent() {
   const user = {
     name: 'Catherine Pike',
-    avatar: ' /static/images/avatars/android-chrome-512x512.png',
+    avatar: ' /static/images/avatars/LOGO.png',
     jobtitle: 'Software Developer'
   };
 
@@ -217,7 +217,7 @@ function SidebarContent() {
           <List disablePadding component="div">
             <ListItemWrapper selected>
               <ListItemAvatar>
-                <Avatar src=" /static/images/avatars/android-chrome-512x512.png" />
+                <Avatar src=" /static/images/avatars/LOGO.png" />
               </ListItemAvatar>
               <ListItemText
                 sx={{
@@ -311,7 +311,7 @@ function SidebarContent() {
           <List disablePadding component="div">
             <ListItemWrapper>
               <ListItemAvatar>
-                <Avatar src=" /static/images/avatars/android-chrome-512x512.png" />
+                <Avatar src=" /static/images/avatars/LOGO.png" />
               </ListItemAvatar>
               <ListItemText
                 sx={{
@@ -432,7 +432,7 @@ function SidebarContent() {
                 component={Link}
                 href="#"
                 alt="Remy Sharp"
-                src=" /static/images/avatars/android-chrome-512x512.png"
+                src=" /static/images/avatars/LOGO.png"
               />
             </Tooltip>
             <Tooltip arrow title="View profile for Travis Howard">

@@ -61,7 +61,7 @@ function HeaderUserbox() {
   const { logout, user: userData } = useAuth();
   const user = {
     name: 'Catherine Pike',
-    avatar: ' /static/images/avatars/android-chrome-512x512.png',
+    avatar: ' /static/images/avatars/LOGO.png',
     jobtitle: 'Admin'
   };
 

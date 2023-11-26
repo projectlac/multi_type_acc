@@ -60,7 +60,7 @@ function HeaderUserbox() {
   const { logout } = useAuth();
   const user = {
     name: 'Catherine Pike',
-    avatar: '/static/images/avatars/android-chrome-512x512.png',
+    avatar: '/static/images/avatars/LOGO.png',
     jobtitle: 'Admin'
   };
 
@@ -137,21 +137,22 @@ function HeaderUserbox() {
         <List sx={{ p: 1 }} component="nav">
           {userData.role !== 'USER' && (
             <>
-              {
-                userData && userData?.role === 'NEWS' ? (<NextLink href="/management/news" passHref>
+              {userData && userData?.role === 'NEWS' ? (
+                <NextLink href="/management/news" passHref>
                   <ListItem button>
                     <AccountTreeTwoToneIcon fontSize="small" />
                     <ListItemText primary="Quản lý" />
                   </ListItem>
-                </NextLink>) : (<NextLink href="/dashboards" passHref>
+                </NextLink>
+              ) : (
+                <NextLink href="/dashboards" passHref>
                   <ListItem button>
                     <AccountTreeTwoToneIcon fontSize="small" />
                     <ListItemText primary="Quản lý" />
                   </ListItem>
-                </NextLink>)
-              }
+                </NextLink>
+              )}
             </>
-
           )}
           {userData.role && (
             <NextLink href="/history" passHref>

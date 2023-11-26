@@ -3,7 +3,7 @@ import { Grid, Typography } from '@mui/material';
 function PageHeader() {
   const user = {
     name: 'Catherine Pike',
-    avatar: ' /static/images/avatars/android-chrome-512x512.png'
+    avatar: ' /static/images/avatars/LOGO.png'
   };
   return (
     <Grid container justifyContent="space-between" alignItems="center">

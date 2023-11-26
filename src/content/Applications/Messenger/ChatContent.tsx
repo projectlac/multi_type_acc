@@ -48,7 +48,7 @@ const CardWrapperSecondary = styled(Card)(
 function ChatContent() {
   const user = {
     name: 'Catherine Pike',
-    avatar: ' /static/images/avatars/android-chrome-512x512.png'
+    avatar: ' /static/images/avatars/LOGO.png'
   };
 
   return (
