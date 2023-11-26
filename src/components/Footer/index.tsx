@@ -1,6 +1,8 @@
 import { Box, Container, Grid, styled, Typography } from '@mui/material';
 import Link from 'next/link';
 import TitleSpecial from '../Common/TitleSpecial';
+import DialogRedirect from '../Common/DialogRedirect/DialogRedirect';
+import { useState } from 'react';
 
 const FooterWrapper = styled(Box)(
   ({ theme }) => `
@@ -11,6 +13,15 @@ const FooterWrapper = styled(Box)(
 );
 
 function Footer() {
+  const [open1, setOpen1] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen1(true);
+  };
+
+  const handleClose = () => {
+    setOpen1(false);
+  };
   return (
     <FooterWrapper className="footer-wrapper">
       <Box
@@ -37,7 +48,7 @@ function Footer() {
             >
               Về chúng tôi
             </Typography>
-            <p className="footer-p">
+            {/* <p className="footer-p">
               Shop GenshinViet.com luôn đáp ứng nhu cầu, niềm tin tưởng của
               khách hàng khi muốn tìm 1 Account chất lượng để trải nghiệm tựa
               game Genshin Impact với tiêu chí: <br />
@@ -46,7 +57,7 @@ function Footer() {
             <p className="footer-p">
               Chúng tôi với đội ngũ chuyên nghiệp, luôn hỗ trợ khách hàng nhanh
               chóng hiệu quả
-            </p>
+            </p> */}
           </Grid>
 
           <Grid item md={4} xs={12}>
@@ -68,19 +79,20 @@ function Footer() {
               >
                 Sản phẩm và dịch vụ
               </Typography>
-              <p className="footer-p">
-                <Link href={'/account/vip'}>ACC VIP</Link>
+              <p className="footer-p" onClick={handleClickOpen}>
+                <Link href={'#'}>ACC VIP</Link>
               </p>
 
-              <p className="footer-p">
-                <Link href={'/account/reroll'}>ACC REROLL</Link>
+              <p className="footer-p" onClick={handleClickOpen}>
+                <Link href={'#'}>ACC REROLL</Link>
               </p>
-              <p className="footer-p">
-                <Link href={'/account/random'}>ACC RANDOM</Link>
+              <p className="footer-p" onClick={handleClickOpen}>
+                <Link href={'#'}>ACC RANDOM</Link>
               </p>
-              <p className="footer-p">
-                <Link href={'/topup-genshin'}>NẠP GAME</Link>
+              <p className="footer-p" onClick={handleClickOpen}>
+                <Link href={'#'}>NẠP GAME</Link>
               </p>
+              <DialogRedirect open={open1} handleClose={handleClose} />
               {/* <p className="footer-p">
                 <Link href={'/shop'}>SHOP PHỤ KIỆN</Link>
               </p> */}

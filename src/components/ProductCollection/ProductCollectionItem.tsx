@@ -12,13 +12,15 @@ interface ICollectionItemProps {
   title: string;
   data: IAll;
   image: string;
+  action: () => void;
   url?: string;
 }
 function ProductCollectionItem({
   data,
   title,
   url,
-  image
+  image,
+  action
 }: ICollectionItemProps) {
   const router = useRouter();
   return (
@@ -41,8 +43,9 @@ function ProductCollectionItem({
     >
       <Box
         onClick={() => {
-          localStorage.removeItem('filter');
-          router.push(url);
+          // localStorage.removeItem('filter');
+          // router.push(url);
+          action();
         }}
         sx={{
           cursor: 'pointer',
@@ -92,8 +95,9 @@ function ProductCollectionItem({
           sx={{ cursor: 'pointer' }}
           component={'h2'}
           onClick={() => {
-            localStorage.removeItem('filter');
-            router.push(url);
+            action();
+            // localStorage.removeItem('filter');
+            // router.push(url);
           }}
         >
           {title}
@@ -135,8 +139,9 @@ function ProductCollectionItem({
         <Box textAlign={'center'}>
           <Box
             onClick={() => {
-              localStorage.removeItem('filter');
-              router.push(url);
+              action();
+              // localStorage.removeItem('filter');
+              // router.push(url);
             }}
             sx={{ cursor: 'pointer' }}
           >

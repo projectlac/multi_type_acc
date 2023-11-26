@@ -2,6 +2,8 @@ import bg from '@/assets/images/da-ban.png';
 import formatMoney from '@/utility/formatMoney';
 import { Box, Card, Divider, Grid, Typography } from '@mui/material';
 import { ITag } from 'model/item';
+import imageTrailer from '@/assets/images/change/trailer.jpg';
+
 import Link from 'next/link';
 interface IProps {
   title: string;
@@ -74,7 +76,7 @@ function Items({
           className={`${isSold ? 'disable-link' : ''} eff`}
           sx={{
             height: '175px',
-            background: `url(${imageUrl})`,
+            background: `url(${imageTrailer})`,
             width: '100%',
             backgroundSize: '100% 100%',
             borderRadius: '5px',

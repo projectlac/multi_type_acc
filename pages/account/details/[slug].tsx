@@ -12,13 +12,14 @@ import {
 } from '@mui/material';
 import { buyAccount, getAccountBySlug } from 'api/apiAccount/account';
 import Head from 'next/head';
-
+import imageTrailer from '@/assets/images/change/trailer.jpg';
 import { useRouter } from 'next/router';
 import { ReactElement, useEffect, useRef, useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 import LinearProgress from '@mui/material/LinearProgress';
+import Link from 'next/link';
 interface IDetail {
   ar_level: string;
   server: string;
@@ -358,14 +359,16 @@ function DetailAccout() {
             </Box>
 
             <div>
-              <Box
-                sx={{
-                  background: `url(${data?.images})   center center /contain no-repeat`,
-                  width: { xs: '100%', md: '1052px' },
-                  height: { xs: '250px', md: '720px' },
-                  margin: ' 0 auto'
-                }}
-              ></Box>
+              <a href={data?.images} target="__blank">
+                <Box
+                  sx={{
+                    background: `url(${imageTrailer})   center center /contain no-repeat`,
+                    width: { xs: '100%', md: '1052px' },
+                    height: { xs: '250px', md: '720px' },
+                    margin: ' 0 auto'
+                  }}
+                ></Box>
+              </a>
             </div>
           </Slider>
         </Box>

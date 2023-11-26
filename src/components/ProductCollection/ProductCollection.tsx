@@ -1,14 +1,14 @@
-import random from '@/assets/images/mainCategory/310172264_428812392669349_4896007792527675904_n.webp';
-import napgame from '@/assets/images/mainCategory/310320905_485170040201744_4282135316084233675_n.webp';
-import rrr from '@/assets/images/mainCategory/310545249_770219224063920_253246776766894058_n.webp';
-import newHsr from '@/assets/images/mainCategory/ACCKHOIDAU.webp';
-import codegame from '@/assets/images/mainCategory/CODE.jpg';
-import caythue from '@/assets/images/mainCategory/CT.jpg';
-import rerollHsr from '@/assets/images/mainCategory/accreroll.webp';
-import hsr from '@/assets/images/mainCategory/accvip.webp';
+import random from '@/assets/images/change/ran.jpg';
+import napgame from '@/assets/images/change/THETHANG.jpg';
+import rrr from '@/assets/images/change/roll.jpg';
+import newHsr from '@/assets/images/change/newhrs.jpg';
+import codegame from '@/assets/images/change/CODEPRIME.jpg';
+import caythue from '@/assets/images/change/cay.jpg';
+import rerollHsr from '@/assets/images/change/REROLL HSR.jpg';
+import hsr from '@/assets/images/change/viphrs.jpg';
 
-import bgVip from '@/assets/images/mainCategory/310860207_1164961827704035_4343141035597341049_n.webp';
-import news from '@/assets/images/mainCategory/9bf1a5932675ff2ba664.webp';
+import bgVip from '@/assets/images/change/vip.jpg';
+import news from '@/assets/images/change/kd.jpg';
 
 import { Box, Button, Card, Divider, Grid, Typography } from '@mui/material';
 import { getDepositHome, getInfoAllAccount } from 'api/apiAccount/account';
@@ -24,7 +24,7 @@ interface IAll {
   type: string;
   gameSlug: string;
 }
-function ProductCollection() {
+function ProductCollection({ action }) {
   const [dataAccVip, setDataAccVip] = useState<IAll>();
   const [dataAccRandom, setDataAccRandom] = useState<IAll>();
   const [dataAccReroll, setDataAccReroll] = useState<IAll>();
@@ -87,6 +87,7 @@ function ProductCollection() {
       </Grid>
       <Grid item md={3} sm={6} xs={12}>
         <ProductCollectionItem
+          action={action}
           title="Acc Vip"
           url="/account/genshin-impact/vip"
           image={bgVip}
@@ -95,6 +96,7 @@ function ProductCollection() {
       </Grid>
       <Grid item md={3} sm={6} xs={12}>
         <ProductCollectionItem
+          action={action}
           title="Acc Khởi Đầu"
           url="/account/genshin-impact/new"
           image={news}
@@ -103,6 +105,7 @@ function ProductCollection() {
       </Grid>
       <Grid item md={3} sm={6} xs={12}>
         <ProductCollectionItem
+          action={action}
           title="Acc Reroll"
           url="/account/genshin-impact/reroll"
           image={rrr}
@@ -111,6 +114,7 @@ function ProductCollection() {
       </Grid>
       <Grid item md={3} sm={6} xs={12}>
         <ProductCollectionItem
+          action={action}
           title="Acc Random"
           url="/account/genshin-impact/random"
           image={random}
@@ -239,6 +243,7 @@ function ProductCollection() {
       </Grid>
       {/* <Grid item md={3} sm={6} xs={12}>
         <ProductCollectionItem
+        action={action}
           title="Shop phụ kiện"
           url="/shop"
           image={shopphukien}
@@ -377,6 +382,7 @@ function ProductCollection() {
       </Grid>
       <Grid item md={3} sm={6} xs={12}>
         <ProductCollectionItem
+          action={action}
           title="HSR VIP"
           url="/account/honkai-star-rail/vip"
           image={hsr}
@@ -385,6 +391,7 @@ function ProductCollection() {
       </Grid>
       <Grid item md={3} sm={6} xs={12}>
         <ProductCollectionItem
+          action={action}
           title="HSR Khởi đầu"
           url="/account/honkai-star-rail/new"
           image={newHsr}
@@ -393,6 +400,7 @@ function ProductCollection() {
       </Grid>
       <Grid item md={3} sm={6} xs={12}>
         <ProductCollectionItem
+          action={action}
           title="HSR Reroll"
           url="/account/honkai-star-rail/reroll"
           image={rerollHsr}

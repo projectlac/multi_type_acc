@@ -1,4 +1,4 @@
-import bg from '@/assets/images/genshin-impact-nawpic.webp';
+import bg from '@/assets/images/change/4k.jpg';
 import Footer from '@/components/Footer';
 import { useAuth } from '@/contexts/AuthGuard';
 import CloseIcon from '@mui/icons-material/Close';
@@ -12,6 +12,7 @@ import Image from 'next/image';
 import Zalo from '@/assets/images/zalogo-png.png';
 // import MessengerChat from 'react-messenger-customer-chat';
 import HeaderUserbox from './Userbox';
+import DialogRedirect from '@/components/Common/DialogRedirect/DialogRedirect';
 interface BaseLayoutProps {
   children?: ReactNode;
 }
@@ -32,6 +33,7 @@ const FullBG = styled(Box)({
   overflow: 'auto',
   flex: '1',
   overflowX: 'hidden',
+  backgroundSize: 'cover',
   backgroundAttachment: 'fixed'
 });
 const MobileMenu = styled(Box)({
@@ -69,7 +71,15 @@ const MobileMenu = styled(Box)({
 });
 const BaseLayout: FC<BaseLayoutProps> = ({ children }) => {
   const { isAuthenticated } = useAuth();
+  const [open1, setOpen1] = useState(false);
 
+  const handleClickOpen = () => {
+    setOpen1(true);
+  };
+
+  const handleClose = () => {
+    setOpen1(false);
+  };
   const [open, setOpen] = useState<boolean>(false);
 
   return (
@@ -115,20 +125,21 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children }) => {
                 <li>
                   <Link href={'/'}>Trang chủ</Link>
                 </li>
-                <li>
-                  <Link href={'/topup'}>Nạp tiền</Link>
+                <li onClick={handleClickOpen}>
+                  <Link href={'#'}>Nạp tiền</Link>
                 </li>
-                <li>
-                  <Link href={'/topup-genshin'}>Nạp game</Link>
+                <li onClick={handleClickOpen}>
+                  <Link href={'#'}>Nạp game</Link>
                 </li>
-                <li>
-                  <Link href={'/reputation'}>Check uy tín</Link>
+                <li onClick={handleClickOpen}>
+                  <Link href={'#'}>Check uy tín</Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link href={'/news'}>Thông tin Shop</Link>
-                </li>
+                </li> */}
               </ul>
             </Box>
+            <DialogRedirect open={open1} handleClose={handleClose} />
             <Box sx={{ display: { xs: 'block', md: 'none' } }}>
               <MenuIcon
                 sx={{
@@ -157,9 +168,9 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children }) => {
                   <li>
                     <Link href={'/reputation'}>Check uy tín</Link>
                   </li>
-                  <li>
+                  {/* <li>
                     <Link href={'/news'}>Thông tin Shop</Link>
-                  </li>
+                  </li> */}
                   <li>
                     <Link
                       href={'https://www.facebook.com/nguyenhung208/'}

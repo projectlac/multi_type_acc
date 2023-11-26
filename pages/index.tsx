@@ -1,8 +1,13 @@
 import {
   Box,
+  Button,
   Card,
   Container,
   Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
   Divider,
   Grid,
   styled,
@@ -19,6 +24,10 @@ import formatMoney from '@/utility/formatMoney';
 import { getTop10 } from 'api/apiDeposit/account';
 import { getWebInformation } from 'api/auth';
 import Marquee from 'react-fast-marquee';
+import DialogRedirect from '@/components/Common/DialogRedirect/DialogRedirect';
+import bgWeb from '@/assets/images/change/bgWeb.jpg';
+
+import Image from 'next/image';
 
 const OverviewWrapper = styled(Box)(
   () => `
@@ -33,6 +42,15 @@ interface ITopUp {
   sum: string;
 }
 function Overview() {
+  const [open1, setOpen1] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen1(true);
+  };
+
+  const handleClose = () => {
+    setOpen1(false);
+  };
   const [data, setData] = useState({
     description: '',
     youtube: '',
@@ -89,7 +107,7 @@ function Overview() {
           justifyContent="center"
         >
           <TitleWeb mt={2}>
-            SHOP GENSHIN & HONKAI <br /> GIÁ HUỶ DIỆT THỊ TRƯỜNG
+            GENSHIN & HONKAI <br /> GIÁ HUỶ DIỆT THỊ TRƯỜNG
           </TitleWeb>
         </Box>
 
@@ -203,7 +221,15 @@ function Overview() {
               }}
             >
               <LazyLoad height={900}>
-                <iframe
+                <Image
+                  src={bgWeb}
+                  width="1500"
+                  height="900"
+                  objectFit="cover"
+                  layout="fill"
+                  objectPosition={'left'}
+                ></Image>
+                {/* <iframe
                   width="1500"
                   height="900"
                   src={`https://www.youtube.com/embed/${data.youtube}`}
@@ -211,7 +237,7 @@ function Overview() {
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
-                ></iframe>
+                ></iframe> */}
               </LazyLoad>
             </Box>
           </Grid>
@@ -305,7 +331,8 @@ function Overview() {
         </Grid>
 
         <Box py={3} mt={5}>
-          <ProductCollection></ProductCollection>
+          <ProductCollection action={handleClickOpen}></ProductCollection>
+          <DialogRedirect open={open1} handleClose={handleClose} />
         </Box>
       </Container>
       <Dialog
