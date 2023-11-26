@@ -1,17 +1,17 @@
-import random from '@/assets/images/change/ran.jpg';
-import napgame from '@/assets/images/change/THETHANG.jpg';
-import rrr from '@/assets/images/change/roll.jpg';
-import newHsr from '@/assets/images/change/newhrs.jpg';
 import codegame from '@/assets/images/change/CODEPRIME.jpg';
-import caythue from '@/assets/images/change/cay.jpg';
 import rerollHsr from '@/assets/images/change/REROLL HSR.jpg';
+import napgame from '@/assets/images/change/THETHANG.jpg';
+import caythue from '@/assets/images/change/cay.jpg';
+import newHsr from '@/assets/images/change/newhrs.jpg';
+import random from '@/assets/images/change/ran.jpg';
+import rrr from '@/assets/images/change/roll.jpg';
 import hsr from '@/assets/images/change/viphrs.jpg';
 
-import bgVip from '@/assets/images/change/vip.jpg';
 import news from '@/assets/images/change/kd.jpg';
+import bgVip from '@/assets/images/change/vip.jpg';
 
 import { Box, Button, Card, Divider, Grid, Typography } from '@mui/material';
-import { getDepositHome, getInfoAllAccount } from 'api/apiAccount/account';
+import { getInfoAllAccount } from 'api/apiAccount/account';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
@@ -29,15 +29,9 @@ function ProductCollection({ action }) {
   const [dataAccRandom, setDataAccRandom] = useState<IAll>();
   const [dataAccReroll, setDataAccReroll] = useState<IAll>();
   const [dataAccNew, setDataAccNew] = useState<IAll>();
-  const [dataProduct, setDataProduct] = useState<IAll>();
   const [dataHsr, setDataHsr] = useState<IAll>();
   const [dataNewHsr, setDataNewHsr] = useState<IAll>();
   const [dataRerollHsr, setDataRerollHsr] = useState<IAll>();
-  const [dataRandomHsr, setDataRandomHsr] = useState<IAll>();
-  const [dataDeposit, setDataDeposit] = useState<any>({
-    pending: 0,
-    success: 0
-  });
 
   const gianDoi = (data, number) => {
     let temp = { ...data };
@@ -58,17 +52,12 @@ function ProductCollection({ action }) {
           setDataAccRandom(gianDoi(d, 103));
         if (d.type === 'NEW' && d.gameSlug === 'genshin-impact')
           setDataAccNew(gianDoi(d, 1346));
-        if (d.type === 'PRODUCT') setDataProduct(gianDoi(d, 209));
+
         if (d.type === 'NEW' && d.gameSlug === 'honkai-star-rail')
           setDataNewHsr(d);
         if (d.type === 'REROLL' && d.gameSlug === 'honkai-star-rail')
           setDataRerollHsr(d);
-        if (d.type === 'RANDOM' && d.gameSlug === 'honkai-star-rail')
-          setDataRandomHsr(d);
       });
-    });
-    getDepositHome().then((res) => {
-      setDataDeposit(res.data);
     });
   }, []);
   return (
@@ -194,42 +183,7 @@ function ProductCollection({ action }) {
             >
               Nạp Genshin & HSR
             </Typography>
-            <Divider sx={{ my: 1 }} />
-            <Grid container columnSpacing={1.5}>
-              <Grid item md={6} xs={6}>
-                <Typography fontSize={15} fontWeight="600" component={'h5'}>
-                  Yêu cầu <br />{' '}
-                  <span
-                    style={{
-                      fontSize: '17px',
-                      fontWeight: 'bold',
-                      color: '#d33'
-                    }}
-                  >
-                    {dataDeposit.pending}
-                  </span>
-                </Typography>
-              </Grid>
-              <Grid item md={6} xs={6}>
-                <Typography
-                  fontSize={15}
-                  fontWeight="600"
-                  textAlign="right"
-                  component={'h5'}
-                >
-                  Thành công <br />
-                  <span
-                    style={{
-                      fontSize: '17px',
-                      fontWeight: 'bold',
-                      color: '#d33'
-                    }}
-                  >
-                    {dataDeposit.success + 10}
-                  </span>
-                </Typography>
-              </Grid>
-            </Grid>
+
             <Divider sx={{ mt: 1, mb: 1.5 }} />
             <Box textAlign={'center'}>
               <Link href={'/topup-genshin'}>
@@ -297,8 +251,8 @@ function ProductCollection({ action }) {
             >
               Code Game
             </Typography>
-            <Divider sx={{ mt: 1, mb: 8 }} />
-            <Divider sx={{ mt: 1, mb: 1 }} />
+
+            <Divider sx={{ mt: 1, mb: 1.5 }} />
             <Box textAlign={'center'}>
               <Link href={'/code'}>
                 <Button variant="contained" color="secondary">
@@ -356,8 +310,7 @@ function ProductCollection({ action }) {
             >
               Cày thuê
             </Typography>
-            <Divider sx={{ mt: 1, mb: 8 }} />
-            <Divider sx={{ mt: 1, mb: 1 }} />
+            <Divider sx={{ mt: 1, mb: 1.5 }} />
             <Box textAlign={'center'}>
               <Link href={'/plowing'}>
                 <Button variant="contained" color="secondary">

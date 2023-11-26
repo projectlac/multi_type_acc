@@ -102,39 +102,7 @@ function ProductCollectionItem({
         >
           {title}
         </Typography>
-        <Divider sx={{ my: 1 }} />
-        <Grid container columnSpacing={1.5}>
-          <Grid item md={6} xs={6}>
-            <Typography fontSize={15} fontWeight="600" component={'h5'}>
-              {data?.type === 'PRODUCT' ? 'Số sản phẩm' : 'Số tài khoản '}
-              <br />
-              <span
-                style={{ fontSize: '17px', fontWeight: 'bold', color: '#d33' }}
-              >
-                {data?.inStock ? (
-                  <CountUp end={+data?.inStock} duration={1} />
-                ) : (
-                  0
-                )}
-              </span>
-            </Typography>
-          </Grid>
-          <Grid item md={6} xs={6}>
-            <Typography
-              fontSize={15}
-              fontWeight="600"
-              textAlign="right"
-              component={'h5'}
-            >
-              Đã bán <br />
-              <span
-                style={{ fontSize: '17px', fontWeight: 'bold', color: '#d33' }}
-              >
-                {data?.sold ? <CountUp end={+data?.sold} duration={1} /> : 0}
-              </span>
-            </Typography>
-          </Grid>
-        </Grid>
+
         <Divider sx={{ mt: 1, mb: 1.5 }} />
         <Box textAlign={'center'}>
           <Box
