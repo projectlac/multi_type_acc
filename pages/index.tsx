@@ -1,31 +1,26 @@
+import bgWeb from '@/assets/images/change/bgWeb.jpg';
+import DialogRedirect from '@/components/Common/DialogRedirect/DialogRedirect';
+import OgTag from '@/components/Common/OgTag';
+import TitleWeb from '@/components/Common/TitleWeb';
+import ProductCollection from '@/components/ProductCollection/ProductCollection';
+import formatMoney from '@/utility/formatMoney';
 import {
   Box,
-  Button,
   Card,
   Container,
   Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
   Divider,
   Grid,
   styled,
   Typography
 } from '@mui/material';
-import { ReactElement, useEffect, useState } from 'react';
-import BaseLayout from 'src/layouts/BaseLayout';
-import LazyLoad from 'react-lazyload';
-import Head from 'next/head';
-import OgTag from '@/components/Common/OgTag';
-import TitleWeb from '@/components/Common/TitleWeb';
-import ProductCollection from '@/components/ProductCollection/ProductCollection';
-import formatMoney from '@/utility/formatMoney';
 import { getTop10 } from 'api/apiDeposit/account';
 import { getWebInformation } from 'api/auth';
+import Head from 'next/head';
+import { ReactElement, useEffect, useState } from 'react';
 import Marquee from 'react-fast-marquee';
-import DialogRedirect from '@/components/Common/DialogRedirect/DialogRedirect';
-import bgWeb from '@/assets/images/change/bgWeb.jpg';
+import LazyLoad from 'react-lazyload';
+import BaseLayout from 'src/layouts/BaseLayout';
 
 import Image from 'next/image';
 
