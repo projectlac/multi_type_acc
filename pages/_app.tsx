@@ -2,6 +2,7 @@ import type { ReactElement, ReactNode } from 'react';
 
 import '@/assets/styles/global.scss';
 import { AuthProvider } from '@/contexts/AuthGuard';
+import Maintenance from '@/layouts/Maintenace';
 import { CacheProvider, EmotionCache } from '@emotion/react';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
@@ -15,8 +16,6 @@ import 'nprogress/nprogress.css';
 import { SidebarProvider } from 'src/contexts/SidebarContext';
 import createEmotionCache from 'src/createEmotionCache';
 import ThemeProvider from 'src/theme/ThemeProvider';
-import Script from 'next/script';
-import Maintenance from '@/layouts/Maintenace';
 const clientSideEmotionCache = createEmotionCache();
 
 type NextPageWithLayout = NextPage & {

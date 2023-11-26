@@ -1,5 +1,5 @@
 import React from 'react';
-import img from 'src/assets/images/310223374_1734544413588410_4745229975174853381_n.jpg';
+import img from 'src/assets/images/change/BANNER.jpg';
 import imgFavicon from '/public/static/favicon_io/favicon.ico';
 interface IOG {
   title: string;
@@ -13,20 +13,14 @@ function OgTag({ title, description }: IOG) {
       <meta
         property="og:description"
         content={
-          description
-            ? description
-            : `Shop Genshin, Honkai Star Rail Của Người Việt Uy Tín Giá Rẻ Nhất Thị Trường Việt Nam. 
-            Acc Genshin Trắng Thông Tin,Cam Kết Bảo Hành Acc Trọn Đời. shop acc genshin, acc genshin uy tín,acc genshin, định giá acc genshin`
+          description ? description : `Genshinviet.com uy tín hàng đầu Việt Nam`
         }
       />
       <meta
         name="description"
         key="desc"
         content={
-          description
-            ? description
-            : `Shop Genshin, Honkai Star Rail Của Người Việt Uy Tín Giá Rẻ Nhất Thị Trường Việt Nam. 
-            Acc Genshin Trắng Thông Tin,Cam Kết Bảo Hành Acc Trọn Đời. shop acc genshin, acc genshin uy tín,acc genshin, định giá acc genshin`
+          description ? description : `Genshinviet.com uy tín hàng đầu Việt Nam`
         }
       />
 
@@ -43,8 +37,7 @@ function OgTag({ title, description }: IOG) {
       <meta property="og:image:height" content="300" />
       <meta
         property="og:image:alt"
-        content={`Shop Genshin, Honkai Star Rail Của Người Việt Uy Tín Giá Rẻ Nhất Thị Trường Việt Nam. 
-            Acc Genshin Trắng Thông Tin,Cam Kết Bảo Hành Acc Trọn Đời. shop acc genshin, acc genshin uy tín,acc genshin, định giá acc genshin`}
+        content={`Genshinviet.com uy tín hàng đầu Việt Nam`}
       />
     </>
   );
