@@ -1,4 +1,4 @@
-import image from '@/assets/images/loginImage.jpg';
+import image from '@/assets/images/change/BANNER.jpg';
 import useCustomForm from '@/components/Common/Form/Form';
 import {
   Box,

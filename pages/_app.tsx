@@ -57,12 +57,12 @@ function TokyoApp(props: TokyoAppProps) {
               ) : (
                 <Maintenance />
               )}
-              <div id="histats_counter"></div>
-              <Script
+
+              {/* <Script
                 strategy="lazyOnload"
                 src={`https://www.googletagmanager.com/gtag/js?id=G-QKWZFM4WFR`}
-              />
-
+              /> */}
+              {/* 
               <Script strategy="lazyOnload" id="">
                 {`
                   window.dataLayer = window.dataLayer || [];
@@ -71,9 +71,9 @@ function TokyoApp(props: TokyoAppProps) {
 
                   gtag('config', 'G-QKWZFM4WFR');
                 `}
-              </Script>
+              </Script> */}
 
-              <Script strategy="lazyOnload" id="">
+              {/* <Script strategy="lazyOnload" id="">
                 {`
                  window.dataLayer = window.dataLayer || [];
                  function gtag(){dataLayer.push(arguments);}
@@ -87,7 +87,7 @@ function TokyoApp(props: TokyoAppProps) {
                 id=""
                 async
                 src="https://www.googletagmanager.com/gtag/js?id=AW-11172811540"
-              ></Script>
+              ></Script> */}
             </LocalizationProvider>
           </ThemeProvider>
         </SidebarProvider>
