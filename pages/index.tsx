@@ -37,7 +37,7 @@ interface ITopUp {
   sum: string;
 }
 function Overview() {
-  const [open1, setOpen1] = useState(false);
+  const [open1, setOpen1] = useState(true);
 
   const handleClickOpen = () => {
     setOpen1(true);

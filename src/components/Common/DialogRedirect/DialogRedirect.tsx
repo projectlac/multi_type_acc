@@ -5,10 +5,10 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
-  Typography,
-} from "@mui/material";
-import React from "react";
-import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+  Typography
+} from '@mui/material';
+import React from 'react';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 function DialogRedirect({ open, handleClose }) {
   return (
     <Dialog
@@ -17,48 +17,75 @@ function DialogRedirect({ open, handleClose }) {
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
     >
-      <DialogTitle id="alert-dialog-title">{"Thông báo"}</DialogTitle>
+      <DialogTitle id="alert-dialog-title" sx={{ fontSize: 20 }}>
+        {'Thông báo'}
+      </DialogTitle>
       <DialogContent>
         <DialogContentText id="alert-dialog-description">
-          <Typography fontWeight={"bold"} color={"red"}>
-            Thông Báo
+          <Typography
+            fontWeight={'bold'}
+            color={'black'}
+            sx={{ span: { color: 'red', textTransform: 'uppercase' } }}
+          >
+            Web vẫn <span>hoạt động bình thường</span> vui lòng hãy liên hệ
+            admin:
           </Typography>
           <Typography
-            fontWeight={"bold"}
-            color={"red"}
-            sx={{ span: { textTransform: "uppercase" } }}
-          >
-            Web vẫn <span>hoạt động bình thường</span>{" "}
-            vui lòng hãy liên hệ admin:
-          </Typography>
+            fontWeight={'bold'}
+            color={'red'}
+            sx={{
+              span: { textTransform: 'uppercase' },
+              display: 'flex',
+              flexWrap: 'wrap',
+              alignItems: 'center',
 
+              a: { mx: 0.5, textTransform: 'uppercase' },
+              p: { mb: 0 }
+            }}
+          >
+            <PlayArrowIcon />
+            <p>
+              Nếu sử dụng <span>zalo</span> hãy liên hệ admin ấn vào đây{' '}
+              <a href="https://zalo.me/0372790362" target="__blank">
+                ấn vào đây
+              </a>
+            </p>
+          </Typography>
           <Typography
-            fontWeight={"bold"}
-            color={"red"}
-            sx={{ span: { textTransform: "uppercase" } }}
+            fontWeight={'bold'}
+            color={'red'}
+            sx={{
+              span: { textTransform: 'uppercase' },
+              display: 'flex',
+              flexWrap: 'wrap',
+              alignItems: 'center',
+
+              a: { mx: 0.5, textTransform: 'uppercase' }
+            }}
           >
-            <PlayArrowIcon /> Nếu sử dụng <span>zalo</span>{" "}
-            hãy liên hệ admin ấn vào đây{" "}
-            <a href="https://zalo.me/0372790362" target="__blank">
-              ấn vào đây
-            </a>
+            <PlayArrowIcon />
+            <p style={{ margin: 0 }}>
+              Nếu các bạn sử dụng <span>facebook</span> hãy{' '}
+              <a href="https://www.facebook.com/nguyenhung208" target="__blank">
+                ấn vào đây
+              </a>{' '}
+              để liên hệ admin
+            </p>
           </Typography>
+          <hr />
           <Typography
-            fontWeight={"bold"}
-            color={"red"}
-            sx={{ span: { textTransform: "uppercase" } }}
+            fontWeight={'600'}
+            sx={{
+              span: { textTransform: 'uppercase' },
+              textAlign: 'center',
+              a: { mx: 0.5, textTransform: 'uppercase' },
+              p: { mb: 0 }
+            }}
           >
-            <PlayArrowIcon /> Nếu các bạn sử dụng <span>facebook</span> hãy{" "}
-            <a href="https://www.facebook.com/nguyenhung208" target="__blank">
-              ấn vào đây
-            </a>{" "}
-            để liên hệ admin
+            Lưu ý: <br /> Web vẫn hoạt động bình thường, <br /> các bạn hãy liên
+            hệ admin để biết thêm thông tin chi tiết <br />
+            Cảm ơn các bạn và rất xin lỗi vì sự bất tiện này ❤
           </Typography>
-
-          Lưu ý : Web vẫn hoạt động bình thường các bạn hãy liên hệ admin để
-          biết thêm thông tin chi tiết
-
-          Cảm ơn các bạn và rất xin lỗi vì sự bất tiện này ❤
         </DialogContentText>
       </DialogContent>
       <DialogActions>
