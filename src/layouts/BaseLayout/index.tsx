@@ -6,7 +6,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { Box, Container, styled } from '@mui/material';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
-// import MessengerChat from 'react-messenger-customer-chat';
+import MessengerChat from 'react-messenger-customer-chat';
 import { FC, ReactNode, useState } from 'react';
 import Image from 'next/image';
 import Zalo from '@/assets/images/zalogo-png.png';
@@ -106,7 +106,7 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children }) => {
               <ul style={{ padding: 0 }}>
                 <li style={{ marginLeft: 0 }}>
                   <Link
-                    href={'https://www.facebook.com/nguyenhung208/'}
+                    href={'https://m.me/122101845332012058'}
                     target={'__blank'}
                   >
                     <a target="_blank">Hỗ trợ KH </a>
@@ -188,7 +188,7 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children }) => {
       </Header>
       <FullBG>
         {children}
-        {/* <MessengerChat pageId="122101845332012058" language="vi_VN" /> */}
+        <MessengerChat pageId="122101845332012058" language="vi_VN" />
         <Box
           sx={{
             width: 90,
