@@ -82,6 +82,25 @@ a {
   }
 }
 
+@keyframes color-change {
+  0% {
+    color: red;
+  }
+
+  50% {
+    color: #27ae60;
+  }
+}
+
+@-webkit-keyframes color-change {
+  0% {
+    color: red;
+  }
+  50% {
+    color: #27ae60;
+  }
+}
+
 @-webkit-keyframes ring {
   0% {
     -webkit-transform: rotateZ(0);
@@ -344,7 +363,7 @@ a {
     width: 300px;
     height: 300px;
     border-radius: 50%;
- 
+
     box-shadow: 0 4px 9px 0 rgba(0, 0, 0, 0.1);
     position: relative;
     &__inner {
@@ -524,4 +543,6 @@ a {
   }
 }
 
-#histats_counter{display: hidden;}
+#histats_counter {
+  display: hidden;
+}

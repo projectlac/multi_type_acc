@@ -19,7 +19,15 @@ function DialogRedirect({ open, handleClose }) {
       fullWidth
       maxWidth="sm"
     >
-      <DialogTitle id="alert-dialog-title" sx={{ fontSize: 20 }}>
+      <DialogTitle
+        id="alert-dialog-title"
+        sx={{
+          fontSize: 20,
+          fontWeight: 'bold',
+          color: 'red',
+          animation: 'color-change infinite 0.5s'
+        }}
+      >
         {'Thông báo'}
       </DialogTitle>
       <DialogContent>
@@ -27,11 +35,19 @@ function DialogRedirect({ open, handleClose }) {
           <Typography
             fontWeight={'bold'}
             color={'black'}
-            sx={{ span: { color: 'red', textTransform: 'uppercase' } }}
+            sx={{
+              span: { color: 'red', textTransform: 'uppercase' },
+              a: {
+                color: 'red',
+                textTransform: 'uppercase',
+                animation: 'color-change infinite 0.5s'
+              }
+            }}
           >
             Web vẫn <span>hoạt động bình thường</span> vui lòng{' '}
             <a href="https://genshinviet.com.vn/">ấn vào đây</a>
           </Typography>
+          <br />
           <Typography
             fontWeight={'bold'}
             color={'red'}
@@ -41,7 +57,11 @@ function DialogRedirect({ open, handleClose }) {
               flexWrap: 'wrap',
               alignItems: 'center',
 
-              a: { mx: 0.5, textTransform: 'uppercase' },
+              a: {
+                mx: 0.5,
+                textTransform: 'uppercase',
+                animation: 'color-change infinite 0.5s'
+              },
               p: { mb: 0 }
             }}
           >
@@ -67,7 +87,11 @@ function DialogRedirect({ open, handleClose }) {
               flexWrap: 'wrap',
               alignItems: 'center',
 
-              a: { mx: 0.5, textTransform: 'uppercase' },
+              a: {
+                mx: 0.5,
+                textTransform: 'uppercase',
+                animation: 'color-change infinite 0.5s'
+              },
               p: { mb: 0 }
             }}
           >
@@ -89,7 +113,11 @@ function DialogRedirect({ open, handleClose }) {
               flexWrap: 'wrap',
               alignItems: 'center',
               p: { mb: 0 },
-              a: { mx: 0.5, textTransform: 'uppercase' }
+              a: {
+                mx: 0.5,
+                textTransform: 'uppercase',
+                animation: 'color-change infinite 0.5s'
+              }
             }}
           >
             <PlayArrowIcon />
@@ -106,7 +134,11 @@ function DialogRedirect({ open, handleClose }) {
             sx={{
               span: { textTransform: 'uppercase' },
               textAlign: 'center',
-              a: { mx: 0.5, textTransform: 'uppercase' },
+              a: {
+                mx: 0.5,
+                textTransform: 'uppercase',
+                animation: 'color-change infinite 0.5s'
+              },
               p: { mb: 0 }
             }}
           >
@@ -124,7 +156,9 @@ function DialogRedirect({ open, handleClose }) {
         </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleClose}>Đóng</Button>
+        <Button onClick={handleClose} variant="contained">
+          Đóng
+        </Button>
       </DialogActions>
     </Dialog>
   );
