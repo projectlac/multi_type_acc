@@ -45,7 +45,13 @@ function DialogRedirect({ open, handleClose }) {
             }}
           >
             Web vẫn <span>hoạt động bình thường</span> vui lòng{' '}
-            <a href="https://genshinviet.com.vn/">ấn vào đây</a>
+            <a
+              href="https://genshinviet.com.vn/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              ấn vào đây
+            </a>
           </Typography>
           <br />
           <Typography
