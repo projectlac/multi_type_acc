@@ -134,9 +134,9 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children }) => {
                 <li onClick={handleClickOpen}>
                   <Link href={'#'}>Check uy tín</Link>
                 </li>
-                {/* <li>
+                <li>
                   <Link href={'/news'}>Thông tin Shop</Link>
-                </li> */}
+                </li>
               </ul>
             </Box>
             <DialogRedirect open={open1} handleClose={handleClose} />
@@ -168,9 +168,9 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children }) => {
                   <li>
                     <Link href={'/reputation'}>Check uy tín</Link>
                   </li>
-                  {/* <li>
+                  <li>
                     <Link href={'/news'}>Thông tin Shop</Link>
-                  </li> */}
+                  </li>
                   <li>
                     <Link
                       href={'https://www.facebook.com/nguyenhung208/'}
