@@ -71,7 +71,7 @@ function ProductCollection({ action }) {
           textAlign={{ xs: 'center', md: 'left' }}
           justifyContent="center"
         >
-          <TitleWeb mt={2}>ACC GENSHIN</TitleWeb>
+          <TitleWeb mt={2}>ACC GS</TitleWeb>
         </Box>
       </Grid>
       <Grid item md={3} sm={6} xs={12}>
@@ -330,7 +330,7 @@ function ProductCollection({ action }) {
           textAlign={{ xs: 'center', md: 'left' }}
           justifyContent="center"
         >
-          <TitleWeb mt={2}>ACC HONKAI STAR RAIL</TitleWeb>
+          <TitleWeb mt={2}>ACC HSR</TitleWeb>
         </Box>
       </Grid>
       <Grid item md={3} sm={6} xs={12}>

@@ -89,8 +89,9 @@ function FilterRandom({ handleData, toggleOpen }: IProps) {
               Chọn giá
             </MenuItem>
             <MenuItem value="1-10000">10k trở xuống</MenuItem>
-            <MenuItem value="10000-50000">10K - 50K</MenuItem>
-            <MenuItem value="50000-100000">50K - 100K</MenuItem>
+            <MenuItem value="10000-60000">10K - 60K</MenuItem>
+            <MenuItem value="60000-80000">60K - 80K</MenuItem>
+            <MenuItem value="80000-100000">80K - 100K</MenuItem>
             <MenuItem value="100000-200000">100K - 200K</MenuItem>
             <MenuItem value="200000-300000">200K - 300K</MenuItem>
             <MenuItem value="300000-400000">300K - 400K</MenuItem>
