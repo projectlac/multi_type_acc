@@ -1,3 +1,4 @@
+import formatMoney from '@/utility/formatMoney';
 import { Table as MuiTable, TablePagination, Typography } from '@mui/material';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
@@ -58,10 +59,8 @@ export default function Table({ data }: IProp) {
           <TableHead>
             <TableRow>
               <StyledTableCell align="left">ID</StyledTableCell>
-              <StyledTableCell align="left">Tài khoản</StyledTableCell>
-              <StyledTableCell align="left">Mật khẩu</StyledTableCell>
-              <StyledTableCell align="left">Giá</StyledTableCell>
-              <StyledTableCell align="right">Ngày mua</StyledTableCell>
+              <StyledTableCell align="left">Thông tin</StyledTableCell>
+              <StyledTableCell align="left">Thời gian</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -98,15 +97,14 @@ export default function Table({ data }: IProp) {
                 >
                   <StyledTableCell align="left">{detail[0].id}</StyledTableCell>
                   <StyledTableCell align="left">
-                    {detail[0].username}
+                    <b> Tài khoản</b>: {detail[0].username}
+                    <br />
+                    <b> Mật khẩu</b>: {detail[0].password}
                   </StyledTableCell>
+
                   <StyledTableCell align="left">
-                    {detail[0].password}
-                  </StyledTableCell>
-                  <StyledTableCell align="left">
-                    {detail[0].price_after_sale}
-                  </StyledTableCell>
-                  <StyledTableCell align="right">
+                    {formatMoney(detail[0].price_after_sale)} VNĐ
+                    <br />
                     <Typography fontWeight={'bold'}>
                       {format(new Date(updated_at), 'dd/MM/yyyy')}
                     </Typography>
