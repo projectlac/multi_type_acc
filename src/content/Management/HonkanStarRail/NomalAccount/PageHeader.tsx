@@ -18,6 +18,7 @@ function PageHeader() {
       </Grid>
       <Grid item>
         <AddAccount title="Thêm tài khoản" />
+        <AddAccount title="Thêm nhiều tài khoản" />
       </Grid>
     </Grid>
   );

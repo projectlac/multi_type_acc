@@ -1,8 +1,13 @@
 import api from 'api/api';
 import apiFormData from 'api/formData/apiFormData';
-import { IAccountVip, IQueryCode, IQueryRandomAcc, IQueryVipAcc } from 'model/form';
+import {
+  IAccountVip,
+  IQueryCode,
+  IQueryRandomAcc,
+  IQueryVipAcc
+} from 'model/form';
 
-interface IParamUpdateHidden{
+interface IParamUpdateHidden {
   slug: string;
   isHidden: boolean;
 }
@@ -33,10 +38,10 @@ export const getAccountVipFromDashboard = (param: IAccountVip) => {
     )}${checkCall('weapon', param.weapon)}${checkCall(
       'keyword',
       param.keyword
-    )}${checkCall('is_sold', param.is_sold)}${checkCall('is_hidden', param.is_hidden)}${checkCall(
-      'sold_date',
-      param.sold_date
-    )}${checkCall(
+    )}${checkCall('is_sold', param.is_sold)}${checkCall(
+      'is_hidden',
+      param.is_hidden
+    )}${checkCall('sold_date', param.sold_date)}${checkCall(
       'game',
       param.game
     )}`
@@ -55,9 +60,14 @@ export const deleteAccount = (slug: string) => {
   return apiFormData.delete(`account/delete/${slug}`);
 };
 export const updateHiddenAccount = (params: IParamUpdateHidden) => {
-  return api.patch(`account/update-hidden?slug=${params.slug}&isHidden=${params.isHidden}`);
+  return api.patch(
+    `account/update-hidden?slug=${params.slug}&isHidden=${params.isHidden}`
+  );
 };
 
+export const createMultiAccount = (data: FormData) => {
+  return apiFormData.post('/account/bulk-create-account', data);
+};
 
 export const createAccountNomal = (data: FormData) => {
   return apiFormData.post('/account/create-account', data);
@@ -67,9 +77,18 @@ export const updateAccountNomal = (slug: string, data: FormData) => {
   return apiFormData.put(`/account/update-account/${slug}`, data);
 };
 
-export const getAccountNomalFromDashboard = (limit: number,offset:number, game:string, search?: string, is_sold?:boolean | '') => {
+export const getAccountNomalFromDashboard = (
+  limit: number,
+  offset: number,
+  game: string,
+  search?: string,
+  is_sold?: boolean | ''
+) => {
   return apiFormData.get(
-    `/account/get-accounts-by-admin?type=REROLL,RANDOM&limit=${limit}&offset=${offset}&game=${game}${checkCall('keyword',search)}${checkBool('is_sold',is_sold)}`
+    `/account/get-accounts-by-admin?type=REROLL,RANDOM&limit=${limit}&offset=${offset}&game=${game}${checkCall(
+      'keyword',
+      search
+    )}${checkBool('is_sold', is_sold)}`
   );
 };
 
@@ -80,7 +99,10 @@ export const queryRandomAccount = (param: IQueryRandomAcc) => {
     }${checkCallPriceSort('priceSort', param.priceSort)}${checkCall(
       'keyword',
       param.keyword
-    )}${checkCall('ar', param.ar)}${checkCall('rangeMoney', param.rangeMoney)}${checkCall('game', param.game)}`
+    )}${checkCall('ar', param.ar)}${checkCall(
+      'rangeMoney',
+      param.rangeMoney
+    )}${checkCall('game', param.game)}`
   );
 };
 export const queryRerollAccount = (param: IQueryRandomAcc) => {
@@ -90,28 +112,32 @@ export const queryRerollAccount = (param: IQueryRandomAcc) => {
     }&priceSort=${param.priceSort}${checkCall(
       'keyword',
       param.keyword
-    )}${checkCall('ar', param.ar)}${checkCall('rangeMoney', param.rangeMoney)}${checkCall('game', param.game)}`
+    )}${checkCall('ar', param.ar)}${checkCall(
+      'rangeMoney',
+      param.rangeMoney
+    )}${checkCall('game', param.game)}`
   );
 };
 
 export const queryAccountVip = (param: IQueryVipAcc) => {
   return apiFormData.get(
-    `/account/get-accounts?type=VIP&is_hidden=true&limit=${param.limit}&offset=${
-      param.offset
-    }${checkCallPriceSort('priceSort', param.priceSort)}${checkCall(
-      'code',
-      param.keyword
-    )}${checkCall('ar', param.ar)}${checkCall(
-      'server',
-      param.server
-    )}${checkCall('hero', param.hero)}${checkCall(
-      'weapon',
-      param.weapon
-    )}${checkCall('rangeMoney', param.rangeMoney)}${checkCall('game', param.game)}`
+    `/account/get-accounts?type=VIP&is_hidden=true&limit=${
+      param.limit
+    }&offset=${param.offset}${checkCallPriceSort(
+      'priceSort',
+      param.priceSort
+    )}${checkCall('code', param.keyword)}${checkCall(
+      'ar',
+      param.ar
+    )}${checkCall('server', param.server)}${checkCall(
+      'hero',
+      param.hero
+    )}${checkCall('weapon', param.weapon)}${checkCall(
+      'rangeMoney',
+      param.rangeMoney
+    )}${checkCall('game', param.game)}`
   );
 };
-
-
 
 export const queryCodeGame = (param: IQueryCode) => {
   return apiFormData.get(
@@ -126,10 +152,12 @@ export const queryCodeGame = (param: IQueryCode) => {
     )}${checkCall('hero', param.hero)}${checkCall(
       'weapon',
       param.weapon
-    )}${checkCall('rangeMoney', param.rangeMoney)}${checkCall('game', param.game)}${checkCall('tag_code', param.tag_code)}`
+    )}${checkCall('rangeMoney', param.rangeMoney)}${checkCall(
+      'game',
+      param.game
+    )}${checkCall('tag_code', param.tag_code)}`
   );
 };
-
 
 export const buyAccount = (slug: string) => {
   return api.post(`/buy-account`, { slugs: [slug] });
@@ -161,13 +189,9 @@ export const getAccountNewFromDashboard = (param: IAccountVip) => {
     )}${checkCall('is_sold', param.is_sold)}${checkCall(
       'sold_date',
       param.sold_date
-    )}${checkCall(
-      'game',
-      param.game
-    )}`
+    )}${checkCall('game', param.game)}`
   );
 };
-
 
 export const getCodeFromDashboard = (param: IAccountVip) => {
   return apiFormData.get(
@@ -182,13 +206,9 @@ export const getCodeFromDashboard = (param: IAccountVip) => {
     )}${checkCall('is_sold', param.is_sold)}${checkCall(
       'sold_date',
       param.sold_date
-    )}${checkCall(
-      'game',
-      param.game
-    )}`
+    )}${checkCall('game', param.game)}`
   );
 };
-
 
 export const queryAccountNew = (param: IQueryVipAcc) => {
   return apiFormData.get(
@@ -203,6 +223,9 @@ export const queryAccountNew = (param: IQueryVipAcc) => {
     )}${checkCall('hero', param.hero)}${checkCall(
       'weapon',
       param.weapon
-    )}${checkCall('rangeMoney', param.rangeMoney)}${checkCall('game', param.game)}`
+    )}${checkCall('rangeMoney', param.rangeMoney)}${checkCall(
+      'game',
+      param.game
+    )}`
   );
 };
