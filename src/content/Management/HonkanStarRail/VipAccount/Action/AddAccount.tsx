@@ -101,6 +101,7 @@ function AddAccount({ title }: IEdit) {
       setTrigger(true);
     }
   }, [openDialog]);
+
   const onSubmit = async (values, { resetForm }) => {
     const {
       name,

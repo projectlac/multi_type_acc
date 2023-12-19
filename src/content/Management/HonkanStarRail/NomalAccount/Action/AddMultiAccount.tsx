@@ -1,9 +1,11 @@
 import DialogCommon from '@/components/Common/DialogCommon/DialogCommon';
+import AutoCompleteHarder from '@/components/Common/Form/AutoCompleteHarder';
 import useCustomForm from '@/components/Common/Form/Form';
 import FormatForm from '@/components/Common/Form/FormatForm';
 import Selection from '@/components/Common/Form/Selection';
 import TextField from '@/components/Common/Form/TextField';
 import { useAuth } from '@/contexts/AuthGuard';
+import getNameSortAtoB from '@/utility/sortArray';
 import AddTwoToneIcon from '@mui/icons-material/AddTwoTone';
 import UploadTwoToneIcon from '@mui/icons-material/UploadTwoTone';
 import {
@@ -19,8 +21,9 @@ import {
 } from '@mui/material';
 import { styled } from '@mui/styles';
 import { createMultiAccount } from 'api/apiAccount/account';
+import { getHero, getWeapon } from 'api/apiTag/tagApi';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import * as yup from 'yup';
 interface IEdit {
   title: string;
@@ -33,11 +36,7 @@ const validationSchema = yup.object({
   name: yup.string().required('Trường này là bắt buộc'),
   info: yup.string().required('Thông tin này là thuộc tính bắt buộc'),
   type: yup.string().required('Loại tài khoản là thuộc tính bắt buộc'),
-  file: yup.mixed().required('File is required'),
-  price: yup
-    .number()
-    .required('Thông tin này là bắt buộc')
-    .min(10000, 'Vui lòng điền đúng giá')
+  file: yup.mixed().required('File is required')
 });
 const initForm = {
   name: '',
@@ -57,6 +56,9 @@ function AddMultiAccount({ title }: IEdit) {
   const theme = useTheme();
   const [openDialog, setOpenDialog] = useState<boolean>(false);
   const [preview, setPreview] = useState<string>('');
+  const [weapon, setWeapon] = useState([]);
+  const [hero, setHero] = useState([]);
+  const [trigger, setTrigger] = useState<boolean>(false);
 
   const handleOpenDialog = () => {
     setOpenDialog(true);
@@ -112,6 +114,28 @@ function AddMultiAccount({ title }: IEdit) {
   };
 
   const formik = useCustomForm(validationSchema, initForm, onSubmit);
+
+  const handleSelectedWeapon = (data: any) => {
+    formik.handleChange({ target: { name: 'weapon', value: data } });
+  };
+  const handleSelectedCharacter = (data: any) => {
+    formik.handleChange({ target: { name: 'hero', value: data } });
+  };
+
+  useEffect(() => {
+    if (openDialog) {
+      getWeapon(999, formik.values.game).then((res) => {
+        let temp = res.data.data.map((d) => ({ desc: d.desc, slug: d.slug }));
+        setWeapon(temp);
+      });
+      getHero(999, formik.values.game).then((res) => {
+        let temp = res.data.data.map((d) => ({ desc: d.desc, slug: d.slug }));
+        setHero(temp);
+      });
+      setTrigger(true);
+    }
+  }, [openDialog, formik.values.game]);
+
   return (
     <DialogCommon
       icon={
@@ -143,7 +167,7 @@ function AddMultiAccount({ title }: IEdit) {
               />
             </Grid>
 
-            <Grid item md={12} xs={12}>
+            <Grid item md={6} xs={12}>
               <TextField
                 formik={formik}
                 label="Chi tiết tài khoản"
@@ -154,7 +178,7 @@ function AddMultiAccount({ title }: IEdit) {
               />
             </Grid>
 
-            <Grid item md={4} xs={12}>
+            <Grid item md={6} xs={12}>
               <Selection
                 formik={formik}
                 label="Server"
@@ -169,7 +193,35 @@ function AddMultiAccount({ title }: IEdit) {
                 ]}
               />
             </Grid>
-            <Grid item md={4} xs={12}>
+            <Grid item md={6} xs={12}>
+              <Box>
+                <AutoCompleteHarder
+                  trigger={trigger}
+                  title="Danh sách vũ khí"
+                  data={getNameSortAtoB(weapon)}
+                  id="create-vip-weapon"
+                  name="weapon"
+                  formik={formik}
+                  defaultValue={[]}
+                  handleSelected={handleSelectedWeapon}
+                />
+              </Box>
+            </Grid>
+            <Grid item md={6} xs={12}>
+              <Box>
+                <AutoCompleteHarder
+                  trigger={trigger}
+                  title="Danh sách nhân vật"
+                  data={getNameSortAtoB(hero)}
+                  id="create-vip-hero"
+                  name="hero"
+                  formik={formik}
+                  defaultValue={[]}
+                  handleSelected={handleSelectedCharacter}
+                />
+              </Box>
+            </Grid>
+            <Grid item md={12} xs={12}>
               <TextField
                 formik={formik}
                 label="Thông tin acc"
@@ -177,7 +229,16 @@ function AddMultiAccount({ title }: IEdit) {
                 fullWidth
                 name="info"
                 type="text"
+                rows="5"
+                multiline
               />
+              <sup>
+                nếu dùng ảnh thì x, dùng link ảnh thì điền link <br />
+                thứ tự : username, password, giá, ar của accout, link ảnh <br />
+                Ví dụ: <br />
+                có link ảnh: username,password,10000,10,https://abc <br />
+                dùng ảnh: username,password,10000,10,x <br />
+              </sup>
             </Grid>
             <Grid item xs={12}>
               <FormControl>
@@ -284,6 +345,9 @@ function AddMultiAccount({ title }: IEdit) {
                 variant="contained"
                 fullWidth
                 type="submit"
+                onClick={() => {
+                  console.log(formik.errors);
+                }}
                 disabled={formik.isSubmitting}
               >
                 {formik.isSubmitting ? 'Loading...' : 'Thêm'}

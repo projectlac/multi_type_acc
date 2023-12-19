@@ -1,7 +1,8 @@
 import { useAuth } from '@/contexts/AuthGuard';
-import { Grid, Typography } from '@mui/material';
+import { Box, Grid, Typography } from '@mui/material';
 
 import AddAccount from './Action/AddAccount';
+import AddMultiAccount from './Action/AddMultiAccount';
 
 function PageHeader() {
   const { user: userData } = useAuth();
@@ -17,8 +18,12 @@ function PageHeader() {
         </Typography>
       </Grid>
       <Grid item>
-        <AddAccount title="Thêm tài khoản" />
-        <AddAccount title="Thêm nhiều tài khoản" />
+        <Box>
+          <Box mb={1}>
+            <AddAccount title="Thêm tài khoản" />
+          </Box>
+          <AddMultiAccount title="Thêm nhiều tài khoản" />
+        </Box>
       </Grid>
     </Grid>
   );
