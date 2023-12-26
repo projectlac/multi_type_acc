@@ -6,8 +6,18 @@ const checkCall = (key, param) => {
   else return '';
 };
 
-export const getListUser = (limit: number, offset:number, search?:string, role?:IUserRole) => {
-  return api.get(`/user-manager?${checkCall('limit', limit)}&${checkCall('offset', offset)}&${checkCall('key', search)}&${checkCall('role', role)}`);
+export const getListUser = (
+  limit: number,
+  offset: number,
+  search?: string,
+  role?: IUserRole
+) => {
+  return api.get(
+    `/user-manager?${checkCall('limit', limit)}&${checkCall(
+      'offset',
+      offset
+    )}&${checkCall('key', search)}&${checkCall('role', role)}`
+  );
 };
 
 export const getCode = (bank: string, token: string) => {
@@ -21,13 +31,12 @@ export const topUpWithCard = (
   code: string,
   token: string
 ) => {
-  return api.post(`/action-cronjob/top-up`, {
+  return api.post(`/action-cronjob/top-up-v2`, {
     telco,
     amount,
     serial,
     code,
-    token,
-    is_fast: 1
+    token
   });
 };
 
