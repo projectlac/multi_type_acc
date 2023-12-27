@@ -269,6 +269,11 @@ function AddMultiAccount({ title }: IEdit) {
                     control={<Radio />}
                     label="Random"
                   />
+                  <FormControlLabel
+                    value="NEW"
+                    control={<Radio />}
+                    label="Khởi đầu"
+                  />
                 </RadioGroup>
               </FormControl>
             </Grid>
