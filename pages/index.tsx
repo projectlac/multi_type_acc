@@ -1,8 +1,10 @@
 import {
   Box,
+  Button,
   Card,
   Container,
   Dialog,
+  DialogActions,
   Divider,
   Grid,
   styled,
@@ -323,6 +325,11 @@ function Overview() {
           }}
           dangerouslySetInnerHTML={{ __html: data.description }}
         ></Box>
+        <DialogActions>
+          <Button variant="contained" onClick={handleCloseDialog}>
+            Đóng
+          </Button>
+        </DialogActions>
       </Dialog>
     </OverviewWrapper>
   );
