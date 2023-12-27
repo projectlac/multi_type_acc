@@ -321,7 +321,10 @@ function Overview() {
         <Box
           sx={{
             pa: 3,
-            textAlign: 'center'
+            textAlign: 'center',
+            height: { xs: '350px', md: 'auto' },
+            overflow: 'hidden',
+            overflowY: 'auto'
           }}
           dangerouslySetInnerHTML={{ __html: data.description }}
         ></Box>
