@@ -279,6 +279,7 @@ function TopUp() {
             </Button>
           </Box>
         </Box> */}
+
         <Box
           mt={2}
           sx={{
@@ -290,6 +291,27 @@ function TopUp() {
         >
           <Grid container columnSpacing={1.5}>
             <Grid item md={6} xs={12}>
+              <Typography
+                fontSize={'16px'}
+                fontWeight={500}
+                sx={{
+                  mb: 1,
+                  background: '#fff',
+                  padding: '15px',
+                  borderRadius: '8px'
+                }}
+              >
+                <span
+                  style={{
+                    color: 'red',
+
+                    animation: 'color-change infinite 1s'
+                  }}
+                >
+                  <b>Lưu ý:</b> Vui lòng chọn đúng mệnh giá, sai mệnh giá đồng
+                  nghĩa với mất thẻ
+                </span>
+              </Typography>
               <Card sx={{ p: 3 }}>
                 <FormatForm formik={formik}>
                   <Grid container columnSpacing={1.5} rowSpacing={2}>
@@ -407,12 +429,6 @@ function TopUp() {
                 Nếu nạp thẻ bị lỗi sau 2 phút{' '}
                 <span style={{ background: 'red' }}> không nhận được tiền</span>{' '}
                 hãy IB cho Shop để được xử lý
-              </Typography>
-              <Typography fontSize={'15px'} fontWeight={500}>
-                <span style={{ color: 'red', background: 'white' }}>
-                  <b>Lưu ý:</b> Vui lòng chọn đúng mệnh giá, sai mệnh giá đồng
-                  nghĩa với mất thẻ
-                </span>
               </Typography>
             </Grid>
           </Grid>

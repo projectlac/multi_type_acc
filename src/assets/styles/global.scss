@@ -339,6 +339,26 @@ a {
   }
 }
 
+@keyframes color-change {
+  0% {
+    color: red;
+  }
+
+  50% {
+    color: #27ae60;
+  }
+}
+
+@-webkit-keyframes color-change {
+  0% {
+    color: red;
+  }
+
+  50% {
+    color: #27ae60;
+  }
+}
+
 @media screen and (min-width: 0px) {
   .wheel {
     width: 300px;

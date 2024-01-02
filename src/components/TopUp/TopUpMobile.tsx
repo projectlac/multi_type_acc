@@ -259,6 +259,18 @@ export default function TopUpMobile() {
             background: '#fff'
           }}
         >
+          <Typography fontSize={'16px'} fontWeight={500} sx={{ mb: 1 }}>
+            <span
+              style={{
+                color: 'red',
+                background: 'white',
+                animation: 'color-change infinite 0.5s'
+              }}
+            >
+              <b>Lưu ý:</b> Vui lòng chọn đúng mệnh giá, sai mệnh giá đồng nghĩa
+              với mất thẻ
+            </span>
+          </Typography>
           <Typography fontSize={'15px'} fontWeight={500} mb={3}>
             {content}
           </Typography>
@@ -382,12 +394,6 @@ export default function TopUpMobile() {
                   không nhận được tiền
                 </span>{' '}
                 hãy IB cho Shop để được xử lý
-              </Typography>
-              <Typography fontSize={'15px'} fontWeight={500}>
-                <span style={{ color: 'red', background: 'white' }}>
-                  <b>Lưu ý:</b> Vui lòng chọn đúng mệnh giá, sai mệnh giá đồng
-                  nghĩa với mất thẻ
-                </span>
               </Typography>
             </Grid>
           </Grid>
