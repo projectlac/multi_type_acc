@@ -78,7 +78,8 @@ function AddMultiAccount({ title }: IEdit) {
   };
 
   const onSubmit = async (values, { resetForm }) => {
-    const { name, server, detail, info, type, file, game } = values;
+    const { name, server, detail, info, type, file, hero, weapon, game } =
+      values;
 
     const formData = new FormData();
     formData.append('name', name);
@@ -87,6 +88,8 @@ function AddMultiAccount({ title }: IEdit) {
     formData.append('info', info);
     formData.append('type', type);
     formData.append('game', game);
+    formData.append('hero', hero);
+    formData.append('weapon', weapon);
     file && formData.append('image', file);
 
     try {
