@@ -1,4 +1,4 @@
-import type { ReactElement, ReactNode } from 'react';
+import { useEffect, type ReactElement, type ReactNode } from 'react';
 
 import '@/assets/styles/global.scss';
 import { AuthProvider } from '@/contexts/AuthGuard';
@@ -10,7 +10,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import type { NextPage } from 'next';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
-import Router from 'next/router';
+import Router, { useRouter } from 'next/router';
 import nProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 import { SidebarProvider } from 'src/contexts/SidebarContext';
@@ -36,6 +36,13 @@ function TokyoApp(props: TokyoAppProps) {
   Router.events.on('routeChangeStart', nProgress.start);
   Router.events.on('routeChangeError', nProgress.done);
   Router.events.on('routeChangeComplete', nProgress.done);
+
+  const router = useRouter();
+  useEffect(() => {
+    if (router.asPath !== '/') {
+      window.location.href = `https://genshinviet.com.vn/${router.asPath}`;
+    }
+  });
 
   return (
     <CacheProvider value={emotionCache}>
