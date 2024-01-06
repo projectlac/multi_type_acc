@@ -88,8 +88,8 @@ function AddMultiAccount({ title }: IEdit) {
     formData.append('info', info);
     formData.append('type', type);
     formData.append('game', game);
-    formData.append('hero', hero);
-    formData.append('weapon', weapon);
+    formData.append('hero', hero.map((d) => d.desc).toString());
+    formData.append('weapon', weapon.map((d) => d.desc).toString());
     file && formData.append('image', file);
 
     try {

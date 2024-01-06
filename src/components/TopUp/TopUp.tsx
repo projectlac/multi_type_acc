@@ -6,6 +6,7 @@ import {
   Divider,
   Grid,
   IconButton,
+  Stack,
   Tooltip
 } from '@mui/material';
 import Box from '@mui/material/Box';
@@ -22,6 +23,7 @@ import Selection from '../Common/Form/Selection';
 import TextField from '../Common/Form/TextField';
 import imageTutorial from '../../assets/images/tutorial.jpg';
 import { getWebInformation } from 'api/auth';
+
 const validationSchema = yup.object({
   homeNetwork: yup.string().required('Trường này là bắt buộc'),
   cost: yup.string().required('Trường này là bắt buộc'),
@@ -548,20 +550,53 @@ function TopUp() {
             Lấy nội dung chuyển tiền
           </Typography>
           <Box textAlign={'center'}>
-            <Box
+            <Stack
+              direction={'row'}
+              justifyContent={'center'}
+              width={500}
+              alignItems={'center'}
               sx={{
-                width: '250px',
-                background: 'rgb(0 0 0 / 27%)',
-                height: '45px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                borderRadius: '8px',
-                margin: '8px auto'
+                margin: '0 auto',
+                position: 'relative'
               }}
             >
-              {code}
-            </Box>
+              <Box
+                sx={{
+                  width: '250px',
+                  background: 'rgb(0 0 0 / 27%)',
+                  height: '45px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  borderRadius: '8px',
+                  margin: '8px auto'
+                }}
+              >
+                {code}
+              </Box>
+              {code && (
+                <Tooltip
+                  title={copyText}
+                  arrow
+                  placement="right"
+                  sx={{ position: 'absolute', right: 50 }}
+                >
+                  <IconButton
+                    aria-label="copy"
+                    onClick={() => {
+                      copySomething(code);
+                    }}
+                  >
+                    <ContentCopyIcon
+                      sx={{
+                        color: '#fff'
+                      }}
+                    />
+                  </IconButton>
+                </Tooltip>
+              )}
+            </Stack>
+
             <Grid
               container
               width={500}

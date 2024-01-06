@@ -6,6 +6,7 @@ import {
   Divider,
   Grid,
   IconButton,
+  Stack,
   Tooltip
 } from '@mui/material';
 import Box from '@mui/material/Box';
@@ -514,20 +515,51 @@ export default function TopUpMobile() {
             Lấy nội dung chuyển tiền
           </Typography>
           <Box textAlign={'center'}>
-            <Box
+            <Stack
+              direction={'row'}
+              justifyContent={'center'}
+              alignItems={'center'}
               sx={{
-                width: '250px',
-                background: 'rgb(0 0 0 / 27%)',
-                height: '45px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                borderRadius: '8px',
-                margin: '8px auto'
+                margin: '0 auto',
+                position: 'relative'
               }}
             >
-              {code}
-            </Box>
+              <Box
+                sx={{
+                  width: '250px',
+                  background: 'rgb(0 0 0 / 27%)',
+                  height: '45px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  borderRadius: '8px',
+                  margin: '8px auto'
+                }}
+              >
+                {code}
+              </Box>
+              {code && (
+                <Tooltip
+                  title={copyText}
+                  arrow
+                  placement="right"
+                  sx={{ position: 'absolute', right: 20 }}
+                >
+                  <IconButton
+                    aria-label="copy"
+                    onClick={() => {
+                      copySomething(code);
+                    }}
+                  >
+                    <ContentCopyIcon
+                      sx={{
+                        color: '#000'
+                      }}
+                    />
+                  </IconButton>
+                </Tooltip>
+              )}
+            </Stack>
             <Grid
               container
               margin="0 auto"
