@@ -35,6 +35,7 @@ interface IProp {
 }
 export default function Table({ data }: IProp) {
   const [page, setPage] = React.useState(0);
+  console.log(data);
 
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
   const handleChangePage = (
@@ -73,37 +74,41 @@ export default function Table({ data }: IProp) {
               } = row;
               return (
                 <StyledTableRow
-                  key={detail[0].id}
+                  key={detail[0]?.id}
                   sx={{
                     '&:nth-of-type(odd)': {
                       backgroundColor:
-                        detail[0].username === 'Gift-Code'
+                        detail[0]?.username === 'Gift-Code'
                           ? '#508f27'
                           : 'rgb(229, 232, 255)',
                       '> td': {
                         color:
-                          detail[0].username === 'Gift-Code' ? '#fff' : '#000'
+                          detail[0]?.username === 'Gift-Code' ? '#fff' : '#000'
                       }
                     },
                     '&:nth-of-type(even)': {
                       backgroundColor:
-                        detail[0].username === 'Gift-Code' ? '#39bbba' : '#fff',
+                        detail[0]?.username === 'Gift-Code'
+                          ? '#39bbba'
+                          : '#fff',
                       '> td': {
                         color:
-                          detail[0].username === 'Gift-Code' ? '#fff' : '#000'
+                          detail[0]?.username === 'Gift-Code' ? '#fff' : '#000'
                       }
                     }
                   }}
                 >
-                  <StyledTableCell align="left">{detail[0].id}</StyledTableCell>
                   <StyledTableCell align="left">
-                    <b> Tài khoản</b>: {detail[0].username}
+                    {detail[0]?.id}
+                  </StyledTableCell>
+                  <StyledTableCell align="left">
+                    <b> Tài khoản</b>: {detail[0]?.username}
                     <br />
-                    <b> Mật khẩu</b>: {detail[0].password}
+                    <b> Mật khẩu</b>: {detail[0]?.password}
                   </StyledTableCell>
 
                   <StyledTableCell align="left">
-                    {formatMoney(detail[0].price_after_sale)} VNĐ
+                    {formatMoney(detail[0]?.price_after_sale)} VNĐ
                     <br />
                     <Typography fontWeight={'bold'}>
                       {format(new Date(updated_at), 'dd/MM/yyyy')}
