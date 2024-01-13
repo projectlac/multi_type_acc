@@ -245,67 +245,72 @@ function Overview() {
                   textTransform: 'uppercase'
                 }}
               >
-                Top Nạp
+                Hướng dẫn làm tiếp thị kiếm tiền cùng shop Genshinviet
               </Typography>
               <Divider />
               <Box
                 sx={{
-                  padding: '0 15px '
+                  padding: '0 15px ',
+                  fontWeight: '600',
+                  color: '#a7947f',
+                  a: {
+                    color: '#856f56'
+                  }
                 }}
               >
-                <ul style={{ padding: 0, listStyle: 'none' }}>
-                  {top10.map((d: ITopUp, i) => (
-                    <li
-                      style={{
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        padding: '7px 0',
-                        alignItems: 'center'
-                      }}
-                      key={i}
-                    >
-                      <Typography
-                        sx={{
-                          fontSize: { md: '17px', xs: '15px' },
-
-                          fontWeight: '600',
-                          display: 'flex',
-                          color: '#a7947f',
-                          fontStyle: 'italic',
-                          '& span': {
-                            width: '26px',
-                            height: '26px',
-                            display: 'flex',
-                            background: '#e5d7ca',
-                            borderRadius: '50%',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            fontSize: '12px',
-                            marginRight: '15px',
-                            border: '2px solid #c7ae92',
-                            color: '#917c65'
-                          }
-                        }}
-                      >
-                        <span>{i + 1} </span> ***{d.username}
-                      </Typography>
-                      <Typography
-                        sx={{
-                          fontSize: '13px',
-                          fontWeight: '600',
-                          display: 'flex',
-                          color: '#a7947f',
-                          background: '#ffffff59',
-                          padding: '5px 10px',
-                          borderRadius: '15px',
-                          border: '2px solid #c7ae92'
-                        }}
-                      >
-                        {formatMoney(d.sum)} VNĐ
-                      </Typography>
-                    </li>
-                  ))}
+                Các bước kiếm tiền vô cùng đơn giản ai cũng có thể làm được{' '}
+                <br /> - Bước 1 : Bạn phải có 1 kênh tiktok <br />
+                - Bước 2 : Đăng video liên quan đến Genshin + gắn logo shop +
+                tag #genshinviet <br /> Link tải logo:{' '}
+                <a
+                  href="https://drive.google.com/file/d/19HhOW0znwUVKPNJpknqS_22FknVQTTKL/view?fbclid=IwAR26auBXhJDbBTNfoTstdiO48keGP_ytmc_xhiXgCcUYFzDvtfSO54cmScw"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Tại đây
+                </a>
+                <br />- Bước 3 : Chờ video lên xu hướng và lụm tiền thôi anh em
+                Video hướng dẫn chi tiết :{' '}
+                <a
+                  href="https://www.youtube.com/watch?v=n64ISqT7_r0 "
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {' '}
+                  Ấn vào đây
+                </a>{' '}
+                <br /> Chi tiết thưởng ib chủ shop :{' '}
+                <a
+                  href="https://www.facebook. com/nguyenhung208)"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Facebook
+                </a>{' '}
+                hoặc{' '}
+                <a
+                  href="https://zalo.me/0372790362"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Zalo
+                </a>
+                <br />
+                Các mốc thưởng như sau :
+                <ul>
+                  <li>10K lượt xem : 10.000VNĐ</li>
+                  <li>20K lượt xem : 20.000VNĐ </li>
+                  <li>30K lượt xem : 30.000VNĐ</li>
+                  <li> 40k lượt xem : 50.000VNĐ</li>
+                  <li> 50k lượt xem : 70.000VNĐ</li>
+                  <li> 60k lượt xem: 100.000VNĐ</li>
                 </ul>
+                <Typography sx={{ mb: 2, fontWeight: '600' }}>
+                  Lưu ý: Các mốc phải được hoàn thành trong 24h và không được sử
+                  dụng hack nha anh em <br /> Tiền sẽ được thanh toán ngay không
+                  giam tiền Thanh toán qua thẻ cào, cộng vào tài khoản shop,
+                  ATM, momo,...
+                </Typography>
               </Box>
             </Card>
           </Grid>
