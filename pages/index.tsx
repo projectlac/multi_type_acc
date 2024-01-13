@@ -69,8 +69,10 @@ function Overview() {
   return (
     <OverviewWrapper>
       <Head>
-        <title>Genshinviet.com uy tín hàng đầu Việt Nam</title>
-        <OgTag title="Genshinviet.com uy tín hàng đầu Việt Nam" />
+        <title>
+          Shop Acc Genshin Impact - Honkai Star Rail giá rẻ, uy tín nhất
+        </title>
+        <OgTag title="Shop Acc Genshin Impact - Honkai Star Rail giá rẻ, uy tín nhất" />
       </Head>
 
       <Container maxWidth="lg" sx={{ mt: 15 }}>

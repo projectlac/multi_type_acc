@@ -89,9 +89,9 @@ function Footer() {
                 <Link href={'#'}>NẠP GAME</Link>
               </p>
               <DialogRedirect open={open1} handleClose={handleClose} />
-              {/* <p className="footer-p">
-                <Link href={'/shop'}>SHOP PHỤ KIỆN</Link>
-              </p> */}
+              <p className="footer-p">
+                <Link href={'/news'}>NEW</Link>
+              </p>
             </Box>
           </Grid>
           <Grid item md={4} xs={12}>

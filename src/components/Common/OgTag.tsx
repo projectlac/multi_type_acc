@@ -13,14 +13,18 @@ function OgTag({ title, description }: IOG) {
       <meta
         property="og:description"
         content={
-          description ? description : `Genshinviet.com uy tín hàng đầu Việt Nam`
+          description
+            ? description
+            : `Mua bán Shop Acc Genshin Impact giá rẻ, uy tín. Mua bán nick Honkai Star Rail đảm bảo an toàn, tự động 100%`
         }
       />
       <meta
         name="description"
         key="desc"
         content={
-          description ? description : `Genshinviet.com uy tín hàng đầu Việt Nam`
+          description
+            ? description
+            : `Mua bán Shop Acc Genshin Impact giá rẻ, uy tín. Mua bán nick Honkai Star Rail đảm bảo an toàn, tự động 100%`
         }
       />
 
@@ -37,7 +41,7 @@ function OgTag({ title, description }: IOG) {
       <meta property="og:image:height" content="300" />
       <meta
         property="og:image:alt"
-        content={`Genshinviet.com uy tín hàng đầu Việt Nam`}
+        content={`Shop Acc Genshin Impact - Honkai Star Rail giá rẻ, uy tín nhất`}
       />
     </>
   );

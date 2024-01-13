@@ -39,7 +39,13 @@ function TokyoApp(props: TokyoAppProps) {
 
   const router = useRouter();
   useEffect(() => {
+    const whiteList = 'news';
+    const checkWhiteList = router.asPath
+      .toLocaleLowerCase()
+      .includes(whiteList);
+
     if (router.asPath !== '/') {
+      if (checkWhiteList) return;
       window.location.href = `https://genshinviet.com.vn/${router.asPath}`;
     }
   });

@@ -48,7 +48,7 @@ function DialogRedirect({ open, handleClose }) {
             <a
               href="https://genshinviet.com.vn/"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener noreferrer nofollow"
             >
               ấn vào đây
             </a>
@@ -77,7 +77,7 @@ function DialogRedirect({ open, handleClose }) {
               <a
                 href="https://m.me/122101845332012058"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener noreferrer nofollow"
               >
                 ẤN VÀO ĐÂY
               </a>{' '}
@@ -104,7 +104,11 @@ function DialogRedirect({ open, handleClose }) {
             <PlayArrowIcon />
             <p>
               Nếu page không trả lời hãy{' '}
-              <a href="https://zalo.me/0372790362" target="__blank">
+              <a
+                href="https://zalo.me/0372790362"
+                target="__blank"
+                rel="noopener noreferrer nofollow"
+              >
                 <b>ấn vào đây</b>
               </a>{' '}
               để liên hệ ADMIN
@@ -152,7 +156,7 @@ function DialogRedirect({ open, handleClose }) {
             <a
               href="https://genshinviet.com.vn/"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener noreferrer nofollow"
             >
               ẤN VÀO ĐÂY
             </a>
