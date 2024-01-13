@@ -10,6 +10,34 @@ export default function ReputationItem() {
           borderRadius: '10px'
         }}
       >
+        {' '}
+        <Typography
+          sx={{
+            fontWeight: 'bold',
+            color: '#d33',
+            fontSize: '19px',
+            textAlign: 'center'
+          }}
+        >
+          Nếu các bạn đang quan tâm về uy tín của shop thì hãy xem video này
+        </Typography>
+        <Box
+          sx={{
+            margin: '0 auto',
+            display: 'flex',
+            justifyContent: 'center',
+            mb: 2
+          }}
+          width={'100%'}
+        >
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/Cl3Of_L3ndI?si=Opql7jJ5htD40xcZ"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen={true}
+          ></iframe>
+        </Box>
         <Typography
           sx={{
             fontWeight: 'bold',
