@@ -116,7 +116,8 @@ function Overview() {
                     fontSize: { md: '18px', xs: '15px' },
                     fontWeight: 'bold',
                     color: '#856f56',
-                    textTransform: 'uppercase'
+                    textTransform: 'uppercase',
+                    animation: 'color-change infinite 1s'
                   }}
                   component="h2"
                 >
@@ -156,7 +157,7 @@ function Overview() {
                   </a>{' '}
                   <br /> Chi tiết thưởng ib chủ shop :{' '}
                   <a
-                    href="https://www.facebook. com/nguyenhung208)"
+                    href="https://www.facebook.com/nguyenhung208"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -242,7 +243,8 @@ function Overview() {
                   fontSize: { md: '24px', xs: '15px' },
                   fontWeight: 'bold',
                   color: '#856f56',
-                  textTransform: 'uppercase'
+                  textTransform: 'uppercase',
+                  animation: 'color-change infinite 1s'
                 }}
               >
                 Hướng dẫn làm tiếp thị kiếm tiền cùng shop Genshinviet
@@ -281,7 +283,7 @@ function Overview() {
                 </a>{' '}
                 <br /> Chi tiết thưởng ib chủ shop :{' '}
                 <a
-                  href="https://www.facebook. com/nguyenhung208)"
+                  href="https://www.facebook.com/nguyenhung208"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
