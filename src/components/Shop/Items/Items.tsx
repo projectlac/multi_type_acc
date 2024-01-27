@@ -263,8 +263,10 @@ function Items({
             </Typography>
           </Grid>
         </Grid>
-        {/* <Divider sx={{ mt: 1, mb: 1.5 }} /> */}
-        {/* <Box textAlign={'center'}>{des}</Box> */}
+        <Divider sx={{ mt: 1, mb: 1.5 }} />
+        <Box textAlign={'center'} fontWeight={'bold'}>
+          GenshinViet cảm ơn bạn!
+        </Box>
       </Box>
     </Card>
   );
