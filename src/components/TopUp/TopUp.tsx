@@ -515,10 +515,13 @@ function TopUp() {
                         alignItems: 'center'
                       }}
                     >
-                      <Typography fontSize={17} mr={2}>
+                      <Typography textAlign={'left'}>
+                        Chuyển MOMO đang bảo trì. Mọi người vui lòng chụp bill
+                        gửi page hoặc Zalo 0372790362 để được cộng
+                      </Typography>
+                      {/* <Typography fontSize={17} mr={2}>
                         {momo}
-                        {/* Nạp Momo đang lỗi, vui lòng ib Shop
-                        để được nạp tiền */}
+                 
                       </Typography>{' '}
                       <Tooltip title={copyText} arrow placement="right">
                         <IconButton
@@ -533,7 +536,7 @@ function TopUp() {
                             }}
                           />
                         </IconButton>
-                      </Tooltip>
+                      </Tooltip> */}
                     </Box>
                   </td>
                 </tr>
