@@ -7,8 +7,13 @@ export const createDeposit = (param: IDepositCreate) => {
   return api.post('/deposit/create', param);
 };
 
-export const getDeposit = (type:TYPE_DEPOSIT) => {
+export const getDeposit = (type: TYPE_DEPOSIT) => {
   return api.get(`/deposit?type=${type}&limit=500`);
+};
+
+export const getPackList = () => {
+  const param = 'Cày thuê';
+  return api.get(`/pack-list?type=${param}`);
 };
 
 export const changeStatusDeposit = (id: number, status: string) => {
