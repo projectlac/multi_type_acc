@@ -1,16 +1,17 @@
 import bg from '@/assets/images/genshin-impact-nawpic.webp';
+import Zalo from '@/assets/images/zalogo-png.png';
 import Footer from '@/components/Footer';
 import { useAuth } from '@/contexts/AuthGuard';
 import CloseIcon from '@mui/icons-material/Close';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Box, Container, styled } from '@mui/material';
+import Image from 'next/image';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
-import MessengerChat from 'react-messenger-customer-chat';
 import { FC, ReactNode, useState } from 'react';
-import Image from 'next/image';
-import Zalo from '@/assets/images/zalogo-png.png';
+import MessengerChat from 'react-messenger-customer-chat';
 // import MessengerChat from 'react-messenger-customer-chat';
+import CommonNotification from '@/components/CommonNotification/CommonNotification';
 import HeaderUserbox from './Userbox';
 interface BaseLayoutProps {
   children?: ReactNode;
@@ -71,7 +72,14 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children }) => {
   const { isAuthenticated } = useAuth();
 
   const [open, setOpen] = useState<boolean>(false);
+  const [open1, setOpen1] = useState(false);
+  const handleClickOpen = () => {
+    setOpen1(true);
+  };
 
+  const handleClose = () => {
+    setOpen1(false);
+  };
   return (
     <Box>
       <Header>
@@ -97,6 +105,14 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children }) => {
                     color: '#fff',
                     textDecoration: 'none',
                     fontSize: 17
+                  },
+                  '& p': {
+                    color: '#fff',
+                    textDecoration: 'none',
+                    fontSize: 17,
+                    marginBlockStart: 0,
+                    marginBlockEnd: 0,
+                    cursor: 'pointer'
                   }
                 }
               }
@@ -119,7 +135,7 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children }) => {
                   <Link href={'/topup'}>Nạp tiền</Link>
                 </li>
                 <li>
-                  <Link href={'/topup-genshin'}>Nạp game</Link>
+                  <p onClick={handleClickOpen}>Nạp game</p>
                 </li>
                 <li>
                   <Link href={'/reputation'}>Check uy tín</Link>
@@ -144,7 +160,10 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children }) => {
                   sx={{ color: '#fff' }}
                   onClick={() => setOpen(false)}
                 />
-                <ul onClick={() => setOpen(false)}>
+                <ul
+                  onClick={() => setOpen(false)}
+                  style={{ flexDirection: 'column' }}
+                >
                   <li>
                     <Link href={'/'}>Trang chủ</Link>
                   </li>
@@ -152,7 +171,7 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children }) => {
                     <Link href={'/topup'}>Nạp tiền</Link>
                   </li>
                   <li>
-                    <Link href={'/topup-genshin'}>Nạp game</Link>
+                    <p onClick={handleClickOpen}>Nạp game</p>
                   </li>
                   <li>
                     <Link href={'/reputation'}>Check uy tín</Link>
@@ -210,6 +229,7 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children }) => {
         </Box>
         <Footer />
       </FullBG>
+      <CommonNotification handleClose={handleClose} open={open1} />
     </Box>
   );
 };

@@ -1,4 +1,13 @@
-import { Box, Container } from '@mui/material';
+import {
+  Box,
+  Button,
+  Container,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle
+} from '@mui/material';
 import { styled } from '@mui/styles';
 import Link from 'next/link';
 
@@ -15,7 +24,16 @@ const MenuWrapper = styled(Box)({
   alignItems: 'center',
   justifyContent: 'space-between'
 });
+
 function HeaderWrapper() {
+  const [open, setOpen] = React.useState(false);
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
   return (
     <Header>
       <Container>
@@ -42,7 +60,9 @@ function HeaderWrapper() {
               <Link href={'/'}>Trang chủ</Link>
             </li>
             <li>
-              <Link href={'/topup'}>Nạp tiền</Link>
+              <Link href={''} onClick={handleClickOpen}>
+                Nạp tiền
+              </Link>
             </li>
             <li>
               <Link href={''}>Nạp game</Link>
@@ -60,6 +80,34 @@ function HeaderWrapper() {
           </Box>
         </MenuWrapper>
       </Container>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          {"Use Google's location service?"}
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Nạp game IB Zalo{' '}
+            <a
+              href="http://zalo.me/0372790362"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              0372790362
+            </a>
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Disagree</Button>
+          <Button onClick={handleClose} autoFocus>
+            Agree
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Header>
   );
 }

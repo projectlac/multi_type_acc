@@ -17,6 +17,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import TitleWeb from '../Common/TitleWeb';
 import ProductCollectionItem from './ProductCollectionItem';
+import CommonNotification from '../CommonNotification/CommonNotification';
 interface IAll {
   inStock: number;
   sold: number;
@@ -25,6 +26,15 @@ interface IAll {
   gameSlug: string;
 }
 function ProductCollection() {
+  const [open1, setOpen1] = useState(false);
+  const handleClickOpen = () => {
+    setOpen1(true);
+  };
+
+  const handleClose = () => {
+    setOpen1(false);
+  };
+
   const [dataAccVip, setDataAccVip] = useState<IAll>();
   const [dataAccRandom, setDataAccRandom] = useState<IAll>();
   const [dataAccReroll, setDataAccReroll] = useState<IAll>();
@@ -134,23 +144,24 @@ function ProductCollection() {
             }
           }}
         >
-          <Link href={'/topup-genshin'}>
-            <Box
-              sx={{
-                cursor: 'pointer',
-                minHeight: '175px',
-                width: '100%',
-                position: 'relative'
-              }}
-            >
-              <Image
-                src={napgame}
-                alt="Nạp game"
-                layout="fill"
-                objectFit="cover"
-              />
-            </Box>
-            {/* <Box
+          {/* <Link href={'/topup-genshin'}> */}
+          <Box
+            onClick={handleClickOpen}
+            sx={{
+              cursor: 'pointer',
+              minHeight: '175px',
+              width: '100%',
+              position: 'relative'
+            }}
+          >
+            <Image
+              src={napgame}
+              alt="Nạp game"
+              layout="fill"
+              objectFit="cover"
+            />
+          </Box>
+          {/* <Box
               className="eff"
               sx={{
                 height: '175px',
@@ -176,7 +187,7 @@ function ProductCollection() {
                 }
               }}
             ></Box> */}
-          </Link>
+          {/* </Link> */}
 
           <Box mt={1}>
             <Typography
@@ -228,11 +239,15 @@ function ProductCollection() {
             </Grid>
             <Divider sx={{ mt: 1, mb: 1.5 }} />
             <Box textAlign={'center'}>
-              <Link href={'/topup-genshin'}>
-                <Button variant="contained" color="secondary">
-                  Khám phá
-                </Button>
-              </Link>
+              {/* <Link href={'/topup-genshin'}> */}
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={handleClickOpen}
+              >
+                Khám phá
+              </Button>
+              {/* </Link> */}
             </Box>
           </Box>
         </Card>
@@ -466,6 +481,7 @@ function ProductCollection() {
           </Box>
         </Card>
       </Grid> */}
+      <CommonNotification handleClose={handleClose} open={open1} />
     </Grid>
   );
 }

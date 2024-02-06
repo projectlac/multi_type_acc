@@ -260,7 +260,7 @@ export default function TopUpMobile() {
             background: '#fff'
           }}
         >
-          <Typography fontSize={'16px'} fontWeight={500} sx={{ mb: 1 }}>
+          <Typography fontSize={'14px'} fontWeight={500} sx={{ mb: 1 }}>
             <span
               style={{
                 color: 'red',
@@ -269,7 +269,8 @@ export default function TopUpMobile() {
               }}
             >
               <b>Lưu ý:</b> Vui lòng chọn đúng mệnh giá, sai mệnh giá đồng nghĩa
-              với mất thẻ
+              với mất thẻ <br />
+              <b>Thông báo:</b> Tặng thêm 10% giá trị tiền nạp vào shop
             </span>
           </Typography>
           <Typography fontSize={'15px'} fontWeight={500} mb={3}>
@@ -426,7 +427,18 @@ export default function TopUpMobile() {
           <Typography variant="h4" component="h4">
             Chuyển khoản qua ngân hàng và ví điện tử
           </Typography>
-          <Typography fontSize={13}>Chuyển khoản online</Typography>
+          <Typography fontSize={13}>
+            Chuyển khoản online <br />
+            <span
+              style={{
+                color: 'red',
+                background: '#fff',
+                animation: 'color-change infinite 1s'
+              }}
+            >
+              <b>Thông báo:</b> Tặng thêm 10% giá trị tiền nạp vào shop
+            </span>
+          </Typography>
           <Box mt={2}>
             <table className="table-payment">
               <tr>
@@ -481,11 +493,11 @@ export default function TopUpMobile() {
                       alignItems: 'center'
                     }}
                   >
-                    <Typography textAlign={'left'}>
+                    {/* <Typography textAlign={'left'}>
                       Chuyển MOMO đang bảo trì. Mọi người vui lòng chụp bill gửi
                       page hoặc Zalo 0372790362 để được cộng
-                    </Typography>
-                    {/* <Typography fontSize={17} mr={1}>
+                    </Typography> */}
+                    <Typography fontSize={17} mr={1}>
                       {momo}
                     </Typography>{' '}
                     <Tooltip title={copyText} arrow placement="right">
@@ -501,7 +513,7 @@ export default function TopUpMobile() {
                           }}
                         />
                       </IconButton>
-                    </Tooltip> */}
+                    </Tooltip>
                   </Box>
                 </td>
               </tr>
