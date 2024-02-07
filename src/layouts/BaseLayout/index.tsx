@@ -11,7 +11,6 @@ import PropTypes from 'prop-types';
 import { FC, ReactNode, useState } from 'react';
 import MessengerChat from 'react-messenger-customer-chat';
 // import MessengerChat from 'react-messenger-customer-chat';
-import CommonNotification from '@/components/CommonNotification/CommonNotification';
 import HeaderUserbox from './Userbox';
 interface BaseLayoutProps {
   children?: ReactNode;
@@ -72,14 +71,14 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children }) => {
   const { isAuthenticated } = useAuth();
 
   const [open, setOpen] = useState<boolean>(false);
-  const [open1, setOpen1] = useState(false);
-  const handleClickOpen = () => {
-    setOpen1(true);
-  };
+  // const [open1, setOpen1] = useState(false);
+  // const handleClickOpen = () => {
+  //   setOpen1(true);
+  // };
 
-  const handleClose = () => {
-    setOpen1(false);
-  };
+  // const handleClose = () => {
+  //   setOpen1(false);
+  // };
   return (
     <Box>
       <Header>
@@ -135,7 +134,7 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children }) => {
                   <Link href={'/topup'}>Nạp tiền</Link>
                 </li>
                 <li>
-                  <p onClick={handleClickOpen}>Nạp game</p>
+                  <Link href={'/topup-genshin'}>Nạp game</Link>
                 </li>
                 <li>
                   <Link href={'/reputation'}>Check uy tín</Link>
@@ -171,7 +170,7 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children }) => {
                     <Link href={'/topup'}>Nạp tiền</Link>
                   </li>
                   <li>
-                    <p onClick={handleClickOpen}>Nạp game</p>
+                    <Link href={'/topup-genshin'}>Nạp game</Link>
                   </li>
                   <li>
                     <Link href={'/reputation'}>Check uy tín</Link>
@@ -229,7 +228,7 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children }) => {
         </Box>
         <Footer />
       </FullBG>
-      <CommonNotification handleClose={handleClose} open={open1} />
+      {/* <CommonNotification handleClose={handleClose} open={open1} /> */}
     </Box>
   );
 };

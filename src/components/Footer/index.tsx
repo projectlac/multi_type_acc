@@ -1,8 +1,6 @@
 import { Box, Container, Grid, styled, Typography } from '@mui/material';
 import Link from 'next/link';
 import TitleSpecial from '../Common/TitleSpecial';
-import CommonNotification from '../CommonNotification/CommonNotification';
-import { useState } from 'react';
 
 const FooterWrapper = styled(Box)(
   ({ theme }) => `
@@ -13,14 +11,14 @@ const FooterWrapper = styled(Box)(
 );
 
 function Footer() {
-  const [open1, setOpen1] = useState(false);
-  const handleClickOpen = () => {
-    setOpen1(true);
-  };
+  // const [open1, setOpen1] = useState(false);
+  // const handleClickOpen = () => {
+  //   setOpen1(true);
+  // };
 
-  const handleClose = () => {
-    setOpen1(false);
-  };
+  // const handleClose = () => {
+  //   setOpen1(false);
+  // };
   return (
     <FooterWrapper className="footer-wrapper">
       <Box
@@ -88,9 +86,9 @@ function Footer() {
               <p className="footer-p">
                 <Link href={'/account/random'}>ACC RANDOM</Link>
               </p>
-              {/* <p className="footer-p">
+              <p className="footer-p">
                 <Link href={'/topup-genshin'}>NẠP GAME</Link>
-              </p> */}
+              </p>
               {/* <p className="footer-p">
                 <Link href={'/shop'}>SHOP PHỤ KIỆN</Link>
               </p> */}
@@ -159,7 +157,7 @@ function Footer() {
           </Grid>
         </Grid>
       </Container>
-      <CommonNotification handleClose={handleClose} open={open1} />
+      {/* <CommonNotification handleClose={handleClose} open={open1} /> */}
     </FooterWrapper>
   );
 }
