@@ -270,7 +270,6 @@ export default function TopUpMobile() {
             >
               <b>Lưu ý:</b> Vui lòng chọn đúng mệnh giá, sai mệnh giá đồng nghĩa
               với mất thẻ <br />
-              <b>Thông báo:</b> Tặng thêm 10% giá trị tiền nạp vào shop
             </span>
           </Typography>
           <Typography fontSize={'15px'} fontWeight={500} mb={3}>
@@ -429,15 +428,6 @@ export default function TopUpMobile() {
           </Typography>
           <Typography fontSize={13}>
             Chuyển khoản online <br />
-            <span
-              style={{
-                color: 'red',
-                background: '#fff',
-                animation: 'color-change infinite 1s'
-              }}
-            >
-              <b>Thông báo:</b> Tặng thêm 10% giá trị tiền nạp vào shop
-            </span>
           </Typography>
           <Box mt={2}>
             <table className="table-payment">

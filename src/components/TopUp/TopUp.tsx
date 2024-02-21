@@ -311,8 +311,6 @@ function TopUp() {
                 >
                   <b>Lưu ý:</b> Vui lòng chọn đúng mệnh giá, sai mệnh giá đồng
                   nghĩa với mất thẻ
-                  <br />
-                  <b>Thông báo:</b> Tặng thêm 10% giá trị tiền nạp vào shop
                 </span>
               </Typography>
               <Card sx={{ p: 3 }}>
@@ -458,18 +456,7 @@ function TopUp() {
           <Typography variant="h4" component="h4">
             Chuyển khoản qua ngân hàng và ví điện tử{' '}
           </Typography>
-          <Typography fontSize={13}>
-            Chuyển khoản online{' '}
-            <span
-              style={{
-                color: 'red',
-                background: '#fff',
-                animation: 'color-change infinite 1s'
-              }}
-            >
-              (<b>Thông báo:</b> Tặng thêm 10% giá trị tiền nạp vào shop)
-            </span>
-          </Typography>
+          <Typography fontSize={13}>Chuyển khoản online </Typography>
           <Box mt={2}>
             <table className="table-payment">
               <thead>
