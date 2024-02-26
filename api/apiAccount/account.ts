@@ -115,7 +115,7 @@ export const queryRerollAccount = (param: IQueryRandomAcc) => {
     )}${checkCall('ar', param.ar)}${checkCall(
       'rangeMoney',
       param.rangeMoney
-    )}${checkCall('game', param.game)}${checkCall('hero', param.hero.toString())}`
+    )}${checkCall('game', param.game)}${checkCall('hero', param.hero?.toString() ?? '')}`
   );
 };
 
