@@ -417,9 +417,7 @@ function TopUp() {
                 Hướng dẫn nạp
               </Typography>
               <Divider sx={{ my: 1 }}></Divider>
-              <Typography fontSize={'15px'} fontWeight={500}>
-                {content}
-              </Typography>
+              <Box dangerouslySetInnerHTML={{ __html: content }}></Box>
               <Typography fontSize={'15px'} fontWeight={500}>
                 <span style={{ color: 'red', background: 'white' }}>
                   <b>Chúng tôi sẽ cập nhật bảng giá chiết khấu sớm nhất</b>
