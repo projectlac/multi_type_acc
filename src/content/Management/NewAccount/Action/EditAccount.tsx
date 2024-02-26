@@ -156,7 +156,6 @@ function EditAccout({ title, slug }: IEdit) {
     formData.append('game', 'genshin-impact');
 
     file && formData.append('avatar', file);
-    debugger;
     try {
       await updateAccountNomal(slug, formData).then(() => {
         handleSetMessage({

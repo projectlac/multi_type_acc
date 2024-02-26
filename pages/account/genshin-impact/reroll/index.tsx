@@ -22,17 +22,23 @@ function AccountReroll() {
   const [sort, setSort] = useState<boolean | ''>('');
   const [ar, setAr] = useState<string>('');
   const [code, setCode] = useState<string>('');
+  const [type, setType] = useState<string>('REROLL');
+  const [hero, setHero] = useState<string[]>([]);
 
   const handleData = (
     currency: string,
     isTrueSet: boolean,
     ar: string,
-    code: string
+    code: string,
+    type: string,
+    hero: string[]
   ) => {
     setPriceRange(currency);
     setSort(isTrueSet);
     setAr(ar);
     setCode(code);
+    setType(type);
+    setHero(hero);
     router.push(`/account/genshin-impact/reroll`);
   };
 
@@ -52,8 +58,12 @@ function AccountReroll() {
       keyword: code,
       rangeMoney: priceRange,
       priceSort: sort,
-      game: 'genshin-impact'
+      game: 'genshin-impact',
+      type,
+      hero
     }).then((res) => {
+      console.log(res.data);
+
       setData(res.data.data);
       setTotal(res.data.total);
     });

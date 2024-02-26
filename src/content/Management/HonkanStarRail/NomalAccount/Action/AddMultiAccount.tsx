@@ -252,6 +252,44 @@ function AddMultiAccount({ title }: IEdit) {
             <Grid item xs={12}>
               <FormControl>
                 <FormLabel id="demo-row-radio-buttons-group-label">
+                  Game
+                </FormLabel>
+                <RadioGroup
+                  row
+                  aria-labelledby="demo-row-radio-buttons-game-label"
+                  name="game"
+                  value={formik.values.game}
+                  onChange={(event) => {
+                    formik.handleChange({
+                      target: {
+                        name: 'game',
+                        value: event.target.value
+                      }
+                    });
+                    formik.handleChange({
+                      target: {
+                        name: 'type',
+                        value: 'REROLL'
+                      }
+                    });
+                  }}
+                >
+                  <FormControlLabel
+                    value="honkai-star-rail"
+                    control={<Radio />}
+                    label="Honkai star rail"
+                  />
+                  <FormControlLabel
+                    value="genshin-impact"
+                    control={<Radio />}
+                    label="Genshin Impact"
+                  />
+                </RadioGroup>
+              </FormControl>
+            </Grid>
+            <Grid item xs={12}>
+              <FormControl>
+                <FormLabel id="demo-row-radio-buttons-group-label">
                   Loại acc
                 </FormLabel>
                 <RadioGroup
@@ -273,6 +311,13 @@ function AddMultiAccount({ title }: IEdit) {
                     control={<Radio />}
                     label="Reroll"
                   />
+                  {formik.values.game === 'genshin-impact' && (
+                    <FormControlLabel
+                      value="REROLVIP"
+                      control={<Radio />}
+                      label="Reroll 5 sao"
+                    />
+                  )}
                   <FormControlLabel
                     value="RANDOM"
                     control={<Radio />}
@@ -286,38 +331,7 @@ function AddMultiAccount({ title }: IEdit) {
                 </RadioGroup>
               </FormControl>
             </Grid>
-            <Grid item xs={12}>
-              <FormControl>
-                <FormLabel id="demo-row-radio-buttons-group-label">
-                  Game
-                </FormLabel>
-                <RadioGroup
-                  row
-                  aria-labelledby="demo-row-radio-buttons-game-label"
-                  name="game"
-                  value={formik.values.game}
-                  onChange={(event) => {
-                    formik.handleChange({
-                      target: {
-                        name: 'game',
-                        value: event.target.value
-                      }
-                    });
-                  }}
-                >
-                  <FormControlLabel
-                    value="honkai-star-rail"
-                    control={<Radio />}
-                    label="Honkai star rail"
-                  />
-                  <FormControlLabel
-                    value="genshin-impact"
-                    control={<Radio />}
-                    label="Genshin Impact"
-                  />
-                </RadioGroup>
-              </FormControl>
-            </Grid>
+
             <Grid item md={6} xs={12}>
               <Box>
                 <Input

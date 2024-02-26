@@ -179,6 +179,7 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({
                 <MenuItem value="all">Tất cả</MenuItem>
                 <MenuItem value="true">Đã bán</MenuItem>
                 <MenuItem value="false">Chưa bán</MenuItem>
+                <MenuItem value="hidden">Ẩn</MenuItem>
               </Select>
             </FormControl>
           </Box>
@@ -324,7 +325,7 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({
                     )}
                   </TableCell>
                   <TableCell align="right">
-                    {getStatusLabel(cryptoOrder.is_sold)}
+                    {renderStatus(cryptoOrder.is_hidden, cryptoOrder.is_sold)}
                   </TableCell>
                   <TableCell align="right">
                     <Tooltip title="Edit Order" arrow>

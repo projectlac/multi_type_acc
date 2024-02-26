@@ -107,7 +107,7 @@ export const queryRandomAccount = (param: IQueryRandomAcc) => {
 };
 export const queryRerollAccount = (param: IQueryRandomAcc) => {
   return apiFormData.get(
-    `/account/get-accounts?type=REROLL&limit=${param.limit}&offset=${
+    `/account/get-accounts?type=${param.type ?? 'REROLL'}&limit=${param.limit}&offset=${
       param.offset
     }&priceSort=${param.priceSort}${checkCall(
       'keyword',
@@ -115,7 +115,7 @@ export const queryRerollAccount = (param: IQueryRandomAcc) => {
     )}${checkCall('ar', param.ar)}${checkCall(
       'rangeMoney',
       param.rangeMoney
-    )}${checkCall('game', param.game)}`
+    )}${checkCall('game', param.game)}${checkCall('hero', param.hero.toString())}`
   );
 };
 

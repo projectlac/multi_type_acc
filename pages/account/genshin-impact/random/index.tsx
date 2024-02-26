@@ -46,7 +46,7 @@ function AccountRandom() {
   };
   useEffect(() => {
     executeScroll();
-    debugger;
+
     queryRandomAccount({
       limit: 9,
       offset: pageHistory ? (+pageHistory - 1) * 9 : 0,

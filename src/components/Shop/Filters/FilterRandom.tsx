@@ -6,21 +6,35 @@ import {
   Grid,
   MenuItem,
   TextField,
-  Typography
+  Typography,
+  Autocomplete
 } from '@mui/material';
-import React, { useState } from 'react';
+import { getHero } from 'api/apiTag/tagApi';
+import { useRouter } from 'next/router';
+import React, { useEffect, useState } from 'react';
 
 interface IProps {
   handleData: (
     currency: string,
     isTrueSet: boolean,
     ar: string,
-    code: string
+    code: string,
+    type?: string,
+    hero?: string[]
   ) => void;
   toggleOpen: () => void;
 }
+interface IFilm {
+  desc: string;
+  slug: string;
+}
+
 function FilterRandom({ handleData, toggleOpen }: IProps) {
   const [currency, setCurrency] = useState('');
+  const [type, setType] = useState('REROLL');
+  const router = useRouter();
+  const [optionHero, setOptionHero] = useState([]);
+  const [inputValueHero, setInputValueHero] = useState<IFilm[]>([]);
   const [sort, setSort] = useState('false');
   const [ar, setAr] = useState('');
   const [code, setCode] = useState('');
@@ -28,6 +42,14 @@ function FilterRandom({ handleData, toggleOpen }: IProps) {
   const handleChange = (event) => {
     setCurrency(event.target.value);
   };
+
+  const handleChangeType = (event) => {
+    if (event.target.value === 'REROLL') {
+      setInputValueHero([]);
+    }
+    setType(event.target.value);
+  };
+
   const handleChangeSort = (event) => {
     setSort(event.target.value);
   };
@@ -41,9 +63,40 @@ function FilterRandom({ handleData, toggleOpen }: IProps) {
   };
   const search = () => {
     var isTrueSet = sort === 'true';
-    handleData(currency, isTrueSet, ar, code);
+    const hero = inputValueHero.map((item) => item.slug);
+
+    handleData(currency, isTrueSet, ar, code, type, hero);
     toggleOpen();
   };
+
+  useEffect(() => {
+    const callApi = async () => {
+      let tempOptionHero = [];
+
+      await getHero(999, router.asPath.split('/')[2] ?? 'genshin-impact').then(
+        (res) => {
+          setOptionHero(res.data.data);
+          tempOptionHero = res.data.data;
+        }
+      );
+
+      var retrievedObject = localStorage.getItem('filter');
+      let filter = JSON.parse(retrievedObject);
+
+      filter?.ar && setAr(filter.ar);
+      filter?.priceSort && setSort(filter.priceSort);
+      filter?.keyword && setCode(filter.keyword);
+
+      const initHero = filter?.hero && filter.hero.split(',');
+      const tempHero =
+        initHero &&
+        initHero.map((d) => tempOptionHero.filter((f) => f.slug === d)[0]);
+
+      tempHero && setInputValueHero(tempHero);
+    };
+    callApi();
+  }, []);
+
   return (
     <Card
       sx={{
@@ -65,6 +118,44 @@ function FilterRandom({ handleData, toggleOpen }: IProps) {
       <Divider sx={{ mt: 1, mb: 3 }}></Divider>
 
       <Grid container columnSpacing={1.3} rowSpacing={2.5}>
+        {router.asPath.includes('genshin-impact/reroll') && (
+          <Grid item xs={12}>
+            <TextField
+              id="outlined-select-currency"
+              select
+              label="Tìm loại acc"
+              fullWidth
+              value={type}
+              onChange={handleChangeType}
+            >
+              <MenuItem value="REROLL">Acc Reroll thường</MenuItem>
+              <MenuItem value="REROLLVIP">Acc Reroll 5*</MenuItem>
+            </TextField>
+          </Grid>
+        )}
+        {type === 'REROLLVIP' && (
+          <Grid item xs={12}>
+            <Autocomplete
+              multiple
+              options={optionHero}
+              value={inputValueHero}
+              onChange={(event: any, newValue: any) => {
+                console.log(event.type);
+
+                setInputValueHero(newValue);
+              }}
+              getOptionLabel={(option: IFilm) => option?.desc}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  variant="outlined"
+                  label="Tìm theo nhân vật"
+                />
+              )}
+            />
+          </Grid>
+        )}
+
         <Grid item xs={12}>
           <TextField
             fullWidth
@@ -93,7 +184,8 @@ function FilterRandom({ handleData, toggleOpen }: IProps) {
             <MenuItem value="50000-60000">50K - 60K</MenuItem>
             <MenuItem value="60000-80000">60K - 80K</MenuItem>
             <MenuItem value="80000-100000">80K - 100K</MenuItem>
-            <MenuItem value="100000-200000">100K - 200K</MenuItem>
+            <MenuItem value="100000-150000">100K - 150K</MenuItem>
+            <MenuItem value="150000-200000">150K - 200K</MenuItem>
             <MenuItem value="200000-300000">200K - 300K</MenuItem>
             <MenuItem value="300000-400000">300K - 400K</MenuItem>
             <MenuItem value="400000-500000">400K - 500K</MenuItem>
@@ -103,7 +195,6 @@ function FilterRandom({ handleData, toggleOpen }: IProps) {
             <MenuItem value="5000000-999999999">Trên 5tr</MenuItem>
           </TextField>
         </Grid>
-
         <Grid item md={12} xs={12}>
           <TextField
             id="outlined-select-currency"
@@ -117,7 +208,6 @@ function FilterRandom({ handleData, toggleOpen }: IProps) {
             <MenuItem value={'false'}>Giảm dần</MenuItem>
           </TextField>
         </Grid>
-
         <Grid item xs={12}>
           <TextField
             fullWidth

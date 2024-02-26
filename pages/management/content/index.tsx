@@ -130,6 +130,12 @@ function ContentManager() {
     });
   };
 
+  const changeContentChietKhau = (data: string) => {
+    formik.handleChange({
+      target: { name: 'facebook', value: data }
+    });
+  };
+
   useEffect(() => {
     getWebInformation().then((res) =>
       setData({
@@ -203,7 +209,13 @@ function ContentManager() {
           <b>{`<a href="đường dẫn vd: https://abc.com" style="color:#d33" >Nội dung</a>`}</b>{' '}
           ở đâu cũng được
         </sup>
-        <TF
+        <Box mt={3}>
+          <TinyEditor
+            changeBody={changeContentChietKhau}
+            defaultValue={formik.values['facebook']}
+          />
+        </Box>
+        {/* <TF
           id="outlined-multiline-static"
           label="Chiết khấu"
           multiline
@@ -216,7 +228,7 @@ function ContentManager() {
             background: '#fff',
             mt: 3
           }}
-        />
+        /> */}
         <FormatForm formik={formikVip}>
           <Box
             sx={{

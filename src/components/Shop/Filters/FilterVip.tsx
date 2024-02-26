@@ -197,7 +197,8 @@ function FilterVip({ handleFilter, toggleOpen }: IProps) {
             <MenuItem value="50000-60000">50K - 60K</MenuItem>
             <MenuItem value="60000-80000">60K - 80K</MenuItem>
             <MenuItem value="80000-100000">80K - 100K</MenuItem>
-            <MenuItem value="100000-200000">100K - 200K</MenuItem>
+            <MenuItem value="100000-150000">100K - 150K</MenuItem>
+            <MenuItem value="150000-200000">150K - 200K</MenuItem>
             <MenuItem value="200000-300000">200K - 300K</MenuItem>
             <MenuItem value="300000-400000">300K - 400K</MenuItem>
             <MenuItem value="400000-500000">400K - 500K</MenuItem>

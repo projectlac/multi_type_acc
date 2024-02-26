@@ -155,7 +155,6 @@ function EditAccout({ title, slug }: IEdit) {
     formData.append('hero', hero.map((d) => d.desc).toString());
     formData.append('game', 'honkai-star-rail');
     file && formData.append('avatar', file);
-    debugger;
     try {
       await updateAccountNomal(slug, formData).then(() => {
         handleSetMessage({

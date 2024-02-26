@@ -1,5 +1,10 @@
 import formatMoney from '@/utility/formatMoney';
-import { Table as MuiTable, TablePagination, Typography } from '@mui/material';
+import {
+  Box,
+  Table as MuiTable,
+  TablePagination,
+  Typography
+} from '@mui/material';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
 import TableBody from '@mui/material/TableBody';
@@ -59,9 +64,16 @@ export default function Table({ data }: IProp) {
         <MuiTable sx={{ minWidth: 700 }} aria-label="customized table">
           <TableHead>
             <TableRow>
-              <StyledTableCell align="left">ID</StyledTableCell>
+              <StyledTableCell align="left" width={'10%'}>
+                ID
+              </StyledTableCell>
               <StyledTableCell align="left">Thông tin</StyledTableCell>
-              <StyledTableCell align="left">Thời gian</StyledTableCell>
+              <StyledTableCell
+                align="left"
+                sx={{ display: { md: 'block', xs: 'none' } }}
+              >
+                Thời gian
+              </StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -105,9 +117,23 @@ export default function Table({ data }: IProp) {
                     <b> Tài khoản</b>: {detail[0]?.username}
                     <br />
                     <b> Mật khẩu</b>: {detail[0]?.password}
+                    <br />
+                    <Box sx={{ display: { md: 'none', xs: 'block' } }}>
+                      {formatMoney(detail[0]?.price_after_sale)} VNĐ
+                      <br />
+                      <Typography fontWeight={'bold'}>
+                        {format(new Date(updated_at), 'dd/MM/yyyy')}
+                      </Typography>
+                      <Typography>
+                        {format(new Date(updated_at), 'hh:mm:ss')}
+                      </Typography>
+                    </Box>
                   </StyledTableCell>
 
-                  <StyledTableCell align="left">
+                  <StyledTableCell
+                    align="left"
+                    sx={{ display: { md: 'block', xs: 'none' } }}
+                  >
                     {formatMoney(detail[0]?.price_after_sale)} VNĐ
                     <br />
                     <Typography fontWeight={'bold'}>

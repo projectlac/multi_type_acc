@@ -71,7 +71,9 @@ export interface IQueryRandomAcc {
   ar: string;
   keyword: string;
   rangeMoney?: string;
-  game?:string
+  game?:string,
+  type?:string,
+  hero?:string[]
 }
 
 export interface IQueryVipAcc {

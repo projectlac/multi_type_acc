@@ -1,3 +1,6 @@
+import OgTag from '@/components/Common/OgTag';
+import TitleWeb from '@/components/Common/TitleWeb';
+import ProductCollection from '@/components/ProductCollection/ProductCollection';
 import {
   Box,
   Button,
@@ -10,17 +13,13 @@ import {
   styled,
   Typography
 } from '@mui/material';
-import { ReactElement, useEffect, useState } from 'react';
-import BaseLayout from 'src/layouts/BaseLayout';
-import LazyLoad from 'react-lazyload';
-import Head from 'next/head';
-import OgTag from '@/components/Common/OgTag';
-import TitleWeb from '@/components/Common/TitleWeb';
-import ProductCollection from '@/components/ProductCollection/ProductCollection';
-import formatMoney from '@/utility/formatMoney';
 import { getTop10 } from 'api/apiDeposit/account';
 import { getWebInformation } from 'api/auth';
+import Head from 'next/head';
+import { ReactElement, useEffect, useState } from 'react';
 import Marquee from 'react-fast-marquee';
+import LazyLoad from 'react-lazyload';
+import BaseLayout from 'src/layouts/BaseLayout';
 
 const OverviewWrapper = styled(Box)(
   () => `
@@ -72,10 +71,12 @@ function Overview() {
         {data.discord.trim() && (
           <Marquee
             style={{
-              background: 'rgb(75 75 75 / 78%)',
-              color: '#fff',
+              background: 'rgb(0 0 0 / 79%)',
+              color: 'rgb(255 235 0)',
               height: '40px',
-              fontSize: 16
+              fontSize: 16,
+              animation: 'color-change infinite 1s',
+              fontWeight: 'bold'
             }}
           >
             <Box dangerouslySetInnerHTML={{ __html: data.discord }} />
