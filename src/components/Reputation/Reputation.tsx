@@ -30,10 +30,18 @@ export default function ReputationItem() {
           }}
           width={'100%'}
         >
-          <iframe
+          {/* <iframe
             width="560"
             height="315"
             src="https://www.youtube.com/embed/Cl3Of_L3ndI?si=Opql7jJ5htD40xcZ"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen={true}
+          ></iframe> */}
+          <iframe
+            src="https://drive.google.com/file/d/1hfepoovMOyd9uEILF2HCwstQvliA_Wf4/preview"
+            width="560"
+            frameBorder="0"
+            height="315"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen={true}
           ></iframe>

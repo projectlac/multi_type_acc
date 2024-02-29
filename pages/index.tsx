@@ -213,6 +213,14 @@ function Overview() {
             >
               <LazyLoad height={900}>
                 <iframe
+                  src="https://drive.google.com/file/d/18FFpOKXGVZiiecnsMbO613TLItcq00XT/preview"
+                  width="1500"
+                  height="900"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+                {/* <iframe
                   width="1500"
                   height="900"
                   src={`https://www.youtube.com/embed/${data.youtube}`}
@@ -220,7 +228,7 @@ function Overview() {
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
-                ></iframe>
+                ></iframe> */}
               </LazyLoad>
             </Box>
           </Grid>
