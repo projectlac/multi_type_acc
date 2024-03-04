@@ -37,6 +37,7 @@ function ProductCollection() {
   const [dataAccVip, setDataAccVip] = useState<IAll>();
   const [dataAccRandom, setDataAccRandom] = useState<IAll>();
   const [dataAccReroll, setDataAccReroll] = useState<IAll>();
+
   const [dataAccNew, setDataAccNew] = useState<IAll>();
   const [dataProduct, setDataProduct] = useState<IAll>();
   const [dataHsr, setDataHsr] = useState<IAll>();
@@ -116,6 +117,13 @@ function ProductCollection() {
           url="/account/genshin-impact/reroll"
           image={rrr}
           data={dataAccReroll}
+        />
+      </Grid>
+      <Grid item md={3} sm={6} xs={12}>
+        <ProductCollectionItem
+          title="Acc Reroll 5 sao"
+          url="/account/genshin-impact/reroll-vip"
+          image={rrr}
         />
       </Grid>
       <Grid item md={3} sm={6} xs={12}>

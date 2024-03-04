@@ -10,7 +10,7 @@ interface IAll {
 }
 interface ICollectionItemProps {
   title: string;
-  data: IAll;
+  data?: IAll;
   image: string;
   url?: string;
 }
@@ -99,7 +99,11 @@ function ProductCollectionItem({
           {title}
         </Typography>
         <Divider sx={{ my: 1 }} />
-        <Grid container columnSpacing={1.5}>
+        <Grid
+          container
+          columnSpacing={1.5}
+          sx={{ visibility: data ? 'visible' : 'hidden' }}
+        >
           <Grid item md={6} xs={6}>
             <Typography fontSize={15} fontWeight="600" component={'h5'}>
               {data?.type === 'PRODUCT' ? 'Số sản phẩm' : 'Số tài khoản '}

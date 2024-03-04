@@ -19,7 +19,6 @@ interface IProps {
     isTrueSet: boolean,
     ar: string,
     code: string,
-    type?: string,
     hero?: string[]
   ) => void;
   toggleOpen: () => void;
@@ -31,7 +30,6 @@ interface IFilm {
 
 function FilterRandom({ handleData, toggleOpen }: IProps) {
   const [currency, setCurrency] = useState('');
-  const [type, setType] = useState('REROLL');
   const router = useRouter();
   const [optionHero, setOptionHero] = useState([]);
   const [inputValueHero, setInputValueHero] = useState<IFilm[]>([]);
@@ -41,13 +39,6 @@ function FilterRandom({ handleData, toggleOpen }: IProps) {
 
   const handleChange = (event) => {
     setCurrency(event.target.value);
-  };
-
-  const handleChangeType = (event) => {
-    if (event.target.value === 'REROLL') {
-      setInputValueHero([]);
-    }
-    setType(event.target.value);
   };
 
   const handleChangeSort = (event) => {
@@ -65,7 +56,7 @@ function FilterRandom({ handleData, toggleOpen }: IProps) {
     var isTrueSet = sort === 'true';
     const hero = inputValueHero.map((item) => item.slug);
 
-    handleData(currency, isTrueSet, ar, code, type, hero);
+    handleData(currency, isTrueSet, ar, code, hero);
     toggleOpen();
   };
 
@@ -118,22 +109,7 @@ function FilterRandom({ handleData, toggleOpen }: IProps) {
       <Divider sx={{ mt: 1, mb: 3 }}></Divider>
 
       <Grid container columnSpacing={1.3} rowSpacing={2.5}>
-        {router.asPath.includes('genshin-impact/reroll') && (
-          <Grid item xs={12}>
-            <TextField
-              id="outlined-select-currency"
-              select
-              label="Tìm loại acc"
-              fullWidth
-              value={type}
-              onChange={handleChangeType}
-            >
-              <MenuItem value="REROLL">Acc Reroll thường</MenuItem>
-              <MenuItem value="REROLLVIP">Acc Reroll 5*</MenuItem>
-            </TextField>
-          </Grid>
-        )}
-        {type === 'REROLLVIP' && (
+        {router.asPath.includes('genshin-impact/reroll-vip') && (
           <Grid item xs={12}>
             <Autocomplete
               multiple

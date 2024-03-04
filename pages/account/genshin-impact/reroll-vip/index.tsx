@@ -36,7 +36,7 @@ function AccountReroll() {
     setAr(ar);
     setCode(code);
     setHero(hero);
-    router.push(`/account/genshin-impact/reroll`);
+    router.push(`/account/genshin-impact/reroll-vip`);
   };
 
   const toggleOpen = () => {
@@ -44,7 +44,7 @@ function AccountReroll() {
   };
   const handlePage = (event: React.ChangeEvent<unknown>, value: number) => {
     console.log(event.type);
-    router.push(`/account/genshin-impact/reroll?page=${value}`);
+    router.push(`/account/genshin-impact/reroll-vip?page=${value}`);
   };
   useEffect(() => {
     executeScroll();
@@ -56,11 +56,9 @@ function AccountReroll() {
       rangeMoney: priceRange,
       priceSort: sort,
       game: 'genshin-impact',
-      type: 'REROLL',
+      type: 'REROLLVIP',
       hero
     }).then((res) => {
-      console.log(res.data);
-
       setData(res.data.data);
       setTotal(res.data.total);
     });
@@ -84,7 +82,7 @@ function AccountReroll() {
       </Head>
 
       <Container maxWidth="lg" sx={{ mt: 15 }}>
-        <TitleSpecial>Account Reroll</TitleSpecial>
+        <TitleSpecial>Account Reroll 5 Sao</TitleSpecial>
         <Box py={3}>
           <Grid container columnSpacing={2}>
             <Grid item xs={12} md={3}>
