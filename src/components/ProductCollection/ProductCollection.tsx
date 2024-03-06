@@ -114,18 +114,12 @@ function ProductCollection() {
       <Grid item md={3} sm={6} xs={12}>
         <ProductCollectionItem
           title="Acc Reroll"
-          url="/account/genshin-impact/reroll"
+          url="/reroll-check"
           image={rrr}
           data={dataAccReroll}
         />
       </Grid>
-      <Grid item md={3} sm={6} xs={12}>
-        <ProductCollectionItem
-          title="Acc Reroll 5 sao"
-          url="/account/genshin-impact/reroll-vip"
-          image={rrr}
-        />
-      </Grid>
+
       <Grid item md={3} sm={6} xs={12}>
         <ProductCollectionItem
           title="Acc Random"
