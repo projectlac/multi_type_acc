@@ -313,7 +313,7 @@ function AddMultiAccount({ title }: IEdit) {
                   />
                   {formik.values.game === 'genshin-impact' && (
                     <FormControlLabel
-                      value="REROLVIP"
+                      value="REROLLVIP"
                       control={<Radio />}
                       label="Reroll 5 sao"
                     />

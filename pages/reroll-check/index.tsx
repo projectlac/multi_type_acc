@@ -23,7 +23,7 @@ function AccountReroll() {
             <Grid item xs={12} md={3}>
               <ProductCollectionItem
                 title="Acc Reroll"
-                url="/account/genshin-impact/"
+                url="/account/genshin-impact/reroll"
                 image={rrr}
               />
             </Grid>
