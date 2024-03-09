@@ -272,9 +272,11 @@ export default function TopUpMobile() {
               với mất thẻ <br />
             </span>
           </Typography>
-          <Typography fontSize={'15px'} fontWeight={500} mb={3}>
+          <Box dangerouslySetInnerHTML={{ __html: content }}></Box>
+
+          {/* <Typography fontSize={'15px'} fontWeight={500} mb={3}>
             {content}
-          </Typography>
+          </Typography> */}
           <Grid container columnSpacing={1.5} rowSpacing={2}>
             <Grid item md={6} xs={12}>
               <Card sx={{ p: { md: 3, xs: 1 } }}>
