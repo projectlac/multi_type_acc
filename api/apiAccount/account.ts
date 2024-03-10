@@ -85,7 +85,7 @@ export const getAccountNomalFromDashboard = (
   is_sold?: boolean | ''
 ) => {
   return apiFormData.get(
-    `/account/get-accounts-by-admin?type=REROLL,RANDOM&limit=${limit}&offset=${offset}&game=${game}${checkCall(
+    `/account/get-accounts-by-admin?type=REROLL,RANDOM,REROLLVIP&limit=${limit}&offset=${offset}&game=${game}${checkCall(
       'keyword',
       search
     )}${checkBool('is_sold', is_sold)}`
