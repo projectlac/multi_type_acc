@@ -48,6 +48,8 @@ function AccountReroll() {
   };
   useEffect(() => {
     executeScroll();
+    console.log(hero);
+
     queryRerollAccount({
       limit: 9,
       offset: pageHistory ? (+pageHistory - 1) * 9 : 0,
@@ -62,7 +64,7 @@ function AccountReroll() {
       setData(res.data.data);
       setTotal(res.data.total);
     });
-  }, [pageHistory, sort, ar, code, priceRange]);
+  }, [pageHistory, sort, ar, code, hero, priceRange]);
 
   const executeScroll = () => {
     const id = 'scrollTo';
