@@ -16,7 +16,7 @@ export const getListUser = (
     `/user-manager?${checkCall('limit', limit)}&${checkCall(
       'offset',
       offset
-    )}&${checkCall('key', search)}&${checkCall('role', role)}`
+    )}&${checkCall('username', search)}&${checkCall('role', role)}`
   );
 };
 

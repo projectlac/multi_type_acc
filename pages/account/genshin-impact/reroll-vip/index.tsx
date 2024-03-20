@@ -48,7 +48,6 @@ function AccountReroll() {
   };
   useEffect(() => {
     executeScroll();
-    console.log(hero);
 
     queryRerollAccount({
       limit: 9,

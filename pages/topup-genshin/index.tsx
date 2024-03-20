@@ -240,7 +240,13 @@ export default function VerticalTabs() {
                   >
                     Nạp Genshin Impact & HSR
                   </Typography>
-
+                  <Typography mb={2} textAlign={'center'}>
+                    <b>
+                      Lưu ý: Ghi sai UID trong game liên hệ ngay zalo 0372790362
+                      để sửa <br />
+                      Nếu cố tình lên sai = mất gói nhé ae
+                    </b>
+                  </Typography>
                   <Grid container columnSpacing={1.5} rowSpacing={2}>
                     <Grid item xs={12}>
                       <Selection

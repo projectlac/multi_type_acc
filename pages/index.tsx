@@ -211,6 +211,18 @@ function Overview() {
                 }
               }}
             >
+              <Typography
+                position={'absolute'}
+                zIndex={10}
+                sx={{
+                  borderBottomRightRadius: '15px',
+                  background: '#fff',
+                  fontWeight: 'bold',
+                  padding: '5px 7px'
+                }}
+              >
+                Video hướng dẫn mua acc
+              </Typography>
               <LazyLoad height={900}>
                 <iframe
                   src="https://drive.google.com/file/d/18FFpOKXGVZiiecnsMbO613TLItcq00XT/preview"

@@ -92,12 +92,15 @@ export default function TableDeposit({ data }: IProp) {
               const {
                 pack_list: { description, price },
                 id,
-                transaction: { status, created_at, id: code }
+                transaction: { status, created_at, id: code },
+                uuid
               } = row;
               return (
                 <StyledTableRow key={id}>
                   <StyledTableCell align="left">{code}</StyledTableCell>
-                  <StyledTableCell align="left">{description}</StyledTableCell>
+                  <StyledTableCell align="left">
+                    {description} <br /> <b>UID: {uuid.slice(0, 6)}***</b>
+                  </StyledTableCell>
                   <StyledTableCell align="left">
                     {formatMoney(price) + `VND`}
                   </StyledTableCell>
