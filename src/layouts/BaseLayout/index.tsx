@@ -120,15 +120,15 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children }) => {
             <Box sx={{ display: { xs: 'none', md: 'block' } }}>
               <ul style={{ padding: 0 }}>
                 <li style={{ marginLeft: 0 }}>
-                  {/* <Link
-                    href={'https://m.me/122101845332012058'}
+                  <Link
+                    href={'https://m.me/1518911661663077'}
                     target={'__blank'}
                   >
                     <a target="_blank">Hỗ trợ KH </a>
-                  </Link> */}
-                  <Link href={'https://zalo.me/84372790362'} target={'__blank'}>
-                    <a target="_blank">Hỗ trợ KH </a>
                   </Link>
+                  {/* <Link href={'https://zalo.me/84372790362'} target={'__blank'}>
+                    <a target="_blank">Hỗ trợ KH </a>
+                  </Link> */}
                 </li>
                 <li>
                   <Link href={'/'}>Trang chủ</Link>
@@ -182,18 +182,18 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children }) => {
                     <Link href={'/news'}>Thông tin Shop</Link>
                   </li>
                   <li>
-                    {/* <Link
-                      href={'https://www.facebook.com/nguyenhung208/'}
-                      target={'__blank'}
-                    >
-                      <a target="_blank">Fanpage hỗ trợ khách hàng</a>
-                    </Link> */}
                     <Link
-                      href={'https://zalo.me/84372790362'}
+                      href={'https://m.me/1518911661663077'}
                       target={'__blank'}
                     >
                       <a target="_blank">Fanpage hỗ trợ khách hàng</a>
                     </Link>
+                    {/* <Link
+                      href={'https://zalo.me/84372790362'}
+                      target={'__blank'}
+                    >
+                      <a target="_blank">Fanpage hỗ trợ khách hàng</a>
+                    </Link> */}
                   </li>
                 </ul>
               </MobileMenu>

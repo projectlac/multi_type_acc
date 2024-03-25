@@ -24,3 +24,7 @@ export const setDescNEW = (description: string) => {
     description
   });
 };
+
+export const updateMomo = (phone: string, token: string) => {
+  return api.patch('/information/update-info-momo', { phone, token });
+};

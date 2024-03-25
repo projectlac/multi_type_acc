@@ -19,6 +19,7 @@ import {
   TextField as TF,
   Typography
 } from '@mui/material';
+import { updateMomo } from 'api/apiSetting/apiSetting';
 
 import { saleType } from 'api/product/productApi';
 import Head from 'next/head';
@@ -31,6 +32,11 @@ const validationSchema = yup.object({
   sale: yup.number().required('Trường này là bắt buộc')
 });
 
+const validationMomo = yup.object({
+  phone: yup.string().required('Trường này là bắt buộc'),
+  token: yup.string().required('Trường này là bắt buộc')
+});
+
 function SettingSale() {
   const { handleSetMessage } = useAuth();
   const [loading, setLoading] = useState<boolean>(false);
@@ -38,6 +44,11 @@ function SettingSale() {
     type: 'RANDOM',
     game: 'genshin-impact',
     sale: '0'
+  };
+
+  const initFormMOMO = {
+    token: '',
+    phone: ''
   };
 
   const onSubmit = async (values) => {
@@ -57,7 +68,28 @@ function SettingSale() {
     }
   };
 
+  const updateMOMO = async (values) => {
+    const { token, phone } = values;
+    setLoading(true);
+    try {
+      updateMomo(token, phone).then(() => {
+        handleSetMessage({
+          type: 'success',
+          message: `Cập nhật thành công`
+        });
+      });
+    } catch (error) {
+      handleSetMessage({
+        type: 'error',
+        message: error.response.data.message
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const formik = useCustomForm(validationSchema, initForm, onSubmit);
+  const formikMomo = useCustomForm(validationMomo, initFormMOMO, updateMOMO);
 
   return (
     <>
@@ -185,6 +217,43 @@ function SettingSale() {
               name="sale"
               type="number"
             />
+          </Grid>
+        </FormatForm>
+        <Divider sx={{ my: 2 }} />
+        <FormatForm formik={formikMomo}>
+          <Grid container columnSpacing={2}>
+            <Grid item xs={5}>
+              <TextField
+                formik={formik}
+                label="Số điện thoại"
+                variant="outlined"
+                fullWidth
+                name="phone"
+                type="text"
+              />
+            </Grid>
+            <Grid item xs={5}>
+              <TextField
+                formik={formik}
+                label="Token"
+                variant="outlined"
+                fullWidth
+                name="token"
+                type="text"
+              />
+            </Grid>
+            <Grid item xs={2}>
+              <Button
+                sx={{ mt: { xs: 2, md: 0 }, height: '100%' }}
+                variant="contained"
+                startIcon={<SaveIcon fontSize="small" />}
+                type="submit"
+                disabled={loading}
+                fullWidth
+              >
+                Update Token
+              </Button>
+            </Grid>
           </Grid>
         </FormatForm>
       </PageTitleWrapper>
