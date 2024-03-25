@@ -215,7 +215,7 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children }) => {
       </Header>
       <FullBG>
         {children}
-        {/* <MessengerChat pageId="122101845332012058" language="vi_VN" /> */}
+        <MessengerChat pageId="1518911661663077" language="vi_VN" />
         <Box
           sx={{
             width: 90,

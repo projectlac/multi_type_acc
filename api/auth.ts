@@ -17,15 +17,32 @@ export const changePassword = (param: IResetPassword) => {
 };
 
 export const getWebInformation = () => {
-  return api.get(`/information`)
-}
-export const updateWebInformation = (youtube:string,description:string, facebook:string, discord:string) => {
-  return api.put(`/information/update`,{youtube, description, facebook, discord})
-}
-export const updatePriceSpin = (price:number) => {
-  return api.put(`/information/update`,{spinning_price:price})
-}
-export const changePasswordByUser = (oldPassword: string, newPassword:string, confirmPassword:string) =>{
-  return api.patch(`/user/change-password`,{oldPassword, newPassword, confirmPassword})
-
-}
+  return api.get(`/information`);
+};
+export const updateWebInformation = (
+  youtube: string,
+  description: string,
+  facebook: string,
+  discord: string
+) => {
+  return api.put(`/information/update`, {
+    youtube,
+    description,
+    facebook,
+    discord
+  });
+};
+export const updatePriceSpin = (price: number) => {
+  return api.put(`/information/update`, { spinning_price: price });
+};
+export const changePasswordByUser = (
+  oldPassword: string,
+  newPassword: string,
+  confirmPassword: string
+) => {
+  return api.patch(`/user/change-password`, {
+    oldPassword,
+    newPassword,
+    confirmPassword
+  });
+};
