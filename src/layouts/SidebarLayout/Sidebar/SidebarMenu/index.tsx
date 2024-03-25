@@ -658,6 +658,21 @@ function SidebarMenu() {
                       </Button>
                     </NextLink>
                   </ListItem>
+                  <ListItem component="div">
+                    <NextLink href="/management/setting" passHref>
+                      <Button
+                        className={
+                          currentRoute === '/management/setting' ? 'active' : ''
+                        }
+                        disableRipple
+                        component="a"
+                        onClick={closeSidebar}
+                        startIcon={<BallotTwoToneIcon />}
+                      >
+                        Cài đặt
+                      </Button>
+                    </NextLink>
+                  </ListItem>
                 </List>
               </SubMenuWrapper>
             </List>

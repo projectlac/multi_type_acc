@@ -14,7 +14,7 @@ export interface IProduct {
   categories: Category[];
   slug: string;
   avatar?: string;
-  link:string;
+  link: string;
 }
 export interface ImageProduct {
   createdAt: string;
@@ -29,4 +29,10 @@ export interface Category {
   slug: string;
   name: string;
   id: string;
+}
+
+export interface ISaleType {
+  type: string;
+  game: string;
+  sale: number;
 }

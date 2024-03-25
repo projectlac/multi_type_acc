@@ -1,4 +1,5 @@
 import api from 'api/api';
+import { ISaleType } from 'model/product';
 
 export const addProduct = (formdata: FormData) => {
   return api.post(`/product/create`, formdata);
@@ -62,6 +63,10 @@ export const queryAllProductForSiteMap = () => {
 export const getOrder = () => {
   return api.get(`/order?limit=9999&type=Mua mô hình`);
 };
-export const updateOrderStart = (id:number , status:string) => {
-  return api.put(`/order/update/${id}`,{status:status});
+export const updateOrderStart = (id: number, status: string) => {
+  return api.put(`/order/update/${id}`, { status: status });
+};
+
+export const saleType = (params: ISaleType) => {
+  return api.patch(`/account/set-sale-multi`, params);
 };
