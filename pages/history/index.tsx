@@ -113,6 +113,14 @@ function Overview() {
                 {`=> Shop không bán nick chết bất cứ 1 liên kết nào và không bán nick bị phá thánh di vật hoặc `}
                 <br />
                 Hỗ trợ nhanh chóng nhân viên rep nhanh tốc độ nhiệt tình ❤
+                <br />
+                <br />
+                <b style={{ color: '#d33' }}>
+                  Nếu cần hỗ trợ về thông tin acc hãy{' '}
+                  <a href="https://m.me/1518911661663077" target="__blank">
+                    ấn vào đây
+                  </a>
+                </b>
               </Typography>
             </Card>
             <Card>
