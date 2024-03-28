@@ -126,6 +126,8 @@ function AccountVip() {
                         server={d.server}
                         heroes={d.heroes}
                         weapons={d.weapons}
+                        sale={d.sale}
+                        price_after_sale={d.price_after_sale}
                       ></Items>
                     </Grid>
                   );
