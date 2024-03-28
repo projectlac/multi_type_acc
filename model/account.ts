@@ -1,4 +1,4 @@
-import { ITag } from "./item";
+import { ITag } from './item';
 
 export interface IAccountVipAdmin {
   code: string;
@@ -7,7 +7,7 @@ export interface IAccountVipAdmin {
   password: string;
   price: string;
   created_at: string;
-  user:any;
+  user: any;
   is_sold: boolean;
   is_hidden: boolean;
   description: string;
@@ -29,4 +29,6 @@ export interface IAccountShop {
   ar_level?: string;
   heroes?: ITag[];
   weapons?: ITag[];
+  price_after_sale?: string;
+  sale?: number;
 }

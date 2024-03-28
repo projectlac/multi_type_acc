@@ -102,6 +102,8 @@ function AccountRandom() {
                         isSold={d.is_sold}
                         ar_level={d.ar_level}
                         server={d.server}
+                        sale={d.sale}
+                        price_after_sale={d.price_after_sale}
                       ></Items>
                     </Grid>
                   );

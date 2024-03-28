@@ -11,6 +11,8 @@ interface IProps {
   code: string;
   des: string;
   isSold: boolean;
+  price_after_sale?: string;
+  sale?: number;
   server?: any;
   ar_level?: string;
   heroes?: ITag[];
@@ -26,7 +28,9 @@ function Items({
   server,
   ar_level,
   heroes,
-  weapons
+  weapons,
+  price_after_sale,
+  sale
 }: IProps) {
   return (
     <Card
@@ -54,6 +58,26 @@ function Items({
           'linear-gradient(90deg, rgba(228,214,200,1) 0%, rgba(239,231,225,1) 50%, rgba(228,214,200,1) 100%)'
       }}
     >
+      {sale && (
+        <Box
+          sx={{
+            position: 'absolute',
+            top: '29px',
+            left: '-55px',
+            width: '200px',
+            color: '#fff',
+            fontWeight: 'bold',
+            padding: '7px',
+            transform: 'rotate(-45deg)',
+            zIndex: '9',
+            textAlign: 'center',
+            background:
+              'linear-gradient(90deg, rgba(193, 0, 80, 1) 0%, rgba(226, 92, 34, 1) 35%, rgba(255, 214, 0, 1) 100%)'
+          }}
+        >
+          Giảm giá {sale}%
+        </Box>
+      )}
       {isSold && (
         <Box
           sx={{
@@ -255,10 +279,16 @@ function Items({
               component={'h5'}
             >
               Giá bán <br />
+              {sale && (
+                <span style={{ textDecoration: 'line-through' }}>
+                  {formatMoney(price)}
+                </span>
+              )}
               <span
                 style={{ fontSize: '17px', fontWeight: 'bold', color: '#d33' }}
               >
-                {formatMoney(price)}
+                {' '}
+                {formatMoney(sale ? price_after_sale : price)}
               </span>
             </Typography>
           </Grid>
